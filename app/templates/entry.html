@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      {{ entry.orth or _('Словникова стаття') }} - {{ _('Словник слів німецького походження в українській мові') }}
+    </title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header class="page-header">
+        <!-- Кнопка "Назад до списку" (Зліва) -->
+        <a href="{{ url_for('main.index') }}" class="button">
+            ← {{ _('Назад до списку') }}
+        </a>
+
+        <!-- Група кнопок справа: Редагувати + Навігація -->
+        <div class="navigation-buttons-standalone">
+          
+          <!-- КНОПКА: Редагувати (використовує новий клас button-warning) -->
+          <a href="{{ url_for('main.edit_entry', entry_id=entry.id) }}" class="button button-warning">
+            ✎ {{ _('Редагувати') }}
+          </a>
+
+          {% if prev_entry_id %}
+          <a href="{{ url_for('main.view_entry', entry_id=prev_entry_id) }}" class="button">
+            ← {{ _('Попередній запис') }}
+          </a>
+          {% endif %} 
+          
+          {% if next_entry_id %}
+          <a href="{{ url_for('main.view_entry', entry_id=next_entry_id) }}" class="button">
+            {{ _('Наступний запис') }} →
+          </a>
+          {% endif %}
+        </div>
+      </header>
+      
+      <div class="entry-view-panel" style="height: auto">
+        {% set context_standalone = True %} 
+        {% include 'entry_partial.html' %}
+      </div>
+    </div>
+  </body>
+</html>

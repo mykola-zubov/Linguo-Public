@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Обкладинка книги (синя, як ваша тема) -->
+  <rect x="8" y="6" width="48" height="52" rx="4" fill="#007bff" stroke="#0056b3" stroke-width="2"/>
+  
+  <!-- Корінець книги -->
+  <path d="M14 6v52" stroke="#ffffff" stroke-width="2" opacity="0.3"/>
+  
+  <!-- Декоративні лінії -->
+  <rect x="22" y="14" width="20" height="4" rx="2" fill="#ffffff" opacity="0.3"/>
+  <rect x="22" y="46" width="20" height="4" rx="2" fill="#ffffff" opacity="0.3"/>
+  
+  <!-- Текст -->
+  <text x="32" y="38" font-family="Arial, sans-serif" font-size="20" fill="white" text-anchor="middle" font-weight="bold">De</text>
+</svg>

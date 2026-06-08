@@ -1,0 +1,40 @@
+{% if entries %}
+<table class="entry-table">
+    <tbody>
+        {% set ns = namespace(current_letter=None) %}
+        {% for entry in entries %}
+            {# Визначаємо першу літеру слова #}
+            {% set first_char = (entry.orth[:1]|upper) %}
+            
+            {# Якщо літера змінилася, додаємо рядок-роздільник #}
+            {% if first_char != ns.current_letter %}
+                <tr class="letter-separator">
+                    <td colspan="2">{{ first_char }}</td>
+                </tr>
+                {% set ns.current_letter = first_char %}
+            {% endif %}
+
+            {# Рядок слова #}
+            <tr class="word-row" id="row-{{ entry.id }}">
+                <td>
+                    <a href="#" 
+                       class="entry-link" 
+                       data-entry-id="{{ entry.id }}"
+                       onclick="return false;"> <!-- JS обробляє клік -->
+                        <strong>{{ entry.orth }}</strong>
+                    </a>
+                </td>
+                <td style="text-align: right; width: 30px;">
+                    {% if entry.status == 'complete' %}
+                        <span style="color: green; font-size: 0.8em;" title="{{ _('Завершено') }}">✔</span>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+    <div style="padding: 20px; text-align: center; color: #777;">
+        {{ _('Нічого не знайдено') }}
+    </div>
+{% endif %}

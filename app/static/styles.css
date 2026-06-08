@@ -1,0 +1,527 @@
+/* === General Styles === */
+:root {
+    --primary-color: #007bff;
+    --primary-hover: #0056b3;
+    --light-gray: #f8f9fa;
+    --medium-gray: #dee2e6;
+    --border-color: #ced4da;
+    --text-color: #212529;
+    --muted-text: #6c757d;
+    --white: #ffffff;
+    --sidebar-width: 320px;
+    --header-height: 60px;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: var(--text-color);
+}
+
+/* === Layout Mode: Fixed (для Index - Dashboard) === */
+body.layout-fixed {
+    height: 100vh;
+    overflow: hidden; /* Скролимо тільки панелі всередині */
+}
+
+body.layout-fixed .container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-width: 100%;
+}
+
+/* === Layout Mode: Scrollable (для Edit/Add) === */
+body.layout-scrollable {
+    height: auto;
+    overflow-y: auto;
+}
+
+body.layout-scrollable .container {
+    display: block;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+    height: auto;
+}
+
+/* === Compact Header === */
+.sticky-header {
+    flex: 0 0 auto;
+    background-color: var(--white);
+    border-bottom: 1px solid var(--border-color);
+    padding: 8px 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    height: auto;
+    min-height: 40px;
+}
+
+.header-title-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.sticky-header h1 {
+    font-size: 1.2rem;
+    margin: 0;
+    white-space: nowrap;
+    color: #333;
+}
+
+.stats-info {
+    font-size: 0.85rem;
+    color: var(--muted-text);
+    white-space: nowrap;
+    border-left: 1px solid var(--medium-gray);
+    padding-left: 10px;
+}
+
+.top-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: nowrap;
+}
+
+/* === Filters in Header === */
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    background: #f1f3f5;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+.filter-group label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+/* === Main Layout (Split View) === */
+.main-layout {
+    display: flex;
+    flex: 1 1 auto;
+    overflow: hidden; /* Важливо для незалежного скролу */
+    height: calc(100vh - var(--header-height)); 
+}
+
+/* === Left Sidebar (Restructured) === */
+.word-list-panel {
+    flex: 0 0 var(--sidebar-width);
+    background-color: var(--white);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column; /* Вертикальний стек: Алфавіт -> Пошук -> Список */
+    height: 100%;
+    overflow: hidden; /* Вимикаємо загальний скрол панелі */
+}
+
+/* 1. Alphabet Nav */
+.alphabet-nav {
+    flex: 0 0 auto; /* Не розтягується */
+    position: static; /* Sticky тут не потрібен */
+    background: #f8f9fa;
+    padding: 8px 5px;
+    border-bottom: 1px solid #dee2e6;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    justify-content: center;
+    z-index: 10;
+}
+.alphabet-nav a {
+    font-size: 0.8rem;
+    padding: 2px 5px;
+    background: var(--white);
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    color: var(--text-color);
+}
+.alphabet-nav a:hover, .alphabet-nav a.active {
+    background: var(--primary-color);
+    color: var(--white);
+    text-decoration: none;
+    border-color: var(--primary-color);
+}
+
+/* 2. Sidebar Search Container */
+.sidebar-search-container {
+    flex: 0 0 auto; /* Не розтягується */
+    padding: 10px;
+    background: #fff;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.sidebar-form {
+    display: flex;
+    width: 100%;
+    position: relative;
+}
+
+.search-input.full-width {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 6px 30px 6px 10px; /* padding-right для іконки */
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    height: 36px;
+}
+
+.sidebar-form .search-btn {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #666;
+    padding: 0;
+}
+
+/* 3. Scrollable Word List Area */
+.word-list-scroll-area {
+    flex: 1 1 auto; /* Займає весь залишковий простір */
+    overflow-y: auto; /* Скрол тільки тут */
+    height: 0; /* Flexbox hack для коректного скролу */
+}
+
+/* Entry Table (Compact) */
+table.entry-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+table.entry-table td {
+    padding: 4px 10px;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+table.entry-table tr:hover {
+    background-color: #f1f5f9;
+}
+table.entry-table tr.active-row {
+    background-color: #e0eefd;
+    border-left: 4px solid var(--primary-color);
+}
+table.entry-table a.entry-link {
+    display: block;
+    color: #333;
+    text-decoration: none;
+}
+table.entry-table tr.letter-separator td {
+    background: #eee;
+    font-weight: bold;
+    font-size: 0.9rem;
+    padding: 2px 10px;
+}
+
+/* Right Panel (Entry View) */
+.entry-view-panel {
+    flex: 1 1 auto;
+    background-color: #fff;
+    overflow-y: auto;
+    padding: 20px 40px;
+}
+
+/* === Buttons === */
+.button {
+    padding: 5px 10px;
+    font-size: 13px;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    background: var(--white);
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+}
+.button-primary {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+}
+.button-primary:hover {
+    background-color: var(--primary-hover);
+}
+.button-warning {
+    background-color: #ffc107;
+    border: 1px solid #e0a800;
+    color: #212529;
+}
+.button-warning:hover {
+    background-color: #e0a800;
+    text-decoration: none;
+}
+.button.small {
+    padding: 4px 10px;
+    font-size: 0.9em;
+}
+.button:hover:not(.button-primary):not(.button-warning) {
+    background-color: #f0f0f0;
+    text-decoration: none;
+}
+
+/* === Language Toggle === */
+.language-selector {
+    display: flex;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    overflow: hidden;
+}
+.language-selector a {
+    padding: 4px 8px;
+    font-size: 12px;
+    background: #f8f9fa;
+    color: #555;
+    text-decoration: none;
+}
+.language-selector a.active {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+/* === Entry Content Styles === */
+.entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 2px solid var(--primary-color);
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+}
+
+.headword {
+    font-size: 1.8rem;
+    font-family: "Times New Roman", Times, serif;
+    font-weight: bold;
+    color: #000;
+    line-height: 1.2;
+}
+
+.headword sup {
+    font-size: 0.6em;
+    color: var(--primary-color);
+    font-weight: normal;
+}
+
+.gram-line {
+    font-size: 1rem;
+    color: #444;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.tag {
+    font-style: italic;
+    color: #555;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.abbr-tag {
+    cursor: help;
+    border-bottom: 1px dotted #888;
+}
+
+/* German Block */
+.german-block {
+    background-color: #f9fbfd;
+    border-left: 4px solid #b8daff;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+}
+.german-head {
+    font-weight: bold;
+    color: #004085;
+}
+
+/* Senses List */
+.senses-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: sense-counter;
+}
+.senses-list > li {
+    margin-bottom: 15px;
+    position: relative;
+    padding-left: 25px;
+}
+.senses-list > li::before {
+    counter-increment: sense-counter;
+    content: counter(sense-counter) ". ";
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    color: var(--text-color);
+}
+
+.definition {
+    display: inline;
+}
+
+/* Examples */
+.examples {
+    margin-top: 5px;
+    color: #444;
+}
+.example-item {
+    font-style: italic;
+    display: block;
+    margin-bottom: 4px;
+}
+.example-source {
+    font-style: normal;
+    font-size: 0.85em;
+    color: #777;
+    margin-left: 5px;
+}
+
+/* Borrowing Info */
+.borrowing-info {
+    font-size: 0.95rem;
+    background: #fff8e1;
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    border-left: 4px solid #ffc107;
+}
+
+/* Bibliography */
+.bibliography-section {
+    font-size: 0.9rem;
+    margin-top: 30px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+    color: #666;
+}
+
+.has-tooltip {
+    border-bottom: 1px dotted #666;
+    cursor: help;
+}
+
+/* === Form Specific Styles === */
+.choices__inner {
+    min-height: 34px;
+    padding: 2px 5px;
+    font-size: 0.95em;
+}
+
+.form-section {
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+}
+
+.form-section legend {
+    font-size: 1.1em;
+    font-weight: 600;
+    border-bottom: 1px solid #eee;
+    width: 100%;
+    margin-bottom: 10px;
+    color: #495057;
+}
+
+.grid-row-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    align-items: end;
+    margin-bottom: 10px;
+}
+
+.grid-row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    align-items: end;
+    margin-bottom: 10px;
+}
+
+.form-group { margin-bottom: 0; }
+.form-group label { font-size: 0.85em; margin-bottom: 3px; color: #666; font-weight: 500; }
+
+input[type="text"], select {
+    padding: 6px 10px;
+    height: 36px;
+    width: 100%;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+
+.dynamic-list-item {
+    padding: 15px;
+    border: 1px solid #ddd;
+    background: #fafafa;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    position: relative;
+}
+
+.delete-item-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: #dc3545;
+    font-weight: bold;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 1.4em;
+    line-height: 1;
+    z-index: 10;
+}
+
+/* Floating Actions Panel */
+.sticky-actions {
+    position: sticky;
+    bottom: 20px;
+    background: rgba(255,255,255,0.95);
+    padding: 15px;
+    border-top: 2px solid #007bff;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    margin-top: 20px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+/* Editor Fixes */
+.CodeMirror { min-height: 80px; height: auto; }
+.editor-toolbar { opacity: 0.6; }
+.editor-toolbar:hover { opacity: 1; }
+
+.translation-block .CodeMirror {
+    min-height: 50px;
+    height: auto;
+}
+.translation-block .CodeMirror-scroll {
+    min-height: 50px;
+}
+
+/* Standalone Entry Navigation */
+.navigation-buttons-standalone {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
