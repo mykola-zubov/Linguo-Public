@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ _('Словник німецьких запозичень') }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='logo.svg') }}">
+</head>
+<body class="layout-fixed">
+    <div class="container">
+        
+        <!-- Верхня шапка (без пошуку) -->
+        <header class="sticky-header">
+            <div class="header-title-area">
+                <img src="{{ url_for('static', filename='logo.svg') }}" alt="Logo" style="height: 32px; width: auto; opacity: 0.8;">
+                <h1>{{ _('Словник німецьких запозичень') }}</h1>
+                
+                <span class="stats-info">
+                    {{ _('Слів:') }} <strong>{{ stats.total }}</strong> 
+                    ({{ _('Готово:') }} {{ stats.complete }})
+                </span>
+            </div>
+
+            <div class="top-controls">
+                <!-- Фільтр статусу -->
+                <div class="filter-group" id="filter-group">
+                    <label>
+                        <input type="radio" name="show" value="all" {% if request.args.get('show') != 'complete' and request.args.get('show') != 'incomplete' %}checked{% endif %}> 
+                        {{ _('Всі') }}
+                    </label>
+                    <label>
+                        <input type="radio" name="show" value="complete" {% if request.args.get('show') == 'complete' %}checked{% endif %}> 
+                        <span style="color: green;">✔</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="show" value="incomplete" {% if request.args.get('show') == 'incomplete' %}checked{% endif %}> 
+                        <span style="color: gray;">✎</span>
+                    </label>
+                </div>
+                
+                <!-- Кнопка XML -->
+                <a href="{{ url_for('main.download_xml') }}" class="button" title="{{ _('Завантажити XML') }}">⬇ XML</a>
+
+                <!-- Перемикач мови -->
+                <div class="language-selector">
+                    <a href="{{ url_for('main.index', lang='uk', q=request.args.get('q', ''), show=request.args.get('show', 'all')) }}" 
+                       class="{% if current_lang == 'uk' %}active{% endif %}">UA</a>
+                    <a href="{{ url_for('main.index', lang='de', q=request.args.get('q', ''), show=request.args.get('show', 'all')) }}" 
+                       class="{% if current_lang == 'de' %}active{% endif %}">DE</a>
+                </div>
+                
+                <!-- Кнопка перекладу інтерфейсу (ВИПРАВЛЕНО: get_locale() -> current_lang) -->
+                <button id="lang-switch-btn" class="button" 
+                        data-base-url="{{ url_for('main.index') }}" 
+                        data-lang-switch="{{ 'de' if current_lang == 'uk' else 'uk' }}">
+                    {{ 'UA → DE' if current_lang == 'uk' else 'DE → UA' }}
+                </button>
+            </div>
+        </header>
+
+        <!-- Основна робоча область -->
+        <div class="main-layout">
+            
+            <!-- Ліва панель: Алфавіт + Пошук + Список -->
+            <div class="word-list-panel" id="word-list-panel">
+                
+                <!-- 1. Алфавітна навігація -->
+                <nav class="alphabet-nav">
+                    <a href="{{ url_for('main.index', letter='all', lang=current_lang) }}" 
+                       class="{% if not current_letter or current_letter == 'all' %}active{% endif %}">
+                       {{ _('Всі') }}
+                    </a>
+                    {% for l in alphabet %}
+                    <a href="{{ url_for('main.index', letter=l, lang=current_lang) }}" 
+                       class="{% if current_letter == l %}active{% endif %}">
+                       {{ l }}
+                    </a>
+                    {% endfor %}
+                </nav>
+
+                <!-- 2. Пошук (Переміщено сюди) -->
+                <div class="sidebar-search-container">
+                    <form class="search-form sidebar-form" id="search-form">
+                        <input type="text" name="q" class="search-input full-width" id="search-input" 
+                               placeholder="{{ _('Пошук...') }}" 
+                               value="{{ request.args.get('q', '') }}" 
+                               autocomplete="off">
+                        <input type="hidden" name="lang" value="{{ current_lang }}">
+                        <button type="submit" class="search-btn">🔍</button>
+                    </form>
+                </div>
+
+                <!-- 3. Список слів (в окремому скрол-контейнері) -->
+                <div class="word-list-scroll-area" id="word-list-content">
+                    {% include '_word_list.html' %}
+                </div>
+            </div>
+
+            <!-- Права панель: Перегляд статті -->
+            <div class="entry-view-panel">
+                {% if entry %}
+                    {% include 'entry_partial.html' %}
+                {% else %}
+                    <div style="text-align: center; color: #888; margin-top: 50px;">
+                        <h3>{{ _('Словник німецьких запозичень') }}</h3>
+                        <p>{{ _('Оберіть слово зі списку ліворуч або скористайтеся пошуком.') }}</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
