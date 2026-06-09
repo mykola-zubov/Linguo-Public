@@ -6,3 +6,4 @@ itsdangerous==2.2.0
 MarkupSafe==3.0.3
 blinker==1.9.0
 Flask-Babel
+lxml
