@@ -10,6 +10,9 @@
 
 Цей репозиторій містить вихідний код та демонстраційну базу даних веб-застосунку для інтерактивного словника слів німецького походження в українській мові. Проєкт укладено відповідно до сучасних лінгвістичних та цифрових стандартів гуманітарних наук (Digital Humanities).
 
+### Методологія та інструменти
+Цей проєкт використовує сучасні методи розробки з використанням штучного інтелекту (vibe coding). Основна архітектура бекенду, інтерфейс фронтенду та алгоритми аналізу XML були розроблені з використанням інструментів на базі великих мовних моделей (LLM) Gemini та Google AI Studio. Автор виступив у ролі архітектора програмного забезпечення, експерта в галузі (лінгвіста) та інженера-промт-розробника, керуючи штучним інтелектом для створення інструментів, спеціально пристосованих для українсько-німецької лексикографії.
+
 *   **Демо-версія застосунку**: [https://zubov.pythonanywhere.com](https://zubov.pythonanywhere.com)
 
 #### Особливості проєкту:
@@ -21,6 +24,9 @@
 ### 🇬🇧 English
 
 This repository contains the source code and a demonstration database for the interactive web application of the Dictionary of German Loanwords in the Ukrainian Language.
+
+### Methodology & Tools
+This project utilises modern development methods incorporating artificial intelligence (vibe coding). The core backend architecture, frontend interface and XML analysis algorithms were developed using tools based on the Gemini and Google AI Studio large language models (LLMs). The author acted as a software architect, subject matter expert (linguist) and prompt engineer, overseeing the use of artificial intelligence to create tools specifically tailored for Ukrainian-German lexicography.
 
 *   **Live Web Demo**: [https://zubov.pythonanywhere.com](https://zubov.pythonanywhere.com)
 
