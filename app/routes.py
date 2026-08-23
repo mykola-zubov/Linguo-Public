@@ -5,6 +5,8 @@ from app.services.metadata import meta_service
 from lxml import etree as ET
 from app.config import NS
 import locale
+from flask import jsonify
+from app.services.dwds_service import fetch_dwds_entry
 
 main_bp = Blueprint('main', __name__)
 
@@ -230,3 +232,12 @@ def delete_entry(entry_id):
 @main_bp.route("/download")
 def download_xml():
     return redirect(url_for('static', filename='dictionary.xml'))
+
+@main_bp.route("/api/dwds-fetch")
+def api_dwds_fetch():
+    lemma = request.args.get("lemma", "").strip()
+    if not lemma:
+        return jsonify({"status": "error", "message": "Параметр 'lemma' обов'язковий"}), 400
+    
+    result = fetch_dwds_entry(lemma)
+    return jsonify(result)

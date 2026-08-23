@@ -1130,7 +1130,7 @@ function addVariantItem(item = null) {
       });
   }
 
-  if (langSwitchBtn) {
+if (langSwitchBtn) {
       langSwitchBtn.addEventListener('click', function() {
           const baseUrl = this.dataset.baseUrl;
           const newLang = this.dataset.langSwitch;
@@ -1140,4 +1140,139 @@ function addVariantItem(item = null) {
           window.location.href = `${baseUrl}?${params.toString()}`;
       });
   }
+// ============================================================
+  // DWDS SMART AUTOMATION & POPUP
+  // ============================================================
+  const autoDwdsBtn = document.getElementById('auto-dwds-btn');
+  const openDwdsPopupBtn = document.getElementById('open-dwds-popup-btn');
+  const germanOrthInput = document.getElementById('german_orth');
+
+  function openPopup(url) {
+      const width = 920;
+      const height = 820;
+      const left = window.screen.width - width - 30;
+      const top = 40;
+      const windowFeatures = `width=${width},height=${height},top=${top},left=${left},resizable=yes,scrollbars=yes,status=no`;
+      window.open(url, 'dwds_popup', windowFeatures);
+  }
+
+  // 1. Кнопка "Відкрити у вікні" (↗)
+  if (openDwdsPopupBtn && germanOrthInput) {
+      openDwdsPopupBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          const lemma = germanOrthInput.value.trim().split(/[\s,]+/)[0];
+          if (!lemma) {
+              alert('Введіть німецьке слово.');
+              germanOrthInput.focus();
+              return;
+          }
+          openPopup(`https://www.dwds.de/wb/${encodeURIComponent(lemma)}`);
+      });
+  }
+
+  // 2. Кнопка автоматичного завантаження (⬇ DWDS)
+  if (autoDwdsBtn && germanOrthInput) {
+      autoDwdsBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          const lemma = germanOrthInput.value.trim().split(/[\s,]+/)[0];
+
+          if (!lemma) {
+              alert('Будь ласка, введіть німецьке слово.');
+              germanOrthInput.focus();
+              return;
+          }
+
+          const origBtnText = autoDwdsBtn.innerHTML;
+          autoDwdsBtn.disabled = true;
+          autoDwdsBtn.innerHTML = '⏳...';
+
+          fetch(`/api/dwds-fetch?lemma=${encodeURIComponent(lemma)}`)
+              .then(res => res.json())
+              .then(data => {
+                  // ВИПАДОК 1: СЛОВО НЕ ЗНАЙДЕНО -> ВІДКРИВАЄМО WÖRTERBUCHNETZ
+                  if (data.status === 'not_found') {
+                      alert(data.message);
+                      openPopup(data.fallback_url || `https://woerterbuchnetz.de`);
+                      return;
+                  }
+
+                  // ВИПАДОК 2: ОМОНІМИ -> ВІДКРИВАЄМО ДЛЯ РУЧНОГО ВИБОРУ
+                  if (data.status === 'homonyms') {
+                      alert(data.message);
+                      openPopup(data.url);
+                      return;
+                  }
+
+                  if (data.status === 'error') {
+                      alert(data.message || 'Помилка отримання даних.');
+                      return;
+                  }
+
+                  // ВИПАДОК 3: УСПІШНЕ ОДНОЗНАЧНЕ СЛОВО -> АВТОЗАПОВНЕННЯ
+
+                  // 1. Орфографія
+                  if (data.orth) germanOrthInput.value = data.orth;
+
+                  // 2. Частина мови (PoS)
+                  if (data.pos) {
+                      const posSelect = document.getElementById('german_pos');
+                      if (posSelect) {
+                          if (choicesInstances['german_pos']) {
+                              choicesInstances['german_pos'].setChoiceByValue(data.pos);
+                          } else {
+                              posSelect.value = data.pos;
+                              posSelect.dispatchEvent(new Event('change'));
+                          }
+                      }
+                  }
+
+                  // 3. Рід іменника (Gen)
+                  if (data.gen) {
+                      const genSelect = document.getElementById('german_gen');
+                      if (genSelect) {
+                          if (choicesInstances['german_gen']) {
+                              choicesInstances['german_gen'].setChoiceByValue(data.gen);
+                          } else {
+                              genSelect.value = data.gen;
+                              genSelect.dispatchEvent(new Event('change'));
+                          }
+                      }
+                  }
+
+                  // 4. Походження (lang_sourse: native або borrowing)
+                  if (data.lang_sourse) {
+                      const langSourceSelect = document.getElementById('lang_sourse');
+                      if (langSourceSelect) {
+                          langSourceSelect.value = data.lang_sourse;
+                          langSourceSelect.dispatchEvent(new Event('change'));
+                      }
+                  }
+
+                  // 5. Значення з Bedeutungsübersicht
+                  if (data.senses && data.senses.length > 0) {
+                      const germanSensesContainer = document.getElementById('german-senses-container');
+                      if (germanSensesContainer) {
+                          germanSensesContainer.innerHTML = '';
+                          germanSenseCounter = 0;
+                      }
+
+                      data.senses.forEach(senseObj => {
+                          addGermanSenseItem(senseObj);
+                      });
+                  } else {
+                      alert('У статті DWDS не знайдено блоку Bedeutungsübersicht. Відкриваємо сторінку для перевірки.');
+                      openPopup(data.url);
+                  }
+              })
+              .catch(err => {
+                  console.error('DWDS Fetch error:', err);
+                  alert('Помилка під час звернення до сервера.');
+              })
+              .finally(() => {
+                  autoDwdsBtn.disabled = false;
+                  autoDwdsBtn.innerHTML = origBtnText;
+              });
+      });
+  }
+
 });
