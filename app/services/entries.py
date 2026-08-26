@@ -67,7 +67,7 @@ def format_translation_text(text, back_data):
 def parse_entry_header(entry_element, target_lang='uk'):
     """
     Легковаговий парсер для списків та пошуку.
-    target_lang: 'uk' (за замовчуванням) або 'de'.
+    target_lang: 'uk' або 'de'.
     """
     if entry_element is None:
         return None
@@ -78,29 +78,28 @@ def parse_entry_header(entry_element, target_lang='uk'):
         'id': entry_element.get(xml_id_key),
         'status': entry_element.get('status'),
         'orth': '',
+        'uk_orth': '',       # Українська головна лема
         'variants': []
     }
 
-    # Визначаємо, яке слово шукати: Українське чи Німецьке
-    if target_lang == 'de':
-        # Шлях до німецького слова: etym[type='german'] -> form -> orth
-        orth_node = entry_element.find(".//tei:etym[@type='german']/tei:form/tei:orth", NS)
-    else:
-        # Шлях до українського слова: form[type='lemma'] -> orth
-        orth_node = entry_element.find("tei:form[@type='lemma']/tei:orth", NS)
+    # Зчитуємо українське слово
+    uk_node = entry_element.find("tei:form[@type='lemma']/tei:orth", NS)
+    if uk_node is not None and uk_node.text:
+        data['uk_orth'] = uk_node.text.strip()
 
-    # Якщо слова немає в цій мові (наприклад, стаття без німецького відповідника),
-    # повертаємо None, щоб не показувати пустий рядок у списку
-    if orth_node is not None and orth_node.text:
-        data['orth'] = orth_node.text.strip()
+    # Зчитуємо німецьке слово
+    de_node = entry_element.find(".//tei:etym[@type='german']/tei:form/tei:orth", NS)
+    de_orth = de_node.text.strip() if de_node is not None and de_node.text else ""
+
+    # Визначаємо головне слово списку залежно від мови
+    if target_lang == 'de':
+        if not de_orth:
+            return None  # Пропускаємо, якщо немає німецького етимона
+        data['orth'] = de_orth
     else:
-        # Якщо запитували німецьку, а її немає - пропускаємо статтю у списку
-        if target_lang == 'de':
-            return None
-        # Якщо запитували українську і її немає (що дивно), можна залишити пустим
-        
-    # Варіанти (тільки для української, бо для німецької варіантів у такій структурі зазвичай немає)
-    # Якщо потрібно шукати і по українських варіантах при німецькому списку, цей блок можна залишити
+        data['orth'] = data['uk_orth']
+
+    # Зчитуємо варіанти
     for form_var in entry_element.findall("tei:form[@type='variant']/tei:orth", NS):
         if form_var.text:
             data['variants'].append({'orth': form_var.text.strip()})
@@ -328,12 +327,18 @@ def parse_entry_data(entry_element, root):
     xr_node = entry_element.find("tei:xr", NS)
     if xr_node is not None:
         data['is_redirect'] = True
-        data['redirect_label'] = get_text(xr_node, "tei:lbl") or "see"
-        data['redirect_targets'] = [{'id': ref.get("target", "").lstrip(
-            '#'), 'text': ref.text or ""} for ref in xr_node.findall("tei:ref", NS)]
-        redirect_ids = [target['id'] for target in data.get(
-            'redirect_targets', []) if target.get('id')]
-        data['redirect_target'] = ", ".join(redirect_ids)
+        data['redirect_label'] = get_text(xr_node, "tei:lbl") or "див."
+        data['redirect_targets'] = []
+        target_words = []
+        
+        for ref in xr_node.findall("tei:ref", NS):
+            target_id = ref.get("target", "").lstrip('#')
+            text_val = ref.text.strip() if ref.text else target_id
+            data['redirect_targets'].append({'id': target_id, 'text': text_val})
+            target_words.append(text_val)
+
+        # Для форми редагування показуємо саме слова
+        data['redirect_target'] = ", ".join(target_words)        
 
     gram_grp = entry_element.find('tei:gramGrp', NS)
     if gram_grp is not None:
@@ -911,11 +916,64 @@ def update_entry_from_form(entry_element, root, form_data):
         if redirect_input := get('redirect_target'):
             xr_el = ET.SubElement(entry_element, f"{{{NS['tei']}}}xr")
             ET.SubElement(xr_el, f"{{{NS['tei']}}}lbl").text = "див."
-            for target_id in redirect_input.split(','):
-                if target_id := target_id.strip():
-                    ET.SubElement(xr_el, f"{{{NS['tei']}}}ref", {
-                                  'target': f'#{target_id}'}).text = target_id
-        return entry_element
+            
+            # Створюємо розширену карту пошуку: і українські, і німецькі слова -> id
+            xml_id_key = f"{{{NS['xml']}}}id"
+            lookup_to_id = {}
+
+            for e in root.findall(".//tei:entry", NS):
+                eid = e.get(xml_id_key)
+                if not eid:
+                    continue
+
+                # 1. Українська лема
+                uk_node = e.find("tei:form[@type='lemma']/tei:orth", NS)
+                if uk_node is not None and uk_node.text:
+                    uk_word = uk_node.text.strip()
+                    lookup_to_id[uk_word.lower()] = (eid, uk_word)
+                    lookup_to_id[uk_word.lower().replace('\u0301', '')] = (eid, uk_word)
+
+                # 2. Німецький етимон
+                de_node = e.find(".//tei:etym[@type='german']/tei:form/tei:orth", NS)
+                if de_node is not None and de_node.text:
+                    de_word = de_node.text.strip()
+                    lookup_to_id[de_word.lower()] = (eid, de_word)
+
+            # Обробляємо кожне вказане слово через кому
+            for target_token in redirect_input.split(','):
+                token = target_token.strip()
+                if not token:
+                    continue
+                
+                target_id = None
+                display_text = token
+                token_lower = token.lower()
+                token_clean = token_lower.replace('\u0301', '')
+
+                # 1. Якщо це прямий ID (наприклад, e338)
+                if token.startswith('e') and token[1:].isdigit():
+                    target_id = token
+                    target_node = root.find(f".//tei:entry[@{xml_id_key}='{token}']", NS)
+                    if target_node is not None:
+                        # Спершу пробуємо взяти українську лему, якщо нема — німецьку
+                        orth_n = target_node.find("tei:form[@type='lemma']/tei:orth", NS) or \
+                                 target_node.find(".//tei:etym[@type='german']/tei:form/tei:orth", NS)
+                        if orth_n is not None and orth_n.text:
+                            display_text = orth_n.text.strip()
+                
+                # 2. Якщо це слово (українське або німецьке)
+                elif token_lower in lookup_to_id:
+                    target_id, display_text = lookup_to_id[token_lower]
+                elif token_clean in lookup_to_id:
+                    target_id, display_text = lookup_to_id[token_clean]
+                else:
+                    target_id = token  # Якщо зовсім не знайдено
+
+                ref_attrs = {'target': f'#{target_id}' if target_id else '#'}
+                ref_el = ET.SubElement(xr_el, f"{{{NS['tei']}}}ref", ref_attrs)
+                ref_el.text = display_text
+
+        return entry_element    
 
     gram_fields = ['pos', 'gram_gen', 'casus_gen', 'transitivity', 'aspect']
     if any(get(k) for k in gram_fields):

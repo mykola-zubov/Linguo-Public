@@ -14,22 +14,59 @@
                 {% set ns.current_letter = first_char %}
             {% endif %}
 
-            {# Рядок слова #}
-            <tr class="word-row" id="row-{{ entry.id }}">
-                <td>
-                    <a href="#" 
-                       class="entry-link" 
-                       data-entry-id="{{ entry.id }}"
-                       onclick="return false;"> <!-- JS обробляє клік -->
-                        <strong>{{ entry.orth }}</strong>
-                    </a>
-                </td>
-                <td style="text-align: right; width: 30px;">
-                    {% if entry.status == 'complete' %}
-                        <span style="color: green; font-size: 0.8em;" title="{{ _('Завершено') }}">✔</span>
-                    {% endif %}
-                </td>
-            </tr>
+            {# --- 1. РЕЖИМ НІМЕЦЬКОЇ МОВИ (ЗГРУПОВАНИЙ) --- #}
+            {% if current_lang == 'de' or request.args.get('lang') == 'de' %}
+                <tr class="word-row">
+                    <td colspan="2" style="padding: 6px 10px 4px 10px;">
+                        <div style="font-weight: bold; font-size: 0.95rem; color: #000; margin-bottom: 2px;">
+                            {{ entry.orth }}
+                        </div>
+                        
+                        {# Список українських відповідників під цим етимоном #}
+                        <div style="padding-left: 10px; display: flex; flex-direction: column; gap: 3px;">
+                            {% for sub in entry.sub_entries %}
+                                <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                                    <a href="#" 
+                                       class="entry-link" 
+                                       data-entry-id="{{ sub.id }}"
+                                       onclick="return false;"
+                                       style="text-decoration: none; font-size: 0.86rem; color: #444;">
+                                        ↳ <em>{{ sub.uk_orth }}</em>
+                                        {% if sub.variants %}
+                                            <span style="color: #888; font-size: 0.8rem;">
+                                                ({{ sub.variants | map(attribute='orth') | join(', ') }})
+                                            </span>
+                                        {% endif %}
+                                    </a>
+                                    {% if sub.status == 'complete' %}
+                                        <span style="color: green; font-size: 0.8em; margin-left: 5px;" title="{{ _('Завершено') }}">✔</span>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </td>
+                </tr>
+
+            {# --- 2. РЕЖИМ УКРАЇНСЬКОЇ МОВИ (СТАНДАРТНИЙ) --- #}
+            {% else %}
+                <tr class="word-row" id="row-{{ entry.id }}">
+                    <td style="padding: 4px 10px; vertical-align: middle;">
+                        <a href="#" 
+                           class="entry-link" 
+                           data-entry-id="{{ entry.id }}"
+                           onclick="return false;"
+                           style="text-decoration: none; display: block;">
+                            <strong>{{ entry.orth }}</strong>
+                        </a>
+                    </td>
+                    <td style="text-align: right; width: 30px; vertical-align: middle;">
+                        {% if entry.status == 'complete' %}
+                            <span style="color: green; font-size: 0.8em;" title="{{ _('Завершено') }}">✔</span>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endif %}
+
         {% endfor %}
     </tbody>
 </table>

@@ -91,6 +91,30 @@ def index():
     # 4. СОРТУВАННЯ СПИСКУ
     entries_to_process.sort(key=lambda x: locale.strxfrm(x.get('orth', '').lower()))
 
+    # Якщо обрано німецьку мову — групуємо однакові німецькі етимони в один елемент
+    if lang == 'de':
+        grouped_entries = []
+        entries_by_orth = {}
+
+        for item in entries_to_process:
+            key = item['orth'].lower()
+            if key not in entries_by_orth:
+                grouped_item = {
+                    'orth': item['orth'],
+                    'sub_entries': []
+                }
+                entries_by_orth[key] = grouped_item
+                grouped_entries.append(grouped_item)
+            
+            entries_by_orth[key]['sub_entries'].append({
+                'id': item['id'],
+                'status': item['status'],
+                'uk_orth': item.get('uk_orth', ''),
+                'variants': item.get('variants', [])
+            })
+        
+        entries_to_process = grouped_entries
+
     # 5. ГЕНЕРАЦІЯ АЛФАВІТУ (Адаптовано під мову)
     # Ми не можемо просто брати українські леми, треба брати ті слова, які ми витягли
     # Найефективніше - пройтися по вже сформованому (але ще не відфільтрованому по літері) списку
@@ -139,13 +163,37 @@ def index():
 @main_bp.route("/entry/<entry_id>")
 def view_entry(entry_id):
     tree, root = db.load_xml()
-    entry_el = root.find(f".//tei:entry[@xml:id='{entry_id}']", NS)
+    clean_target = entry_id.strip().lstrip('#')
+    xml_id_key = f"{{{NS['xml']}}}id"
+
+    # 1. Прямий пошук за xml:id (наприклад, e338)
+    entry_el = root.find(f".//tei:entry[@{xml_id_key}='{clean_target}']", NS)
+    
+    # 2. Якщо не знайдено за ID — шукаємо за українським або німецьким словом!
+    if entry_el is None:
+        target_lower = clean_target.lower().replace('\u0301', '')
+        for e in root.findall(".//tei:entry", NS):
+            # Перевіряємо українську лему
+            uk_node = e.find("tei:form[@type='lemma']/tei:orth", NS)
+            if uk_node is not None and uk_node.text:
+                if uk_node.text.strip().lower().replace('\u0301', '') == target_lower:
+                    entry_el = e
+                    clean_target = e.get(xml_id_key)
+                    break
+            
+            # Перевіряємо німецький етимон
+            de_node = e.find(".//tei:etym[@type='german']/tei:form/tei:orth", NS)
+            if de_node is not None and de_node.text:
+                if de_node.text.strip().lower() == target_lower:
+                    entry_el = e
+                    clean_target = e.get(xml_id_key)
+                    break
     
     if entry_el is None:
-        return f"Entry {entry_id} not found", 404
+        return f"Entry '{entry_id}' not found", 404
         
     entry_data = parse_entry_data(entry_el, root)
-    prev_id, next_id = get_sorted_neighbors(root, entry_id)
+    prev_id, next_id = get_sorted_neighbors(root, clean_target)
 
     if request.args.get('partial'):
         return render_template("entry_partial.html", entry=entry_data, prev_entry_id=prev_id, next_entry_id=next_id)
@@ -241,3 +289,4 @@ def api_dwds_fetch():
     
     result = fetch_dwds_entry(lemma)
     return jsonify(result)
+

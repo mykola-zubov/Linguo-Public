@@ -47,13 +47,11 @@
                 <div style="height: 20px; width: 1px; background: #ccc;"></div>
                 <label style="font-size: 0.9em; cursor: pointer;">
                     <input type="radio" name="entry_type_dummy" value="normal" {% if not entry.id or
-                        entry.entry_type=='normal' %}checked{% endif %}
-                        onchange="document.getElementById('type_normal').checked = true"> {{ _('Стаття') }}
+                        entry.entry_type=='normal' %}checked{% endif %}> {{ _('Стаття') }}
                 </label>
                 <label style="font-size: 0.9em; cursor: pointer;">
                     <input type="radio" name="entry_type_dummy" value="redirect" {% if entry.entry_type=='redirect'
-                        %}checked{% endif %} onchange="document.getElementById('type_redirect').checked = true"> {{
-                    _('Відсилання') }}
+                        %}checked{% endif %}> {{ _('Відсилання') }}
                 </label>
             </div>
         </header>
@@ -77,28 +75,53 @@
                     entry.entry_type=='redirect' %}checked{% endif %}>
             </div>
 
+            <!-- 1. СЛОВО (Лема) -->
+            <fieldset class="form-section" style="margin-bottom: 15px;">
+                <legend>{{ _('Слово (реєстрове гасло)') }}</legend>
+                <div class="grid-row-3">
+                    <div class="form-group" style="grid-column: span 2;">
+                        <label for="orth">{{ _('Слово (лема)') }}</label>
+                        <div style="display: flex; gap: 5px;">
+                            <input id="orth" type="text" name="orth" value="{{ entry.orth or '' }}" required
+                                style="font-weight: bold; font-size: 1.15em; flex-grow: 1;" placeholder="напр. абрис" />
+                            <button type="button" id="open-sum-popup-btn" class="button small"
+                                title="Відкрити СУМ-20 у вікні поруч"
+                                style="border: 1px solid #007bff; color: #007bff;">
+                                ↗ СУМ-20
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="stress">{{ _('Наголос') }}</label>
+                        <input id="stress" type="text" name="stress" value="{{ entry.stress or '' }}"
+                            placeholder="áбрис" />
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- 2. БЛОК ВІДСИЛАННЯ -->
             <div id="redirect-fields"
-                style="display: none; background: #fff3cd; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                style="display: none; background: #fff8e1; border: 1px solid #ffe082; padding: 15px 20px; border-radius: 8px; margin-bottom: 20px;">
                 <div class="form-group">
-                    <label for="redirect_target">{{ _('Цільові запис (IDs через кому)') }}</label>
-                    <input type="text" id="redirect_target" name="redirect_target" placeholder="e.g., e123, e456"
-                        value="{{ entry.redirect_target or '' }}">
+                    <label for="redirect_target" style="font-weight: bold; color: #795548; font-size: 0.95em;">
+                        {{ _('Слово, на яке посилається відсилання:') }}
+                    </label>
+                    <input type="text" id="redirect_target" name="redirect_target" placeholder="наприклад: видноколо"
+                        value="{{ entry.redirect_target or '' }}"
+                        style="background: #fff; font-size: 1.05em; font-weight: bold;">
+                    <small style="color: #666; display: block; margin-top: 5px;">
+                        Введіть реєстрове слово (або кілька слів через кому). Система сама зв'яже його з відповідною
+                        статтею.
+                    </small>
                 </div>
             </div>
 
+            <!-- 3. РОЗДІЛИ ЗВИЧАЙНОЇ СТАТТІ -->
             <div class="toggleable-section">
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                     <div>
                         <fieldset class="form-section">
-                            <legend>{{ _('Українське слово') }}</legend>
-                            <div class="grid-row-3">
-                                <div class="form-group" style="grid-column: span 2;"><label for="orth">{{ _('Слово
-                                        (лема)') }}</label><input id="orth" type="text" name="orth"
-                                        value="{{ entry.orth or '' }}" required
-                                        style="font-weight: bold; font-size: 1.1em;" /></div>
-                                <div class="form-group"><label for="stress">{{ _('Наголос') }}</label><input id="stress"
-                                        type="text" name="stress" value="{{ entry.stress or '' }}" /></div>
-                            </div>
+                            <legend>{{ _('Характеристики (Укр)') }}</legend>
                             <div class="grid-row-3">
                                 <div class="form-group"><label>{{ _('Час фіксації') }}</label><input type="text"
                                         name="lemma_time" value="{{ entry.lemma_time or '' }}" placeholder="XIX ст." />
@@ -128,6 +151,7 @@
                                     </select></div>
                             </div>
                         </fieldset>
+
                         <fieldset class="form-section">
                             <legend>{{ _('Граматика (Укр)') }}</legend>
                             <div class="grid-row-3">
@@ -225,6 +249,7 @@
                                     </select></div>
                             </div>
                         </fieldset>
+
                         <fieldset class="form-section" style="background-color: #fcfcfc;">
                             <legend>{{ _('Граматика (Нім)') }}</legend>
                             <div class="grid-row-2">
@@ -247,7 +272,6 @@
                     </div>
                 </div>
 
-                <!-- 1. Блок значень (тепер перший) -->
                 <fieldset class="form-section">
                     <legend>{{ _('Значення та приклади (Укр)') }}</legend>
                     <div id="senses-container"></div>
@@ -255,7 +279,6 @@
                         }}</button>
                 </fieldset>
 
-                <!-- 2. Блок варіантів (тепер другий) -->
                 <fieldset class="form-section">
                     <legend>{{ _('Лексичні варіанти') }}</legend>
                     <div id="variants-container"></div>
@@ -265,8 +288,7 @@
                     <div class="form-group" style="margin-top: 10px; border-top: 1px dashed #eee; padding-top: 5px;">
                         <label style="color: #999; font-size: 0.8em;">Legacy Note:</label><textarea
                             id="variants_note_markdown" class="markdown-editor" name="variants_note_markdown"
-                            rows="2">{{ entry.variants_note_markdown or '' }}</textarea>
-                    </div>
+                            rows="2">{{ entry.variants_note_markdown or '' }}</textarea></div>
                     {% endif %}
                 </fieldset>
 
@@ -377,39 +399,34 @@
                 </div>
             </div>
 
-            <<div class="sticky-actions">
+            <div class="sticky-actions">
                 <div>
                     <strong>{{ _('Дії:') }}</strong>
                     <span style="color:#666; font-size: 0.9em; margin-left: 10px;">Зміни не зберігаються
                         автоматично.</span>
                 </div>
 
-                <!-- Група кнопок -->
                 <div style="display: flex; gap: 10px;">
-                    <!-- Кнопка 1: Зберегти і переглянути (value="save_view") -->
                     <button type="submit" name="action" value="save_view" class="button"
                         style="padding: 10px 20px; font-size: 1.1em; border: 2px solid var(--primary-color); color: var(--primary-color);">
                         👁 {{ _('Зберегти і переглянути') }}
                     </button>
 
-                    <!-- Кнопка 2: Зберегти і залишитись (value="save_edit") -->
                     <button type="submit" name="action" value="save_edit" class="submit-btn"
                         style="width: auto; padding: 10px 40px; font-size: 1.1em;">
                         {{ _('💾 Зберегти зміни') if entry.id else _('💾 Додати статтю') }}
                     </button>
                 </div>
-    </div>
-    </form>
+            </div>
+        </form>
     </div>
 
     <!-- TEMPLATES -->
-    <!-- 1. ТЕМПЛЕЙТ ВАРІАНТУ -->
     <template id="variant-template">
         <div class="dynamic-list-item variant-block"
             style="padding: 10px; border-left: 4px solid #6c757d; margin-bottom: 15px;">
             <button type="button" class="delete-item-btn" title="Видалити варіант"
                 style="top:5px; right:5px;">×</button>
-
             <div style="margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #eee;">
                 <div style="display: flex; gap: 10px; align-items: center;">
                     <div class="form-group" style="flex-grow: 1;">
@@ -430,74 +447,45 @@
                     </div>
                 </div>
             </div>
-
             <div class="variant-senses-wrapper" id="variant-senses-container-INDEX" style="padding-left: 15px;">
                 <label style="font-size: 0.85em; color: #666; display: block; margin-bottom: 5px;">Значення та
                     характеристики:</label>
             </div>
-
             <button type="button" class="button small add-variant-sense-btn" data-variant-index="INDEX"
                 style="margin-top: 5px; background: #e9ecef;">+ Додати значення</button>
         </div>
     </template>
 
-    <!-- 2. ТЕМПЛЕЙТ ЗНАЧЕННЯ ВАРІАНТУ -->
     <template id="variant-sense-template">
         <div class="dynamic-list-item sub-item-block"
             style="background: #fff; border: 1px solid #ddd; padding: 8px; margin-bottom: 8px; position: relative;">
             <button type="button" class="delete-item-btn" title="Видалити значення"
                 style="top:2px; right:2px; font-size: 1.2em;">×</button>
-
             <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 10px; margin-bottom: 5px;">
-                <div class="form-group">
-                    <textarea id="variants___VAR_IDX___senses___SENSE_IDX___def" class="markdown-editor"
-                        name="variants___VAR_IDX___senses___SENSE_IDX___def"
-                        placeholder="{{ _('Тлумачення (напр. «вид печива»)') }}"></textarea>
-                </div>
-                <div class="form-group">
-                    <input type="text" name="variants___VAR_IDX___senses___SENSE_IDX___time"
-                        placeholder="Час (XVIII ст.)" />
-                </div>
+                <div class="form-group"><textarea id="variants___VAR_IDX___senses___SENSE_IDX___def"
+                        class="markdown-editor" name="variants___VAR_IDX___senses___SENSE_IDX___def"
+                        placeholder="{{ _('Тлумачення (напр. «вид печива»)') }}"></textarea></div>
+                <div class="form-group"><input type="text" name="variants___VAR_IDX___senses___SENSE_IDX___time"
+                        placeholder="Час (XVIII ст.)" /></div>
             </div>
-
-            <div class="form-group" style="margin-bottom: 5px;">
-                <select name="variants___VAR_IDX___senses___SENSE_IDX___source" style="width: 100%; font-size: 0.9em;">
-                    <option value="">(Джерело не вказано)</option>
-                    {% for bibl in back_data.bibliography %}
-                    <option value="{{ bibl.id }}" title="{{ bibl.title }}">{{ bibl.abbr }}</option>
-                    {% endfor %}
-                </select>
-                <input type="hidden" name="variants___VAR_IDX___senses___SENSE_IDX___source_abbr">
-            </div>
-
+            <div class="form-group" style="margin-bottom: 5px;"><select
+                    name="variants___VAR_IDX___senses___SENSE_IDX___source" style="width: 100%; font-size: 0.9em;">
+                    <option value="">(Джерело не вказано)</option>{% for bibl in back_data.bibliography %}<option
+                        value="{{ bibl.id }}" title="{{ bibl.title }}">{{ bibl.abbr }}</option>{% endfor %}
+                </select><input type="hidden" name="variants___VAR_IDX___senses___SENSE_IDX___source_abbr"></div>
             <div class="grid-row-3" style="gap: 5px; margin-bottom: 0;">
-                <div class="form-group">
-                    <select name="variants___VAR_IDX___senses___SENSE_IDX___region_style" multiple
-                        placeholder="Тер. вжив.">
-                        {% if terr_style %}
-                        {% for item in terr_style.children %}
-                        <option value="{{ item.abbr }}">{{ item.abbr }}</option>
-                        {% endfor %}
-                        {% endif %}
-                    </select>
-                </div>
-                <div class="form-group">
-                    <select name="variants___VAR_IDX___senses___SENSE_IDX___geo" multiple placeholder="Регіон">
-                        {% for reg in back_data.get('regions', []) %}
-                        <option value="{{ reg.term }}">{{ reg.term }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-                <div class="form-group">
-                    <select name="variants___VAR_IDX___senses___SENSE_IDX___style" placeholder="Істор. стиль">
-                        <option value="">(Істор. стиль - не вказано)</option>
-                        {% if retro_style %}
-                        {% for item in retro_style.children %}
-                        <option value="{{ item.abbr }}">{{ item.abbr }} - {{ item.term }}</option>
-                        {% endfor %}
-                        {% endif %}
-                    </select>
-                </div>
+                <div class="form-group"><select name="variants___VAR_IDX___senses___SENSE_IDX___region_style" multiple
+                        placeholder="Тер. вжив.">{% if terr_style %}{% for item in terr_style.children %}<option
+                            value="{{ item.abbr }}">{{ item.abbr }}</option>{% endfor %}{% endif %}</select></div>
+                <div class="form-group"><select name="variants___VAR_IDX___senses___SENSE_IDX___geo" multiple
+                        placeholder="Регіон">{% for reg in back_data.get('regions', []) %}<option
+                            value="{{ reg.term }}">{{ reg.term }}</option>{% endfor %}</select></div>
+                <div class="form-group"><select name="variants___VAR_IDX___senses___SENSE_IDX___style"
+                        placeholder="Істор. стиль">
+                        <option value="">(Істор. стиль - не вказано)</option>{% if retro_style %}{% for item in
+                        retro_style.children %}<option value="{{ item.abbr }}">{{ item.abbr }} - {{ item.term }}
+                        </option>{% endfor %}{% endif %}
+                    </select></div>
             </div>
         </div>
     </template>
@@ -508,9 +496,8 @@
             <div style="display: flex; gap: 5px; margin-bottom: 5px; align-items: center;">
                 <select name="equivalents___INDEX___lang" style="width: 90px;" title="Мова">
                     <option value="">(Lang)</option>
-                    {% for lang in back_data.languages %}
-                    <option value="{{ lang.code }}">{{ lang.code }}</option>
-                    {% endfor %}
+                    {% for lang in back_data.languages %}<option value="{{ lang.code }}">{{ lang.code }}</option>{%
+                    endfor %}
                 </select>
                 <input name="equivalents___INDEX___word" type="text" placeholder="Word" required
                     style="flex-grow: 1; font-weight: bold;" />
@@ -518,21 +505,15 @@
             <div style="display: flex; gap: 5px; margin-bottom: 5px;">
                 <select name="equivalents___INDEX___region" style="width: 50%; font-size: 0.9em;">
                     <option value="">(Регіон - не вказано)</option>
-                    {% set terr_style = (back_data.styles | selectattr('id', 'equalto', 'DOM-STYLE-TERR') | first) %}
-                    {% if terr_style %}
-                    {% for item in terr_style.children %}
-                    <option value="{{ item.abbr }}">{{ item.abbr }} - {{ item.term }}</option>
-                    {% endfor %}
-                    {% endif %}
+                    {% set terr_style = (back_data.styles | selectattr('id', 'equalto', 'DOM-STYLE-TERR') | first) %}{%
+                    if terr_style %}{% for item in terr_style.children %}<option value="{{ item.abbr }}">{{ item.abbr }}
+                        - {{ item.term }}</option>{% endfor %}{% endif %}
                 </select>
                 <select name="equivalents___INDEX___pos" style="width: 50%; font-size: 0.9em;">
                     <option value="">(PoS - не вказано)</option>
-                    {% set pos_category = (back_data.grammar | selectattr('id', 'equalto', 'DOM-GRAM-POS') | first) %}
-                    {% if pos_category %}
-                    {% for item in pos_category.children %}
-                    <option value="{{ item.value }}">{{ item.abbr }} ({{ item.term }})</option>
-                    {% endfor %}
-                    {% endif %}
+                    {% set pos_category = (back_data.grammar | selectattr('id', 'equalto', 'DOM-GRAM-POS') | first) %}{%
+                    if pos_category %}{% for item in pos_category.children %}<option value="{{ item.value }}">{{
+                        item.abbr }} ({{ item.term }})</option>{% endfor %}{% endif %}
                 </select>
             </div>
             <div class="sub-item-group" id="equiv-defs-container-__INDEX__"

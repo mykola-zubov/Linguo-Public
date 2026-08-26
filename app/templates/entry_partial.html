@@ -9,6 +9,39 @@
     {% endif %}
 {% endmacro %}
 
+{# ============================================================ #}
+{# 1. ЯКЩО ЦЕ ВІДСИЛАННЯ (REDIRECT)                             #}
+{# ============================================================ #}
+{% if entry.is_redirect %}
+<div class="entry-header" style="border-bottom: 2px solid var(--primary-color); padding-bottom: 5px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: baseline;">
+    <div>
+        <span class="headword">{{ entry.orth }}</span>
+        <span style="font-size: 1.1rem; color: #555; margin-left: 15px;">
+            → <i>{{ entry.redirect_label or 'див.' }}</i> 
+            {% for target in entry.redirect_targets %}
+                <a href="#" class="entry-link" data-entry-id="{{ target.id }}" style="font-weight: bold; color: var(--primary-color); text-decoration: underline; margin-left: 5px;">
+                    {{ target.text or target.id }}
+                </a>{% if not loop.last %}, {% endif %}
+            {% endfor %}
+        </span>
+    </div>
+    <div class="entry-actions" style="display: flex; gap: 5px; align-items: center;">
+        <a href="{{ url_for('main.edit_entry', entry_id=entry.id) }}" class="button small button-warning" title="{{ _('Редагувати') }}">✎</a>
+        <a href="{{ url_for('main.delete_entry', entry_id=entry.id) }}" class="button small" style="color: #dc3545;" onclick="return confirm('Видалити відсилання?');">🗑</a>
+    </div>
+</div>
+
+{% if entry.entry_note_html %}
+<div style="margin-top: 15px; background: #fff; border: 1px solid #eee; padding: 10px; font-size: 0.9em;">
+  {{ entry.entry_note_html|safe }}
+</div>
+{% endif %}
+
+{# ============================================================ #}
+{# 2. ЗВИЧАЙНА СТАТТЯ (NORMAL ENTRY)                            #}
+{# ============================================================ #}
+{% else %}
+
 {# === 1. HEADER (Word + German + Nav) === #}
 <div class="entry-header" style="display: flex; justify-content: space-between; align-items: baseline; border-bottom: 2px solid var(--primary-color); padding-bottom: 5px; margin-bottom: 15px;">
   
@@ -111,18 +144,11 @@
 </div>
 {% endif %}
 
-
-{# === 5. UKRAINIAN SENSES === #}
+{# === 4. UKRAINIAN SENSES === #}
 {% if entry.senses %}
-
-    {# 1. Логіка вибору типу списку #}
     {% set multiple_senses = entry.senses|length > 1 %}
     {% set list_tag = 'ol' if multiple_senses else 'ul' %}
-    
-    {# Клас senses-list додаємо ТІЛЬКИ якщо значень > 1 (бо в CSS він відповідає за цифри) #}
     {% set list_class = 'senses-list' if multiple_senses else 'single-sense-list' %}
-    
-    {# Стилі для одиничного значення (прибираємо відступи списку) #}
     {% set list_style = '' if multiple_senses else 'list-style: none; padding-left: 0; margin: 0;' %}
 
 <{{ list_tag }} class="{{ list_class }}" style="{{ list_style }}">
@@ -195,33 +221,21 @@
 </{{ list_tag }}>
 {% endif %}
 
-{# === 4. VARIANTS (Vertical List) === #}
+{# === 5. VARIANTS === #}
 {% if entry.variants %}
 <div class="entry-section" style="margin-top: 15px; margin-bottom: 15px;">
     <strong>{{ _('Варіанти:') }}</strong>
     <ul class="variants-list" style="list-style: none; padding-left: 0; margin-top: 5px; margin-bottom: 0;">
-        {#- Варіанти вже відсортовані в entries.py -#}
         {%- for var in entry.variants -%}
-            
             {%- for sense in var.senses -%}
                 <li style="margin-bottom: 4px; color: #444; line-height: 1.4;">
-                    
-                    {# 1. Саме слово-варіант #}
                     <strong style="color: #000;">{{ var.orth }}</strong>
-
-                    {# --- НОВЕ: Частина мови варіанту --- #}
                     {% if var.pos %}
                          <span style="font-size: 0.9em; margin-left: 3px;">
                             {{ tooltip(entry.grammar_abbr_map.get(var.pos, var.pos), entry.grammar_map.get(var.pos, var.pos)) }}
                          </span>
                     {% endif %}
-
-                    {# 2. Дата/Час #}
-                    {%- if sense.time -%}
-                        &nbsp;<i style="font-size: 0.9em;">{{ sense.time }}</i>
-                    {%- endif -%}
-
-                    {# 3. Стилі та Регіони #}
+                    {%- if sense.time -%}&nbsp;<i style="font-size: 0.9em;">{{ sense.time }}</i>{%- endif -%}
                     {%- set meta = [] -%}
                     {%- for st in sense.style -%} {% set dummy = meta.append(st) %} {%- endfor -%}
                     {%- for rs in sense.region_style -%} {% set dummy = meta.append(rs) %} {%- endfor -%}
@@ -231,29 +245,16 @@
                             {% set dummy = meta.append(geo_html) %} 
                         {%- endif -%}
                     {%- endfor -%}
-                    
-                    {%- if meta -%}
-                        &nbsp;<i style="font-size: 0.9em;">{{ meta|join(', ')|safe }}</i>
-                    {%- endif -%}
-
-                    {# 4. Тлумачення #}
-                    {%- if sense.def_html -%}
-                         &nbsp;«{{ sense.def_html|safe }}»
-                    {%- elif sense.def -%}
-                         &nbsp;«{{ sense.def }}»
-                    {%- endif -%}
-
-                    {# 5. Джерело #}
-                    {%- if sense.source -%}
-                        &nbsp;<span style="color: var(--primary-color); font-size: 0.9em;">[{{ sense.source.abbr }}]</span>
-                    {%- endif -%}
+                    {%- if meta -%}&nbsp;<i style="font-size: 0.9em;">{{ meta|join(', ')|safe }}</i>{%- endif -%}
+                    {%- if sense.def_html -%}&nbsp;«{{ sense.def_html|safe }}»
+                    {%- elif sense.def -%}&nbsp;«{{ sense.def }}»{%- endif -%}
+                    {%- if sense.source -%}&nbsp;<span style="color: var(--primary-color); font-size: 0.9em;">[{{ sense.source.abbr }}]</span>{%- endif -%}
                 </li>
             {%- endfor -%}
         {%- endfor -%}
     </ul>
 </div>
 {% endif %}
-
 
 {# === 6. GERMAN BLOCK & SENSES === #}
 {% if entry.german_orth or entry.german_senses %}
@@ -342,22 +343,13 @@
             <{{ list_tag }} class="{{ list_class }}" style="font-size: 0.95em;">
                 {% for sense in entry.german_senses %}
                 <li style="margin-bottom: 15px;">
-                    {# ВИПРАВЛЕНО: Перевірка і виведення стилів #}
                     {% if sense.time or sense.region or sense.geo_display or sense.style %}
                         <span style="color: #666; margin-right: 5px;">
-                            
-                            {# Стилі (курсивом) #}
                             {% for st in sense.style %}
                                 {{ tooltip(st.abbr, st.full) }}&nbsp;
                             {% endfor %}
-
-                            {# Час #}
                             {% if sense.time %}<i>{{ sense.time }}</i>{% endif %}
-                            
-                            {# Регіон (текст) #}
                             {% if sense.region %}{{ sense.region }}{% endif %}
-                            
-                            {# Гео (об'єкти) #}
                             {% for geo in sense.geo_display %}
                                 <i class="has-tooltip" title="{{ geo.full }}">{{ geo.abbr }}</i>
                             {% endfor %}
@@ -397,86 +389,47 @@
     </div>
 {% endif %}
 
-{# === 7. EQUIVALENTS (Vertical, Grouped Sources) === #}
+{# === 7. EQUIVALENTS === #}
 {% if entry.equivalents %}
 <div style="margin-top: 20px;">
   <strong>{{ _('Іншомовні відповідники:') }}</strong>
   <ul class="equivalents-list" style="list-style: none; padding-left: 0; margin-top: 5px;">
+    
+    {% set ns = namespace(prev_source=None) %}
+    
     {% for equiv in entry.equivalents %}
-        <li style="margin-bottom: 8px;">
-            {# 1. Мова та Слово #}
+        <li style="margin-bottom: 6px; line-height: 1.5;">
+            {# Мова та Слово #}
             <span class="has-tooltip" title="{{ equiv.lang_full }}">{{ equiv.lang_display }}</span>
-            
-            {% if equiv.region %}
-                <i style="color: #666; font-size: 0.9em; margin-left: 3px;">{{ equiv.region }}</i>
-            {% endif %}
-
-            <strong style="color: #333; margin-left: 3px;">{{ equiv.word }}</strong>
-
+            {% if equiv.region %}<i style="color: #666; font-size: 0.9em; margin-left: 3px;">{{ equiv.region }}</i>{% endif %}
+            <strong style="color: #222; margin-left: 3px;">{{ equiv.word }}</strong>
             {% if equiv.pos %}
                 <span style="margin-left: 3px; font-size: 0.9em;">
                    {{ tooltip(entry.grammar_abbr_map.get(equiv.pos, equiv.pos), entry.grammar_map.get(equiv.pos, equiv.pos)) }}
                 </span>
             {% endif %}
 
-            {# --- ЛОГІКА ГРУПУВАННЯ ДЖЕРЕЛ --- #}
-            {# Визначаємо, чи є джерело спільним для ВСІХ значень #}
-            {% set ns = namespace(common_source=None, is_uniform=true) %}
-
-            {% if equiv.defs %}
-                {# Беремо джерело першого значення як еталон #}
-                {% set first_src = equiv.defs[0].source_abbr %}
-                
-                {% if first_src %}
-                     {% set ns.common_source = first_src %}
-                     {# Перевіряємо решту значень #}
-                     {% for d in equiv.defs %}
-                         {% if d.source_abbr != first_src %}
-                             {% set ns.is_uniform = false %}
-                         {% endif %}
-                     {% endfor %}
+            {# Визначаємо поточне джерело #}
+            {% set current_src = equiv.defs[0].source_abbr if equiv.defs and equiv.defs[0].source_abbr else '' %}
+            
+            {% if current_src %}
+                {# Якщо джерело повторюється підряд — робимо його напівпрозорим сірим #}
+                {% if current_src == ns.prev_source %}
+                    <span style="color: #aaa; font-size: 0.85em; margin-left: 5px;" title="Джерело: {{ current_src }}">
+                        [{{ current_src }}]
+                    </span>
                 {% else %}
-                     {% set ns.is_uniform = false %}
+                    {# Перше або нове джерело — виводимо акцентним синім #}
+                    <span style="color: var(--primary-color); font-size: 0.9em; margin-left: 5px; font-weight: 500;">
+                        [{{ current_src }}]
+                    </span>
+                    {% set ns.prev_source = current_src %}
                 {% endif %}
-            {% else %}
-                {% set ns.is_uniform = false %}
             {% endif %}
 
-            {# 2. Виведення спільного джерела (якщо знайшли) #}
-            {% if ns.is_uniform and ns.common_source %}
-                <span style="color: var(--primary-color); font-size: 0.9em; margin-left: 5px;">[{{ ns.common_source }}]</span>
-            {% endif %}
-
-            {# 3. Виведення значень #}
-            {% if equiv.defs %}
-                {# А) Якщо значень більше одного -> Нумерований список #}
-                {% if equiv.defs|length > 1 %}
-                    <ol style="margin: 2px 0 0 0; padding-left: 25px; color: #555;">
-                        {% for d in equiv.defs %}
-                            <li style="margin-bottom: 2px;">
-                                {% if d.text %}
-                                    {{ d.text }}
-                                {% endif %}
-                                {# Якщо джерела різні, виводимо тут #}
-                                {% if not ns.is_uniform and d.source_abbr %}
-                                    <span style="color: var(--primary-color); font-size: 0.85em;">[{{ d.source_abbr }}]</span>
-                                {% endif %}
-                            </li>
-                        {% endfor %}
-                    </ol>
-                
-                {# Б) Якщо значення одне #}
-                {% else %}
-                    <div style="margin-left: 15px; color: #555;">
-                        {% if equiv.defs[0].text %}
-                            — {{ equiv.defs[0].text }}
-                        {% endif %}
-                        
-                        {% if not ns.is_uniform and equiv.defs[0].source_abbr %}
-                            <span style="color: var(--primary-color); font-size: 0.85em;">[{{ equiv.defs[0].source_abbr }}]</span>
-                        {% endif %}
-                    </div>
-                {% endif %}
+            {# Значення (якщо є) #}
+            {% if equiv.defs and equiv.defs[0].text %}
+                <span style="color: #555; margin-left: 5px;">— {{ equiv.defs[0].text }}</span>
             {% endif %}
         </li>
     {% endfor %}
@@ -497,7 +450,6 @@
   <ul style="list-style: none; padding: 0; margin: 0;">
     {% for bibl in entry.bibliography %}
     <li style="margin-bottom: 3px;">
-      
       {% if bibl.url %}
           <a href="{{ bibl.url }}" target="_blank" title="{{ bibl.title }}" class="has-tooltip" style="text-decoration:none; color: #007bff; border-bottom: 1px dotted #007bff;">
               {{ bibl.abbr }}
@@ -507,14 +459,14 @@
               {{ bibl.abbr }}
           </span>
       {% endif %}
-
       {% if bibl.volume %} {{ bibl.volume }}{% endif %}
       {% if bibl.page %}, {{ bibl.page }}{% endif %}
-      
     </li>
     {% endfor %}
   </ul>
 </div>
 {% endif %}
 
-{% endif %}
+{% endif %} {# кінець блоку else (від entry.is_redirect) #}
+
+{% endif %} {# кінець блоку if entry #}

@@ -38,12 +38,10 @@
                 </label>
                 <div style="height: 20px; width: 1px; background: #ccc;"></div>
                 <label style="font-size: 0.9em; cursor: pointer;">
-                    <input type="radio" name="entry_type_dummy" value="normal" checked
-                        onchange="document.getElementById('type_normal').checked = true"> {{ _('Стаття') }}
+                    <input type="radio" name="entry_type_dummy" value="normal" checked> {{ _('Стаття') }}
                 </label>
                 <label style="font-size: 0.9em; cursor: pointer;">
-                    <input type="radio" name="entry_type_dummy" value="redirect"
-                        onchange="document.getElementById('type_redirect').checked = true"> {{ _('Відсилання') }}
+                    <input type="radio" name="entry_type_dummy" value="redirect"> {{ _('Відсилання') }}
                 </label>
             </div>
         </header>
@@ -64,27 +62,52 @@
                 <input type="radio" name="entry_type" id="type_redirect" value="redirect">
             </div>
 
+            <!-- 1. СЛОВО (Лема) - Завжди видиме -->
+            <fieldset class="form-section" style="margin-bottom: 15px;">
+                <legend>{{ _('Слово (реєстрове гасло)') }}</legend>
+                <div class="grid-row-3">
+                    <div class="form-group" style="grid-column: span 2;">
+                        <label for="orth">{{ _('Слово (лема)') }}</label>
+                        <div style="display: flex; gap: 5px;">
+                            <input id="orth" type="text" name="orth" required
+                                style="font-weight: bold; font-size: 1.15em; flex-grow: 1;" placeholder="напр. абрис" />
+                            <button type="button" id="open-sum-popup-btn" class="button small"
+                                title="Відкрити СУМ-20 у вікні поруч"
+                                style="border: 1px solid #007bff; color: #007bff;">
+                                ↗ СУМ-20
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="stress">{{ _('Наголос') }}</label>
+                        <input id="stress" type="text" name="stress" placeholder="áбрис" />
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- 2. БЛОК ВІДСИЛАННЯ -->
             <div id="redirect-fields"
-                style="display: none; background: #fff3cd; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                style="display: none; background: #fff8e1; border: 1px solid #ffe082; padding: 15px 20px; border-radius: 8px; margin-bottom: 20px;">
                 <div class="form-group">
-                    <label for="redirect_target">{{ _('Цільові запис (IDs через кому)') }}</label>
-                    <input type="text" id="redirect_target" name="redirect_target" placeholder="e.g., e123, e456">
+                    <label for="redirect_target" style="font-weight: bold; color: #795548; font-size: 0.95em;">
+                        {{ _('Слово, на яке посилається відсилання:') }}
+                    </label>
+                    <input type="text" id="redirect_target" name="redirect_target" placeholder="наприклад: видноколо"
+                        value="{{ entry.redirect_target or '' }}"
+                        style="background: #fff; font-size: 1.05em; font-weight: bold;">
+                    <small style="color: #666; display: block; margin-top: 5px;">
+                        Введіть реєстрове слово (або кілька слів через кому). Система сама зв'яже його з відповідною
+                        статтею.
+                    </small>
                 </div>
             </div>
 
+            <!-- 3. РОЗДІЛИ ЗВИЧАЙНОЇ СТАТТІ -->
             <div class="toggleable-section">
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                    <!-- UKRAINIAN BLOCK -->
                     <div>
                         <fieldset class="form-section">
-                            <legend>{{ _('Українське слово') }}</legend>
-                            <div class="grid-row-3">
-                                <div class="form-group" style="grid-column: span 2;"><label for="orth">{{ _('Слово
-                                        (лема)') }}</label><input id="orth" type="text" name="orth" required
-                                        style="font-weight: bold; font-size: 1.1em;" /></div>
-                                <div class="form-group"><label for="stress">{{ _('Наголос') }}</label><input id="stress"
-                                        type="text" name="stress" /></div>
-                            </div>
+                            <legend>{{ _('Характеристики (Укр)') }}</legend>
                             <div class="grid-row-3">
                                 <div class="form-group"><label>{{ _('Час фіксації') }}</label><input type="text"
                                         name="lemma_time" placeholder="XIX ст." /></div>
@@ -110,6 +133,7 @@
                                     </select></div>
                             </div>
                         </fieldset>
+
                         <fieldset class="form-section">
                             <legend>{{ _('Граматика (Укр)') }}</legend>
                             <div class="grid-row-3">
@@ -150,7 +174,6 @@
                         </fieldset>
                     </div>
 
-                    <!-- GERMAN BLOCK -->
                     <div>
                         <fieldset class="form-section" style="background-color: #fcfcfc; border-color: #dbeaff;">
                             <legend style="color: #0056b3;">{{ _('Німецький еквівалент (Head)') }}</legend>
@@ -159,7 +182,6 @@
                                     <label for="german_orth">{{ _('Слово (De)') }}</label>
                                     <div style="display: flex; gap: 5px;">
                                         <input id="german_orth" type="text" name="german_orth"
-                                            value="{{ entry.german_orth or '' }}"
                                             style="font-weight: bold; flex-grow: 1;" placeholder="напр. Warte" />
                                         <button type="button" id="auto-dwds-btn" class="button button-primary small"
                                             title="Автоматично імпортувати значення з Bedeutungsübersicht">
@@ -172,187 +194,182 @@
                                         </button>
                                     </div>
                                 </div>
+                                <div class="form-group"><label for="german_stress">{{ _('Наголос') }}</label><input
+                                        id="german_stress" type="text" name="german_stress" /></div>
                             </div>
-                            <div class="form-group"><label for="german_stress">{{ _('Наголос') }}</label><input
-                                    id="german_stress" type="text" name="german_stress" />
+                            <div class="grid-row-3">
+                                <div class="form-group"><label for="german_form_usg_hist">Період</label><input
+                                        id="german_form_usg_hist" type="text" name="german_form_usg_hist"
+                                        placeholder="nhd" /></div>
+                                <div class="form-group"><label>{{ _('Час фіксації') }}</label><input type="text"
+                                        name="german_head_time" /></div>
+                                <div class="form-group"><label>{{ _('Тер. вживання') }}</label><select
+                                        id="german_head_region_style" name="german_head_region_style" multiple>{% if
+                                        terr_style %}{% for item in terr_style.children %}<option
+                                            value="{{ item.abbr }}">{{ item.term }}</option>{% endfor %}{% endif
+                                        %}</select></div>
                             </div>
+                            <div class="grid-row-2">
+                                <div class="form-group"><label>{{ _('Регіон/Діалект') }}</label><select
+                                        id="german_head_geo" name="german_head_geo" multiple>{% for reg in
+                                        back_data.get('regions', []) %}<option value="{{ reg.term }}">{{ reg.term }}
+                                        </option>{% endfor %}</select></div>
+                                <div class="form-group"><label>{{ _('Істор. перспектива') }}</label><select
+                                        id="german_head_style" name="german_head_style">
+                                        <option value="">{{ _('(не вказано)') }}</option>{% if retro_style %}{% for item
+                                        in retro_style.children %}<option value="{{ item.abbr }}">{{ item.term }} ({{
+                                            item.abbr }})</option>{% endfor %}{% endif %}
+                                    </select></div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="form-section" style="background-color: #fcfcfc;">
+                            <legend>{{ _('Граматика (Нім)') }}</legend>
+                            <div class="grid-row-2">
+                                <div class="form-group"><label for="german_pos">PoS</label><select id="german_pos"
+                                        name="german_pos">
+                                        <option value="">-</option>{% if pos_category %}{% for item in
+                                        pos_category.children %}<option value="{{ item.value }}">{{ item.term }}
+                                        </option>{% endfor %}{% endif %}
+                                    </select></div>
+                                <div class="form-group gender-options" style="display: none;"><label for="german_gen">{{
+                                        _('Рід') }}</label><select id="german_gen" name="german_gen">
+                                        <option value="">-</option>{% if gen_category %}{% for item in
+                                        gen_category.children %}<option value="{{ item.value }}">{{ item.term }}
+                                        </option>{% endfor %}{% endif %}
+                                    </select></div>
+                            </div>
+                        </fieldset>
                     </div>
+                </div>
+
+                <fieldset class="form-section">
+                    <legend>{{ _('Значення та приклади (Укр)') }}</legend>
+                    <div id="senses-container"></div>
+                    <button type="button" id="add-sense-item-btn" class="add-item-btn">{{ _('➕ Додати значення')
+                        }}</button>
+                </fieldset>
+
+                <fieldset class="form-section">
+                    <legend>{{ _('Лексичні варіанти') }}</legend>
+                    <div id="variants-container"></div>
+                    <button type="button" id="add-variant-btn" class="add-item-btn small">{{ _('➕ Додати варіант')
+                        }}</button>
+                    <div class="form-group" style="margin-top: 10px; border-top: 1px dashed #eee; padding-top: 5px;">
+                        <label style="color: #999; font-size: 0.8em;">Legacy Note:</label><textarea
+                            id="variants_note_markdown" class="markdown-editor" name="variants_note_markdown"
+                            rows="2"></textarea></div>
+                </fieldset>
+
+                <fieldset class="form-section">
+                    <legend>{{ _('Німецькі значення (De)') }}</legend>
+                    <div id="german-senses-container"></div>
+                    <button type="button" id="add-german-sense-item-btn" class="add-item-btn">{{ _('➕ Додати німецьке
+                        значення') }}</button>
+                </fieldset>
+
+                <fieldset class="form-section">
+                    <legend>{{ _('Характеристика запозичення') }}</legend>
                     <div class="grid-row-3">
-                        <div class="form-group"><label for="german_form_usg_hist">Період</label><input
-                                id="german_form_usg_hist" type="text" name="german_form_usg_hist" placeholder="nhd" />
-                        </div>
-                        <div class="form-group"><label>{{ _('Час фіксації') }}</label><input type="text"
-                                name="german_head_time" /></div>
-                        <div class="form-group"><label>{{ _('Тер. вживання') }}</label><select
-                                id="german_head_region_style" name="german_head_region_style" multiple>{% if
-                                terr_style %}{% for item in terr_style.children %}<option value="{{ item.abbr }}">{{
-                                    item.term }}</option>{% endfor %}{% endif
-                                %}</select></div>
+                        <div class="form-group"><label for="borrowing_type">{{ _('Тип') }}</label><select
+                                id="borrowing_type" name="borrowing_type">
+                                <option value="">-</option>{% set b_type_cat = (back_data.borrowing_characteristics |
+                                selectattr('id', 'equalto', 'borrowing_type') | first) %}{% if b_type_cat %}{% for item
+                                in b_type_cat.children %}<option value="{{ item.value }}">{{ item.term }}</option>{%
+                                endfor %}{% endif %}
+                            </select></div>
+                        <div class="form-group"><label for="borrowing_path">{{ _('Шлях') }}</label><select
+                                id="borrowing_path" name="borrowing_path">
+                                <option value="">-</option>{% set b_path_cat = (back_data.borrowing_characteristics |
+                                selectattr('id', 'equalto', 'borrowing_path') | first) %}{% if b_path_cat %}{% for item
+                                in b_path_cat.children %}<option value="{{ item.value }}">{{ item.term }}</option>{%
+                                endfor %}{% endif %}
+                            </select></div>
+                        <div class="form-group"><label for="borrowing_certainty">{{ _('Впевненість') }}</label><select
+                                id="borrowing_certainty" name="borrowing_certainty">
+                                <option value="">-</option>{% set b_cert_cat = (back_data.borrowing_characteristics |
+                                selectattr('id', 'equalto', 'borrowing_certainty') | first) %}{% if b_cert_cat %}{% for
+                                item in b_cert_cat.children %}<option value="{{ item.value }}">{{ item.term }}</option>
+                                {% endfor %}{% endif %}
+                            </select></div>
                     </div>
                     <div class="grid-row-2">
-                        <div class="form-group"><label>{{ _('Регіон/Діалект') }}</label><select id="german_head_geo"
-                                name="german_head_geo" multiple>{% for reg in
-                                back_data.get('regions', []) %}<option value="{{ reg.term }}">{{ reg.term }}
-                                </option>{% endfor %}</select></div>
-                        <div class="form-group"><label>{{ _('Істор. перспектива') }}</label><select
-                                id="german_head_style" name="german_head_style">
-                                <option value="">{{ _('(не вказано)') }}</option>{% if retro_style %}{% for item
-                                in retro_style.children %}<option value="{{ item.abbr }}">{{ item.term }} ({{
-                                    item.abbr }})</option>{% endfor %}{% endif %}
+                        <div class="form-group"><label for="lang_sourse">{{ _('Походження') }}</label><select
+                                id="lang_sourse" name="lang_sourse">
+                                <option value="">-</option>
+                                <option value="native">{{ _('питоме') }}</option>
+                                <option value="borrowing">{{ _('запозичення') }}</option>
+                                <option value="reverse">{{ _('зворотне запозичення') }}</option>
                             </select></div>
+                        <div id="mediator-fields" style="display: none;"><label for="borrowing_mediator">{{
+                                _('Посередник') }}</label>
+                            <div style="display: flex; gap: 5px;"><select id="borrowing_mediator"
+                                    name="borrowing_mediator" style="flex-grow: 1;">
+                                    <option value="">-</option>{% for lang in back_data.languages %}<option
+                                        value="{{ lang.term }}">{{ lang.term }}</option>{% endfor %}
+                                </select><button type="button" id="add-alternative-mediator-btn"
+                                    class="button small">+</button></div>
+                            <div id="alternative-mediators-container"></div>
+                        </div>
                     </div>
-                    </fieldset>
-                    <fieldset class="form-section" style="background-color: #fcfcfc;">
-                        <legend>{{ _('Граматика (Нім)') }}</legend>
-                        <div class="grid-row-2">
-                            <div class="form-group"><label for="german_pos">PoS</label><select id="german_pos"
-                                    name="german_pos">
-                                    <option value="">-</option>{% if pos_category %}{% for item in
-                                    pos_category.children %}<option value="{{ item.value }}">{{ item.term }}
-                                    </option>{% endfor %}{% endif %}
-                                </select></div>
-                            <div class="form-group gender-options" style="display: none;"><label for="german_gen">{{
-                                    _('Рід') }}</label><select id="german_gen" name="german_gen">
-                                    <option value="">-</option>{% if gen_category %}{% for item in
-                                    gen_category.children %}<option value="{{ item.value }}">{{ item.term }}
-                                    </option>{% endfor %}{% endif %}
+                    <div id="alter-donor-section" style="margin-top: 10px;">
+                        <div id="alter-donors-container"></div><button type="button" id="add-alter-donor-btn"
+                            class="button small" style="margin-top: 5px;">+ Alt Donor</button>
+                    </div>
+                    <div id="conditional-borrowing-fields"
+                        style="display: none; background: #fdfae9; padding: 10px; border-radius: 4px; margin-top: 10px;">
+                        <div class="grid-row-2" style="grid-template-columns: 2fr 1fr;">
+                            <div class="form-group"><label>{{ _('Етимон (джерело)') }}</label><input type="text"
+                                    name="german_etym_borrowed" placeholder="Etymon" /></div>
+                            <div class="form-group"><label>{{ _('Мова') }}</label><select
+                                    name="german_etym_borrowed_lang">
+                                    <option value="">-</option>{% for lang in back_data.languages %}<option
+                                        value="{{ lang.code }}">{{ lang.term }}</option>{% endfor %}
                                 </select></div>
                         </div>
+                        <div id="alter-german-donors-container"></div><button type="button"
+                            id="add-alter-german-donor-btn" class="button small" style="margin-top: 5px;">+ Alt
+                            Etymon</button>
+                        <div class="form-group" style="margin-top: 10px;"><label for="etym_comment">{{ _('Коментар')
+                                }}</label><textarea id="etym_comment" class="markdown-editor" name="etym_comment"
+                                rows="2" style="min-height: 50px;"></textarea></div>
+                    </div>
+                </fieldset>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+                    <fieldset class="form-section">
+                        <legend>{{ _('Відповідники') }}</legend>
+                        <div id="equivalents-container"></div><button type="button" id="add-equivalent-btn"
+                            class="add-item-btn small">+</button>
+                    </fieldset>
+                    <fieldset class="form-section">
+                        <legend>{{ _('Бібліографія') }}</legend>
+                        <div id="bibl-container"></div><button type="button" id="add-bibl-btn"
+                            class="add-item-btn small">+</button>
+                    </fieldset>
+                    <fieldset class="form-section">
+                        <legend>{{ _('Нотатка') }}</legend><textarea id="entry_note_markdown" class="markdown-editor"
+                            name="entry_note_markdown" rows="4"></textarea>
                     </fieldset>
                 </div>
             </div>
 
-            <fieldset class="form-section">
-                <legend>{{ _('Лексичні варіанти') }}</legend>
-                <div id="variants-container"></div>
-                <button type="button" id="add-variant-btn" class="add-item-btn small">{{ _('➕ Додати варіант')
-                    }}</button>
-                <div class="form-group" style="margin-top: 10px; border-top: 1px dashed #eee; padding-top: 5px;">
-                    <label style="color: #999; font-size: 0.8em;">Legacy Note:</label><textarea
-                        id="variants_note_markdown" class="markdown-editor" name="variants_note_markdown"
-                        rows="2"></textarea>
+            <div class="sticky-actions">
+                <div><strong>{{ _('Дії:') }}</strong> <span
+                        style="color:#666; font-size: 0.9em; margin-left: 10px;">Зміни не зберігаються
+                        автоматично.</span></div>
+                <div style="display: flex; gap: 10px;">
+                    <button type="submit" name="action" value="save_view" class="button"
+                        style="padding: 10px 20px; font-size: 1.1em; border: 2px solid var(--primary-color); color: var(--primary-color);">
+                        👁 {{ _('Зберегти і переглянути') }}
+                    </button>
+                    <button type="submit" name="action" value="save_edit" class="submit-btn"
+                        style="width: auto; padding: 10px 40px; font-size: 1.1em;">
+                        {{ _('💾 Додати статтю') }}
+                    </button>
                 </div>
-            </fieldset>
-
-            <fieldset class="form-section">
-                <legend>{{ _('Значення та приклади (Укр)') }}</legend>
-                <div id="senses-container"></div>
-                <button type="button" id="add-sense-item-btn" class="add-item-btn">{{ _('➕ Додати значення')
-                    }}</button>
-            </fieldset>
-
-            <fieldset class="form-section">
-                <legend>{{ _('Німецькі значення (De)') }}</legend>
-                <div id="german-senses-container"></div>
-                <button type="button" id="add-german-sense-item-btn" class="add-item-btn">{{ _('➕ Додати німецьке
-                    значення') }}</button>
-            </fieldset>
-
-            <fieldset class="form-section">
-                <legend>{{ _('Характеристика запозичення') }}</legend>
-                <div class="grid-row-3">
-                    <div class="form-group"><label for="borrowing_type">{{ _('Тип') }}</label><select
-                            id="borrowing_type" name="borrowing_type">
-                            <option value="">-</option>{% set b_type_cat = (back_data.borrowing_characteristics |
-                            selectattr('id', 'equalto', 'borrowing_type') | first) %}{% if b_type_cat %}{% for item
-                            in b_type_cat.children %}<option value="{{ item.value }}">{{ item.term }}</option>{%
-                            endfor %}{% endif %}
-                        </select></div>
-                    <div class="form-group"><label for="borrowing_path">{{ _('Шлях') }}</label><select
-                            id="borrowing_path" name="borrowing_path">
-                            <option value="">-</option>{% set b_path_cat = (back_data.borrowing_characteristics |
-                            selectattr('id', 'equalto', 'borrowing_path') | first) %}{% if b_path_cat %}{% for item
-                            in b_path_cat.children %}<option value="{{ item.value }}">{{ item.term }}</option>{%
-                            endfor %}{% endif %}
-                        </select></div>
-                    <div class="form-group"><label for="borrowing_certainty">{{ _('Впевненість') }}</label><select
-                            id="borrowing_certainty" name="borrowing_certainty">
-                            <option value="">-</option>{% set b_cert_cat = (back_data.borrowing_characteristics |
-                            selectattr('id', 'equalto', 'borrowing_certainty') | first) %}{% if b_cert_cat %}{% for
-                            item in b_cert_cat.children %}<option value="{{ item.value }}">{{ item.term }}</option>
-                            {% endfor %}{% endif %}
-                        </select></div>
-                </div>
-                <div class="grid-row-2">
-                    <div class="form-group"><label for="lang_sourse">{{ _('Походження') }}</label><select
-                            id="lang_sourse" name="lang_sourse">
-                            <option value="">-</option>
-                            <option value="native">{{ _('питоме') }}</option>
-                            <option value="borrowing">{{ _('запозичення') }}</option>
-                            <option value="reverse">{{ _('зворотне запозичення') }}</option>
-                        </select></div>
-                    <div id="mediator-fields" style="display: none;"><label for="borrowing_mediator">{{
-                            _('Посередник') }}</label>
-                        <div style="display: flex; gap: 5px;"><select id="borrowing_mediator" name="borrowing_mediator"
-                                style="flex-grow: 1;">
-                                <option value="">-</option>{% for lang in back_data.languages %}<option
-                                    value="{{ lang.term }}">{{ lang.term }}</option>{% endfor %}
-                            </select><button type="button" id="add-alternative-mediator-btn"
-                                class="button small">+</button></div>
-                        <div id="alternative-mediators-container"></div>
-                    </div>
-                </div>
-                <div id="alter-donor-section" style="margin-top: 10px;">
-                    <div id="alter-donors-container"></div><button type="button" id="add-alter-donor-btn"
-                        class="button small" style="margin-top: 5px;">+ Alt Donor</button>
-                </div>
-                <div id="conditional-borrowing-fields"
-                    style="display: none; background: #fdfae9; padding: 10px; border-radius: 4px; margin-top: 10px;">
-                    <div class="grid-row-2" style="grid-template-columns: 2fr 1fr;">
-                        <div class="form-group"><label>{{ _('Етимон (джерело)') }}</label><input type="text"
-                                name="german_etym_borrowed" placeholder="Etymon" /></div>
-                        <div class="form-group"><label>{{ _('Мова') }}</label><select name="german_etym_borrowed_lang">
-                                <option value="">-</option>{% for lang in back_data.languages %}<option
-                                    value="{{ lang.code }}">{{ lang.term }}</option>{% endfor %}
-                            </select></div>
-                    </div>
-                    <div id="alter-german-donors-container"></div><button type="button" id="add-alter-german-donor-btn"
-                        class="button small" style="margin-top: 5px;">+ Alt
-                        Etymon</button>
-                    <div class="form-group" style="margin-top: 10px;"><label for="etym_comment">{{ _('Коментар')
-                            }}</label><textarea id="etym_comment" class="markdown-editor" name="etym_comment" rows="2"
-                            style="min-height: 50px;"></textarea></div>
-                </div>
-            </fieldset>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
-                <fieldset class="form-section">
-                    <legend>{{ _('Відповідники') }}</legend>
-                    <div id="equivalents-container"></div><button type="button" id="add-equivalent-btn"
-                        class="add-item-btn small">+</button>
-                </fieldset>
-                <fieldset class="form-section">
-                    <legend>{{ _('Бібліографія') }}</legend>
-                    <div id="bibl-container"></div><button type="button" id="add-bibl-btn"
-                        class="add-item-btn small">+</button>
-                </fieldset>
-                <fieldset class="form-section">
-                    <legend>{{ _('Нотатка') }}</legend><textarea id="entry_note_markdown" class="markdown-editor"
-                        name="entry_note_markdown" rows="4"></textarea>
-                </fieldset>
             </div>
-    </div>
-
-    <div class="sticky-actions">
-        <div><strong>{{ _('Дії:') }}</strong> <span style="color:#666; font-size: 0.9em; margin-left: 10px;">Зміни не
-                зберігаються
-                автоматично.</span></div>
-        <!-- Група кнопок -->
-        <div style="display: flex; gap: 10px;">
-            <!-- Кнопка 1: Зберегти і переглянути -->
-            <button type="submit" name="action" value="save_view" class="button"
-                style="padding: 10px 20px; font-size: 1.1em; border: 2px solid var(--primary-color); color: var(--primary-color);">
-                👁 {{ _('Зберегти і переглянути') }}
-            </button>
-
-            <!-- Кнопка 2: Зберегти і залишитись -->
-            <button type="submit" name="action" value="save_edit" class="submit-btn"
-                style="width: auto; padding: 10px 40px; font-size: 1.1em;">
-                {{ _('💾 Зберегти зміни') if entry.id else _('💾 Додати статтю') }}
-            </button>
-        </div>
-    </div>
-    </form>
+        </form>
     </div>
 
     <!-- TEMPLATES -->
@@ -439,21 +456,15 @@
             <div style="display: flex; gap: 5px; margin-bottom: 5px;">
                 <select name="equivalents___INDEX___region" style="width: 50%; font-size: 0.9em;">
                     <option value="">(Регіон - не вказано)</option>
-                    {% set terr_style = (back_data.styles | selectattr('id', 'equalto', 'DOM-STYLE-TERR') | first) %}
-                    {% if terr_style %}
-                    {% for item in terr_style.children %}
-                    <option value="{{ item.abbr }}">{{ item.abbr }} - {{ item.term }}</option>
-                    {% endfor %}
-                    {% endif %}
+                    {% set terr_style = (back_data.styles | selectattr('id', 'equalto', 'DOM-STYLE-TERR') | first) %}{%
+                    if terr_style %}{% for item in terr_style.children %}<option value="{{ item.abbr }}">{{ item.abbr }}
+                        - {{ item.term }}</option>{% endfor %}{% endif %}
                 </select>
                 <select name="equivalents___INDEX___pos" style="width: 50%; font-size: 0.9em;">
                     <option value="">(PoS - не вказано)</option>
-                    {% set pos_category = (back_data.grammar | selectattr('id', 'equalto', 'DOM-GRAM-POS') | first) %}
-                    {% if pos_category %}
-                    {% for item in pos_category.children %}
-                    <option value="{{ item.value }}">{{ item.abbr }} ({{ item.term }})</option>
-                    {% endfor %}
-                    {% endif %}
+                    {% set pos_category = (back_data.grammar | selectattr('id', 'equalto', 'DOM-GRAM-POS') | first) %}{%
+                    if pos_category %}{% for item in pos_category.children %}<option value="{{ item.value }}">{{
+                        item.abbr }} ({{ item.term }})</option>{% endfor %}{% endif %}
                 </select>
             </div>
             <div class="sub-item-group" id="equiv-defs-container-__INDEX__"
