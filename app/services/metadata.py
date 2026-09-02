@@ -82,7 +82,11 @@ class MetadataService:
                         'id': list_node.get('type'), 'children': parse_items(list_node)
                     })
             if (node := abbreviations_div.find(".//tei:div[@type='languages']/tei:list[@type='gloss']", NS)) is not None:
-                back_data['languages'] = parse_items(node)
+                parsed_languages = parse_items(node)
+                # Сортуємо мови за алфавітом української назви (term)
+                parsed_languages.sort(key=lambda x: locale.strxfrm(x.get('term') or x.get('abbr') or ''))
+                back_data['languages'] = parsed_languages
+
             if (node := abbreviations_div.find("./tei:list[@type='grammar']", NS)) is not None:
                 back_data['grammar'] = parse_items(node)
             if (node := abbreviations_div.find("./tei:list[@type='domains']", NS)) is not None:

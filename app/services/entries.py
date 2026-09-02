@@ -268,16 +268,19 @@ def parse_entry_data(entry_element, root):
     for form_var in entry_element.findall("tei:form[@type='variant']", NS):
         # Зчитуємо PoS для варіанту
         pos_val = ""
+        wf_val = ""
         gram_grp = form_var.find("tei:gramGrp", NS)
         if gram_grp is not None:
             pos_val = gram_grp.findtext("tei:pos", default="", namespaces=NS)
+            wf_val = gram_grp.findtext("tei:trait[@type='word_formation']", default="", namespaces=NS)
 
         var_data = {
             'orth': get_text(form_var, 'tei:orth'),
             'pos': pos_val, 
+            'word_formation': wf_val,
             'time': get_text(form_var, "tei:usg[@type='time']"),
             'senses': [] 
-        }
+        } 
         
         for var_sense in form_var.findall("tei:sense", NS):
             def_node = var_sense.find("tei:def", NS)
@@ -768,27 +771,27 @@ def parse_entry_data(entry_element, root):
     if val := data.get('borrowing_type'):
         display_val = find_term_in_b_chars('borrowing_type', val)
         borrowing_info_parts.append(
-            f"<strong>{gettext('Type')}:</strong> {display_val}")
+            f"<strong>Тип запозичення:</strong> {display_val}")
 
     if val := data.get('borrowing_path'):
         display_val = find_term_in_b_chars('borrowing_path', val)
         borrowing_info_parts.append(
-            f"<strong>{gettext('Path')}:</strong> {display_val}")
+            f"<strong>Шлях:</strong> {display_val}")
 
     if mediators := data.get('borrowing_mediators'):
-        mediators_str = f" {gettext('or')} ".join(mediators)
+        mediators_str = " або ".join(mediators)
         borrowing_info_parts.append(
-            f"<strong>{gettext('мова-посередник')}:</strong> {mediators_str}")
+            f"<strong>мова-посередник:</strong> {mediators_str}")
 
     if alter_donors := data.get('alter_donors'):
-        donors_str = f" {gettext('or')} ".join(alter_donors)
+        donors_str = " або ".join(alter_donors)
         borrowing_info_parts.append(
-            f"<strong>{gettext('Alternative source language')}:</strong> {donors_str}")
+            f"<strong>альтернативне джерело:</strong> {donors_str}")
 
     if val := data.get('borrowing_certainty'):
         display_val = find_term_in_b_chars('borrowing_certainty', val)
         borrowing_info_parts.append(
-            f"<strong>{gettext('Certainty')}:</strong> {display_val}")
+            f"<strong>Упевненість:</strong> {display_val}")
 
     data['borrowing_info_html'] = " • ".join(borrowing_info_parts)
     
@@ -845,7 +848,7 @@ def update_entry_from_form(entry_element, root, form_data):
         if len(parts) == 3:
             field = parts[2]
             # ПРАВИЛЬНА ЛОГІКА ДЛЯ POS:
-            if field == 'pos':
+            if field in ['pos', 'word_formation']:
                 variants_data[var_idx][field] = value # Зберігаємо як рядок
             elif field in ['geo', 'style', 'region_style']:
                 variants_data[var_idx][field] = form_data.getlist(key)
@@ -867,13 +870,21 @@ def update_entry_from_form(entry_element, root, form_data):
             form_var = ET.SubElement(entry_element, f"{{{NS['tei']}}}form", {'type': 'variant'})
             ET.SubElement(form_var, f"{{{NS['tei']}}}orth").text = orth
             
-            # Зберігаємо PoS, якщо є (з перевіркою типу)
-            if pos_val := v_data.get('pos'):
-                if isinstance(pos_val, list):
-                    pos_val = pos_val[0] if pos_val else ""
+# Зберігаємо PoS та Словотвір, якщо вони вказані
+            pos_val = v_data.get('pos')
+            if isinstance(pos_val, list):
+                pos_val = pos_val[0] if pos_val else ""
                 
+            wf_val = v_data.get('word_formation')
+            if isinstance(wf_val, list):
+                wf_val = wf_val[0] if wf_val else ""
+
+            if pos_val or wf_val:
                 gg = ET.SubElement(form_var, f"{{{NS['tei']}}}gramGrp")
-                ET.SubElement(gg, f"{{{NS['tei']}}}pos").text = pos_val
+                if pos_val:
+                    ET.SubElement(gg, f"{{{NS['tei']}}}pos").text = pos_val
+                if wf_val:
+                    ET.SubElement(gg, f"{{{NS['tei']}}}trait", {'type': 'word_formation'}).text = wf_val
 
             if val := v_data.get('time'):
                 ET.SubElement(form_var, f"{{{NS['tei']}}}usg", {'type': 'time'}).text = val
@@ -975,7 +986,7 @@ def update_entry_from_form(entry_element, root, form_data):
 
         return entry_element    
 
-    gram_fields = ['pos', 'gram_gen', 'casus_gen', 'transitivity', 'aspect']
+    gram_fields = ['pos', 'word_formation','gram_gen', 'casus_gen', 'transitivity', 'aspect']
     if any(get(k) for k in gram_fields):
         gram_grp = ET.SubElement(entry_element, f"{{{NS['tei']}}}gramGrp")
         if val := get('pos'):

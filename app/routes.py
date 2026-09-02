@@ -5,6 +5,7 @@ from app.services.metadata import meta_service
 from lxml import etree as ET
 from app.config import NS
 import locale
+import re
 from flask import jsonify
 from app.services.dwds_service import fetch_dwds_entry
 
@@ -31,6 +32,135 @@ def get_sorted_neighbors(root, current_id):
         return prev_id, next_id
     except ValueError:
         return None, None
+
+def entry_matches_query(entry_el, query_str, root):
+    """
+    Універсальний пошуковий рушій по TEI XML
+    """
+    if not query_str:
+        return True
+
+    xml_id_key = f"{{{NS['xml']}}}id"
+    tokens = query_str.strip().split()
+    
+    for token in tokens:
+        token_matched = False
+        
+        # 1. ФІЛЬТР ЗА ДОМЕНАМИ (dom: / domain:)
+        if token.startswith(('dom:', 'domain:')):
+            val = token.split(':', 1)[1].lower().strip()
+            for usg in entry_el.findall(".//tei:usg[@type='domain']", NS):
+                if usg.text and (val in usg.text.lower() or val in usg.get('value', '').lower()):
+                    token_matched = True
+                    break
+
+        # 2. ФІЛЬТР ЗА СТИЛЯМИ / РЕМАРКАМИ (style: / rem:)
+        elif token.startswith(('style:', 'rem:')):
+            val = token.split(':', 1)[1].lower().strip().rstrip('.')
+            for usg in entry_el.findall(".//tei:usg[@type='style']", NS):
+                if usg.text:
+                    clean_usg = usg.text.lower().rstrip('.')
+                    if val in clean_usg or clean_usg.startswith(val):
+                        token_matched = True
+                        break
+
+        # 3. ФІЛЬТР ЗА ДЖЕРЕЛАМИ / БІБЛІОГРАФІЄЮ (bibl: / src:)
+        elif token.startswith(('bibl:', 'src:')):
+            val = token.split(':', 1)[1].lower().strip().rstrip('.')
+            
+            # Шукаємо ID джерела у <back> за його абревіатурою (напр. Желех. -> bibl_zhelekh)
+            matched_bibl_ids = set()
+            for b in root.findall(".//tei:back//tei:bibl", NS):
+                b_id = (b.get(xml_id_key) or '').lower()
+                b_abbr = (b.findtext("tei:abbr", default="", namespaces=NS) or '').lower().rstrip('.')
+                if val == b_abbr or val in b_abbr or val == b_id or val in b_id:
+                    matched_bibl_ids.add(b_id)
+
+            # Шукаємо збіг у ВСІХ тегах <ref> статті (як type="source", так і type="bibliography")
+            for ref in entry_el.findall(".//tei:ref", NS):
+                target = (ref.get('target') or '').lower().lstrip('#').rstrip('.')
+                ref_text = (ref.text or '').lower().strip().rstrip('.')
+                
+                # 1. Збіг за ID джерела (наприклад, target="#bibl_zhelekh")
+                if target in matched_bibl_ids:
+                    token_matched = True
+                    break
+                
+                # 2. Прямий збіг за текстом або таргетом
+                if val == ref_text or val in ref_text or val in target:
+                    token_matched = True
+                    break
+
+                # 3. Перевірка вкладеного <abbr>
+                abbr_node = ref.find("tei:abbr", NS)
+                if abbr_node is not None and abbr_node.text:
+                    clean_abbr = abbr_node.text.lower().strip().rstrip('.')
+                    if val == clean_abbr or val in clean_abbr:
+                        token_matched = True
+                        break
+
+        # 4. ФІЛЬТР ЗА РЕГІОНАМИ / ГЕО (geo: / reg:)
+        elif token.startswith(('geo:', 'reg:')):
+            val = token.split(':', 1)[1].lower().strip()
+            for usg in entry_el.findall(".//tei:usg[@type='geo']", NS) + entry_el.findall(".//tei:usg[@type='region']", NS):
+                if usg.text and val in usg.text.lower():
+                    token_matched = True
+                    break
+
+        # 5. ФІЛЬТР ЗА ТИПОМ ЗАПОЗИЧЕННЯ (type:)
+        elif token.startswith('type:'):
+            val = token.split(':', 1)[1].lower().strip()
+            trait = entry_el.find(".//tei:note[@type='borrowing']/tei:trait[@type='type']", NS)
+            if trait is not None and trait.text and val in trait.text.lower():
+                token_matched = True
+
+        # 6. ФІЛЬТР ЗА ШЛЯХОМ ЗАПОЗИЧЕННЯ (path:)
+        elif token.startswith('path:'):
+            val = token.split(':', 1)[1].lower().strip()
+            trait = entry_el.find(".//tei:note[@type='borrowing']/tei:trait[@type='path']", NS)
+            if trait is not None and trait.text and val in trait.text.lower():
+                token_matched = True
+
+        # 7. ФІЛЬТР ЗА ЧАСТИНОЮ МОВИ (pos:)
+        elif token.startswith('pos:'):
+            val = token.split(':', 1)[1].lower().strip()
+            for pos_node in entry_el.findall(".//tei:gramGrp/tei:pos", NS):
+                if pos_node.text and val in pos_node.text.lower():
+                    token_matched = True
+                    break
+
+# 8. СУВОРИЙ ПОШУК ЗА ГОЛОВНИМИ ГАСЛАМИ (Тільки українська лема або німецький етимон)
+        else:
+            val = token.lower().strip().replace('\u0301', '')
+
+            def is_headword_match(target_text):
+                if not target_text:
+                    return False
+                clean_target = target_text.lower().replace('\u0301', '').strip()
+                # Гасло починається з пошукового запиту
+                if clean_target.startswith(val):
+                    return True
+                # Якщо гасло складається з кількох слів (наприклад, "новий вал")
+                words = clean_target.replace('-', ' ').replace(',', ' ').replace('/', ' ').split()
+                return any(w.startswith(val) for w in words if w)
+
+            # А. Перевірка ВИКЛЮЧНО української головної леми
+            uk_node = entry_el.find("tei:form[@type='lemma']/tei:orth", NS)
+            if uk_node is not None and uk_node.text:
+                if is_headword_match(uk_node.text):
+                    token_matched = True
+
+            # Б. Перевірка ВИКЛЮЧНО німецького головного етимона
+            if not token_matched:
+                de_node = entry_el.find(".//tei:etym[@type='german']/tei:form/tei:orth", NS)
+                if de_node is not None and de_node.text:
+                    if is_headword_match(de_node.text):
+                        token_matched = True
+
+        if not token_matched:
+            return False
+
+    return True    
 
 @main_bp.route("/")
 def index():
@@ -65,19 +195,10 @@ def index():
         if show_status == 'incomplete' and data.get('status') == 'complete':
             continue
 
-        # Пошук
+# Універсальний пошук (з підтримкою dom:, style:, bibl:, geo: тощо)
         if query:
-            q_low = query.lower()
-            found = False
-            # Шукаємо в основному слові (яке зараз залежить від мови)
-            if q_low in data.get('orth', '').lower(): found = True
-            
-            # Шукаємо у варіантах (вони поки що тільки українські)
-            if not found:
-                for v in data.get('variants', []):
-                    if q_low in v.get('orth', '').lower():
-                        found = True; break
-            if not found: continue
+            if not entry_matches_query(entry, query, root):
+                continue
 
         # Фільтр по літері
         if not query and letter_filter != 'all':

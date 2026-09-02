@@ -8,8 +8,8 @@
     --text-color: #212529;
     --muted-text: #6c757d;
     --white: #ffffff;
-    --sidebar-width: 320px;
-    --header-height: 60px;
+    --sidebar-width: 240px;
+    --header-height: 48px;
 }
 
 html, body {
@@ -20,10 +20,10 @@ html, body {
     color: var(--text-color);
 }
 
-/* === Layout Mode: Fixed (для Index - Dashboard) === */
+/* === Layout Mode: Fixed (Index - Dashboard) === */
 body.layout-fixed {
     height: 100vh;
-    overflow: hidden; /* Скролимо тільки панелі всередині */
+    overflow: hidden;
 }
 
 body.layout-fixed .container {
@@ -33,7 +33,7 @@ body.layout-fixed .container {
     max-width: 100%;
 }
 
-/* === Layout Mode: Scrollable (для Edit/Add) === */
+/* === Layout Mode: Scrollable (Edit / Add) === */
 body.layout-scrollable {
     height: auto;
     overflow-y: auto;
@@ -52,87 +52,121 @@ body.layout-scrollable .container {
     flex: 0 0 auto;
     background-color: var(--white);
     border-bottom: 1px solid var(--border-color);
-    padding: 8px 15px;
+    padding: 4px 10px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     z-index: 1000;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 15px;
-    height: auto;
-    min-height: 40px;
+    gap: 6px;
+    height: var(--header-height);
+    box-sizing: border-box;
 }
 
 .header-title-area {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 8px;
+    flex-shrink: 1;
+    min-width: 0;
 }
 
 .sticky-header h1 {
-    font-size: 1.2rem;
+    font-size: 1.05rem;
     margin: 0;
     white-space: nowrap;
     color: #333;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .stats-info {
-    font-size: 0.85rem;
+    font-size: 0.78rem;
     color: var(--muted-text);
     white-space: nowrap;
     border-left: 1px solid var(--medium-gray);
-    padding-left: 10px;
+    padding-left: 6px;
 }
 
 .top-controls {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 5px;
     flex-wrap: nowrap;
+    flex-shrink: 0;
 }
 
-/* === Filters in Header === */
+/* Компактні випадаючі списки фільтрів */
+.header-select {
+    padding: 2px 4px;
+    height: 28px;
+    font-size: 0.78rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #333;
+    max-width: 95px;
+    cursor: pointer;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.header-select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+.header-select.active-filter {
+    background-color: #e7f1ff;
+    border-color: var(--primary-color);
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+/* Фільтри статусу */
 .filter-group {
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-size: 0.85rem;
+    gap: 6px;
+    font-size: 0.8rem;
     background: #f1f3f5;
-    padding: 4px 8px;
+    padding: 2px 6px;
+    height: 28px;
+    box-sizing: border-box;
     border-radius: 4px;
 }
 .filter-group label {
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 3px;
+    gap: 2px;
 }
 
 /* === Main Layout (Split View) === */
 .main-layout {
     display: flex;
     flex: 1 1 auto;
-    overflow: hidden; /* Важливо для незалежного скролу */
+    overflow: hidden;
     height: calc(100vh - var(--header-height)); 
 }
 
-/* === Left Sidebar (Restructured) === */
+/* === Left Sidebar === */
 .word-list-panel {
     flex: 0 0 var(--sidebar-width);
     background-color: var(--white);
     border-right: 1px solid var(--border-color);
     display: flex;
-    flex-direction: column; /* Вертикальний стек: Алфавіт -> Пошук -> Список */
+    flex-direction: column;
     height: 100%;
-    overflow: hidden; /* Вимикаємо загальний скрол панелі */
+    overflow: hidden;
 }
 
 /* 1. Alphabet Nav */
 .alphabet-nav {
-    flex: 0 0 auto; /* Не розтягується */
-    position: static; /* Sticky тут не потрібен */
+    flex: 0 0 auto;
     background: #f8f9fa;
-    padding: 8px 5px;
+    padding: 6px 4px;
     border-bottom: 1px solid #dee2e6;
     display: flex;
     flex-wrap: wrap;
@@ -141,24 +175,24 @@ body.layout-scrollable .container {
     z-index: 10;
 }
 .alphabet-nav a {
-    font-size: 0.8rem;
-    padding: 2px 5px;
+    font-size: 0.75rem;
+    padding: 2px 4px;
     background: var(--white);
     border: 1px solid #ddd;
     border-radius: 3px;
     color: var(--text-color);
+    text-decoration: none;
 }
 .alphabet-nav a:hover, .alphabet-nav a.active {
     background: var(--primary-color);
     color: var(--white);
-    text-decoration: none;
     border-color: var(--primary-color);
 }
 
-/* 2. Sidebar Search Container */
+/* 2. Sidebar Search */
 .sidebar-search-container {
-    flex: 0 0 auto; /* Не розтягується */
-    padding: 10px;
+    flex: 0 0 auto;
+    padding: 8px 10px;
     background: #fff;
     border-bottom: 1px solid var(--border-color);
 }
@@ -172,10 +206,11 @@ body.layout-scrollable .container {
 .search-input.full-width {
     width: 100%;
     box-sizing: border-box;
-    padding: 6px 30px 6px 10px; /* padding-right для іконки */
+    padding: 6px 30px 6px 10px;
     border: 1px solid var(--border-color);
     border-radius: 4px;
-    height: 36px;
+    height: 32px;
+    font-size: 0.88rem;
 }
 
 .sidebar-form .search-btn {
@@ -192,12 +227,12 @@ body.layout-scrollable .container {
 
 /* 3. Scrollable Word List Area */
 .word-list-scroll-area {
-    flex: 1 1 auto; /* Займає весь залишковий простір */
-    overflow-y: auto; /* Скрол тільки тут */
-    height: 0; /* Flexbox hack для коректного скролу */
+    flex: 1 1 auto;
+    overflow-y: auto;
+    height: 0;
 }
 
-/* Entry Table (Compact) */
+/* Entry Table */
 table.entry-table {
     width: 100%;
     border-collapse: collapse;
@@ -205,7 +240,7 @@ table.entry-table {
 table.entry-table td {
     padding: 4px 10px;
     border-bottom: 1px solid #f0f0f0;
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     cursor: pointer;
 }
 table.entry-table tr:hover {
@@ -223,7 +258,7 @@ table.entry-table a.entry-link {
 table.entry-table tr.letter-separator td {
     background: #eee;
     font-weight: bold;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     padding: 2px 10px;
 }
 
@@ -237,8 +272,8 @@ table.entry-table tr.letter-separator td {
 
 /* === Buttons === */
 .button {
-    padding: 5px 10px;
-    font-size: 13px;
+    padding: 4px 8px;
+    font-size: 12px;
     border-radius: 4px;
     border: 1px solid var(--border-color);
     background: var(--white);
@@ -247,8 +282,10 @@ table.entry-table tr.letter-separator td {
     cursor: pointer;
     display: inline-flex;
     align-items: center;
-    gap: 5px;
+    gap: 4px;
     white-space: nowrap;
+    height: 28px;
+    box-sizing: border-box;
 }
 .button-primary {
     background-color: var(--primary-color);
@@ -268,24 +305,27 @@ table.entry-table tr.letter-separator td {
     text-decoration: none;
 }
 .button.small {
-    padding: 4px 10px;
-    font-size: 0.9em;
+    padding: 3px 8px;
+    font-size: 0.85em;
 }
 .button:hover:not(.button-primary):not(.button-warning) {
     background-color: #f0f0f0;
     text-decoration: none;
 }
 
-/* === Language Toggle === */
+/* Language Toggle */
 .language-selector {
     display: flex;
     border: 1px solid var(--border-color);
     border-radius: 4px;
     overflow: hidden;
+    height: 28px;
+    box-sizing: border-box;
 }
 .language-selector a {
-    padding: 4px 8px;
-    font-size: 12px;
+    padding: 4px 7px;
+    font-size: 11px;
+    line-height: 18px;
     background: #f8f9fa;
     color: #555;
     text-decoration: none;
@@ -415,13 +455,7 @@ table.entry-table tr.letter-separator td {
     cursor: help;
 }
 
-/* === Form Specific Styles === */
-.choices__inner {
-    min-height: 34px;
-    padding: 2px 5px;
-    font-size: 0.95em;
-}
-
+/* Form Styles */
 .form-section {
     padding: 15px 20px;
     margin-bottom: 15px;
@@ -464,6 +498,7 @@ input[type="text"], select {
     width: 100%;
     border: 1px solid #ced4da;
     border-radius: 4px;
+    box-sizing: border-box;
 }
 
 .dynamic-list-item {
@@ -506,22 +541,61 @@ input[type="text"], select {
     border: 1px solid #ddd;
 }
 
-/* Editor Fixes */
 .CodeMirror { min-height: 80px; height: auto; }
 .editor-toolbar { opacity: 0.6; }
 .editor-toolbar:hover { opacity: 1; }
 
-.translation-block .CodeMirror {
-    min-height: 50px;
-    height: auto;
-}
-.translation-block .CodeMirror-scroll {
-    min-height: 50px;
+@media (max-width: 1200px) {
+    .header-select {
+        max-width: 80px;
+        font-size: 0.74rem;
+    }
+    .stats-info {
+        display: none;
+    }
+    .sticky-header h1 {
+        font-size: 0.95rem;
+    }
 }
 
-/* Standalone Entry Navigation */
-.navigation-buttons-standalone {
-    display: flex;
-    gap: 10px;
-    align-items: center;
+/* === Two-Column Comparative Layout for Entry === */
+.entry-grid-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-bottom: 20px;
+}
+
+.entry-col-left {
+    border-right: 1px solid #e9ecef;
+    padding-right: 20px;
+}
+
+.entry-col-right {
+    padding-left: 5px;
+}
+
+.entry-subheading {
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: #495057;
+    margin: 0 0 8px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid #edf2f7;
+    padding-bottom: 3px;
+}
+
+/* Адаптація для вузьких екранів */
+@media (max-width: 992px) {
+    .entry-grid-row {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    .entry-col-left {
+        border-right: none;
+        border-bottom: 1px solid #e9ecef;
+        padding-right: 0;
+        padding-bottom: 15px;
+    }
 }

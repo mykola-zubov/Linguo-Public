@@ -10,7 +10,7 @@
 <body class="layout-fixed">
     <div class="container">
         
-        <!-- Верхня шапка (без пошуку) -->
+<!-- Верхня шапка з фільтрами -->
         <header class="sticky-header">
             <div class="header-title-area">
                 <img src="{{ url_for('static', filename='logo.svg') }}" alt="Logo" style="height: 32px; width: auto; opacity: 0.8;">
@@ -22,7 +22,59 @@
                 </span>
             </div>
 
+            <!-- ПАНЕЛЬ РОЗШИРЕНИХ ФІЛЬТРІВ -->
             <div class="top-controls">
+                
+                <!-- 1. Фільтр: Домени -->
+                <select id="filter-domain" class="header-select" title="Ідеографічні сфери">
+                    <option value="">🏷 Домени</option>
+                    {% for d in back_data.domains %}
+                        <optgroup label="{{ d.term }}">
+                            {% for sub in d.children %}
+                                <option value="dom:{{ sub.term }}" {% if 'dom:' ~ sub.term in query %}selected{% endif %}>{{ sub.term }}</option>
+                            {% endfor %}
+                        </optgroup>
+                    {% endfor %}
+                </select>
+
+                <!-- 2. Фільтр: Ремарки/Стилі -->
+                <select id="filter-style" class="header-select" title="Ремарки та стилі">
+                    <option value="">🖋 Ремарки</option>
+                    {% for st in back_data.styles %}
+                        <optgroup label="{{ st.term }}">
+                            {% for sub in st.children %}
+                                <option value="style:{{ sub.abbr or sub.term }}" {% if ('style:' ~ (sub.abbr or sub.term)) in query %}selected{% endif %}>{{ sub.abbr }} ({{ sub.term }})</option>
+                            {% endfor %}
+                        </optgroup>
+                    {% endfor %}
+                </select>
+
+                <!-- 3. Фільтр: Джерела -->
+                <select id="filter-bibl" class="header-select" title="Джерела та бібліографія">
+                    <option value="">📚 Джерела</option>
+                    {% for b in back_data.bibliography %}
+                        <option value="bibl:{{ b.abbr }}" {% if 'bibl:' ~ b.abbr in query %}selected{% endif %}>{{ b.abbr }}</option>
+                    {% endfor %}
+                </select>
+
+                <!-- 4. Фільтр: Тип запозичення -->
+                <select id="filter-type" class="header-select" title="Тип запозичення">
+                    <option value="">🧬 Типи</option>
+                    {% set b_types = (back_data.borrowing_characteristics | selectattr('id', 'equalto', 'borrowing_type') | first) %}
+                    {% if b_types %}
+                        {% for t in b_types.children %}
+                            <option value="type:{{ t.value }}" {% if 'type:' ~ t.value in query %}selected{% endif %}>{{ t.term }}</option>
+                        {% endfor %}
+                    {% endif %}
+                </select>
+
+                <!-- Кнопка скидання фільтрів -->
+                <button type="button" id="reset-filters-btn" class="button small" title="Скинути всі фільтри" style="display: none; color: #dc3545;">
+                    ↺
+                </button>
+
+                <div style="height: 24px; width: 1px; background: #dee2e6; margin: 0 5px;"></div>
+
                 <!-- Фільтр статусу -->
                 <div class="filter-group" id="filter-group">
                     <label>
@@ -43,22 +95,15 @@
                 <a href="{{ url_for('main.add_entry') }}" class="button button-primary" title="{{ _('Додати нову статтю') }}">+</a>
 
                 <!-- Кнопка XML -->
-                <a href="{{ url_for('main.download_xml') }}" class="button" title="{{ _('Завантажити XML') }}">⬇ XML</a>
+                <a href="{{ url_for('main.download_xml') }}" class="button" title="{{ _('Завантажити XML') }}">XML</a>
 
-                <!-- Перемикач мови -->
+                <!-- Перемикач мови реєстру -->
                 <div class="language-selector">
                     <a href="{{ url_for('main.index', lang='uk', q=request.args.get('q', ''), show=request.args.get('show', 'all')) }}" 
                        class="{% if current_lang == 'uk' %}active{% endif %}">UA</a>
                     <a href="{{ url_for('main.index', lang='de', q=request.args.get('q', ''), show=request.args.get('show', 'all')) }}" 
                        class="{% if current_lang == 'de' %}active{% endif %}">DE</a>
                 </div>
-                
-                <!-- Кнопка перекладу інтерфейсу (ВИПРАВЛЕНО: get_locale() -> current_lang) -->
-                <button id="lang-switch-btn" class="button" 
-                        data-base-url="{{ url_for('main.index') }}" 
-                        data-lang-switch="{{ 'de' if current_lang == 'uk' else 'uk' }}">
-                    {{ 'UA → DE' if current_lang == 'uk' else 'DE → UA' }}
-                </button>
             </div>
         </header>
 

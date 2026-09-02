@@ -154,43 +154,94 @@
 
                         <fieldset class="form-section">
                             <legend>{{ _('Граматика (Укр)') }}</legend>
-                            <div class="grid-row-3">
-                                <div class="form-group"><label for="pos">PoS</label><select id="pos" name="pos">
-                                        <option value="">-</option>{% set pos_category = (back_data.grammar |
-                                        selectattr('id', 'equalto', 'DOM-GRAM-POS') | first) %}{% if pos_category %}{%
-                                        for item in pos_category.children %}<option value="{{ item.value }}" {% if
-                                            entry.pos==item.value %}selected{% endif %}>{{ item.term }}</option>{%
-                                        endfor %}{% endif %}
-                                    </select></div>
-                                <div class="form-group gender-options" style="display: none;"><label for="gram_gen">{{
-                                        _('Рід') }}</label><select id="gram_gen" name="gram_gen">
-                                        <option value="">-</option>{% set gen_category = (back_data.grammar |
-                                        selectattr('id', 'equalto', 'DOM-GRAM-GEN') | first) %}{% if gen_category %}{%
-                                        for item in gen_category.children %}<option value="{{ item.value }}" {% if
-                                            entry.gram_gen==item.value %}selected{% endif %}>{{ item.term }}</option>{%
-                                        endfor %}{% endif %}
-                                    </select></div>
-                                <div class="form-group casus-options" style="display: none;"><label for="casus_gen">{{
-                                        _('Р.в. одн.') }}</label><input id="casus_gen" type="text" name="casus_gen"
-                                        placeholder="-а / -у" value="{{ entry.casus_gen or '' }}" /></div>
+                            <div class="grid-row-3" style="grid-template-columns: 1fr 1fr 1fr 1fr;">
+                                <!-- 1. Частина мови -->
+                                <div class="form-group"><label for="pos">PoS</label>
+                                    <select id="pos" name="pos">
+                                        <option value="">-</option>
+                                        {% set pos_category = (back_data.grammar | selectattr('id', 'equalto',
+                                        'DOM-GRAM-POS') | first) %}
+                                        {% if pos_category %}
+                                        {% for item in pos_category.children %}
+                                        <option value="{{ item.value }}" {% if entry.pos==item.value %}selected{% endif
+                                            %}>{{ item.term }}</option>
+                                        {% endfor %}
+                                        {% endif %}
+                                    </select>
+                                </div>
+
+                                <!-- 2. СЛОВОТВІР (ВСТАВЛЯЄМО ЦЕЙ БЛОК) -->
+                                <div class="form-group">
+                                    <label for="word_formation">{{ _('Словотвір') }}</label>
+                                    <select id="word_formation" name="word_formation">
+                                        <option value="">-</option>
+                                        {% set wf_cat = (back_data.grammar | selectattr('id', 'equalto',
+                                        'DOM-GRAM-WORDFORM') | first) %}
+                                        {% if wf_cat %}
+                                        {% for item in wf_cat.children %}
+                                        <option value="{{ item.value }}" {% if entry.word_formation==item.value
+                                            %}selected{% endif %}>{{ item.abbr }} ({{ item.term }})</option>
+                                        {% endfor %}
+                                        {% endif %}
+                                    </select>
+                                </div>
+
+                                <!-- 3. Рід -->
+                                <div class="form-group gender-options" style="display: none;">
+                                    <label for="gram_gen">{{ _('Рід') }}</label>
+                                    <select id="gram_gen" name="gram_gen">
+                                        <option value="">-</option>
+                                        {% set gen_category = (back_data.grammar | selectattr('id', 'equalto',
+                                        'DOM-GRAM-GEN') | first) %}
+                                        {% if gen_category %}
+                                        {% for item in gen_category.children %}
+                                        <option value="{{ item.value }}" {% if entry.gram_gen==item.value %}selected{%
+                                            endif %}>{{ item.term }}</option>
+                                        {% endfor %}
+                                        {% endif %}
+                                    </select>
+                                </div>
+
+                                <!-- 4. Р.в. одн. -->
+                                <div class="form-group casus-options" style="display: none;">
+                                    <label for="casus_gen">{{ _('Р.в. одн.') }}</label>
+                                    <input id="casus_gen" type="text" name="casus_gen" placeholder="-а / -у"
+                                        value="{{ entry.casus_gen or '' }}" />
+                                </div>
                             </div>
+
+                            <!-- Перехідність та вид для дієслів -->
                             <div class="verb-options grid-row-2" data-pos-select-id="pos" style="display: none;">
-                                <div class="form-group"><label for="transitivity">{{ _('Перехідність') }}</label><select
-                                        id="transitivity" name="transitivity">
-                                        <option value="">-</option>{% set verbfeat_category = (back_data.grammar |
-                                        selectattr('id', 'equalto', 'DOM-GRAM-VERBFEAT') | first) %}{% if
-                                        verbfeat_category %}{% for item in verbfeat_category.children %}{% if 'TRAN' in
-                                        item.id or 'AMBI' in item.id %}<option value="{{ item.value }}" {% if
-                                            entry.transitivity==item.value %}selected{% endif %}>{{ item.term }}
-                                        </option>{% endif %}{% endfor %}{% endif %}
-                                    </select></div>
-                                <div class="form-group"><label for="aspect">{{ _('Вид') }}</label><select id="aspect"
-                                        name="aspect">
-                                        <option value="">-</option>{% if verbfeat_category %}{% for item in
-                                        verbfeat_category.children %}{% if 'ASP' in item.id %}<option
-                                            value="{{ item.value }}" {% if entry.aspect==item.value %}selected{% endif
-                                            %}>{{ item.term }}</option>{% endif %}{% endfor %}{% endif %}
-                                    </select></div>
+                                <div class="form-group">
+                                    <label for="transitivity">{{ _('Перехідність') }}</label>
+                                    <select id="transitivity" name="transitivity">
+                                        <option value="">-</option>
+                                        {% set verbfeat_category = (back_data.grammar | selectattr('id', 'equalto',
+                                        'DOM-GRAM-VERBFEAT') | first) %}
+                                        {% if verbfeat_category %}
+                                        {% for item in verbfeat_category.children %}
+                                        {% if 'TRAN' in item.id or 'AMBI' in item.id or 'INTR' in item.id %}
+                                        <option value="{{ item.value }}" {% if entry.transitivity==item.value
+                                            %}selected{% endif %}>{{ item.term }}</option>
+                                        {% endif %}
+                                        {% endfor %}
+                                        {% endif %}
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="aspect">{{ _('Вид') }}</label>
+                                    <select id="aspect" name="aspect">
+                                        <option value="">-</option>
+                                        {% if verbfeat_category %}
+                                        {% for item in verbfeat_category.children %}
+                                        {% if 'ASP' in item.id %}
+                                        <option value="{{ item.value }}" {% if entry.aspect==item.value %}selected{%
+                                            endif %}>{{ item.term }}</option>
+                                        {% endif %}
+                                        {% endfor %}
+                                        {% endif %}
+                                    </select>
+                                </div>
                             </div>
                         </fieldset>
                     </div>
@@ -288,7 +339,8 @@
                     <div class="form-group" style="margin-top: 10px; border-top: 1px dashed #eee; padding-top: 5px;">
                         <label style="color: #999; font-size: 0.8em;">Legacy Note:</label><textarea
                             id="variants_note_markdown" class="markdown-editor" name="variants_note_markdown"
-                            rows="2">{{ entry.variants_note_markdown or '' }}</textarea></div>
+                            rows="2">{{ entry.variants_note_markdown or '' }}</textarea>
+                    </div>
                     {% endif %}
                 </fieldset>
 
@@ -424,17 +476,25 @@
     <!-- TEMPLATES -->
     <template id="variant-template">
         <div class="dynamic-list-item variant-block"
-            style="padding: 10px; border-left: 4px solid #6c757d; margin-bottom: 15px;">
+            style="padding: 10px; border-left: 4px solid #6c757d; margin-bottom: 15px; position: relative;">
+
+            <!-- Кнопка видалення варіанта з чітким відступом -->
             <button type="button" class="delete-item-btn" title="Видалити варіант"
-                style="top:5px; right:5px;">×</button>
-            <div style="margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #eee;">
+                style="top: 8px; right: 8px; font-size: 1.4em; cursor: pointer; color: #dc3545; z-index: 10;">×</button>
+
+            <!-- Додано padding-right: 35px, щоб поля не наїжджали на хрестик -->
+            <div style="margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #eee; padding-right: 35px;">
                 <div style="display: flex; gap: 10px; align-items: center;">
+
+                    <!-- 1. Поле слова -->
                     <div class="form-group" style="flex-grow: 1;">
-                        <input type="text" name="variants___INDEX___orth" placeholder="Слово (варіант)" required
+                        <input type="text" name="variants___INDEX___orth" placeholder="Слово (варіант/дериват)" required
                             style="font-weight:bold; font-size: 1.1em; width: 100%;" />
                     </div>
-                    <div class="form-group" style="width: 150px;">
-                        <select name="variants___INDEX___pos" style="font-size: 0.9em;">
+
+                    <!-- 2. Частина мови -->
+                    <div class="form-group" style="width: 120px; flex-shrink: 0;">
+                        <select name="variants___INDEX___pos" style="font-size: 0.9em; width: 100%;">
                             <option value="">(PoS)</option>
                             {% set pos_category = (back_data.grammar | selectattr('id', 'equalto', 'DOM-GRAM-POS') |
                             first) %}
@@ -445,8 +505,23 @@
                             {% endif %}
                         </select>
                     </div>
+
+                    <!-- 3. Словотвір -->
+                    <div class="form-group" style="width: 140px; flex-shrink: 0;">
+                        <select name="variants___INDEX___word_formation" style="font-size: 0.9em; width: 100%;">
+                            <option value="">(Словотвір)</option>
+                            {% set wf_cat = (back_data.grammar | selectattr('id', 'equalto', 'DOM-GRAM-WORDFORM') |
+                            first) %}
+                            {% if wf_cat %}
+                            {% for item in wf_cat.children %}
+                            <option value="{{ item.value }}">{{ item.abbr }} ({{ item.term }})</option>
+                            {% endfor %}
+                            {% endif %}
+                        </select>
+                    </div>
                 </div>
             </div>
+
             <div class="variant-senses-wrapper" id="variant-senses-container-INDEX" style="padding-left: 15px;">
                 <label style="font-size: 0.85em; color: #666; display: block; margin-bottom: 5px;">Значення та
                     характеристики:</label>
@@ -494,26 +569,36 @@
         <div class="dynamic-list-item equivalent-block" style="padding: 8px; border-bottom: 1px solid #eee;">
             <button type="button" class="delete-item-btn" style="top: 2px; right: 2px;">×</button>
             <div style="display: flex; gap: 5px; margin-bottom: 5px; align-items: center;">
-                <select name="equivalents___INDEX___lang" style="width: 90px;" title="Мова">
-                    <option value="">(Lang)</option>
-                    {% for lang in back_data.languages %}<option value="{{ lang.code }}">{{ lang.code }}</option>{%
-                    endfor %}
+
+                <!-- ВИБІР МОВИ ЗА НАЗВОЮ (СОРТОВАНИЙ СПИСОК) -->
+                <select name="equivalents___INDEX___lang" style="width: 140px; font-size: 0.9em;" title="Мова">
+                    <option value="">(Оберіть мову)</option>
+                    {% for lang in back_data.languages %}
+                    <option value="{{ lang.code or lang.term }}">{{ lang.term }}</option>
+                    {% endfor %}
                 </select>
+
                 <input name="equivalents___INDEX___word" type="text" placeholder="Word" required
                     style="flex-grow: 1; font-weight: bold;" />
             </div>
             <div style="display: flex; gap: 5px; margin-bottom: 5px;">
                 <select name="equivalents___INDEX___region" style="width: 50%; font-size: 0.9em;">
                     <option value="">(Регіон - не вказано)</option>
-                    {% set terr_style = (back_data.styles | selectattr('id', 'equalto', 'DOM-STYLE-TERR') | first) %}{%
-                    if terr_style %}{% for item in terr_style.children %}<option value="{{ item.abbr }}">{{ item.abbr }}
-                        - {{ item.term }}</option>{% endfor %}{% endif %}
+                    {% set terr_style = (back_data.styles | selectattr('id', 'equalto', 'DOM-STYLE-TERR') | first) %}
+                    {% if terr_style %}
+                    {% for item in terr_style.children %}
+                    <option value="{{ item.abbr }}">{{ item.abbr }} - {{ item.term }}</option>
+                    {% endfor %}
+                    {% endif %}
                 </select>
                 <select name="equivalents___INDEX___pos" style="width: 50%; font-size: 0.9em;">
                     <option value="">(PoS - не вказано)</option>
-                    {% set pos_category = (back_data.grammar | selectattr('id', 'equalto', 'DOM-GRAM-POS') | first) %}{%
-                    if pos_category %}{% for item in pos_category.children %}<option value="{{ item.value }}">{{
-                        item.abbr }} ({{ item.term }})</option>{% endfor %}{% endif %}
+                    {% set pos_category = (back_data.grammar | selectattr('id', 'equalto', 'DOM-GRAM-POS') | first) %}
+                    {% if pos_category %}
+                    {% for item in pos_category.children %}
+                    <option value="{{ item.value }}">{{ item.abbr }} ({{ item.term }})</option>
+                    {% endfor %}
+                    {% endif %}
                 </select>
             </div>
             <div class="sub-item-group" id="equiv-defs-container-__INDEX__"
