@@ -393,9 +393,16 @@
 
                 <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
                     <fieldset class="form-section">
-                        <legend>{{ _('Відповідники') }}</legend>
-                        <div id="equivalents-container"></div><button type="button" id="add-equivalent-btn"
-                            class="add-item-btn small">+</button>
+                        <legend style="display: flex; justify-content: space-between; align-items: center;">
+                            <span>{{ _('Іншомовні відповідники') }}</span>
+                            <button type="button" id="open-goroh-popup-btn" class="button small"
+                                title="Відкрити ЕСУМ на Горосі у вікні поруч"
+                                style="border: 1px solid #28a745; color: #28a745; font-size: 0.8em;">
+                                ↗ ЕСУМ (Горох)
+                            </button>
+                        </legend>
+                        <div id="equivalents-container"></div>
+                        <button type="button" id="add-equivalent-btn" class="add-item-btn small">+</button>
                     </fieldset>
                     <fieldset class="form-section">
                         <legend>{{ _('Бібліографія') }}</legend>

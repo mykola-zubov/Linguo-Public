@@ -393,6 +393,7 @@
             <orth>абшит</orth>
             <stress>а́бши́т</stress>
             <usg type="style">рег.</usg>
+            <usg type="time">XVIII</usg>
             <usg type="style">арх.</usg>
           </form>
           <form type="variant">
@@ -40445,106 +40446,10 @@
           <ref type="bibliography" target="#bibl_zhelekh"/>
           <ref type="bibliography" target="#bibl_iavorn"/>
         </entry>
-        <entry xml:id="e297" status="complete" type="normal">
-          <form type="lemma" xml:lang="uk">
-            <orth>ванчос</orth>
-            <stress>ва́нчос</stress>
-            <usg type="style">діал.</usg>
-          </form>
-          <form type="variant">
-            <orth>ванчосъ</orth>
-            <gramGrp>
-              <pos>Substantiv</pos>
-            </gramGrp>
-            <sense>
-              <def>дерево з трьох боків оброблене, а з четвертого покрите корою; дошка на клепку;
-                клепка</def>
-              <usg type="time">1500</usg>
-              <ref type="source" target="#bibl_esum">ЕСУМ</ref>
-            </sense>
-          </form>
-          <gramGrp>
-            <pos>Substantiv</pos>
-            <gen>masculine</gen>
-            <casus type="genitive" subtype="singular">-у</casus>
-          </gramGrp>
-          <sense>
-            <def xml:lang="uk">бочарний ліс; дерево на клепки</def>
-            <ref type="source" target="#bibl_iavorn">Яворн.</ref>
-          </sense>
-          <cit type="translation" xml:lang="be">
-            <quote>ва́нчос, ва́чес</quote>
-            <gramGrp>
-              <pos>Substantiv</pos>
-            </gramGrp>
-            <def>
-              <ref type="source" target="#bibl_esum">ЕСУМ</ref>
-            </def>
-          </cit>
-          <cit type="translation" xml:lang="pl">
-            <quote>wanczos (wańczos)</quote>
-            <gramGrp>
-              <pos>Substantiv</pos>
-            </gramGrp>
-            <def>оброблене дерево; клепки<ref type="source" target="#bibl_esum">ЕСУМ</ref></def>
-          </cit>
-          <cit type="translation" xml:lang="ru">
-            <quote>ва́нчес</quote>
-            <gramGrp>
-              <pos>Substantiv</pos>
-            </gramGrp>
-            <def>дубовий брус для суднобудування<ref type="source" target="#bibl_esum">ЕСУМ</ref></def>
-          </cit>
-          <cit type="translation" xml:lang="ru">
-            <quote>ва́нчос</quote>
-            <gramGrp>
-              <pos>Substantiv</pos>
-            </gramGrp>
-            <def>тс.<ref type="source" target="#bibl_esum">ЕСУМ</ref></def>
-          </cit>
-          <cit type="translation" xml:lang="ru">
-            <quote>ва́нчус (стар.)</quote>
-            <gramGrp>
-              <pos>Substantiv</pos>
-            </gramGrp>
-            <def>тс.<ref type="source" target="#bibl_esum">ЕСУМ</ref></def>
-          </cit>
-          <note type="entry">
-            <p>Загальноприйнятої етимології не має; виводилось через пол. посередництво від н.
-              Wágenschoss «панельна дошка», яке складається з основ імен. Wágen «віз, екіпаж» і
-              Schoss «паросток, гілка»; повʼязується також з лит. vančos «брус для закріплення
-              якоря», лтс. vantis «тс.» [<ref target="#bibl">ЕСУМ</ref>].</p>
-          </note>
-          <etym type="german">
-            <form>
-              <orth>Wagenschoss</orth>
-              <stress>Wágenschoss</stress>
-              <usg type="hist">нвн.</usg>
-            </form>
-            <gramGrp>
-              <pos>Substantiv</pos>
-            </gramGrp>
-            <list type="ordered">
-              <item>
-                <def xml:lang="de">(Wagenschott, Wellenschuß), gespaltene eichene Blöcke, welche auf
-                  dem Rhein nach Holland gehen, daselbst in Bretter von 3/4, 1 bis 1/2 Zoll Dicke
-                  geschnitten und zu kleinen Fahrzeugen, auch zu Lamperien und anderen Bekleidungen
-                  gebraucht werden</def>
-                <ref type="source" target="http://www.zeno.org/nid/20009281118" accessDate="24.07.2026">Pierer</ref>
-                <cit type="translation" xml:lang="uk">
-                  <quote>(Wagenschott, Wellenschuß) — розколоті дубові колоди, які транспортуються
-                    по Рейну до Нідерландів, де їх розпилюють на дошки товщиною від 3/4 до 1 дюйма
-                    та 1/2 дюйма, які використовуються для будівництва невеликих суден, а також для
-                    виготовлення ламперій та інших облицювальних матеріалів.</quote>
-                </cit>
-              </item>
-            </list>
-          </etym>
-          <ref type="bibliography" target="#bibl_esum"/>
-          <ref type="bibliography" target="#bibl_iavorn"/>
-          <ref type="bibliography" target="#bibl_pierer"/>
-        </entry>
-        <entry xml:id="e298" status="complete" type="normal">
+        <entry xml:id="e297" status="complete" type="normal"><form type="lemma" xml:lang="uk"><orth>ванчос</orth><stress>ва́нчос</stress><usg type="style">діал.</usg><usg type="time">1500</usg></form><form type="variant"><orth>ванчосъ</orth><gramGrp><pos>Substantiv</pos></gramGrp><sense><def>дерево з трьох боків оброблене, а з четвертого покрите корою; дошка на клепку; клепка</def><usg type="time">1500</usg><ref type="source" target="#bibl_esum">ЕСУМ</ref></sense></form><gramGrp><pos>Substantiv</pos><gen>masculine</gen><casus type="genitive" subtype="singular">-у</casus></gramGrp><sense><def xml:lang="uk">Бочарний ліс; дерево на клепки</def><ref type="source" target="#bibl_iavorn">Яворн.</ref></sense><cit type="translation" xml:lang="be"><quote>ва́нчос, ва́чес</quote><gramGrp><pos>Substantiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="pl"><quote>wanczos (wańczos)</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>оброблене дерево; клепки<ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="ru"><quote>ва́нчес</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>дубовий брус для суднобудування<ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="ru"><quote>ва́нчос</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>тс.<ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="ru"><quote>ва́нчус (стар.)</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>тс.<ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><note type="entry"><p>Загальноприйнятої етимології не має; виводилось через пол. посередництво від н. Wágenschoss «панельна дошка», яке складається з основ імен. Wágen «віз, екіпаж» і Schoss «паросток, гілка»; повʼязується також з лит. vančos «брус для закріплення якоря», лтс. vantis «тс.» [<ref target="#bibl">ЕСУМ</ref>].</p></note><etym type="german"><form><orth>Wagenschoß</orth><stress>Wágenschoß</stress><usg type="hist">нвн.</usg></form><gramGrp><pos>Substantiv</pos></gramGrp><list type="ordered"><item><def xml:lang="de">(Wagenschott, Wellenschuß), gespaltene eichene Blöcke, welche auf dem Rhein nach Holland gehen, daselbst in Bretter von 3/4, 1 bis 1/2 Zoll Dicke geschnitten und zu kleinen Fahrzeugen, auch zu Lamperien und anderen Bekleidungen gebraucht werden</def><ref type="source" target="http://www.zeno.org/Zeno/0/Suche?q=Wagenschott&amp;k=Pierer-1857" accessDate="04.09.2026">Pierer</ref><cit type="translation" xml:lang="uk"><quote>(Wagenschott, Wellenschuß) — розколоті дубові колоди, які транспортуються&#13;
+                    по Рейну до Нідерландів, де їх розпилюють на дошки товщиною від 3/4 до 1 дюйма&#13;
+                    та 1/2 дюйма, які використовуються для будівництва невеликих суден, а також для&#13;
+                    виготовлення ламперій та інших облицювальних матеріалів.</quote></cit></item></list></etym><ref type="bibliography" target="#bibl_esum"/><ref type="bibliography" target="#bibl_iavorn"/><ref type="bibliography" target="#bibl_pierer"/></entry><entry xml:id="e298" status="complete" type="normal">
           <form type="lemma" xml:lang="uk">
             <orth>варта</orth>
             <stress>ва́рта</stress>
@@ -42615,153 +42520,8 @@
           <ref type="bibliography" target="#bibl_sum20"/>
           <ref type="bibliography" target="#bibl_dwds"/>
         </entry>
-        <entry xml:id="e316" status="complete" type="normal">
-          <form type="lemma" xml:lang="uk">
-            <orth>венеричний</orth>
-            <stress>венери́чний</stress>
-          </form>
-          <sense>
-            <def xml:lang="uk">Пов'язаний з інфекційним захворюванням, що передається перев.
-              статевим шляхом</def>
-            <ref type="source" target="https://sum20ua.com/?page=272&amp;searchWord=%D0%B2%D0%B5%D0%BD%D0%B5%D1%80%D0%B8%D1%87%D0%BD%D0%B8%D0%B9&amp;wordid=7356" accessDate="23.08.2026">СУМ-20</ref>
-          </sense>
-          <cit type="translation" xml:lang="be">
-            <quote>венеры́чны</quote>
-            <gramGrp>
-              <pos>Adjektiv</pos>
-            </gramGrp>
-            <def>
-              <ref type="source" target="#bibl_esum">ЕСУМ</ref>
-            </def>
-          </cit>
-          <cit type="translation" xml:lang="bg">
-            <quote>венери́чески</quote>
-            <gramGrp>
-              <pos>Adjektiv</pos>
-            </gramGrp>
-            <def>
-              <ref type="source" target="#bibl_esum">ЕСУМ</ref>
-            </def>
-          </cit>
-          <cit type="translation" xml:lang="bg">
-            <quote>венери́чен</quote>
-            <gramGrp>
-              <pos>Adjektiv</pos>
-            </gramGrp>
-            <def>
-              <ref type="source" target="#bibl_esum">ЕСУМ</ref>
-            </def>
-          </cit>
-          <cit type="translation" xml:lang="mk">
-            <quote>венери́чен</quote>
-            <gramGrp>
-              <pos>Adjektiv</pos>
-            </gramGrp>
-          </cit>
-          <cit type="translation" xml:lang="pl">
-            <quote>weneryczny</quote>
-            <gramGrp>
-              <pos>Adjektiv</pos>
-            </gramGrp>
-            <def>
-              <ref type="source" target="#bibl_esum">ЕСУМ</ref>
-            </def>
-          </cit>
-          <cit type="translation" xml:lang="ru">
-            <quote>венери́ческий</quote>
-            <gramGrp>
-              <pos>Adjektiv</pos>
-            </gramGrp>
-            <def>
-              <ref type="source" target="#bibl_esum">ЕСУМ</ref>
-            </def>
-          </cit>
-          <cit type="translation" xml:lang="sr">
-            <quote>вене́ричан</quote>
-            <gramGrp>
-              <pos>Adjektiv</pos>
-            </gramGrp>
-          </cit>
-          <cit type="translation" xml:lang="sl">
-            <quote>venéričen</quote>
-            <gramGrp>
-              <pos>Adjektiv</pos>
-            </gramGrp>
-          </cit>
-          <cit type="translation" xml:lang="sk">
-            <quote>venerický</quote>
-            <gramGrp>
-              <pos>Adjektiv</pos>
-            </gramGrp>
-            <def>
-              <ref type="source" target="#bibl_esum">ЕСУМ</ref>
-            </def>
-          </cit>
-          <cit type="translation" xml:lang="sk">
-            <quote>venerický</quote>
-            <gramGrp>
-              <pos>Adjektiv</pos>
-            </gramGrp>
-            <def>
-              <ref type="source" target="#bibl_esum">ЕСУМ</ref>
-            </def>
-          </cit>
-          <cit type="translation" xml:lang="hr">
-            <quote>venèričan</quote>
-            <gramGrp>
-              <pos>Adjektiv</pos>
-            </gramGrp>
-            <def>
-              <ref type="source" target="#bibl_esum">ЕСУМ</ref>
-            </def>
-          </cit>
-          <cit type="translation" xml:lang="cs">
-            <quote>venerický</quote>
-            <gramGrp>
-              <pos>Adjektiv</pos>
-            </gramGrp>
-            <def>
-              <ref type="source" target="#bibl_esum">ЕСУМ</ref>
-            </def>
-          </cit>
-          <note type="entry">
-            <p>Очевидно, запозичено з нім. мови, можливо, через російську [<ref target="#bibl">ЕСУМ</ref>
-              ].</p>
-          </note>
-          <etym type="german">
-            <form>
-              <orth>venerisch</orth>
-              <stress>venérisch</stress>
-              <borrowed xml:lang="la">venerius</borrowed>
-            </form>
-            <gramGrp>
-              <pos>Adjektiv</pos>
-            </gramGrp>
-            <list type="ordered">
-              <item>
-                <def xml:lang="de">Medizin Beispiel: venerische Krankheiten (=
-                  Geschlechtskrankheiten)</def>
-                <ref type="source" target="https://www.dwds.de/wb/venerisch" accessDate="23.08.2026">
-                  DWDS</ref>
-                <cit type="translation" xml:lang="uk">
-                  <quote>Приклад з медицини: венеричні захворювання (= захворювання, що передаються
-                    статевим шляхом).</quote>
-                </cit>
-              </item>
-            </list>
-            <note type="source_type">borrowing</note>
-            <note type="borrowing">
-              <trait type="type">lexical</trait>
-              <trait type="path">mediated</trait>
-              <trait type="certainty">possible</trait>
-              <trait type="mediator">російська</trait>
-            </note>
-          </etym>
-          <ref type="bibliography" target="#bibl_esum"/>
-          <ref type="bibliography" target="#bibl_sum20"/>
-          <ref type="bibliography" target="#bibl_dwds"/>
-        </entry>
-        <entry xml:id="e317" status="complete" type="normal">
+        <entry xml:id="e316" status="complete" type="normal"><form type="lemma" xml:lang="uk"><orth>венеричний</orth><stress>венери́чний</stress></form><sense><def xml:lang="uk">Повʼязаний з інфекційним захворюванням, що передається перев. статевим шляхом</def><ref type="source" target="https://sum20ua.com/?page=272&amp;searchWord=%D0%B2%D0%B5%D0%BD%D0%B5%D1%80%D0%B8%D1%87%D0%BD%D0%B8%D0%B9&amp;wordid=7356" accessDate="23.08.2026">СУМ-20</ref></sense><cit type="translation" xml:lang="be"><quote>венеры́чны</quote><gramGrp><pos>Adjektiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="bg"><quote>венери́чески</quote><gramGrp><pos>Adjektiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="bg"><quote>венери́чен</quote><gramGrp><pos>Adjektiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="mk"><quote>венери́чен</quote><gramGrp><pos>Adjektiv</pos></gramGrp></cit><cit type="translation" xml:lang="pl"><quote>weneryczny</quote><gramGrp><pos>Adjektiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="ru"><quote>венери́ческий</quote><gramGrp><pos>Adjektiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="sr"><quote>вене́ричан</quote><gramGrp><pos>Adjektiv</pos></gramGrp></cit><cit type="translation" xml:lang="sl"><quote>venéričen</quote><gramGrp><pos>Adjektiv</pos></gramGrp></cit><cit type="translation" xml:lang="sk"><quote>venerický</quote><gramGrp><pos>Adjektiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="sk"><quote>venerický</quote><gramGrp><pos>Adjektiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="hr"><quote>venèričan</quote><gramGrp><pos>Adjektiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="cs"><quote>venerický</quote><gramGrp><pos>Adjektiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><note type="entry"><p>Очевидно, запозичено з нім. мови, можливо, через російську [<ref target="#bibl">ЕСУМ</ref> ].</p></note><etym type="german"><form><orth>venerisch</orth><stress>venérisch</stress><borrowed xml:lang="la">venerius</borrowed></form><gramGrp><pos>Adjektiv</pos></gramGrp><list type="ordered"><item><def xml:lang="de">Medizin Beispiel: venerische Krankheiten (= Geschlechtskrankheiten)</def><cit type="translation" xml:lang="uk"><quote>Приклад з медицини: венеричні захворювання (= захворювання, що передаються&#13;
+                    статевим шляхом).</quote></cit></item></list><note type="source_type">borrowing</note><note type="borrowing"><trait type="type">lexical</trait><trait type="path">mediated</trait><trait type="certainty">possible</trait><trait type="mediator">російська</trait></note></etym><ref type="bibliography" target="#bibl_esum"/><ref type="bibliography" target="#bibl_sum20"/><ref type="bibliography" target="#bibl_dwds"/></entry><entry xml:id="e317" status="complete" type="normal">
           <form type="lemma" xml:lang="uk">
             <orth>вепринець</orth>
             <stress>вепри́нець</stress>
@@ -43217,42 +42977,7 @@
           <ref type="bibliography" target="#bibl_sum20"/>
           <ref type="bibliography" target="#bibl_dwds"/>
         </entry>
-        <entry xml:id="e320" status="complete">
-          <form type="lemma" xml:lang="uk">
-            <orth>веркблей</orth>
-            <stress>ве́ркблей</stress>
-          </form>
-          <gramGrp>
-            <pos>Substantiv</pos>
-            <gen>masculine</gen>
-            <casus type="genitive" subtype="singular">-ю</casus>
-          </gramGrp>
-          <sense>
-            <def xml:lang="uk">Свинець із домішками інших металів (<ref target="https://sum20ua.com/?page=277&amp;searchWord=веркблей&amp;wordid=192166">
-              СУМ-20</ref>). Пор.<ref target="#e14">а́бцуг</ref>. </def>
-            <ref type="source" target="#e15">а́бштрих</ref>
-            <cit type="translation" xml:lang="de">
-              <quote/>
-            </cit>
-          </sense>
-          <etym type="german">
-            <form>
-              <orth>Werkblei</orth>
-              <usg type="hist">нвн.</usg>
-            </form>
-            <gramGrp>
-              <pos>Substantiv</pos>
-              <gen>neuter</gen>
-            </gramGrp>
-            <note type="borrowing">
-              <trait type="type">lexical</trait>
-              <trait type="path">direct</trait>
-            </note>
-          </etym>
-          <ref type="bibliography" target="#bibl_sum20"/>
-          <ref type="bibliography" target="#bibl_pierers-universal-lexikon"/>
-        </entry>
-        <entry xml:id="e321" status="complete" type="normal">
+        <entry xml:id="e320" status="complete" type="normal"><form type="lemma" xml:lang="uk"><orth>веркблей</orth><stress>ве́ркблей</stress></form><gramGrp><pos>Substantiv</pos><gen>masculine</gen><casus type="genitive" subtype="singular">-ю</casus></gramGrp><sense><def xml:lang="uk">Свинець із домішками інших металів</def><ref type="source" target="https://sum20ua.com/?wordid=192166&amp;page=277&amp;searchWord=веркблей#lid_192166" accessDate="04.09.2026">СУМ-20</ref></sense><note type="entry"><p>Пор. <ref target="#e14">а́бцуг</ref>.</p></note><etym type="german"><form><orth>Werkblei</orth><usg type="hist">нвн.</usg></form><gramGrp><pos>Substantiv</pos><gen>neuter</gen></gramGrp><list type="ordered"><item><def xml:lang="de">durch Rösten od. Niederschlag gewonnenes Blei, welches so viel Silber enthält, daß sich die Abscheidung des Silbers durch Abtreiben verlohnt</def><ref type="source" target="https://pierer.de-academic.com/89458" accessDate="04.09.2026">Pierer</ref><cit type="translation" xml:lang="uk"><quote>Cвинець, отриманий шляхом випалювання або осадження, який містить стільки срібла, що його виділення шляхом відмивання є економічно вигідним.</quote></cit></item><item><def xml:lang="de">eine bleierne Platte, das Blech darauf auszuarbeiten</def><ref type="source" target="https://pierer.de-academic.com/89458" accessDate="04.09.2026">Pierer</ref><cit type="translation" xml:lang="uk"><quote>Cвинцева плита, на якій потрібно обробити бляху.</quote></cit></item></list><note type="borrowing"><trait type="type">lexical</trait><trait type="path">direct</trait></note></etym><ref type="bibliography" target="#bibl_sum20"/><ref type="bibliography" target="#bibl_pierer"/><ref type="bibliography" target="#bibl_pierers-universal-lexikon"/></entry><entry xml:id="e321" status="complete" type="normal">
           <form type="lemma" xml:lang="uk">
             <orth>вермут</orth>
             <stress>ве́рмут</stress>
@@ -43614,69 +43339,10 @@
           <ref type="bibliography" target="#bibl_dwds"/>
           <ref type="bibliography" target="#bibl_pfeifer"/>
         </entry>
-        <entry xml:id="e326" status="complete" type="normal">
-          <form type="lemma" xml:lang="uk">
-            <orth>вершляг</orth>
-          </form>
-          <gramGrp>
-            <pos>Substantiv</pos>
-            <gen>masculine</gen>
-            <casus type="genitive" subtype="singular">-а</casus>
-          </gramGrp>
-          <sense>
-            <usg type="style">застаріле</usg>
-            <def xml:lang="uk">Великий важкий молот для кування металу, роздрібнення каменю і т. ін.</def>
-            <ref type="source" target="https://sum20ua.com/?wordid=7666&amp;page=282&amp;searchWord=вершляг#lid_7666" accessDate="24.08.2026">СУМ-20</ref>
-          </sense>
-          <sense>
-            <usg type="region">діалектне</usg>
-            <def xml:lang="uk">Молот</def>
-            <ref type="source" target="#bibl_esum">ЕСУМ</ref>
-          </sense>
-          <note type="entry">
-            <p>Запозичення з нім. мови; нвн. Verschlághammer «молоток мідника» [<ref target="#bibl">
-              ЕСУМ</ref>].</p>
-          </note>
-          <etym type="german">
-            <form>
-              <orth>Vorschlaghammer</orth>
-              <stress>Vórschlaghammer</stress>
-              <usg type="hist">нвн.</usg>
-            </form>
-            <gramGrp>
-              <pos>Substantiv</pos>
-              <gen>masculine</gen>
-            </gramGrp>
-            <list type="ordered">
-              <item>
-                <def xml:lang="de">großer, schwerer Hammer</def>
-                <ref type="source" target="https://www.dwds.de/wb/Vorschlaghammer" accessDate="24.08.2026">DWDS</ref>
-                <cit type="translation" xml:lang="uk">
-                  <quote>Великий, важкий молот.</quote>
-                </cit>
-              </item>
-              <item>
-                <def xml:lang="de">hämmer, bei den Schmieden, der kleine Hammer, womit der Meister
-                  oder Werkgesell bei dem Schmieden beständig vorschlägt und den Ort bezeichnet, wo
-                  die Schmiedegesellen hinschlagen, und ob sie stark oder langsam mit den Possekeln
-                  schlagen sollen</def>
-                <ref type="source" target="https://www.woerterbuchnetz.de/Campe?lemid=V05716" accessDate="24.08.2026">Campe</ref>
-                <cit type="translation" xml:lang="uk">
-                  <quote>У ковальських майстернях — маленький молоток, яким майстер або підмайстер
-                    під час кування постійно вказує місце, куди мають наносити удари
-                    ковалі-підмайстри (молотобойці), а також чи слід їм бити сильніше чи повільніше
-                    за допомогою молотів.</quote>
-                </cit>
-              </item>
-            </list>
-            <note type="source_type">native</note>
-          </etym>
-          <ref type="bibliography" target="#bibl_esum"/>
-          <ref type="bibliography" target="#bibl_dwds"/>
-          <ref type="bibliography" target="#bibl_sum20"/>
-          <ref type="bibliography" target="#bibl_campe"/>
-        </entry>
-        <entry xml:id="e327" status="complete" type="normal">
+        <entry xml:id="e326" status="complete" type="normal"><form type="lemma" xml:lang="uk"><orth>вершляг</orth></form><gramGrp><pos>Substantiv</pos><gen>masculine</gen><casus type="genitive" subtype="singular">-а</casus></gramGrp><sense><usg type="style">застаріле</usg><def xml:lang="uk">Великий важкий молот для кування металу, роздрібнення каменю і т. ін.</def><ref type="source" target="https://sum20ua.com/?wordid=7666&amp;page=282&amp;searchWord=вершляг#lid_7666" accessDate="24.08.2026">СУМ-20</ref></sense><sense><usg type="region">діалектне</usg><def xml:lang="uk">Молот</def><ref type="source" target="#bibl_esum">ЕСУМ</ref></sense><note type="entry"><p>Запозичення з нім. мови; нвн. Verschlághammer «молоток мідника» [<ref target="#bibl">ЕСУМ</ref>].</p></note><etym type="german"><form><orth>Vorschlaghammer</orth><stress>Vórschlaghammer</stress><usg type="hist">нвн.</usg></form><gramGrp><pos>Substantiv</pos><gen>masculine</gen></gramGrp><list type="ordered"><item><def xml:lang="de">großer, schwerer Hammer</def><ref type="source" target="https://www.dwds.de/wb/Vorschlaghammer" accessDate="24.08.2026">DWDS</ref><cit type="translation" xml:lang="uk"><quote>Великий, важкий молот.</quote></cit></item><item><def xml:lang="de">hämmer, bei den Schmieden, der kleine Hammer, womit der Meister oder Werkgesell bei dem Schmieden beständig vorschlägt und den Ort bezeichnet, wo die Schmiedegesellen hinschlagen, und ob sie stark oder langsam mit den Possekeln schlagen sollen</def><ref type="source" target="https://www.woerterbuchnetz.de/Campe?lemid=V05716" accessDate="24.08.2026">Campe</ref><cit type="translation" xml:lang="uk"><quote>У ковальських майстернях — маленький молоток, яким майстер або підмайстер&#13;
+                    під час кування постійно вказує місце, куди мають наносити удари&#13;
+                    ковалі-підмайстри (молотобойці), а також чи слід їм бити сильніше чи повільніше&#13;
+                    за допомогою молотів.</quote></cit></item></list><note type="source_type">native</note></etym><ref type="bibliography" target="#bibl_esum"/><ref type="bibliography" target="#bibl_sum20"/><ref type="bibliography" target="#bibl_campe"/><ref type="bibliography" target="#bibl_dwds"/></entry><entry xml:id="e327" status="complete" type="normal">
           <form type="lemma" xml:lang="uk">
             <orth>верштаб</orth>
             <stress>вершта́б</stress>
@@ -44319,129 +43985,201 @@
           <ref type="bibliography" target="#bibl_zhelekh"/>
           <ref type="bibliography" target="#bibl_dwds"/>
         </entry>
-        <entry xml:id="e338" status="complete" type="normal">
+        <entry xml:id="e338" status="complete" type="normal"><form type="lemma" xml:lang="uk"><orth>видноколо</orth><stress>видноко́ло</stress></form><gramGrp><pos>Substantiv</pos><gen>neuter</gen></gramGrp><sense><usg type="style">поетичне</usg><def xml:lang="uk">Обрій, горизонт</def><ref type="source" target="https://sum20ua.com/?wordid=8648&amp;page=310&amp;searchWord=видноколо#lid_8648" accessDate="26.08.2026">СУМ-20</ref></sense><sense><usg type="style">переносне</usg><def xml:lang="uk">Сукупність, весь обсяг чого-небудь, доступного для спостереження, дослідження, пізнання</def><ref type="source" target="https://sum20ua.com/?wordid=8648&amp;page=310&amp;searchWord=видноколо#lid_8648" accessDate="26.08.2026">СУМ-20</ref></sense><sense><def xml:lang="uk">Те саме, що <hi rend="italic">виднокру́г</hi></def><ref type="source" target="https://sum20ua.com/?wordid=8648&amp;page=310&amp;searchWord=видноколо#lid_8648" accessDate="26.08.2026">СУМ-20</ref></sense><cit type="translation" xml:lang="pl"><quote>widnokrąg</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>обрій<ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="hu"><quote>látókör</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>горизонт<ref type="source" target="#bibl_eksz">EKSZ</ref></def></cit><note type="entry"><p>Вважається власне укр. складним словом пізнього походження, утвореним з основ прикм. ім. &#13;<lb/><hi rend="italic">видний</hi> та <hi rend="italic">коло</hi> «обрій», можливо, під впливом пол. widnokrąg «тс.» [<ref target="#bibl">ЕСУМ</ref>]. Насправді може бути словотвірною калькою з нім. Gesíchtskreis (від нім. Gesícht «зовнішній вигляд, характерні риси» та Kreis «коло»; за тією ж моделлю побудоване і угор. látókör: látni «бачити» і kör «коло». Пор. <ref target="#e3038">виднокіл</ref>, <ref target="#e3039">виднокруг</ref>.</p></note><etym type="german"><form><orth>Gesichtskreis</orth><stress>Gesíchtskreis</stress><usg type="hist">нвн.</usg></form><gramGrp><pos>Substantiv</pos><gen>masculine</gen></gramGrp><list type="ordered"><item><def xml:lang="de">Gebiet, das man ohne Ortsveränderung überschaut</def><ref type="source" target="https://www.dwds.de/wb/Gesichtskreis" accessDate="25.08.2026">DWDS</ref><cit type="translation" xml:lang="uk"><quote>Територія, яку можна оглянути, не змінюючи свого місця положення.</quote></cit></item><item><usg type="style">застаріле</usg><def xml:lang="de">Horizont</def><ref type="source" target="https://www.dwds.de/wb/Gesichtskreis" accessDate="25.08.2026">DWDS</ref><cit type="translation" xml:lang="uk"><quote>Горизонт.</quote></cit></item></list><note type="source_type">native</note><note type="borrowing"><trait type="type">calque</trait></note></etym><ref type="bibliography" target="#bibl_esum"/><ref type="bibliography" target="#bibl_sum20"/><ref type="bibliography" target="#bibl_dwds"/><ref type="bibliography" target="#bibl_eksz"/></entry><entry xml:id="e339" status="complete" type="normal"><form type="lemma" xml:lang="uk"><orth>видобуток</orth><stress>ви́добуток</stress></form><gramGrp><pos>Substantiv</pos><gen>masculine</gen><casus type="genitive" subtype="singular">-у</casus></gramGrp><sense><def xml:lang="uk">Процес добування корисних копалин із надр землі</def><ref type="source" target="https://sum20ua.com/?wordid=8661&amp;page=311&amp;searchWord=видобуток#lid_8661" accessDate="26.08.2026">СУМ-20</ref></sense><sense><def xml:lang="uk">Певна кількість корисних копалин, видобутих із надр землі</def><ref type="source" target="https://sum20ua.com/?wordid=8661&amp;page=311&amp;searchWord=видобуток#lid_8661" accessDate="26.08.2026">СУМ-20</ref></sense><note type="entry"><p>Пор. нім. aus «з, із, ви-» (на позначення напрямку від середини назовні; вказівка на походження) і Beute «захоплене, здобуте або те, що має бути здобуте».</p></note><etym type="german"><form><orth>Ausbeute</orth><usg type="hist">нвн.</usg></form><gramGrp><pos>Substantiv</pos></gramGrp><list type="ordered"><item><def xml:lang="de">Ertrag, Gewinn aus einer Tätigkeit</def><cit type="translation" xml:lang="uk"><quote>Дохід, прибуток від діяльності.</quote></cit></item><item><usg type="style">гірничо-видобувне</usg><def xml:lang="de">Gewinn, den die Gewerke bei einer Zeche (Ausbeutekux, Ausbeutegruben) über ihre Kosten haben.</def><ref type="source" target="https://pierer.de-academic.com/113911" accessDate="04.09.2026">Pierer</ref></item></list><note type="source_type">native</note><note type="borrowing"><trait type="type">calque</trait></note></etym><ref type="bibliography" target="#bibl_sum20"/><ref type="bibliography" target="#bibl_dwds"/><ref type="bibliography" target="#bibl_pierer"/></entry><entry xml:id="e341" status="complete" type="normal">
           <form type="lemma" xml:lang="uk">
-            <orth>видноколо</orth>
-            <stress>видноко́ло</stress>
+            <orth>вика</orth>
+            <stress>ви́ка</stress>
+            <usg type="time">XVIII</usg>
+          </form>
+          <form type="variant">
+            <orth>виґа</orth>
+            <gramGrp>
+              <pos>Substantiv</pos>
+            </gramGrp>
+            <sense>
+              <usg type="style">діал.</usg>
+              <ref type="source" target="#bibl_makow">Makow.</ref>
+            </sense>
+          </form>
+          <form type="variant">
+            <orth>вика</orth>
+            <gramGrp>
+              <pos>Substantiv</pos>
+            </gramGrp>
+            <sense>
+              <usg type="time">XVIII</usg>
+              <ref type="source" target="#bibl_esum">ЕСУМ</ref>
+            </sense>
+          </form>
+          <form type="variant">
+            <orth>вичи́на</orth>
+            <gramGrp>
+              <pos>Substantiv</pos>
+            </gramGrp>
+            <sense>
+              <def>вика</def>
+              <ref type="source" target="#bibl_zhelekh">Желех.</ref>
+            </sense>
+          </form>
+          <form type="variant">
+            <orth>віґа</orth>
+            <gramGrp>
+              <pos>Substantiv</pos>
+            </gramGrp>
+            <sense>
+              <usg type="style">діал.</usg>
+              <ref type="source" target="#bibl_esum">ЕСУМ</ref>
+            </sense>
+          </form>
+          <form type="variant">
+            <orth>вічи́ще</orth>
+            <gramGrp>
+              <pos>Substantiv</pos>
+            </gramGrp>
+            <sense>
+              <def>місце, де була посіяна трава віка</def>
+              <ref type="source" target="#bibl_iavorn">Яворн.</ref>
+            </sense>
           </form>
           <gramGrp>
             <pos>Substantiv</pos>
-            <gen>neuter</gen>
+            <gen>feminine</gen>
           </gramGrp>
           <sense>
-            <usg type="style">поетичне</usg>
-            <def xml:lang="uk">Обрій, горизонт</def>
-            <ref type="source" target="https://sum20ua.com/?wordid=8648&amp;page=310&amp;searchWord=видноколо#lid_8648" accessDate="26.08.2026">СУМ-20</ref>
+            <usg type="domain">Культурні рослини</usg>
+            <usg type="style">ботанічне</usg>
+            <def xml:lang="uk">Кормова рослина родини бобових, плоди якої мають форму довгих
+              стручків</def>
+            <ref type="source" target="https://sum20ua.com/?wordid=8960&amp;page=318&amp;searchWord=вика#lid_8960" accessDate="31.08.2026">СУМ-20</ref>
           </sense>
           <sense>
-            <usg type="style">переносне</usg>
-            <def xml:lang="uk">Сукупність, весь обсяг чого-небудь, доступного для спостереження,
-              дослідження, пізнання</def>
-            <ref type="source" target="https://sum20ua.com/?wordid=8648&amp;page=310&amp;searchWord=видноколо#lid_8648" accessDate="26.08.2026">СУМ-20</ref>
+            <usg type="domain">Культурні рослини</usg>
+            <usg type="style">ботанічне</usg>
+            <def xml:lang="uk">Vicia sativa L.</def>
+            <ref type="source" target="#bibl_esum">ЕСУМ</ref>
           </sense>
           <sense>
-            <def xml:lang="uk">Те саме, що <hi rend="italic">виднокру́г</hi></def>
-            <ref type="source" target="https://sum20ua.com/?wordid=8648&amp;page=310&amp;searchWord=видноколо#lid_8648" accessDate="26.08.2026">СУМ-20</ref>
+            <usg type="domain">Культурні рослини</usg>
+            <usg type="style">ботанічне</usg>
+            <def xml:lang="uk">Wicke = вика; Futterwicke = кормовий горох; Vicia sativa</def>
+            <ref type="source" target="#bibl_zhelekh">Желех.</ref>
           </sense>
-          <cit type="translation" xml:lang="pl">
-            <quote>widnokrąg</quote>
+          <cit type="translation" xml:lang="be">
+            <quote>ві́ка</quote>
             <gramGrp>
               <pos>Substantiv</pos>
             </gramGrp>
-            <def>обрій<ref type="source" target="#bibl_esum">ЕСУМ</ref></def>
+            <def>
+              <ref type="source" target="#bibl_esum">ЕСУМ</ref>
+            </def>
+          </cit>
+          <cit type="translation" xml:lang="hsb">
+            <quote>woka</quote>
+            <gramGrp>
+              <pos>Substantiv</pos>
+            </gramGrp>
+            <def>
+              <ref type="source" target="#bibl_esum">ЕСУМ</ref>
+            </def>
+          </cit>
+          <cit type="translation" xml:lang="de">
+            <quote>Wicke</quote>
+            <gramGrp>
+              <pos>Substantiv</pos>
+            </gramGrp>
+            <def>повзуча рослина родини бобових (Fabaceae) з родів Vicia або Lathyrus, зокрема
+              запашний горошок (Lathyrus odoratus), який вирощують як декоративну рослину<ref type="source" target="#bibl_dwds">DWDS</ref></def>
+          </cit>
+          <cit type="translation" xml:lang="dsb">
+            <quote>wejka, wojka</quote>
+            <gramGrp>
+              <pos>Substantiv</pos>
+            </gramGrp>
+            <def>
+              <ref type="source" target="#bibl_esum">ЕСУМ</ref>
+            </def>
+          </cit>
+          <cit type="translation" xml:lang="pl">
+            <quote>wyka</quote>
+            <gramGrp>
+              <pos>Substantiv</pos>
+            </gramGrp>
+            <def>
+              <ref type="source" target="#bibl_esum">ЕСУМ</ref>
+            </def>
+          </cit>
+          <cit type="translation" xml:lang="ru">
+            <quote>ви́ка</quote>
+            <gramGrp>
+              <pos>Substantiv</pos>
+            </gramGrp>
+            <def>
+              <ref type="source" target="#bibl_esum">ЕСУМ</ref>
+            </def>
+          </cit>
+          <cit type="translation" xml:lang="sk">
+            <quote>vika</quote>
+            <gramGrp>
+              <pos>Substantiv</pos>
+            </gramGrp>
+            <def>
+              <ref type="source" target="#bibl_esum">ЕСУМ</ref>
+            </def>
+          </cit>
+          <cit type="translation" xml:lang="cs">
+            <quote>vika</quote>
+            <gramGrp>
+              <pos>Substantiv</pos>
+            </gramGrp>
+            <def>
+              <ref type="source" target="#bibl_esum">ЕСУМ</ref>
+            </def>
           </cit>
           <note type="entry">
-            <p>Вважається власне укр. складним словом пізнього походження, утвореним з основ прикм.
-              ім. &#13;<lb/><hi rend="italic">видний</hi> та &#13;<lb/><hi rend="italic">коло</hi>
-              «обрій», можливо, під впливом пол. widnokrąg «тс.» [<ref target="#bibl">ЕСУМ</ref>].
-              Насправді може бути калькою з нім. Gesíchtskreis (від нім. Gesícht «зовнішній вигляд,
-              характерні риси» та Kreis «коло». Пор. <ref target="#e3038">виднокіл</ref>, <ref target="#e3039">виднокруг</ref>.</p>
+            <p>Остаточно не зʼясоване; виводиться через пол. посередництво від двн. wicka, wiccha,
+              яке походить від лат. vicia «вика»; однак є певні підстави припустити автохтонність
+              назви цієї рослини у словʼянських мовах [<ref target="#bibl">ЕСУМ</ref>].</p>
           </note>
           <etym type="german">
             <form>
-              <orth>Gesichtskreis</orth>
-              <stress>Gesíchtskreis</stress>
-              <usg type="hist">нвн.</usg>
+              <orth>Wicka</orth>
+              <stress>wícka</stress>
+              <usg type="hist">двн.</usg>
+              <borrowed xml:lang="la">vicia</borrowed>
             </form>
             <gramGrp>
               <pos>Substantiv</pos>
-              <gen>masculine</gen>
+              <gen>feminine</gen>
             </gramGrp>
             <list type="ordered">
               <item>
-                <def xml:lang="de">Gebiet, das man ohne Ortsveränderung überschaut</def>
-                <ref type="source" target="https://www.dwds.de/wb/Gesichtskreis" accessDate="25.08.2026">DWDS</ref>
+                <usg type="time">двн.</usg>
+                <usg type="domain">Дикорослі рослини</usg>
+                <usg type="style">ботанічне</usg>
+                <def xml:lang="de">wildi wicka ’Vogel-Wicke’</def>
+                <ref type="source" target="https://www.woerterbuchnetz.de/Splett?lemid=W02440" accessDate="01.09.2026">Splett</ref>
                 <cit type="translation" xml:lang="uk">
-                  <quote>Територія, яку можна оглянути, не змінюючи свого місця положення.</quote>
-                </cit>
-              </item>
-              <item>
-                <usg type="style">застаріле</usg>
-                <def xml:lang="de">Horizont</def>
-                <ref type="source" target="https://www.dwds.de/wb/Gesichtskreis" accessDate="25.08.2026">DWDS</ref>
-                <cit type="translation" xml:lang="uk">
-                  <quote>Горизонт.</quote>
+                  <quote>Дика вика, *Vogel-Wicke* = пташиний горох</quote>
                 </cit>
               </item>
             </list>
-            <note type="source_type">native</note>
+            <note type="source_type">borrowing</note>
             <note type="borrowing">
-              <trait type="type">calque</trait>
+              <trait type="type">lexical</trait>
+              <trait type="path">mediated</trait>
+              <trait type="certainty">unclear</trait>
+              <trait type="mediator">польська</trait>
             </note>
           </etym>
           <ref type="bibliography" target="#bibl_esum"/>
+          <ref type="bibliography" target="#bibl_zhelekh"/>
           <ref type="bibliography" target="#bibl_sum20"/>
+          <ref type="bibliography" target="#bibl_iavorn"/>
           <ref type="bibliography" target="#bibl_dwds"/>
+          <ref type="bibliography" target="#bibl_makow"/>
+          <ref type="bibliography" target="#bibl_splett"/>
         </entry>
-        <entry xml:id="e339" status="complete" type="normal">
-          <form type="lemma" xml:lang="uk">
-            <orth>видобуток</orth>
-            <stress>ви́добуток</stress>
-          </form>
-          <gramGrp>
-            <pos>Substantiv</pos>
-            <gen>masculine</gen>
-            <casus type="genitive" subtype="singular">-у</casus>
-          </gramGrp>
-          <sense>
-            <def xml:lang="uk">Процес добування корисних копалин із надр землі</def>
-            <ref type="source" target="https://sum20ua.com/?wordid=8661&amp;page=311&amp;searchWord=видобуток#lid_8661" accessDate="26.08.2026">СУМ-20</ref>
-          </sense>
-          <sense>
-            <def xml:lang="uk">Певна кількість корисних копалин, видобутих із надр землі</def>
-            <ref type="source" target="https://sum20ua.com/?wordid=8661&amp;page=311&amp;searchWord=видобуток#lid_8661" accessDate="26.08.2026">СУМ-20</ref>
-          </sense>
-          <note type="entry">
-            <p>Пор. нім. aus «з, із, ви-» (на позначення напрямку від середини назовні; вказівка на
-              походження) і Beute «захоплене, здобуте або те, що має бути здобуте».</p>
-          </note>
-          <etym type="german">
-            <form>
-              <orth>Ausbeute</orth>
-              <usg type="hist">нвн.</usg>
-            </form>
-            <gramGrp>
-              <pos>Substantiv</pos>
-            </gramGrp>
-            <list type="ordered">
-              <item>
-                <def xml:lang="de">Ertrag, Gewinn aus einer Tätigkeit</def>
-                <ref type="source" target="https://www.dwds.de/wb/Ausbeute" accessDate="26.08.2026">
-                  DWDS</ref>
-                <cit type="translation" xml:lang="uk">
-                  <quote>Дохід, прибуток від діяльності.</quote>
-                </cit>
-              </item>
-            </list>
-            <note type="source_type">native</note>
-            <note type="borrowing">
-              <trait type="type">calque</trait>
-            </note>
-          </etym>
-          <ref type="bibliography" target="#bibl_sum20"/>
-          <ref type="bibliography" target="#bibl_dwds"/>
-        </entry>
-        <entry xml:id="e341" status="complete" type="normal"><form type="lemma" xml:lang="uk"><orth>вика</orth><stress>ви́ка</stress><usg type="time">XVIII</usg></form><form type="variant"><orth>виґа</orth><gramGrp><pos>Substantiv</pos></gramGrp><sense><usg type="style">діал.</usg><ref type="source" target="#bibl_makow">Makow.</ref></sense></form><form type="variant"><orth>вика</orth><gramGrp><pos>Substantiv</pos></gramGrp><sense><usg type="time">XVIII</usg><ref type="source" target="#bibl_esum">ЕСУМ</ref></sense></form><form type="variant"><orth>вичи́на</orth><gramGrp><pos>Substantiv</pos></gramGrp><sense><def>вика</def><ref type="source" target="#bibl_zhelekh">Желех.</ref></sense></form><form type="variant"><orth>віґа</orth><gramGrp><pos>Substantiv</pos></gramGrp><sense><usg type="style">діал.</usg><ref type="source" target="#bibl_esum">ЕСУМ</ref></sense></form><form type="variant"><orth>вічи́ще</orth><gramGrp><pos>Substantiv</pos></gramGrp><sense><def>місце, де була посіяна трава віка</def><ref type="source" target="#bibl_iavorn">Яворн.</ref></sense></form><gramGrp><pos>Substantiv</pos><gen>feminine</gen></gramGrp><sense><usg type="domain">Культурні рослини</usg><usg type="style">ботанічне</usg><def xml:lang="uk">Кормова рослина родини бобових, плоди якої мають форму довгих стручків</def><ref type="source" target="https://sum20ua.com/?wordid=8960&amp;page=318&amp;searchWord=вика#lid_8960" accessDate="31.08.2026">СУМ-20</ref></sense><sense><usg type="domain">Культурні рослини</usg><usg type="style">ботанічне</usg><def xml:lang="uk">Vicia sativa L.</def><ref type="source" target="#bibl_esum">ЕСУМ</ref></sense><sense><usg type="domain">Культурні рослини</usg><usg type="style">ботанічне</usg><def xml:lang="uk">Wicke = вика; Futterwicke = кормовий горох; Vicia sativa</def><ref type="source" target="#bibl_zhelekh">Желех.</ref></sense><cit type="translation" xml:lang="be"><quote>ві́ка</quote><gramGrp><pos>Substantiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="hsb"><quote>woka</quote><gramGrp><pos>Substantiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="de"><quote>Wicke</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>повзуча рослина родини бобових (Fabaceae) з родів Vicia або Lathyrus, зокрема запашний горошок (Lathyrus odoratus), який вирощують як декоративну рослину<ref type="source" target="#bibl_dwds">DWDS</ref></def></cit><cit type="translation" xml:lang="dsb"><quote>wejka, wojka</quote><gramGrp><pos>Substantiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="pl"><quote>wyka</quote><gramGrp><pos>Substantiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="ru"><quote>ви́ка</quote><gramGrp><pos>Substantiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="sk"><quote>vika</quote><gramGrp><pos>Substantiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="cs"><quote>vika</quote><gramGrp><pos>Substantiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><note type="entry"><p>Остаточно не зʼясоване; виводиться через пол. посередництво від двн. wicka, wiccha, яке походить від лат. vicia «вика»; однак є певні підстави припустити автохтонність назви цієї рослини у словʼянських мовах [<ref target="#bibl">ЕСУМ</ref>].</p></note><etym type="german"><form><orth>Wicka</orth><stress>wícka</stress><usg type="hist">двн.</usg><borrowed xml:lang="la">vicia</borrowed></form><gramGrp><pos>Substantiv</pos><gen>feminine</gen></gramGrp><list type="ordered"><item><usg type="time">двн.</usg><usg type="domain">Дикорослі рослини</usg><usg type="style">ботанічне</usg><def xml:lang="de">wildi wicka ’Vogel-Wicke’</def><ref type="source" target="https://www.woerterbuchnetz.de/Splett?lemid=W02440" accessDate="01.09.2026">Splett</ref><cit type="translation" xml:lang="uk"><quote>Дика вика, *Vogel-Wicke* = пташиний горох</quote></cit></item></list><note type="source_type">borrowing</note><note type="borrowing"><trait type="type">lexical</trait><trait type="path">mediated</trait><trait type="certainty">unclear</trait><trait type="mediator">польська</trait></note></etym><ref type="bibliography" target="#bibl_esum"/><ref type="bibliography" target="#bibl_zhelekh"/><ref type="bibliography" target="#bibl_sum20"/><ref type="bibliography" target="#bibl_iavorn"/><ref type="bibliography" target="#bibl_dwds"/><ref type="bibliography" target="#bibl_makow"/><ref type="bibliography" target="#bibl_splett"/></entry><entry xml:id="e342" status="complete" type="normal">
+        <entry xml:id="e342" status="complete" type="normal">
           <form type="lemma" xml:lang="uk">
             <orth>викладка</orth>
             <stress>викла́дка</stress>
@@ -44559,17 +44297,6 @@
           <ref type="bibliography" target="#bibl_hjp"/>
           <ref type="bibliography" target="#bibl_wsjp"/>
         </entry>
-        <entry xml:id="e344">
-          <form type="lemma" xml:lang="uk">
-            <orth>виключати</orth>
-            <stress>виключа́ти</stress>
-          </form>
-          <etym type="german">
-            <form type="source" xml:lang="de">
-              <orth>ausschließen</orth>
-            </form>
-          </etym>
-        </entry>
         <entry xml:id="e345" status="incomplete" type="normal">
           <form type="lemma" xml:lang="uk">
             <orth>виключення</orth>
@@ -44589,29 +44316,7 @@
             </note>
           </etym>
         </entry>
-        <entry xml:id="e346">
-          <form type="lemma" xml:lang="uk">
-            <orth>виконувати</orth>
-            <stress>виконува́ти</stress>
-          </form>
-          <etym type="german">
-            <form type="source" xml:lang="de">
-              <orth>erfühlen</orth>
-            </form>
-          </etym>
-        </entry>
-        <entry xml:id="e347">
-          <form type="lemma" xml:lang="uk">
-            <orth>вимога</orth>
-            <stress>вимо́га</stress>
-          </form>
-          <etym type="german">
-            <form type="source" xml:lang="de">
-              <orth>Herausforderung</orth>
-            </form>
-          </etym>
-        </entry>
-        <entry xml:id="e348" status="complete" type="normal">
+        <entry xml:id="e347" status="complete" type="normal"><form type="lemma" xml:lang="uk"><orth>вимога</orth><stress>вимо́га</stress></form><gramGrp><pos>Substantiv</pos><gen>feminine</gen></gramGrp><sense><def xml:lang="uk">Наполегливі побажання, прохання, виражені в категоричній формі</def><ref type="source" target="https://sum20ua.com/?wordid=9669&amp;page=334&amp;searchWord=вимога#lid_9669" accessDate="04.09.2026">СУМ-20</ref></sense><cit type="translation" xml:lang="pl"><quote>wymóg, wymoga</quote><def>умова або сукупність умов, які мають бути виконані в певній ситуації<ref type="source" target="#bibl_wsjp">WSJP</ref></def></cit><note type="entry"><p>Сумнівне, але слід подумати у напряму семантичної кальки на тлі дієсл. <hi rend="italic">вимагати</hi>: нім. преф. heraus- «напрям назовні» = укр. <hi rend="italic">ви-</hi>, нім. Forderung «настійливе бажання» = укр. <hi rend="italic">вимагання</hi>.</p></note><etym type="german"><form><orth>Herausforderung</orth><stress>Heráusforderung</stress><usg type="hist">нвн.</usg></form><gramGrp><pos>Substantiv</pos><gen>feminine</gen></gramGrp><list type="ordered"><item><def xml:lang="de">zu einer Entscheidung veranlassende, konfrontative Äußerung bzw. Handlung</def><ref type="source" target="https://www.dwds.de/wb/Herausforderung" accessDate="04.09.2026">DWDS</ref><cit type="translation" xml:lang="uk"><quote>Конфліктне висловлювання чи дія, що спонукає до прийняття рішення.</quote></cit></item><item><def xml:lang="de">Aufgabe oder Lage, Situation, die von hohen Anforderungen gekennzeichnet ist</def><ref type="source" target="https://www.dwds.de/wb/Herausforderung" accessDate="04.09.2026">DWDS</ref><cit type="translation" xml:lang="uk"><quote>Завдання або обставини, ситуація, що характеризується високими вимогами.</quote></cit></item></list><note type="source_type">native</note><note type="borrowing"><trait type="type">calque</trait><trait type="certainty">dubiously</trait></note></etym><ref type="bibliography" target="#bibl_sum20"/><ref type="bibliography" target="#bibl_dwds"/><ref type="bibliography" target="#bibl_wsjp"/></entry><entry xml:id="e348" status="complete" type="normal">
           <form type="lemma" xml:lang="uk">
             <orth>вино</orth>
             <stress>вино́</stress>
@@ -44983,85 +44688,8 @@
           <ref type="bibliography" target="#bibl_dwds"/>
           <ref type="bibliography" target="#bibl_makow"/>
         </entry>
-        <entry xml:id="e349" status="complete" type="normal"><form type="lemma" xml:lang="uk"><orth>виняток</orth><stress>ви́няток</stress></form><form type="variant"><orth>винятко́вий</orth><gramGrp><pos>Adjektiv</pos></gramGrp><sense><def>який становить виняток.</def><ref type="source" target="#bibl_sum20">СУМ-20</ref></sense></form><form type="variant"><orth>винятко́вість</orth><gramGrp><pos>Substantiv</pos></gramGrp><sense><def>дуже виразна своєрідність, особливість, характерна тільки для кого-, чого-небудь</def><ref type="source" target="#bibl_sum20">СУМ-20</ref></sense><sense><def>зверхність, відособленість, що ґрунтується на уявленні у кого-, чого-небудь переваги, вищості порівняно з ким-, чим-небудь; привілейованість</def><ref type="source" target="#bibl_sum20">СУМ-20</ref></sense></form><form type="variant"><orth>винятко́во</orth><gramGrp><pos>Adverb</pos></gramGrp><sense><ref type="source" target="#bibl_sum20">СУМ-20</ref></sense><sense><def>лише, тільки</def><ref type="source" target="#bibl_sum20">СУМ-20</ref></sense><sense><def>як виняток, випадково</def><ref type="source" target="#bibl_sum20">СУМ-20</ref></sense></form><gramGrp><pos>Substantiv</pos><gen>masculine</gen><casus type="genitive" subtype="singular">-тку</casus></gramGrp><sense><def xml:lang="uk">Відхилення від звичайного, від загального правила</def><ref type="source" target="https://sum20ua.com/?wordid=9890&amp;page=340&amp;searchWord=виняток#lid_9890" accessDate="31.08.2026">СУМ-20</ref></sense><cit type="translation" xml:lang="pl"><quote>wyjątek</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>те, що суттєво відрізняється від інших об’єктів такого ж типу<ref type="source" target="#bibl_wsjp">WSJP</ref></def></cit><cit type="translation" xml:lang="ru"><quote>изъятие</quote><gramGrp><pos>Substantiv</pos></gramGrp></cit><cit type="translation" xml:lang="sr"><quote>изузе́так</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>те, що відхиляється від норми, те, що відрізняється від звичного; виняток; той, хто              виділяється, хто відрізняється від інших<ref type="source" target="#bibl_rms">РМС</ref></def></cit><cit type="translation" xml:lang="hr"><quote>ìznīmka</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>те, що виключається з правила або множини (без винятків; за винятком; з почесними              винятками; зробити виняток); виняток<ref type="source" target="#bibl_hjp">HJP</ref></def></cit><note type="entry"><p>Очевидно, це калька з нім. Ausnahme: преф. aus «з, ви» та імен. Nahme з nehmen «брати, йняти»; тобто «вибране, вилучене з загального».</p></note><etym type="german"><form><orth>Ausnahme</orth><stress>Áusnahme</stress><usg type="hist">нвн.</usg></form><gramGrp><pos>Substantiv</pos><gen>feminine</gen></gramGrp><list type="ordered"><item><def xml:lang="de">Abweichung von der Regel, Sonderfall</def><ref type="source" target="https://www.dwds.de/wb/Ausnahme" accessDate="31.08.2026">DWDS</ref><cit type="translation" xml:lang="uk"><quote>Відхилення від правила, виняток.</quote></cit></item></list><note type="source_type">native</note><note type="borrowing"><trait type="type">calque</trait><trait type="certainty">obviously</trait></note></etym><ref type="bibliography" target="#bibl_rms"/><ref type="bibliography" target="#bibl_sum20"/><ref type="bibliography" target="#bibl_dwds"/><ref type="bibliography" target="#bibl_hjp"/><ref type="bibliography" target="#bibl_wsjp"/></entry><entry xml:id="e350" status="complete" type="normal">
-          <form type="lemma" xml:lang="uk">
-            <orth>випадок</orth>
-            <stress>ви́падок</stress>
-          </form>
-          <gramGrp>
-            <pos>Substantiv</pos>
-            <gen>masculine</gen>
-            <casus type="genitive" subtype="singular">-дку</casus>
-          </gramGrp>
-          <sense>
-            <def xml:lang="uk">Те, що сталося, трапилося (звичайно несподівано); подія</def>
-            <ref type="source" target="https://sum20ua.com/?wordid=9917&amp;page=340&amp;searchWord=випадок#lid_9917" accessDate="30.08.2026">СУМ-20</ref>
-          </sense>
-          <sense>
-            <def xml:lang="uk">Раптовий зручний момент, непередбачені сприятливі обставини для
-              виконання чого-небудь; нагода, оказія</def>
-            <ref type="source" target="https://sum20ua.com/?wordid=9917&amp;page=340&amp;searchWord=випадок#lid_9917" accessDate="30.08.2026">СУМ-20</ref>
-          </sense>
-          <sense>
-            <def xml:lang="uk">Fall = можлива обставина, за якої щось відбувається; Zufall =
-              несподівана подія, непередбачуване збіг обставин, подій; Vorfall = подія, випадок,
-              Ereignis = те, що відбувається (відбулося) або відбудеться, подія, випадок</def>
-            <ref type="source" target="#bibl_zhelekh">Желех.</ref>
-          </sense>
-          <sense>
-            <def xml:lang="uk">Resultat = результат</def>
-            <ref type="source" target="#bibl_zhelekh">Желех.</ref>
-          </sense>
-          <cit type="translation" xml:lang="pl">
-            <quote>wypadek</quote>
-            <gramGrp>
-              <pos>Substantiv</pos>
-            </gramGrp>
-            <def>нещасний випадок<ref type="source" target="#bibl_wsjp">WSJP</ref></def>
-            <def>ситуація<ref type="source" target="#bibl_wsjp">WSJP</ref></def>
-          </cit>
-          <note type="entry">
-            <p>Похідне утворення від <hi rend="italic">падати</hi>; спочатку вживалося, очевидно, як
-              вузький термін під час гри в кості (при вдалому падінні кості); за іншим поглядом,
-              запозичене з пол. мови [<ref target="#bibl">ЕСУМ</ref>]. Структурна схожість укр. <hi rend="italic">випадок</hi> з нім. Ausfall (пор. нім. прийм. aus як позначення
-              початкової точку зміни стану = укр. префікс <hi rend="italic">ви-</hi> та нім. імен.
-              Fall «падіння» від дієсл. fallen «падати») на тлі наведених матеріалів з [<ref target="#bibl">Желех.</ref>] дають підстави підозрювати пол. та укр. кальку з нім.
-              слова.</p>
-          </note>
-          <etym type="german">
-            <form>
-              <orth>Ausfall</orth>
-              <stress>Áusfall</stress>
-            </form>
-            <gramGrp>
-              <pos>Substantiv</pos>
-              <gen>masculine</gen>
-            </gramGrp>
-            <list type="ordered">
-              <item>
-                <usg type="style">застаріле</usg>
-                <def xml:lang="de">Resultat, Beschaffenheit eines Ergebnisses (entsprechend der
-                  Bedeutung von <hi rend="bold">ausfallen</hi>: umgangssprachlich ⟨etw. fällt gut,
-                  schlecht aus⟩etw. zeigt ein gutes, schlechtes Resultat)</def>
-                <ref type="source" target="https://www.dwds.de/wb/Ausfall" accessDate="30.08.2026">
-                  DWDS</ref>
-                <cit type="translation" xml:lang="uk">
-                  <quote>Результат, характер результату (відповідно до значення слова **ausfallen**:
-                    розм. ⟨щось виходить добре, погано⟩; щось дає хороший, поганий результат).</quote>
-                </cit>
-              </item>
-            </list>
-            <note type="source_type">native</note>
-            <note type="borrowing">
-              <trait type="type">calque</trait>
-            </note>
-          </etym>
-          <ref type="bibliography" target="#bibl_zhelekh"/>
-          <ref type="bibliography" target="#bibl_sum20"/>
-          <ref type="bibliography" target="#bibl_dwds"/>
-          <ref type="bibliography" target="#bibl_wsjp"/>
-        </entry>
-        <entry xml:id="e351" status="complete" type="normal">
+        <entry xml:id="e349" status="complete" type="normal"><form type="lemma" xml:lang="uk"><orth>виняток</orth><stress>ви́няток</stress></form><form type="variant"><orth>винятко́вий</orth><gramGrp><pos>Adjektiv</pos></gramGrp><sense><def>який становить виняток</def><ref type="source" target="#bibl_sum20">СУМ-20</ref></sense></form><form type="variant"><orth>винятко́вість</orth><gramGrp><pos>Substantiv</pos></gramGrp><sense><def>дуже виразна своєрідність, особливість, характерна тільки для кого-, чого-небудь</def><ref type="source" target="#bibl_sum20">СУМ-20</ref></sense><sense><def>зверхність, відособленість, що ґрунтується на уявленні у кого-, чого-небудь переваги, вищості порівняно з ким-, чим-небудь; привілейованість</def><ref type="source" target="#bibl_sum20">СУМ-20</ref></sense></form><form type="variant"><orth>винятко́во</orth><gramGrp><pos>Adverb</pos></gramGrp><sense><def>лише, тільки</def><ref type="source" target="#bibl_sum20">СУМ-20</ref></sense><sense><def>як виняток, випадково</def><ref type="source" target="#bibl_sum20">СУМ-20</ref></sense></form><gramGrp><pos>Substantiv</pos><gen>masculine</gen><casus type="genitive" subtype="singular">-тку</casus></gramGrp><sense><def xml:lang="uk">Відхилення від звичайного, від загального правила</def><ref type="source" target="https://sum20ua.com/?wordid=9890&amp;page=340&amp;searchWord=виняток#lid_9890" accessDate="31.08.2026">СУМ-20</ref></sense><cit type="translation" xml:lang="pl"><quote>wyjątek</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>те, що суттєво відрізняється від інших об’єктів такого ж типу<ref type="source" target="#bibl_wsjp">WSJP</ref></def></cit><cit type="translation" xml:lang="ru"><quote>изъятие</quote><gramGrp><pos>Substantiv</pos></gramGrp></cit><cit type="translation" xml:lang="sr"><quote>изузе́так</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>те, що відхиляється від норми, те, що відрізняється від звичного; виняток; той, хто              виділяється, хто відрізняється від інших<ref type="source" target="#bibl_rms">РМС</ref></def></cit><cit type="translation" xml:lang="sk"><quote>výnimka</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>відхилення від норми, від чинного правила, від нормального перебігу тощо<ref type="source" target="#bibl_júľš-sav">JÚĽŠ SAV</ref></def><def>особа, річ, що розглядається таким чином<ref type="source" target="#bibl_júľš-sav">JÚĽŠ SAV</ref></def></cit><cit type="translation" xml:lang="hu"><quote>kivétel</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>відхилення від звичного, стандартного (випадкове, одноразове)<ref type="source" target="#bibl_eksz">EKSZ</ref></def><def>Той, хто, те, що (у чомусь) не належить до решти (у своєму класі)<ref type="source" target="#bibl_eksz">EKSZ</ref></def></cit><cit type="translation" xml:lang="hr"><quote>ìznīmka</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>те, що виключається з правила або множини (без винятків; за винятком; з почесними              винятками; зробити виняток); виняток<ref type="source" target="#bibl_hjp">HJP</ref></def></cit><cit type="translation" xml:lang="cs"><quote>výjimka</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>відхилення від правила, звичайного перебігу подій<ref type="source" target="#bibl_ijp">IJP</ref></def><def>особа, річ, до якої певне правило не застосовується, яка відрізняється від інших представників того самого класу<ref type="source" target="#bibl_ijp">IJP</ref></def></cit><note type="entry"><p>Очевидно, це калька з нім. Ausnahme: преф. aus «з, ви» та імен. Nahme з nehmen «брати, йняти»; тобто «вибране, вилучене з загального». Цій же моделі відповідає угор. kivétel: дієслівний преф. ki- означає рух зсередини назовні (відповідає нім. aus), vét — варіант кореня дієсл. venni (відповідає нім. nehmen), суф. -el (або -étel), який утворює іменники від дієслівних основ (означає дію або результат дії).</p></note><etym type="german"><form><orth>Ausnahme</orth><stress>Áusnahme</stress><usg type="hist">нвн.</usg></form><gramGrp><pos>Substantiv</pos><gen>feminine</gen></gramGrp><list type="ordered"><item><def xml:lang="de">Abweichung von der Regel, Sonderfall</def><cit type="translation" xml:lang="uk"><quote>Відхилення від правила, виняток.</quote></cit></item></list><note type="source_type">native</note><note type="borrowing"><trait type="type">calque</trait><trait type="certainty">obviously</trait></note></etym><ref type="bibliography" target="#bibl_rms"/><ref type="bibliography" target="#bibl_sum20"/><ref type="bibliography" target="#bibl_dwds"/><ref type="bibliography" target="#bibl_eksz"/><ref type="bibliography" target="#bibl_hjp"/><ref type="bibliography" target="#bibl_ijp"/><ref type="bibliography" target="#bibl_júľš-sav"/><ref type="bibliography" target="#bibl_wsjp"/></entry><entry xml:id="e350" status="complete" type="normal"><form type="lemma" xml:lang="uk"><orth>випадок</orth><stress>ви́падок</stress></form><gramGrp><pos>Substantiv</pos><gen>masculine</gen><casus type="genitive" subtype="singular">-дку</casus></gramGrp><sense><def xml:lang="uk">Те, що сталося, трапилося (звичайно несподівано); подія</def><ref type="source" target="https://sum20ua.com/?wordid=9917&amp;page=340&amp;searchWord=випадок#lid_9917" accessDate="30.08.2026">СУМ-20</ref></sense><sense><def xml:lang="uk">Раптовий зручний момент, непередбачені сприятливі обставини для виконання чого-небудь; нагода, оказія</def><ref type="source" target="https://sum20ua.com/?wordid=9917&amp;page=340&amp;searchWord=випадок#lid_9917" accessDate="30.08.2026">СУМ-20</ref></sense><sense><def xml:lang="uk">Fall = можлива обставина, за якої щось відбувається; Zufall = несподівана подія, непередбачуване збіг обставин, подій; Vorfall = подія, випадок, Ereignis = те, що відбувається (відбулося) або відбудеться, подія, випадок</def><ref type="source" target="#bibl_zhelekh">Желех.</ref></sense><sense><def xml:lang="uk">Resultat = результат</def><ref type="source" target="#bibl_zhelekh">Желех.</ref></sense><cit type="translation" xml:lang="pl"><quote>wypadek</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>нещасний випадок<ref type="source" target="#bibl_wsjp">WSJP</ref></def><def>ситуація<ref type="source" target="#bibl_wsjp">WSJP</ref></def></cit><cit type="translation" xml:lang="hu"><quote>eset</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>подія, яка, як правило, не призводить до суттєвих змін у системі, а часто має лише особисте значення<ref type="source" target="#bibl_eksz">EKSZ</ref></def></cit><note type="entry"><p>Похідне утворення від <hi rend="italic">падати</hi>; спочатку вживалося, очевидно, як вузький термін під час гри в кості (при вдалому падінні кості); за іншим поглядом, запозичене з пол. мови [<ref target="#bibl">ЕСУМ</ref>]. Структурна схожість укр. <hi rend="italic">випадок</hi> з нім. Ausfall (пор. нім. прийм. aus як позначення початкової точку зміни стану = укр. префікс <hi rend="italic">ви-</hi> та нім. імен. Fall «падіння» від дієсл. fallen «падати») на тлі наведених матеріалів з [<ref target="#bibl">Желех.</ref>] дають підстави підозрювати пол. та укр. кальку з нім. слова. Пор. до угор. eset «подія» esik «падати» (де корінь es- виражає ідею падіння).</p></note><etym type="german"><form><orth>Ausfall</orth><stress>Áusfall</stress></form><gramGrp><pos>Substantiv</pos><gen>masculine</gen></gramGrp><list type="ordered"><item><usg type="style">застаріле</usg><def xml:lang="de">Resultat, Beschaffenheit eines Ergebnisses (entsprechend der Bedeutung von <hi rend="bold">ausfallen</hi>: umgangssprachlich ⟨etw. fällt gut, schlecht aus⟩etw. zeigt ein gutes, schlechtes Resultat)</def><ref type="source" target="https://www.dwds.de/wb/Ausfall" accessDate="30.08.2026">DWDS</ref><cit type="translation" xml:lang="uk"><quote>Результат, характер результату (відповідно до значення слова **ausfallen**:&#13;
+                    розм. ⟨щось виходить добре, погано⟩; щось дає хороший, поганий результат).</quote></cit></item></list><note type="source_type">native</note><note type="borrowing"><trait type="type">calque</trait><trait type="certainty">possible</trait></note></etym><ref type="bibliography" target="#bibl_zhelekh"/><ref type="bibliography" target="#bibl_sum20"/><ref type="bibliography" target="#bibl_dwds"/><ref type="bibliography" target="#bibl_wsjp"/><ref type="bibliography" target="#bibl_eksz"/></entry><entry xml:id="e351" status="complete" type="normal">
           <form type="lemma" xml:lang="uk">
             <orth>виражати</orth>
             <stress>виража́ти</stress>
@@ -45375,18 +45003,90 @@
           <ref type="bibliography" target="#bibl_zhelekh"/>
           <ref type="bibliography" target="#bibl_dwds"/>
         </entry>
-        <entry xml:id="e353" status="complete" type="normal"><form type="lemma" xml:lang="uk"><orth>висловити</orth><stress>ви́словити</stress></form><gramGrp><pos>Verb</pos><trait type="transitivity">transitive</trait><trait type="aspect">perfective</trait></gramGrp><sense><def xml:lang="uk">Передавати словами (думки, почуття і т. ін.).</def><ref type="source" target="https://sum20ua.com/?wordid=10746&amp;page=361&amp;searchWord=висловити#lid_10746" accessDate="31.08.2026">СУМ-20</ref></sense><note type="entry"><p>Вірогідна калька: нім. aus- — префікс, що означає рух назовні (укр. преф. «ви-») і дієсл. sprechen «говорити, казати» (укр. <hi rend="italic">словити</hi> / <hi rend="italic">словлювати</hi> <hi rend="italic">слово</hi>).</p></note><etym type="german"><form><orth>aussprechen</orth><stress>áussprechen</stress><usg type="hist">нвн.</usg></form><gramGrp><pos>Verb</pos></gramGrp><list type="ordered"><item><def xml:lang="de">etw. (in bestimmter Weise) in Sprachlauten wiedergeben, artikulieren</def><ref type="source" target="https://www.dwds.de/wb/aussprechen" accessDate="31.08.2026">DWDS</ref><cit type="translation" xml:lang="uk"><quote>Відтворювати, артикулювати щось (певним чином) у мовних звуках.</quote></cit></item><item><def xml:lang="de">etw. mündlich oder schriftlich sagen, in Worte fassen</def><ref type="source" target="https://www.dwds.de/wb/aussprechen" accessDate="31.08.2026">DWDS</ref><cit type="translation" xml:lang="uk"><quote>Сказати щось усно чи письмово, викласти словами.</quote></cit></item></list><note type="source_type">native</note><note type="borrowing"><trait type="type">calque</trait><trait type="certainty">obviously</trait></note></etym><ref type="bibliography" target="#bibl_sum20"/><ref type="bibliography" target="#bibl_dwds"/></entry><entry xml:id="e354">
+        <entry xml:id="e353" status="complete" type="normal"><form type="lemma" xml:lang="uk"><orth>висловити</orth><stress>ви́словити</stress></form><gramGrp><pos>Verb</pos><trait type="transitivity">transitive</trait><trait type="aspect">perfective</trait></gramGrp><sense><def xml:lang="uk">Передавати словами (думки, почуття і т. ін.)</def><ref type="source" target="https://sum20ua.com/?wordid=10746&amp;page=361&amp;searchWord=висловити#lid_10746" accessDate="31.08.2026">СУМ-20</ref></sense><note type="entry"><p>Вірогідна калька: нім. aus- — префікс, що означає рух назовні (укр. преф. «ви-») і дієсл. sprechen «говорити, казати».</p></note><etym type="german"><form><orth>aussprechen</orth><stress>áussprechen</stress><usg type="hist">нвн.</usg></form><gramGrp><pos>Verb</pos></gramGrp><list type="ordered"><item><def xml:lang="de">etw. (in bestimmter Weise) in Sprachlauten wiedergeben, artikulieren</def><ref type="source" target="https://www.dwds.de/wb/aussprechen" accessDate="31.08.2026">DWDS</ref><cit type="translation" xml:lang="uk"><quote>Відтворювати, артикулювати щось (певним чином) у мовних звуках.</quote></cit></item><item><def xml:lang="de">etw. mündlich oder schriftlich sagen, in Worte fassen</def><ref type="source" target="https://www.dwds.de/wb/aussprechen" accessDate="31.08.2026">DWDS</ref><cit type="translation" xml:lang="uk"><quote>Сказати щось усно чи письмово, викласти словами.</quote></cit></item></list><note type="source_type">native</note><note type="borrowing"><trait type="type">calque</trait><trait type="certainty">obviously</trait></note></etym><ref type="bibliography" target="#bibl_sum20"/><ref type="bibliography" target="#bibl_dwds"/></entry><entry xml:id="e355" status="complete" type="normal">
           <form type="lemma" xml:lang="uk">
-            <orth>висотне будівництво</orth>
-            <stress>висо́тне будівни́цтво</stress>
+            <orth>виставка</orth>
+            <stress>ви́ставка</stress>
           </form>
+          <gramGrp>
+            <pos>Substantiv</pos>
+            <gen>feminine</gen>
+          </gramGrp>
+          <sense>
+            <def xml:lang="uk">Публічний показ спеціально підібраних предметів і місце цього показу</def>
+            <ref type="source" target="https://sum20ua.com/?wordid=10925&amp;page=369&amp;searchWord=виставка#lid_10925" accessDate="01.09.2026">СУМ-20</ref>
+          </sense>
+          <cit type="translation" xml:lang="be">
+            <quote>выстава</quote>
+          </cit>
+          <cit type="translation" xml:lang="sk">
+            <quote>výstava</quote>
+          </cit>
+          <cit type="translation" xml:lang="hu">
+            <quote>kiállítás</quote>
+          </cit>
+          <cit type="translation" xml:lang="cs">
+            <quote>výstava</quote>
+          </cit>
+          <cit type="translation" xml:lang="pl">
+            <quote>wystawa</quote>
+            <gramGrp>
+              <pos>Substantiv</pos>
+            </gramGrp>
+            <def>колекція певних предметів, виставлених для огляду у спеціально відведеному місці<ref type="source" target="#bibl_wsjp">WSJP</ref></def>
+          </cit>
+          <cit type="translation" xml:lang="sr">
+            <quote>ѝзложба</quote>
+            <gramGrp>
+              <pos>Substantiv</pos>
+            </gramGrp>
+            <def>виставка, експозиція художніх, технічних та інших виробів; наприклад, там
+              виставляють різноманітні предмети; експонати<ref type="source" target="#bibl_rms">РМС</ref></def>
+          </cit>
+          <cit type="translation" xml:lang="hr">
+            <quote>ìzložba</quote>
+            <gramGrp>
+              <pos>Substantiv</pos>
+            </gramGrp>
+            <def>місце, де виставляються різноманітні предмети або твори за певною концепцією<ref type="source" target="#bibl_hjp">HJP</ref></def>
+          </cit>
+          <note type="entry">
+            <p>Очевидно, калька, похідне від: нім. преф. aus = укр. преф. <hi rend="italic">ви-</hi>
+              та нім. дієсл. stellen = укр. дієсл. <hi rend="italic">ставити</hi>. За тією є ж
+              моделлю кальки побудовані наведені іншомовні відповідники.</p>
+          </note>
           <etym type="german">
-            <form type="source" xml:lang="de">
-              <orth>Hochbau</orth>
+            <form>
+              <orth>Ausstellung</orth>
+              <usg type="hist">нвн.</usg>
             </form>
+            <gramGrp>
+              <pos>Substantiv</pos>
+              <gen>feminine</gen>
+            </gramGrp>
+            <list type="ordered">
+              <item>
+                <def xml:lang="de">Einrichtung, auf der (für kürzere Zeit) Erzeugnisse ausgestellt
+                  werden, Schau</def>
+                <ref type="source" target="https://www.dwds.de/wb/Ausstellung" accessDate="01.09.2026">DWDS</ref>
+                <cit type="translation" xml:lang="uk">
+                  <quote>Об’єкт, на якому (на короткий час) виставляються вироби, виставка.</quote>
+                </cit>
+              </item>
+            </list>
+            <note type="source_type">native</note>
+            <note type="borrowing">
+              <trait type="type">calque</trait>
+              <trait type="certainty">obviously</trait>
+            </note>
           </etym>
+          <ref type="bibliography" target="#bibl_sum20"/>
+          <ref type="bibliography" target="#bibl_dwds"/>
+          <ref type="bibliography" target="#bibl_rms"/>
+          <ref type="bibliography" target="#bibl_hjp"/>
+          <ref type="bibliography" target="#bibl_wsjp"/>
         </entry>
-        <entry xml:id="e355" status="complete" type="normal"><form type="lemma" xml:lang="uk"><orth>виставка</orth><stress>ви́ставка</stress></form><gramGrp><pos>Substantiv</pos><gen>feminine</gen></gramGrp><sense><def xml:lang="uk">Публічний показ спеціально підібраних предметів і місце цього показу</def><ref type="source" target="https://sum20ua.com/?wordid=10925&amp;page=369&amp;searchWord=виставка#lid_10925" accessDate="01.09.2026">СУМ-20</ref></sense><cit type="translation" xml:lang="be"><quote>выстава</quote></cit><cit type="translation" xml:lang="sk"><quote>výstava</quote></cit><cit type="translation" xml:lang="hu"><quote>kiállítás</quote></cit><cit type="translation" xml:lang="cs"><quote>výstava</quote></cit><cit type="translation" xml:lang="pl"><quote>wystawa</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>колекція певних предметів, виставлених для огляду у спеціально відведеному місці<ref type="source" target="#bibl_wsjp">WSJP</ref></def></cit><cit type="translation" xml:lang="sr"><quote>ѝзложба</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>виставка, експозиція художніх, технічних та інших виробів; наприклад, там виставляють різноманітні предмети; експонати<ref type="source" target="#bibl_rms">РМС</ref></def></cit><cit type="translation" xml:lang="hr"><quote>ìzložba</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>місце, де виставляються різноманітні предмети або твори за певною концепцією<ref type="source" target="#bibl_hjp">HJP</ref></def></cit><note type="entry"><p>Очевидно, калька, похідне від: нім. преф. aus = укр. преф. <hi rend="italic">ви-</hi> та нім. дієсл. stellen = укр. дієсл. <hi rend="italic">ставити</hi>. За тією є ж моделлю кальки побудовані наведені іншомовні відповідники.</p></note><etym type="german"><form><orth>Ausstellung</orth><usg type="hist">нвн.</usg></form><gramGrp><pos>Substantiv</pos><gen>feminine</gen></gramGrp><list type="ordered"><item><def xml:lang="de">Einrichtung, auf der (für kürzere Zeit) Erzeugnisse ausgestellt werden, Schau</def><ref type="source" target="https://www.dwds.de/wb/Ausstellung" accessDate="01.09.2026">DWDS</ref><cit type="translation" xml:lang="uk"><quote>Об’єкт, на якому (на короткий час) виставляються вироби, виставка.</quote></cit></item></list><note type="source_type">native</note><note type="borrowing"><trait type="type">calque</trait><trait type="certainty">obviously</trait></note></etym><ref type="bibliography" target="#bibl_sum20"/><ref type="bibliography" target="#bibl_dwds"/><ref type="bibliography" target="#bibl_rms"/><ref type="bibliography" target="#bibl_hjp"/><ref type="bibliography" target="#bibl_wsjp"/></entry><entry xml:id="e356" status="complete" type="normal">
+        <entry xml:id="e356" status="complete" type="normal">
           <form type="lemma" xml:lang="uk">
             <orth>витрих</orth>
             <stress>ви́трих</stress>
@@ -45455,125 +45155,7 @@
           <ref type="bibliography" target="#bibl_dwds"/>
           <ref type="bibliography" target="#bibl_pfeifer"/>
         </entry>
-        <entry xml:id="e357" status="complete">
-          <form type="lemma" xml:lang="uk">
-            <orth>витяг</orth>
-            <stress>ви́тяг</stress>
-          </form>
-          <gramGrp>
-            <pos>Substantiv</pos>
-            <gen>masculine</gen>
-            <casus type="genitive" subtype="singular">-у</casus>
-          </gramGrp>
-          <sense>
-            <def xml:lang="uk">Невеликий уривок, частина чи цитата з якого-небудь тексту
-              ([СУМ-20](https://sum20ua.com/?page</def>
-            <cit type="translation" xml:lang="de">
-              <quote>380&amp;searchWord=витяг&amp;wordid=11375)).</quote>
-            </cit>
-          </sense>
-          <cit type="translation" xml:lang="ru">
-            <quote>извлечение</quote>
-            <gramGrp>
-              <pos>Substantiv</pos>
-            </gramGrp>
-            <def>
-              <ref type="source" target="#bibl_esum">ЕСУМ</ref>
-            </def>
-          </cit>
-          <etym type="german">
-            <form>
-              <orth>Auszug</orth>
-              <usg type="hist">нвн.</usg>
-            </form>
-            <gramGrp>
-              <pos>Substantiv</pos>
-              <gen>masculine</gen>
-            </gramGrp>
-            <list type="ordered">
-              <item>
-                <def xml:lang="de"/>
-                <ref type="source" target="https://www.dwds.de/wb/Auszug">Das Herausgezogene
-                  aus etw. Schriftlichem mit dem entsprechenden Teil der Vorlage übereinstimmender
-                  Ausschnitt</ref>
-                <cit type="translation" xml:lang="uk">
-                  <quote>Витяг з чогось, письмовий фрагмент, що відповідає відповідній
-                    частині оригіналу.</quote>
-                </cit>
-              </item>
-            </list>
-            <note type="source_type">питоме</note>
-            <note type="borrowing">
-              <trait type="type">calque</trait>
-            </note>
-          </etym>
-          <etym type="german">
-            <form>
-              <orth>Auszug</orth>
-              <usg type="hist">нвн.</usg>
-            </form>
-            <gramGrp>
-              <pos>Substantiv</pos>
-              <gen>masculine</gen>
-            </gramGrp>
-            <list type="ordered">
-              <item>
-                <def xml:lang="de"/>
-                <ref type="source" target="https://www.dwds.de/wb/Auszug">Das Herausgezogene
-                  aus etw. Schriftlichem mit dem entsprechenden Teil der Vorlage übereinstimmender
-                  Ausschnitt</ref>
-                <cit type="translation" xml:lang="uk">
-                  <quote>Витяг з чогось, письмовий фрагмент, що відповідає відповідній
-                    частині оригіналу.</quote>
-                </cit>
-              </item>
-            </list>
-            <note type="source_type">питоме</note>
-            <note type="borrowing">
-              <trait type="type">calque</trait>
-            </note>
-          </etym>
-        </entry>
-        <entry xml:id="e358" status="complete">
-          <form type="lemma" xml:lang="uk">
-            <orth>вишнябати</orth>
-            <stress>ви́шнябати</stress>
-          </form>
-          <usg type="region">регіон.</usg>
-          <sense>
-            <def xml:lang="uk">Вийти з труднощами, виповзти.</def>
-            <cit type="translation" xml:lang="de">
-              <quote/>
-            </cit>
-          </sense>
-          <etym type="german">
-            <form type="source" xml:lang="de">
-              <orth>schnappen</orth>
-              <usg type="hist">нвн.</usg>
-            </form>
-            <gramGrp>
-              <pos>Verb</pos>
-            </gramGrp>
-            <note type="source_type">питоме</note>
-            <note type="borrowing">
-              <trait type="type">lexical</trait>
-              <trait type="path">direct</trait>
-              <trait type="certainty">possible</trait>
-            </note>
-          </etym>
-          <note type="entry">
-            <p>Неясне; можливо, похідне утворення від незасвідченого дієслова *<hi rend="italic">
-              шнябати</hi>, запозиченого з німецької мови; нвн. schnappen «шкандибати; базікати»
-              споріднене з Schnabel «дзьоб», Schnepfe «бекас». Пор. <ref target="#e2993">пошнипати.</ref>
-            </p>
-          </note>
-          <ref type="bibliography" target="#bibl_esum">
-            <abbr>ЕСУМ</abbr>
-            <volume>т. 1</volume>
-            <page>388</page>
-          </ref>
-        </entry>
-        <entry xml:id="e359" status="complete" type="normal">
+        <entry xml:id="e357" status="complete" type="normal"><form type="lemma" xml:lang="uk"><orth>витяг</orth><stress>ви́тяг</stress></form><gramGrp><pos>Substantiv</pos><gen>masculine</gen><casus type="genitive" subtype="singular">-у</casus></gramGrp><sense><def xml:lang="uk">Невеликий уривок, частина чи цитата з якого-небудь тексту</def><ref type="source" target="https://sum20ua.com/?wordid=11375&amp;page=380&amp;searchWord=витяг#lid_11375" accessDate="04.09.2026">СУМ-20</ref></sense><cit type="translation" xml:lang="be"><quote>вытрымка</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>цитата, виписка<ref type="source" target="#bibl_verbum">Verbum</ref></def></cit><cit type="translation" xml:lang="bg"><quote>извлечение</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>Уривок з якогось документа чи твору<ref type="source" target="#bibl_rbe">РБЕ</ref></def></cit><cit type="translation" xml:lang="bg"><quote>изва́дка</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>короткий уривок із якогось твору, документа тощо.<ref type="source" target="#bibl_rbe">РБЕ</ref></def></cit><cit type="translation" xml:lang="pl"><quote>wyciąg</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>текст, що містить уривки з якогось більшого документа<ref type="source" target="#bibl_wsjp">WSJP</ref></def></cit><cit type="translation" xml:lang="ru"><quote>извлечение</quote><gramGrp><pos>Substantiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="sr"><quote>ѝзвадак</quote><def>уривок; витяг, короткий виклад.<ref type="source" target="#bibl_rms">РМС</ref></def></cit><cit type="translation" xml:lang="sl"><quote>izvléček</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>документ із відповідними даними, виписаними з чогось<ref type="source" target="#bibl_fran">Fran</ref></def></cit><cit type="translation" xml:lang="sk"><quote>výňatok</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>уривок із тексту, музичного твору тощо.<ref type="source" target="#bibl_ksjs">KSJS</ref></def></cit><cit type="translation" xml:lang="hu"><quote>kivonat</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>короткий виклад суті твору та його основних частин<ref type="source" target="#bibl_eksz">EKSZ</ref></def><def>pавірена копія витягу з документа<ref type="source" target="#bibl_eksz">EKSZ</ref></def></cit><cit type="translation" xml:lang="hr"><quote>ìzvadak</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>документ, що містить певну інформацію, взяту з первинного документа або більш загальних архівних матеріалів<ref type="source" target="#bibl_hjp">HJP</ref></def></cit><cit type="translation" xml:lang="cs"><quote>výňatek</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>вибрана частина з нього. мовленнєвого висловлювання, уривок<ref type="source" target="#bibl_ijp">IJP</ref></def></cit><etym type="german"><form><orth>Auszug</orth><usg type="hist">нвн.</usg></form><gramGrp><pos>Substantiv</pos><gen>masculine</gen></gramGrp><list type="ordered"><item><def xml:lang="de">das Herausgezogene a) aus etw. Schriftlichem α) mit dem entsprechenden Teil der Vorlage übereinstimmender Ausschnitt</def><ref type="source" target="https://www.dwds.de/wb/Auszug" accessDate="04.09.2026">DWDS</ref><cit type="translation" xml:lang="uk"><quote>Витяг з чогось, письмовий фрагмент, що відповідає належній частині оригіналу.</quote></cit></item></list><note type="borrowing"><trait type="type">calque</trait><trait type="certainty">probable</trait></note></etym><ref type="bibliography" target="#bibl_rbe"/><ref type="bibliography" target="#bibl_rms"/><ref type="bibliography" target="#bibl_sum20"/><ref type="bibliography" target="#bibl_dwds"/><ref type="bibliography" target="#bibl_eksz"/><ref type="bibliography" target="#bibl_fran"/><ref type="bibliography" target="#bibl_hjp"/><ref type="bibliography" target="#bibl_ijp"/><ref type="bibliography" target="#bibl_ksjs"/><ref type="bibliography" target="#bibl_verbum"/><ref type="bibliography" target="#bibl_wsjp"/></entry><entry xml:id="e358" status="complete" type="normal"><form type="lemma" xml:lang="uk"><orth>вишнябати</orth><stress>ви́шнябати</stress><usg type="style">діал.</usg></form><sense><usg type="region">діалектне</usg><def xml:lang="uk">Вийти з труднощами, виповзти</def><ref type="source" target="#bibl_esum">ЕСУМ</ref></sense><note type="entry"><p>Неясне; можливо, похідне утворення від незасвідченого дієсл. *<hi rend="italic">шнябати</hi>, запозиченого з нім. мови; нвн. schnappen «шкандибати; базікати» споріднене з Schnabel «дзьоб», Schnepfe «бекас» [<ref target="#bibl">ЕСУМ</ref>]. Пор. <ref target="#e2993">пошнипати.</ref></p></note><etym type="german"><form><orth>schnappen</orth><usg type="hist">нвн.</usg></form><gramGrp><pos>Verb</pos></gramGrp><list type="ordered"><item><usg type="time">свн.</usg><def xml:lang="de">schnappen, wanken, plaudern, schwatzen</def><ref type="source" target="https://www.dwds.de/wb/etymwb/schnappen" accessDate="05.09.2026">Pfeifer</ref><cit type="translation" xml:lang="uk"><quote>Хапати, хитатися, базікати, тріпатися</quote></cit></item><item><usg type="time">снн.</usg><def xml:lang="de">nach Atem schnappen, plappern, schwatzen</def><ref type="source" target="https://www.dwds.de/wb/etymwb/schnappen" accessDate="05.09.2026">Pfeifer</ref><cit type="translation" xml:lang="uk"><quote>Задихатися, базікати, тріпатися.</quote></cit></item></list><note type="source_type">native</note><note type="borrowing"><trait type="type">lexical</trait><trait type="path">direct</trait><trait type="certainty">possible</trait></note></etym><ref type="bibliography" target="#bibl_esum"><volume>т. 1</volume><page>388</page></ref><ref type="bibliography" target="#bibl_dwds"/><ref type="bibliography" target="#bibl_pfeifer"/></entry><entry xml:id="e359" status="complete" type="normal">
           <form type="lemma" xml:lang="uk">
             <orth>вібрувати</orth>
             <stress>вібрува́ти</stress>
@@ -45722,96 +45304,9 @@
           <ref type="bibliography" target="#bibl_dwds"/>
           <ref type="bibliography" target="#bibl_hjp"/>
         </entry>
-        <entry xml:id="e361" status="incomplete" type="normal"><form type="lemma" xml:lang="uk"><orth>відданий</orth><stress>ві́дданий</stress></form><gramGrp><pos>Adjektiv</pos></gramGrp><sense><def xml:lang="uk">Який пройнятий симпатією, любов'ю до когось, чогось, відзначається постійністю, вірністю</def><ref type="source" target="https://sum20ua.com/?wordid=12400&amp;page=407&amp;searchWord=відданий#lid_12400" accessDate="02.09.2026">СУМ-20</ref></sense><cit type="translation" xml:lang="be"><quote>адданы</quote><gramGrp><pos>Adjektiv</pos></gramGrp></cit><cit type="translation" xml:lang="pl"><quote>oddany</quote><gramGrp><pos>Adjektiv</pos></gramGrp><def>той, хто відчуває сильний емоційний зв’язок із кимось або чимось, що вважає цінним, і тому готовий йти на жертви заради блага цієї людини чи цієї речі<ref type="source" target="#bibl_wsjp">WSJP</ref></def></cit><cit type="translation" xml:lang="cs"><quote>oddaný</quote><gramGrp><pos>Adjektiv</pos></gramGrp></cit><cit type="translation" xml:lang="sk"><quote>oddaný</quote><gramGrp><pos>Adjektiv</pos></gramGrp></cit><etym type="german"><form><orth>ergeben</orth><stress>ergében</stress><usg type="hist">нвн.</usg></form><gramGrp><pos>Verb</pos></gramGrp><list type="ordered"><item><def xml:lang="de">sich jmdm. aus großer Zuneigung, großem Vertrauen innerlich rückhaltlos hingeben; sich einer Sache aus großem Interesse, tiefer Überzeugung rückhaltlos widmen</def><ref type="source" target="https://www.dwds.de/wb/ergeben#1" accessDate="02.09.2026">DWDS</ref><cit type="translation" xml:lang="uk"><quote>Віддаватися комусь беззастережно з великої прихильності та великої довіри; беззастережно присвячувати себе якійсь справі з великого інтересу та глибокого переконання.</quote></cit></item></list><note type="borrowing"><trait type="type">calque</trait></note></etym><ref type="bibliography" target="#bibl_sum20"/><ref type="bibliography" target="#bibl_dwds"/><ref type="bibliography" target="#bibl_wsjp"/></entry><entry xml:id="e363">
-          <form type="lemma" xml:lang="uk">
-            <orth>відпадати</orth>
-            <stress>відпада́ти</stress>
-          </form>
-          <etym type="german">
-            <form type="source" xml:lang="de">
-              <orth>abfallen</orth>
-            </form>
-          </etym>
-        </entry>
-        <entry xml:id="e364" status="complete">
-          <form type="lemma" xml:lang="uk">
-            <orth>відпадок</orth>
-            <stress>відпа́док</stress>
-          </form>
-          <gramGrp>
-            <pos>Substantiv</pos>
-            <gen>masculine</gen>
-            <casus type="genitive" subtype="singular">-у</casus>
-          </gramGrp>
-          <usg type="domain">Виробничі процеси</usg>
-          <usg type="region">регіональне</usg>
-          <usg type="style">рідко вживане</usg>
-          <sense>
-            <def xml:lang="uk">Відходи ([СУМ-20](https://sum20ua.com/?page</def>
-            <cit type="translation" xml:lang="de">
-              <quote>434&amp;searchWord=відпадки&amp;wordid=13281))</quote>
-            </cit>
-          </sense>
-          <sense>
-            <def xml:lang="uk">Покидьки ([СУМ-20](https://sum20ua.com/?page</def>
-            <cit type="translation" xml:lang="de">
-              <quote>434&amp;searchWord=відпадки&amp;wordid=13281)).</quote>
-            </cit>
-          </sense>
-          <etym type="german">
-            <form>
-              <orth>Abfall</orth>
-              <usg type="hist">нвн</usg>
-            </form>
-            <gramGrp>
-              <pos>Substantiv</pos>
-              <gen>masculine</gen>
-            </gramGrp>
-            <list type="ordered">
-              <item>
-                <def xml:lang="de"/>
-                <ref type="source" target="https://www.dwds.de/wb/Abfall">Überrest, der als
-                  Nebenprodukt (im Arbeitsprozess) anfällt.</ref>
-                <cit type="translation" xml:lang="uk">
-                  <quote>Залишок, що утворюється як
-                    побічний продукт (у процесі роботи).</quote>
-                </cit>
-              </item>
-            </list>
-            <note type="source_type">питоме</note>
-            <note type="borrowing">
-              <trait type="type">calque</trait>
-              <trait type="path">direct</trait>
-            </note>
-          </etym>
-          <etym type="german">
-            <form>
-              <orth>Abfall</orth>
-              <usg type="hist">нвн</usg>
-            </form>
-            <gramGrp>
-              <pos>Substantiv</pos>
-              <gen>masculine</gen>
-            </gramGrp>
-            <list type="ordered">
-              <item>
-                <def xml:lang="de"/>
-                <ref type="source" target="https://www.dwds.de/wb/Abfall">Überrest, der als
-                  Nebenprodukt (im Arbeitsprozess) anfällt.</ref>
-                <cit type="translation" xml:lang="uk">
-                  <quote>Залишок, що утворюється як
-                    побічний продукт (у процесі роботи).</quote>
-                </cit>
-              </item>
-            </list>
-            <note type="source_type">питоме</note>
-            <note type="borrowing">
-              <trait type="type">calque</trait>
-              <trait type="path">direct</trait>
-            </note>
-          </etym>
-        </entry>
-        <entry xml:id="e366" status="complete" type="normal"><form type="lemma" xml:lang="uk"><orth>відтиск</orth><stress>відти́ск</stress></form><gramGrp><pos>Substantiv</pos><gen>masculine</gen><casus type="genitive" subtype="singular">-у</casus></gramGrp><sense><usg type="style">рідко вживане</usg><def xml:lang="uk">Окремо зброшурована стаття, невеликий твір і т. ін. зі збірника, журналу</def><ref type="source" target="https://sum20ua.com/?page=453&amp;searchWord=відтиск&amp;wordid=14022" accessDate="28.08.2026">СУМ-20</ref></sense><cit type="translation" xml:lang="ru"><quote>оттиск</quote></cit><note type="entry"><p>Пор. на тлі нім. ab «від» та Druck «тиск, cила, що діє на площину». Пор. <ref target="#e3056">абдрук</ref>.</p></note><etym type="german"><form><orth>Abdruck</orth><stress>Ábdruck</stress><usg type="hist">нвн.</usg></form><gramGrp><pos>Substantiv</pos><gen>masculine</gen></gramGrp><list type="ordered"><item><usg type="style">друкарське</usg><def xml:lang="de">das Abdrucken, der Druck</def><cit type="translation" xml:lang="uk"><quote>Відбиток, друк.</quote></cit></item></list><note type="source_type">native</note><note type="borrowing"><trait type="type">calque</trait></note></etym><ref type="bibliography" target="#bibl_sum20"/><ref type="bibliography" target="#bibl_dwds"/></entry><entry xml:id="e367" status="complete" type="normal">
+        <entry xml:id="e361" status="complete" type="normal"><form type="lemma" xml:lang="uk"><orth>відданий</orth><stress>ві́дданий</stress></form><gramGrp><pos>Adjektiv</pos></gramGrp><sense><def xml:lang="uk">Який пройнятий симпатією, любовʼю до когось, чогось, відзначається постійністю, вірністю</def><ref type="source" target="https://sum20ua.com/?wordid=12400&amp;page=407&amp;searchWord=відданий#lid_12400" accessDate="02.09.2026">СУМ-20</ref></sense><cit type="translation" xml:lang="be"><quote>адданы</quote><gramGrp><pos>Adjektiv</pos></gramGrp><def>сповнений любові та відданості до когось або чогось.<ref type="source" target="#bibl_verbum">Verbum</ref></def><def>такий, що виражає відданість, лояльність<ref type="source" target="#bibl_verbum">Verbum</ref></def></cit><cit type="translation" xml:lang="pl"><quote>oddany</quote><gramGrp><pos>Adjektiv</pos></gramGrp><def>той, хто відчуває сильний емоційний зв’язок із кимось або чимось, що вважає цінним,              і тому готовий йти на жертви заради блага цієї людини чи цієї речі<ref type="source" target="#bibl_wsjp">WSJP</ref></def></cit><cit type="translation" xml:lang="sk"><quote>oddaný</quote><gramGrp><pos>Adjektiv</pos></gramGrp><def>такий, що характеризується беззаперечною, добровільною готовністю стосовно когось, чогось<ref type="source" target="#bibl_júľš-sav">JÚĽŠ SAV</ref></def><def>який виявляє постійну прихильність і повагу до партнера та існуючих зобов’язань (робочих, сімейних тощо); який повністю віддається комусь, чомусь; що свідчить про це<ref type="source" target="#bibl_júľš-sav">JÚĽŠ SAV</ref></def><def>той, хто цілковито довіряє, віддається комусь або чомусь сильнішому, часто в надії на ефективну допомогу, підтримку; той, хто свідчить про це; синонім: відданий, смиренний<ref type="source" target="#bibl_júľš-sav">JÚĽŠ SAV</ref></def></cit><cit type="translation" xml:lang="cs"><quote>oddaný</quote><gramGrp><pos>Adjektiv</pos></gramGrp><def>самовіддано, з переконання, з любові тощо, повністю відданий; вірний, прихильний, самовідданий<ref type="source" target="#bibl_ijp">IJP</ref></def></cit><etym type="german"><form><orth>ergeben</orth><stress>ergében</stress><usg type="hist">нвн.</usg></form><gramGrp><pos>Verb</pos></gramGrp><list type="ordered"><item><def xml:lang="de">sich jmdm. aus großer Zuneigung, großem Vertrauen innerlich rückhaltlos hingeben; sich einer Sache aus großem Interesse, tiefer Überzeugung rückhaltlos widmen</def><cit type="translation" xml:lang="uk"><quote>Віддаватися комусь беззастережно з великої прихильності та великої довіри;&#13;
+                    беззастережно присвячувати себе якійсь справі з великого інтересу та глибокого&#13;
+                    переконання.</quote></cit></item></list><note type="borrowing"><trait type="type">calque</trait></note></etym><ref type="bibliography" target="#bibl_sum20"/><ref type="bibliography" target="#bibl_dwds"/><ref type="bibliography" target="#bibl_ijp"/><ref type="bibliography" target="#bibl_júľš-sav"/><ref type="bibliography" target="#bibl_verbum"/><ref type="bibliography" target="#bibl_wsjp"/></entry><entry xml:id="e364" status="complete" type="normal"><form type="lemma" xml:lang="uk"><orth>відпадки</orth><stress>відпа́дки</stress></form><gramGrp><pos>Substantiv</pos><gen>plural</gen></gramGrp><sense><usg type="region">діалектне</usg><def xml:lang="uk">Відходи</def><ref type="source" target="https://sum20ua.com/?wordid=13281&amp;page=434&amp;searchWord=відпадки#lid_13281" accessDate="02.09.2026">СУМ-20</ref></sense><sense><usg type="style">рідко вживане</usg><def xml:lang="uk">Покидьки</def><ref type="source" target="https://sum20ua.com/?wordid=13281&amp;page=434&amp;searchWord=відпадки#lid_13281">СУМ-20</ref><cit type="translation" xml:lang="de"><quote>434&amp;searchWord=відпадки&amp;wordid=13281)).</quote></cit></sense><cit type="translation" xml:lang="bg"><quote>отпадък</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>маловартісний залишок чогось<ref type="source" target="#bibl_rbe">РБЕ</ref></def><def>брак, неякісна продукція<ref type="source" target="#bibl_rbe">РБЕ</ref></def></cit><cit type="translation" xml:lang="pl"><quote>odpadek</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>сміття; непотрібна, зношена або пошкоджена річ<ref type="source" target="#bibl_wsjp">WSJP</ref></def><def>матеріал, що залишився після переробки чогось<ref type="source" target="#bibl_wsjp">WSJP</ref></def></cit><cit type="translation" xml:lang="sk"><quote>odpadok</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>непотрібні, викинуті залишки, предмети з домівок, садів, установ тощо, сміття, відходи<ref type="source" target="#bibl_júľš-sav">JÚĽŠ SAV</ref></def></cit><cit type="translation" xml:lang="hu"><quote>hulladék</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>залишки матеріалу у виробничому процесі, відходи; сміття<ref type="source" target="#bibl_eksz">EKSZ</ref></def></cit><cit type="translation" xml:lang="cs"><quote>odpadek</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>сміття — непотрібні, викинуті залишки, відходи<ref type="source" target="#bibl_ijp">IJP</ref></def></cit><etym type="german"><form><orth>Abfall</orth><usg type="hist">нвн.</usg></form><gramGrp><pos>Substantiv</pos><gen>masculine</gen></gramGrp><list type="ordered"><item><def xml:lang="de">Überrest, der als Nebenprodukt (im Arbeitsprozess) anfällt, entsteht. Synonym zu Müll, siehe auch Unrat</def><ref type="source" target="https://www.dwds.de/wb/Abfall" accessDate="02.09.2026">DWDS</ref><cit type="translation" xml:lang="uk"><quote>Залишки, що утворюються як побічний продукт (у процесі роботи). Синонім до Müll «сміття», також Unrat «непотріб».</quote></cit></item></list><note type="source_type">native</note><note type="borrowing"><trait type="type">calque</trait><trait type="path">direct</trait><trait type="certainty">possible</trait></note></etym><ref type="bibliography" target="#bibl_rbe"/><ref type="bibliography" target="#bibl_sum20"/><ref type="bibliography" target="#bibl_dwds"/><ref type="bibliography" target="#bibl_eksz"/><ref type="bibliography" target="#bibl_ijp"/><ref type="bibliography" target="#bibl_júľš-sav"/><ref type="bibliography" target="#bibl_wsjp"/></entry><entry xml:id="e366" status="complete" type="normal"><form type="lemma" xml:lang="uk"><orth>відтиск</orth><stress>відти́ск</stress></form><gramGrp><pos>Substantiv</pos><gen>masculine</gen><casus type="genitive" subtype="singular">-у</casus></gramGrp><sense><usg type="style">рідко вживане</usg><def xml:lang="uk">Окремо зброшурована стаття, невеликий твір і т. ін. зі збірника, журналу</def><ref type="source" target="https://sum20ua.com/?page=453&amp;searchWord=відтиск&amp;wordid=14022" accessDate="28.08.2026">СУМ-20</ref></sense><cit type="translation" xml:lang="pl"><quote>odsisk</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>відбитка; друк, копія (стар.)<ref type="source" target="#bibl_dorosz">Dorosz.</ref></def></cit><cit type="translation" xml:lang="ru"><quote>оттиск</quote></cit><cit type="translation" xml:lang="sr"><quote>о̏тӣсак</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>слід, відображення предмета на носії, папері тощо<ref type="source" target="#bibl_rms">РМС</ref></def><def>видрукований примірник тексту, репродукції, креслення<ref type="source" target="#bibl_rms">РМС</ref></def><def>виріб, виготовлений методом лиття; виливок (з металу, воску тощо)<ref type="source" target="#bibl_rms">РМС</ref></def></cit><cit type="translation" xml:lang="sl"><quote>odtìsk</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>der Abdruck; das Exemplar (eines Druckwerkes) = відбиток; примірник (друкованого твору)<ref type="source" target="#bibl_fran">Fran</ref></def></cit><cit type="translation" xml:lang="sk"><quote>odtisk</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>відбиток, результат перенесення зображення з друкарської форми під тиском; друк, отриманий таким чином<ref type="source" target="#bibl_júľš-sav">JÚĽŠ SAV</ref></def></cit><cit type="translation" xml:lang="hu"><quote>különnyomat</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>самостійно виданий відбиток оригінального набору тексту, опублікованого в рамках видання<ref type="source" target="#bibl_eksz">EKSZ</ref></def></cit><cit type="translation" xml:lang="hu"><quote>nyomat</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>копія, виготовлена поліграфічним методом<ref type="source" target="#bibl_eksz">EKSZ</ref></def></cit><cit type="translation" xml:lang="hu"><quote>lenyomat</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>копія, виготовлена поліграфічним способом на основі (первинного) зображення<ref type="source" target="#bibl_eksz">EKSZ</ref></def></cit><cit type="translation" xml:lang="hr"><quote>òtisak</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>слід чогось на поверхні (зазвичай на папері)<ref type="source" target="#bibl_hjp">HJP</ref></def><def>роздрукована копія чогось<ref type="source" target="#bibl_hjp">HJP</ref></def><def>одиниця виміру продуктивності друкарського верстата<ref type="source" target="#bibl_hjp">HJP</ref></def></cit><cit type="translation" xml:lang="cs"><quote>otisk</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>зображення, слід, що утворився внаслідок притискання чи відбиття чогось<ref type="source" target="#bibl_ijp">IJP</ref></def><def>перенесення фарби (з друкарської форми) під тиском на папір тощо<ref type="source" target="#bibl_ijp">IJP</ref></def><def>відтиск, що утворився в результаті друку: примірник журналу<ref type="source" target="#bibl_ijp">IJP</ref></def></cit><note type="entry"><p>Пор. на тлі нім. ab «від» та Druck «тиск, cила, що діє на площину». Пор. <ref target="#e3056">абдрук</ref>.</p></note><etym type="german"><form><orth>Abdruck</orth><stress>Ábdruck</stress><usg type="hist">нвн.</usg></form><gramGrp><pos>Substantiv</pos><gen>masculine</gen></gramGrp><list type="ordered"><item><usg type="style">друкарське</usg><def xml:lang="de">das Abdrucken, der Druck</def><cit type="translation" xml:lang="uk"><quote>Відбиток, друк.</quote></cit></item></list><note type="source_type">native</note><note type="borrowing"><trait type="type">calque</trait></note></etym><ref type="bibliography" target="#bibl_rms"/><ref type="bibliography" target="#bibl_sum20"/><ref type="bibliography" target="#bibl_dorosz"/><ref type="bibliography" target="#bibl_dwds"/><ref type="bibliography" target="#bibl_eksz"/><ref type="bibliography" target="#bibl_fran"/><ref type="bibliography" target="#bibl_hjp"/><ref type="bibliography" target="#bibl_ijp"/><ref type="bibliography" target="#bibl_júľš-sav"/></entry><entry xml:id="e367" status="complete" type="normal">
           <form type="lemma" xml:lang="uk">
             <orth>відумерти</orth>
             <stress>відуме́рти</stress>
@@ -45954,195 +45449,7 @@
           <ref type="bibliography" target="#bibl_tsru"/>
           <ref type="bibliography" target="#bibl_pfeifer"/>
         </entry>
-        <entry xml:id="e368">
-          <form type="lemma" xml:lang="uk">
-            <orth>відхід</orth>
-          </form>
-          <etym type="german">
-            <form type="source" xml:lang="de">
-              <orth>Fortgang</orth>
-            </form>
-          </etym>
-        </entry>
-        <entry xml:id="e369">
-          <form type="lemma" xml:lang="uk">
-            <orth>відходи</orth>
-            <stress>відхо́ди</stress>
-          </form>
-          <etym type="german">
-            <form type="source" xml:lang="de">
-              <orth>Abgang</orth>
-            </form>
-          </etym>
-        </entry>
-        <entry xml:id="e370">
-          <form type="lemma" xml:lang="uk">
-            <orth>віз</orth>
-          </form>
-          <etym type="german">
-            <form type="source" xml:lang="de">
-              <orth>Fuhre 1</orth>
-            </form>
-          </etym>
-        </entry>
-        <entry xml:id="e371">
-          <form type="lemma" xml:lang="uk">
-            <orth>візерунок</orth>
-            <stress>візеру́нок</stress>
-          </form>
-          <etym type="german">
-            <form type="source" xml:lang="de">
-              <orth>Visierung</orth>
-            </form>
-          </etym>
-        </entry>
-        <entry xml:id="e372">
-          <form type="lemma" xml:lang="uk">
-            <orth>війт</orth>
-          </form>
-          <etym type="german">
-            <form type="source" xml:lang="de">
-              <orth>vog(e)t</orth>
-            </form>
-          </etym>
-        </entry>
-        <entry xml:id="e373">
-          <form type="lemma" xml:lang="uk">
-            <orth>віла</orth>
-          </form>
-          <etym type="german">
-            <form type="source" xml:lang="de">
-              <orth>Villa</orth>
-            </form>
-          </etym>
-        </entry>
-        <entry xml:id="e374" status="incomplete" type="normal">
-          <form type="lemma" xml:lang="uk">
-            <orth>відхилити</orth>
-            <stress>відхили́ти</stress>
-          </form>
-          <gramGrp>
-            <pos>Verb</pos>
-            <trait type="transitivity">transitive</trait>
-            <trait type="aspect">perfective</trait>
-          </gramGrp>
-          <etym type="german">
-            <form>
-              <orth>ablehnen</orth>
-            </form>
-            <note type="borrowing">
-              <trait type="type">calque</trait>
-            </note>
-          </etym>
-        </entry>
-        <entry xml:id="e375">
-          <form type="lemma" xml:lang="uk">
-            <orth>віншувати</orth>
-            <stress>віншува́ти</stress>
-          </form>
-          <etym type="german">
-            <form type="source" xml:lang="de">
-              <orth>wünschen</orth>
-            </form>
-          </etym>
-        </entry>
-        <entry xml:id="e376">
-          <form type="lemma" xml:lang="uk">
-            <orth>вір</orth>
-          </form>
-          <etym type="german">
-            <form type="source" xml:lang="de">
-              <orth>Ors</orth>
-            </form>
-          </etym>
-        </entry>
-        <entry xml:id="e377">
-          <form type="lemma" xml:lang="uk">
-            <orth>вірбель</orth>
-          </form>
-          <etym type="german">
-            <form type="source" xml:lang="de">
-              <orth>Wirbel 2</orth>
-            </form>
-          </etym>
-        </entry>
-        <entry xml:id="e378">
-          <form type="lemma" xml:lang="uk">
-            <orth>вірвант</orth>
-          </form>
-          <etym type="german">
-            <form type="source" xml:lang="de">
-              <orth>Verband</orth>
-            </form>
-          </etym>
-        </entry>
-        <entry xml:id="e379">
-          <form type="lemma" xml:lang="uk">
-            <orth>віроломний</orth>
-            <stress>віроло́мний</stress>
-          </form>
-          <etym type="german">
-            <form type="source" xml:lang="de">
-              <orth>Treubruch</orth>
-            </form>
-          </etym>
-        </entry>
-        <entry xml:id="e380">
-          <form type="lemma" xml:lang="uk">
-            <orth>вірянин</orth>
-            <stress>віря́нин</stress>
-          </form>
-          <etym type="german">
-            <form type="source" xml:lang="de">
-              <orth>Gläubiger</orth>
-            </form>
-          </etym>
-        </entry>
-        <entry xml:id="e381">
-          <form type="lemma" xml:lang="uk">
-            <orth>вісмут</orth>
-          </form>
-          <etym type="german">
-            <form type="source" xml:lang="de">
-              <orth>Wismut</orth>
-            </form>
-          </etym>
-        </entry>
-        <entry xml:id="e382">
-          <form type="lemma" xml:lang="uk">
-            <orth>вісьтак</orth>
-            <stress>вісьта́к</stress>
-          </form>
-          <etym type="german">
-            <form type="source" xml:lang="de">
-              <orth>Windestock
-                Windestock</orth>
-            </form>
-          </etym>
-        </entry>
-        <entry xml:id="e383">
-          <form type="lemma" xml:lang="uk">
-            <orth>вітрограй</orth>
-            <stress>вітрогра́й</stress>
-          </form>
-          <etym type="german">
-            <form type="source" xml:lang="de">
-              <orth>Windspiel</orth>
-            </form>
-          </etym>
-        </entry>
-        <entry xml:id="e384">
-          <form type="lemma" xml:lang="uk">
-            <orth>вічнозелений</orth>
-            <stress>вічнозеле́ний</stress>
-          </form>
-          <etym type="german">
-            <form type="source" xml:lang="de">
-              <orth>Immergrün</orth>
-            </form>
-          </etym>
-        </entry>
-        <entry xml:id="e385">
+        <entry xml:id="e371" status="complete" type="normal"><form type="lemma" xml:lang="uk"><orth>візерунок</orth><stress>візеру́нок</stress><usg type="time">XVII</usg></form><form type="variant"><orth>везеру́нок</orth><gramGrp><pos>Substantiv</pos></gramGrp><sense><usg type="style">діал.</usg><ref type="source" target="#bibl_esum">ЕСУМ</ref></sense></form><form type="variant"><orth>визерунокъ</orth><gramGrp><pos>Substantiv</pos></gramGrp><sense><def>образ, подоба; взірець; рисунок, план</def><usg type="time">XVII</usg><ref type="source" target="#bibl_esum">ЕСУМ</ref></sense></form><form type="variant"><orth>візеру́нчастий</orth><gramGrp><pos>Adjektiv</pos></gramGrp><sense><ref type="source" target="#bibl_esum">ЕСУМ</ref></sense></form><gramGrp><pos>Substantiv</pos><gen>masculine</gen><casus type="genitive" subtype="singular">-нка</casus></gramGrp><sense><def xml:lang="uk">Малюнок із різних ліній, кольорів, тіней і т. ін.; мереживо</def><ref type="source" target="https://sum20ua.com/?wordid=14468&amp;page=467&amp;searchWord=візерунок#lid_14468" accessDate="03.09.2026">СУМ-20</ref></sense><sense><def xml:lang="uk">Прикраса, малюнок</def><ref type="source" target="#bibl_esum">ЕСУМ</ref></sense><cit type="translation" xml:lang="be"><quote>візэрунак</quote><usg type="region">діал.</usg><gramGrp><pos>Substantiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="pl"><quote>wizerunek</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>зображення когось або чогось<ref type="source" target="#bibl_wsjp">WSJP</ref></def><def>те, як сприймається та чи інша людина або річ<ref type="source" target="#bibl_wsjp">WSJP</ref></def><def>образ, подоба, зображення<ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><note type="entry"><p>Запозичення з пол. мови; пол. wizerunek «образ, подоба, зображення» виводиться від свн. visierunge «тс.» [<ref target="#bibl">ЕСУМ</ref>]. У свою чергу, це слово є похідним від свн. visieren «(мистецьки) моделювати, зображати, описувати, описувати у відповідності до вимог мистецтва», пізніше «вимірювати, калібрувати порожнисту міру», що є запозиченням із стфр. viser «досліджувати, перевіряти, виявляти» (від нар.-лат. vīsāre «уважно розглядати») [<ref target="https://www.dwds.de/wb/etymwb/visieren">Pfeifer</ref>].</p></note><etym type="german"><form><orth>visierunge</orth><stress>visíerunge</stress><usg type="hist">свн.</usg><borrowed xml:lang="fro">viser</borrowed></form><gramGrp><pos>Substantiv</pos><gen>feminine</gen></gramGrp><list type="ordered"><item><def xml:lang="de">(im Mittelalter und in der Renaissance) Entwurf zu einem Kunstwerk</def><ref type="source" target="https://www.dwds.de/wb/Visierung" accessDate="03.09.2026">DWDS</ref><cit type="translation" xml:lang="uk"><quote>(У Середньовіччі та епоху Ренесансу) ескіз до мистецького твору.</quote></cit></item><item><def xml:lang="de">bauplan; abeichung</def><ref type="source" target="https://www.woerterbuchnetz.de/Lexer?lemid=V04054" accessDate="03.09.2026">Lexer</ref><cit type="translation" xml:lang="uk"><quote>План будівництва; розрахунок.</quote></cit></item></list><note type="source_type">borrowing</note><note type="borrowing"><trait type="type">lexical</trait><trait type="path">mediated</trait><trait type="mediator">польська</trait></note></etym><ref type="bibliography" target="#bibl_esum"/><ref type="bibliography" target="#bibl_sum20"/><ref type="bibliography" target="#bibl_dwds"/><ref type="bibliography" target="#bibl_lexer"/><ref type="bibliography" target="#bibl_wsjp"/></entry><entry xml:id="e372" status="complete" type="normal"><form type="lemma" xml:lang="uk"><orth>війт</orth><usg type="time">1359</usg></form><form type="variant"><orth>війте́нко</orth><gramGrp><pos>Substantiv</pos></gramGrp><sense><ref type="source" target="#bibl_esum">ЕСУМ</ref></sense></form><form type="variant"><orth>війти́ха</orth><gramGrp><pos>Substantiv</pos></gramGrp><sense><ref type="source" target="#bibl_esum">ЕСУМ</ref></sense></form><form type="variant"><orth>війті́вна</orth><gramGrp><pos>Substantiv</pos></gramGrp><sense><ref type="source" target="#bibl_esum">ЕСУМ</ref></sense></form><form type="variant"><orth>війті́вство</orth><gramGrp><pos>Substantiv</pos></gramGrp><sense><ref type="source" target="#bibl_esum">ЕСУМ</ref></sense></form><form type="variant"><orth>війті́вщина</orth><gramGrp><pos>Substantiv</pos></gramGrp><sense><ref type="source" target="#bibl_esum">ЕСУМ</ref></sense></form><form type="variant"><orth>війтува́ти</orth><gramGrp><pos>Verb</pos></gramGrp><sense><ref type="source" target="#bibl_esum">ЕСУМ</ref></sense></form><form type="variant"><orth>віт</orth><gramGrp><pos>Substantiv</pos></gramGrp><sense><usg type="style">діал.</usg><ref type="source" target="#bibl_iavorn">Яворн.</ref></sense></form><form type="variant"><orth>войт</orth><gramGrp><pos>Substantiv</pos></gramGrp><sense><def>голова самоврядування в місті з німецьким правом; голова міського суду</def><usg type="time">1359</usg><ref type="source" target="#bibl_esum">ЕСУМ</ref></sense></form><form type="variant"><orth>завійтува́тися</orth><gramGrp><pos>Verb</pos></gramGrp><sense><def>зазнатися, будучи війтом</def><ref type="source" target="#bibl_esum">ЕСУМ</ref></sense></form><gramGrp><pos>Substantiv</pos><gen>masculine</gen><casus type="genitive" subtype="singular">-а</casus></gramGrp><sense><def xml:lang="uk">Керівник місцевого (міського чи сільського) управління або самоврядування в середньовічній Німеччині, Литовському князівстві, Польщі та в Україні в XV–XVIII ст.</def><ref type="source" target="https://sum20ua.com/?wordid=14527&amp;page=469&amp;searchWord=війт#lid_14527" accessDate="03.09.2026">СУМ-20</ref></sense><sense><usg type="style">розмовне</usg><def xml:lang="uk">Сільський голова</def><ref type="source" target="https://sum20ua.com/?wordid=14527&amp;page=469&amp;searchWord=війт#lid_14527" accessDate="03.09.2026">СУМ-20</ref></sense><sense><def xml:lang="uk">Сільський староста</def><ref type="source" target="#bibl_esum">ЕСУМ</ref></sense><cit type="translation" xml:lang="be"><quote>войт</quote><gramGrp><pos>Substantiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="pl"><quote>wójt</quote><gramGrp><pos>Substantiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="ru"><quote>войт</quote><usg type="region">діал.</usg><gramGrp><pos>Substantiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><note type="entry"><p>Через пол. посередництво або й безпосередньо запозичено з свн. vog(e)t «наглядач, правитель», яке походить від лат. (ad)vocātus «судовий оборонець, захисник» [<ref target="#bibl">ЕСУМ</ref>].</p></note><etym type="german"><form><orth>vog(e)t</orth><borrowed xml:lang="la">(ad)vocātus</borrowed></form><gramGrp><pos>Substantiv</pos><gen>masculine</gen></gramGrp><list type="ordered"><item><def xml:lang="de">verteidiger, schirmherr, beschützer</def><ref type="source" target="https://www.woerterbuchnetz.de/Lexer?lemid=V04819" accessDate="03.09.2026">Lexer</ref><cit type="translation" xml:lang="uk"><quote>Захисник, покровитель, охоронець.</quote></cit></item></list><note type="source_type">borrowing</note><note type="borrowing"><trait type="type">lexical</trait><trait type="path">direct_or_mediated</trait><trait type="mediator">польська</trait></note></etym><ref type="bibliography" target="#bibl_esum"/><ref type="bibliography" target="#bibl_sum20"/><ref type="bibliography" target="#bibl_iavorn"/><ref type="bibliography" target="#bibl_lexer"/></entry><entry xml:id="e373" status="complete" type="normal"><form type="lemma" xml:lang="uk"><orth>вілла</orth><stress>ві́лла</stress></form><gramGrp><pos>Substantiv</pos><gen>feminine</gen></gramGrp><sense><usg type="style">історизм</usg><def xml:lang="uk">У Стародавньому Римі – заміський маєток</def><ref type="source" target="https://sum20ua.com/?wordid=14569&amp;page=471&amp;searchWord=віла#lid_14569" accessDate="03.09.2026">СУМ-20</ref></sense><sense><def xml:lang="uk">Заміський будинок, комфортабельна дача, звичайно із садом чи парком навколо</def><ref type="source" target="https://sum20ua.com/?wordid=14569&amp;page=471&amp;searchWord=віла#lid_14569" accessDate="03.09.2026">СУМ-20</ref></sense><sense><def xml:lang="uk">Дача, особняк</def><ref type="source" target="#bibl_esum">ЕСУМ</ref></sense><cit type="translation" xml:lang="be"><quote>ві́ла</quote><gramGrp><pos>Substantiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="bg"><quote>ви́ла</quote><gramGrp><pos>Substantiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="hsb"><quote>will</quote><gramGrp><pos>Substantiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="it"><quote>villa</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>сільський будинок, садиба</def></cit><cit type="translation" xml:lang="mk"><quote>ви́ла</quote><gramGrp><pos>Substantiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="pl"><quote>willa</quote><gramGrp><pos>Substantiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="ru"><quote>ви́лла</quote><gramGrp><pos>Substantiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="sr"><quote>ви̏ла</quote><gramGrp><pos>Substantiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="sl"><quote>víla</quote><gramGrp><pos>Substantiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="sk"><quote>vila</quote><gramGrp><pos>Substantiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="hr"><quote>vȉla</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>окремий будинок, зазвичай оточений садом, що забезпечує повний комфорт.<ref type="source" target="#bibl_hjp">HJP</ref></def><def>розкішний літній будинок, оточений парком<ref type="source" target="#bibl_hjp">HJP</ref></def></cit><cit type="translation" xml:lang="cs"><quote>vila</quote><gramGrp><pos>Substantiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><note type="entry"><p>Через посередництво нім. мови (нім. Villa) запозичене, очевидно, з іт. мови; іт. villa «сільський будинок, садиба» [<ref target="#bibl">ЕСУМ</ref>].</p></note><etym type="german"><form><orth>Villa</orth><stress>Vílla</stress><borrowed xml:lang="it">villa</borrowed></form><gramGrp><pos>Substantiv</pos><gen>feminine</gen></gramGrp><list type="ordered"><item><def xml:lang="de">größeres, frei stehendes, von einem Garten umgebenes Einfamilienhaus</def><ref type="source" target="https://www.dwds.de/wb/Villa" accessDate="03.09.2026">DWDS</ref><cit type="translation" xml:lang="uk"><quote>Великий окремий односімейний будинок, оточений садом.</quote></cit></item></list><note type="source_type">borrowing</note><note type="borrowing"><trait type="type">lexical</trait><trait type="path">direct</trait></note></etym><ref type="bibliography" target="#bibl_esum"/><ref type="bibliography" target="#bibl_sum20"/><ref type="bibliography" target="#bibl_dwds"/><ref type="bibliography" target="#bibl_hjp"/></entry><entry xml:id="e375" status="complete" type="normal"><form type="lemma" xml:lang="uk"><orth>віншувати</orth><stress>віншува́ти</stress><usg type="time">XVIII</usg></form><form type="variant"><orth>вінчува́ти</orth><gramGrp><pos>Verb</pos></gramGrp><sense><usg type="style">діал.</usg><ref type="source" target="#bibl_esum">ЕСУМ</ref></sense></form><form type="variant"><orth>віншува́льний</orth><gramGrp><pos>Adjektiv</pos></gramGrp><sense><ref type="source" target="#bibl_esum">ЕСУМ</ref></sense></form><form type="variant"><orth>вѣншовати, вѣншовати</orth><gramGrp><pos>Verb</pos></gramGrp><sense><usg type="time">XVIII</usg><ref type="source" target="#bibl_esum">ЕСУМ</ref></sense></form><form type="variant"><orth>віншува́льник</orth><gramGrp><pos>Substantiv</pos></gramGrp><sense><def>Той, хто віншує, вітає кого-небудь</def><ref type="source" target="#bibl_sum20">СУМ-20</ref></sense></form><form type="variant"><orth>віншува́льниця</orth><gramGrp><pos>Substantiv</pos></gramGrp><sense><def>Жін. до віншува́льник</def><ref type="source" target="#bibl_sum20">СУМ-20</ref></sense></form><form type="variant"><orth>віншува́ння</orth><gramGrp><pos>Substantiv</pos></gramGrp><sense><ref type="source" target="#bibl_esum">ЕСУМ</ref></sense></form><gramGrp><pos>Verb</pos><trait type="transitivity">transitive</trait><trait type="aspect">imperfective</trait></gramGrp><sense><def xml:lang="uk">Те саме, що поздоровля́ти</def><ref type="source" target="https://sum20ua.com/?wordid=14641&amp;page=475&amp;searchWord=віншувати#lid_14641" accessDate="03.09.2026">СУМ-20</ref></sense><sense><def xml:lang="uk">Проголошувати побажання</def><ref type="source" target="https://sum20ua.com/?wordid=14641&amp;page=475&amp;searchWord=віншувати#lid_14641" accessDate="03.09.2026">СУМ-20</ref></sense><sense><usg type="style">рідко вживане</usg><def xml:lang="uk">Проголошувати, називати кого-небудь кимсь</def><ref type="source" target="https://sum20ua.com/?wordid=14641&amp;page=475&amp;searchWord=віншувати#lid_14641" accessDate="03.09.2026">СУМ-20</ref></sense><sense><def xml:lang="uk">Вітати, поздоровляти</def><ref type="source" target="#bibl_esum">ЕСУМ</ref></sense><cit type="translation" xml:lang="be"><quote>віншава́ць</quote><gramGrp><pos>Verb</pos></gramGrp><def>тс.<ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="pl"><quote>winszować</quote><gramGrp><pos>Verb</pos></gramGrp><def>тс., бажати, зичити<ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="cs"><quote>vinšovati</quote><gramGrp><pos>Verb</pos></gramGrp><def>бажати, зичити<ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="sk"><quote>vinšovať</quote><gramGrp><pos>Verb</pos></gramGrp><def>бажати, зичити<ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="sl"><quote>vóščiti</quote><gramGrp><pos>Verb</pos></gramGrp><def>вітати, зичити<ref type="source" target="#bibl_esum">ЕСУМ</ref></def><def>дозволити, допустити (стар.)<ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><note type="entry"><p>Через пол. winszować запозичене з свн. wünschen «бажати, зичити» [<ref target="#bibl">ЕСУМ</ref>].</p></note><etym type="german"><form><orth>wünschen</orth><stress>wǘnschen</stress><usg type="hist">нвн.</usg></form><gramGrp><pos>Verb</pos></gramGrp><list type="ordered"><item><def xml:lang="de">jmdm. aus gegebenem Anlass einen Wunsch sagen, ausdrücken</def><ref type="source" target="https://www.dwds.de/wb/w%C3%BCnschen" accessDate="03.09.2026">DWDS</ref><cit type="translation" xml:lang="uk"><quote>Висловити комусь побажання з певної нагоди.</quote></cit></item></list><note type="source_type">native</note><note type="borrowing"><trait type="type">lexical</trait><trait type="path">mediated</trait><trait type="mediator">польська</trait></note></etym><ref type="bibliography" target="#bibl_sum20"/><ref type="bibliography" target="#bibl_esum"/><ref type="bibliography" target="#bibl_dwds"/></entry><entry xml:id="e377" status="complete" type="normal"><form type="lemma" xml:lang="uk"><orth>вірбель</orth><stress>ві́рбель</stress><usg type="style">рег.</usg></form><form type="variant"><orth>ві́рбіль</orth><gramGrp><pos>Substantiv</pos></gramGrp><sense><def>тс.</def><ref type="source" target="#bibl_pysk">Піск.</ref></sense></form><gramGrp><pos>Substantiv</pos><gen>masculine</gen></gramGrp><sense><usg type="region">діалектне</usg><def xml:lang="uk">Барабанний бій</def><ref type="source" target="#bibl_zhelekh">Желех.</ref></sense><note type="entry"><p>Запозичення з нім. мови; нвн. Wirbel «вир; барабанний бій» є суфіксальним утворенням від werben «закликати» (напр., до бою) [<ref target="#bibl">ЕСУМ</ref>]. Див. ще <ref target="#e319">вербувати</ref>.</p></note><etym type="german"><form><orth>Wirbel</orth><stress>Wírbel</stress><usg type="hist">нвн.</usg></form><gramGrp><pos>Substantiv</pos><gen>masculine</gen></gramGrp><list type="ordered"><item><def xml:lang="de">sehr schnell um einen Mittelpunkt kreisende Bewegung</def><ref type="source" target="https://www.dwds.de/wb/Wirbel" accessDate="06.09.2026">DWDS</ref><cit type="translation" xml:lang="uk"><quote>Деже швидкий рух з обертанням навколо центру.</quote></cit></item><item><def xml:lang="de">Trommelwirbel</def><ref type="source" target="https://www.dwds.de/wb/Wirbel" accessDate="06.09.2026">DWDS</ref><cit type="translation" xml:lang="uk"><quote>Барабанний дріб.</quote></cit></item></list><note type="source_type">native</note><note type="borrowing"><trait type="type">lexical</trait><trait type="path">direct</trait></note></etym><ref type="bibliography" target="#bibl_esum"/><ref type="bibliography" target="#bibl_zhelekh"/><ref type="bibliography" target="#bibl_pysk"/><ref type="bibliography" target="#bibl_dwds"/></entry><entry xml:id="e378" status="complete" type="normal"><form type="lemma" xml:lang="uk"><orth>вірвант</orth><stress>вірва́нт</stress><usg type="style">діал.</usg></form><form type="variant"><orth>урва́нт</orth><gramGrp><pos>Substantiv</pos></gramGrp><sense><ref type="source" target="#bibl_esum">ЕСУМ</ref></sense></form><gramGrp><pos>Substantiv</pos><gen>masculine</gen></gramGrp><sense><usg type="region">діалектне</usg><def xml:lang="uk">Залізна кільцева скоба, що обтискує скріплювані частини</def><ref type="source" target="#bibl_esum">ЕСУМ</ref></sense><note type="entry"><p>Очевидно, видозмінене&#13;запозичення з нім. Verband&#13;«повʼязка; скріплення» [<lb/><lb/><ref target="#bibl">ЕСУМ</ref>].</p></note><etym type="german"><form><orth>Verband</orth><stress>Verbánd</stress><usg type="hist">нвн.</usg></form><gramGrp><pos>Substantiv</pos><gen>masculine</gen></gramGrp><list type="ordered"><item><def xml:lang="de">Verbindung</def><ref type="source" target="https://www.dwds.de/wb/Verband#2" accessDate="12.09.2026">DWDS</ref><cit type="translation" xml:lang="uk"><quote>Звʼязок; скріплення.</quote></cit></item></list><note type="source_type">native</note><note type="borrowing"><trait type="type">lexical</trait><trait type="path">direct</trait><trait type="certainty">obviously</trait></note></etym><ref type="bibliography" target="#bibl_esum"/><ref type="bibliography" target="#bibl_dwds"/></entry><entry xml:id="e379" status="complete" type="normal"><form type="lemma" xml:lang="uk"><orth>віроломний</orth><stress>віроло́мний</stress></form><form type="variant"><orth>віроло́мність</orth><gramGrp><pos>Substantiv</pos></gramGrp><sense><def>Властивість за знач. <hi rend="bold">віроло́мний</hi>.</def><ref type="source" target="#bibl_sum20">СУМ-20</ref></sense></form><form type="variant"><orth>віроло́мно</orth><gramGrp><pos>Adverb</pos></gramGrp><sense><def>Присл. до <hi rend="bold">віроло́мний</hi></def><ref type="source" target="#bibl_sum20">СУМ-20</ref></sense></form><form type="variant"><orth>віроло́мство</orth><gramGrp><pos>Substantiv</pos></gramGrp><sense><def>Порушення обіцянки, присяги; підступність, зрадництво</def><ref type="source" target="#bibl_sum20">СУМ-20</ref></sense></form><gramGrp><pos>Adjektiv</pos></gramGrp><sense><def xml:lang="uk">Який порушує обіцянку, присягу</def><ref type="source" target="https://sum20ua.com/?wordid=14694&amp;page=478&amp;searchWord=віроломний#lid_14694" accessDate="12.09.2026">СУМ-20</ref></sense><cit type="translation" xml:lang="be"><quote>верало́мны</quote><gramGrp><pos>Adjektiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="bg"><quote>вероло́мен</quote><gramGrp><pos>Adjektiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="mk"><quote>вероломен</quote><gramGrp><pos>Adjektiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="pl"><quote>wiarołomny</quote><gramGrp><pos>Adjektiv</pos></gramGrp><def>taki, który nie dotrzymując przysięgi, przyrzeczenia, danego słowa lub nie wywiązując się ze zobowiązań, dopuszcza się zdrady<ref type="source" target="#bibl_wsjp">WSJP</ref></def></cit><cit type="translation" xml:lang="ru"><quote>вероло́мный</quote><gramGrp><pos>Adjektiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="sr"><quote>ве̏роло̄ман, вѐроло̄ман</quote><gramGrp><pos>Adjektiv</pos></gramGrp><def>такий, що порушує своє слово, свою вірність<ref type="source" target="#bibl_rms">РМС</ref></def></cit><cit type="translation" xml:lang="sl"><quote>verolómen</quote><gramGrp><pos>Adjektiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="hr"><quote>vjȅrolōman</quote><gramGrp><pos>Adjektiv</pos></gramGrp><def>такий, що порушує своє слово, хто зраджує свою вірність<ref type="source" target="#bibl_hjp">HJP</ref></def></cit><cit type="translation" xml:lang="cs"><quote>věrolomný</quote><gramGrp><pos>Adjektiv</pos></gramGrp><def>той, хто свідомо порушує обіцянку, зрадник<ref type="source" target="#bibl_ijp">IJP</ref></def></cit><note type="entry"><p>Очевидно, скальковане з якогось європейського зразка, пор. нім. Treubruch «віроломство», утворене з основ іменників Treue «вірність» і Bruch «злам» [<ref target="#bibl">ЕСУМ</ref>]. Таким зразком може бути саме німецький у світлі того, що ця модель притаманна власне герм. мовам: нід. troubreuk (із trouw «вірність» і breuk «злам, розрив»); швед. trohetsbrott за тим же семантичним зразком тощо. Натомість в англ. та ром. мовах задіяна лат. модель perfidia (per- «вихід за межі, спотворення, зловживання») та fides «віра».</p></note><etym type="german"><form><orth>Treubruch</orth><stress>Tréubruch</stress><usg type="hist">нвн.</usg></form><gramGrp><pos>Substantiv</pos><gen>masculine</gen></gramGrp><list type="ordered"><item><def xml:lang="de">das Brechen der Treue zu jmdm., einer Sache, Verrat an jmdm., etw.</def><ref type="source" target="https://www.dwds.de/wb/Treuebruch" accessDate="12.09.2026">DWDS</ref><cit type="translation" xml:lang="uk"><quote>Злам, порушення вірності комусь, якійсь справі; зрада когось, чогось.</quote></cit></item></list></etym><ref type="bibliography" target="#bibl_esum"/><ref type="bibliography" target="#bibl_rms"/><ref type="bibliography" target="#bibl_sum20"/><ref type="bibliography" target="#bibl_dwds"/><ref type="bibliography" target="#bibl_hjp"/><ref type="bibliography" target="#bibl_ijp"/><ref type="bibliography" target="#bibl_wsjp"/></entry><entry xml:id="e380" status="incomplete" type="normal"><form type="lemma" xml:lang="uk"><orth>вірянин</orth><stress>віря́нин</stress></form><etym type="german"><form><orth>Gläubiger</orth></form><note type="borrowing"><trait type="type">calque</trait></note></etym></entry><entry xml:id="e381" status="complete" type="normal"><form type="lemma" xml:lang="uk"><orth>вісмут</orth></form><form type="variant"><orth>бі́смут</orth><gramGrp><pos>Substantiv</pos></gramGrp><sense><ref type="source" target="#bibl_esum">ЕСУМ</ref></sense></form><gramGrp><pos>Substantiv</pos><gen>masculine</gen><casus type="genitive" subtype="singular">-у</casus></gramGrp><sense><usg type="style">хімічне</usg><def xml:lang="uk">Хімічний елемент з атомним номером 83, сріблясто-сірий легкоплавкий метал із рожевим відблиском</def><ref type="source" target="#bibl_sum20" accessDate="12.09.2026">СУМ-20</ref></sense><sense><def xml:lang="uk">Лікувальний препарат, вигот. зі сполук цього елемента</def><ref type="source" target="https://sum20ua.com/?wordid=14757&amp;page=481&amp;searchWord=вісмут#lid_14757" accessDate="12.09.2026">СУМ-20</ref></sense><cit type="translation" xml:lang="be"><quote>ві́смут</quote></cit><cit type="translation" xml:lang="bg"><quote>би́сму́т</quote><gramGrp><pos>Substantiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="mk"><quote>бизмут</quote><gramGrp><pos>Substantiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="pl"><quote>bizmut</quote><gramGrp><pos>Substantiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="ru"><quote>ви́смут</quote><gramGrp><pos>Substantiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="sr"><quote>бѝзмут, вѝзмут</quote><gramGrp><pos>Substantiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="sl"><quote>bísmut</quote><gramGrp><pos>Substantiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="sk"><quote>bizmut</quote><gramGrp><pos>Substantiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="hr"><quote>bìzmut</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>елемент (символ Bi, атомний номер 83), м’який і крихкий, червонувато-білого кольору, з низькою температурою плавлення, легко розчиняється в азотній кислоті; його сполуки токсичні; використовується для виробництва сплавів з низькою температурою плавлення<ref type="source" target="#bibl_hjp">HJP</ref></def></cit><cit type="translation" xml:lang="cs"><quote>vismut, vizmut</quote><gramGrp><pos>Substantiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><note type="entry"><p>Запозичення з нім. Wismut, давніше Bismuth, походить, очевидно, від назви місцевості Wiesen коло Шнееберга і від дієслова muten «розробляти (копальню)» [<ref target="#bibl">ЕСУМ</ref>].</p></note><etym type="german"><form><orth>Wismut</orth><usg type="hist">нвн.</usg></form><gramGrp><pos>Substantiv</pos><gen>neuter</gen></gramGrp><list type="ordered"><item><usg type="style">хімічне</usg><def xml:lang="de">metallisches Element mit rötlich bis silberweißem Glanz</def><ref type="source" target="https://www.dwds.de/wb/Wismut" accessDate="12.09.2026">DWDS</ref><cit type="translation" xml:lang="uk"><quote>Хімічний елемент, метал із червонуватим або сріблясто-білим блиском.</quote></cit></item></list><note type="source_type">native</note></etym><ref type="bibliography" target="#bibl_esum"/><ref type="bibliography" target="#bibl_sum20"/><ref type="bibliography" target="#bibl_dwds"/><ref type="bibliography" target="#bibl_hjp"/></entry><entry xml:id="e382" status="complete" type="normal"><form type="lemma" xml:lang="uk"><orth>вісьтак</orth><stress>вісьта́к</stress><usg type="style">діал.</usg><usg type="time">XVIII</usg></form><form type="variant"><orth>вынштакъ</orth><gramGrp><pos>Substantiv</pos></gramGrp><sense><def>качалка (у грабарів)</def><usg type="time">XVIII</usg><usg type="style">стар.</usg><ref type="source" target="#bibl_esum">ЕСУМ</ref></sense></form><sense><usg type="region">діалектне</usg><def xml:lang="uk">Чинбарська палиця</def><ref type="source" target="#bibl_esum">ЕСУМ</ref></sense><cit type="translation" xml:lang="pl"><quote>wistaka (діал.)</quote><gramGrp><pos>Substantiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><note type="entry"><p>Запозичення з нім. мови; нвн. Windestock (Wendestock) «палка для вивертання шкіри чи шкіряних виробів» утворене з основ дієслова wenden «перевертати, лицювати» [<ref target="#bibl">ЕСУМ</ref>].</p></note><etym type="german"><form><orth>Windestock</orth><stress>Wíndestock</stress><usg type="hist">нвн.</usg></form><gramGrp><pos>Substantiv</pos><gen>masculine</gen></gramGrp><list type="ordered"><item><def xml:lang="de">werkzeug zum ausringen der gekochten oder gefärbten seidensträhnen</def><ref type="source" target="https://www.woerterbuchnetz.de/DWB?lemid=W22032" accessDate="12.09.2026">Grimm</ref><cit type="translation" xml:lang="uk"><quote>Пристрій для зняття з палиць варених або пофарбованих пасм шовку.</quote></cit></item></list></etym><ref type="bibliography" target="#bibl_esum"/><ref type="bibliography" target="#bibl_grimm"/></entry><entry xml:id="e383" status="incomplete" type="normal"><form type="lemma" xml:lang="uk"><orth>вітрограй</orth><stress>вітрогра́й</stress></form><etym type="german"><form><orth>Windspiel</orth></form><note type="borrowing"><trait type="type">calque</trait></note></etym></entry><entry xml:id="e384" status="incomplete" type="normal"><form type="lemma" xml:lang="uk"><orth>вічнозелений</orth><stress>вічнозеле́ний</stress></form><etym type="german"><form><orth>Immergrün</orth></form><note type="borrowing"><trait type="type">calque</trait></note></etym></entry><entry xml:id="e385">
           <form type="lemma" xml:lang="uk">
             <orth>вішалка</orth>
             <stress>віша́лка</stress>
@@ -46175,17 +45482,7 @@
             </form>
           </etym>
         </entry>
-        <entry xml:id="e388">
-          <form type="lemma" xml:lang="uk">
-            <orth>внесок 2</orth>
-          </form>
-          <etym type="german">
-            <form type="source" xml:lang="de">
-              <orth>Beitrag</orth>
-            </form>
-          </etym>
-        </entry>
-        <entry xml:id="e389">
+        <entry xml:id="e388" status="incomplete" type="normal"><form type="lemma" xml:lang="uk"><orth>внесок</orth></form><etym type="german"><form><orth>Beitrag</orth></form></etym></entry><entry xml:id="e389">
           <form type="lemma" xml:lang="uk">
             <orth>вовкиня</orth>
             <stress>вовки́ня</stress>
@@ -46207,18 +45504,7 @@
             </form>
           </etym>
         </entry>
-        <entry xml:id="e391">
-          <form type="lemma" xml:lang="uk">
-            <orth>водограй</orth>
-            <stress>водогра́й</stress>
-          </form>
-          <etym type="german">
-            <form type="source" xml:lang="de">
-              <orth>Wasserspiel</orth>
-            </form>
-          </etym>
-        </entry>
-        <entry xml:id="e392">
+        <entry xml:id="e391" status="incomplete" type="normal"><form type="lemma" xml:lang="uk"><orth>водограй</orth><stress>водогра́й</stress></form><etym type="german"><form><orth>Wasserspiel</orth></form><note type="borrowing"><trait type="type">calque</trait></note></etym></entry><entry xml:id="e392">
           <form type="lemma" xml:lang="uk">
             <orth>водоспад</orth>
             <stress>водоспа́д</stress>
@@ -46369,18 +45655,7 @@
             </form>
           </etym>
         </entry>
-        <entry xml:id="e401">
-          <form type="lemma" xml:lang="uk">
-            <orth>ворролинець</orth>
-            <stress>ворро́линець</stress>
-          </form>
-          <etym type="german">
-            <form type="source" xml:lang="de">
-              <orth>Wurzelblasenquale</orth>
-            </form>
-          </etym>
-        </entry>
-        <entry xml:id="e402">
+        <entry xml:id="e401" status="incomplete" type="normal"><form type="lemma" xml:lang="uk"><orth>ворволинець</orth><stress>ворволи́нець</stress></form><etym type="german"><form><orth>Wurzelblasenquale</orth></form></etym></entry><entry xml:id="e402">
           <form type="lemma" xml:lang="uk">
             <orth>вплив</orth>
           </form>
@@ -46503,91 +45778,7 @@
             </form>
           </etym>
         </entry>
-        <entry xml:id="e414" status="complete" type="normal">
-          <form type="lemma" xml:lang="uk">
-            <orth>гаківниця</orth>
-            <stress>гаківни́ця</stress>
-            <usg type="time">1529</usg>
-          </form>
-          <form type="variant">
-            <orth>гаковницы</orth>
-            <sense>
-              <usg type="time">1529</usg>
-              <ref type="source" target="#bibl_esum">ЕСУМ</ref>
-            </sense>
-          </form>
-          <gramGrp>
-            <pos>Substantiv</pos>
-            <gen>feminine</gen>
-          </gramGrp>
-          <sense>
-            <def xml:lang="uk">Старовинна рушниця</def>
-            <ref type="source" target="#bibl_esum">ЕСУМ</ref>
-          </sense>
-          <cit type="translation" xml:lang="be">
-            <quote>гаковница</quote>
-            <gramGrp>
-              <pos>Substantiv</pos>
-            </gramGrp>
-            <def>1514<ref type="source" target="#bibl_esum">ЕСУМ</ref></def>
-          </cit>
-          <cit type="translation" xml:lang="pl">
-            <quote>hakownica</quote>
-            <gramGrp>
-              <pos>Substantiv</pos>
-            </gramGrp>
-            <def>
-              <ref type="source" target="#bibl_esum">ЕСУМ</ref>
-            </def>
-          </cit>
-          <cit type="translation" xml:lang="cs">
-            <quote>hákovnice</quote>
-            <gramGrp>
-              <pos>Substantiv</pos>
-            </gramGrp>
-            <def>
-              <ref type="source" target="#bibl_esum">ЕСУМ</ref>
-            </def>
-          </cit>
-          <note type="entry">
-            <p>Прийшло в укр. мову через пол. hakownica із свн. hākenbühse (від імен. hāken «гак» і
-              bühse «рушниця, блаяшанка») [<ref target="#bibl">ЕСУМ</ref>]. Див. [<ref target="#e65">
-              аркебу́з</ref>], [<ref target="#e3011">гаркебу́з</ref>].</p>
-          </note>
-          <etym type="german">
-            <form>
-              <orth>Hakenbüchse</orth>
-              <stress>hākenbühse</stress>
-              <usg type="hist">свн.</usg>
-            </form>
-            <gramGrp>
-              <pos>Substantiv</pos>
-              <gen>feminine</gen>
-            </gramGrp>
-            <list type="ordered">
-              <item>
-                <usg type="style">історизм</usg>
-                <def xml:lang="de">altes Gewehr, Arkebuse</def>
-                <ref type="source" target="https://www.dwds.de/wb/Hakenb%C3%BCchse" accessDate="23.01.2026">DWDS</ref>
-                <cit type="translation" xml:lang="uk">
-                  <quote>Старовинна рушниця, аркебуз.</quote>
-                </cit>
-              </item>
-            </list>
-            <note type="source_type">native</note>
-            <note type="borrowing">
-              <trait type="type">lexical</trait>
-              <trait type="path">mediated</trait>
-              <trait type="mediator">польська</trait>
-            </note>
-          </etym>
-          <ref type="bibliography" target="#bibl_esum">
-            <volume>т. 1</volume>
-            <page>с. 454</page>
-          </ref>
-          <ref type="bibliography" target="#bibl_dwds"/>
-        </entry>
-        <entry xml:id="e415">
+        <entry xml:id="e414" status="complete" type="normal"><form type="lemma" xml:lang="uk"><orth>гаківниця</orth><stress>гаківни́ця</stress><usg type="time">1529</usg></form><form type="variant"><orth>гаковницы</orth><sense><usg type="time">1529</usg><ref type="source" target="#bibl_esum">ЕСУМ</ref></sense></form><gramGrp><pos>Substantiv</pos><gen>feminine</gen></gramGrp><sense><def xml:lang="uk">Старовинна рушниця</def><ref type="source" target="#bibl_esum">ЕСУМ</ref></sense><cit type="translation" xml:lang="be"><quote>гаковница</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>1514<ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="pl"><quote>hakownica</quote><gramGrp><pos>Substantiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><cit type="translation" xml:lang="cs"><quote>hákovnice</quote><gramGrp><pos>Substantiv</pos></gramGrp><def><ref type="source" target="#bibl_esum">ЕСУМ</ref></def></cit><note type="entry"><p>Прийшло в укр. мову через пол. hakownica із свн. hākenbühse (від імен. hāken «гак» і bühse «рушниця, бляшанка») [<ref target="#bibl">ЕСУМ</ref>]. Див. [<ref target="#e65">аркебу́з</ref>], [<ref target="#e3011">гаркебу́з</ref>].</p></note><etym type="german"><form><orth>Hakenbüchse</orth><stress>hākenbühse</stress><usg type="hist">свн.</usg></form><gramGrp><pos>Substantiv</pos><gen>feminine</gen></gramGrp><list type="ordered"><item><usg type="style">історизм</usg><def xml:lang="de">altes Gewehr, Arkebuse</def><ref type="source" target="https://www.dwds.de/wb/Hakenb%C3%BCchse" accessDate="23.01.2026">DWDS</ref><cit type="translation" xml:lang="uk"><quote>Старовинна рушниця, аркебуз.</quote></cit></item></list><note type="source_type">native</note><note type="borrowing"><trait type="type">lexical</trait><trait type="path">mediated</trait><trait type="mediator">польська</trait></note></etym><ref type="bibliography" target="#bibl_esum"><volume>т. 1</volume><page>с. 454</page></ref><ref type="bibliography" target="#bibl_dwds"/></entry><entry xml:id="e415">
           <form type="lemma" xml:lang="uk">
             <orth>гакс</orth>
           </form>
@@ -77035,42 +76226,6 @@
             <p>Очевидно, калька; пор. рос.<hi rend="italic">повеса</hi>. </p>
           </note>
         </entry>
-        <entry xml:id="e2995" status="complete">
-          <form type="lemma" xml:lang="uk">
-            <orth>вербклей</orth>
-            <stress>ве́рбклей</stress>
-          </form>
-          <gramGrp>
-            <pos>Substantiv</pos>
-            <gen>masculine</gen>
-            <casus type="genitive" subtype="singular">-ю</casus>
-          </gramGrp>
-          <usg type="domain">Металургія</usg>
-          <sense>
-            <def xml:lang="uk">Свинець із домішками інших металів
-              ([СУМ-20](https://sum20ua.com/?page</def>
-            <cit type="translation" xml:lang="de">
-              <quote>277&amp;searchWord=веркблей&amp;wordid=192166)).</quote>
-            </cit>
-          </sense>
-          <etym type="german">
-            <form>
-              <orth>Werkblei</orth>
-              <usg type="hist">нвн.</usg>
-            </form>
-            <gramGrp>
-              <pos>Substantiv</pos>
-              <gen>neuter</gen>
-            </gramGrp>
-            <usg type="domain">Металургія</usg>
-            <note type="source_type">питоме</note>
-            <note type="borrowing">
-              <trait type="type">lexical</trait>
-              <trait type="path">direct</trait>
-            </note>
-          </etym>
-          <ref type="bibliography" target="#bibl_sum20"/>
-        </entry>
         <entry xml:id="e2996" status="complete" type="normal">
           <form type="lemma" xml:lang="uk">
             <orth>видихтувати</orth>
@@ -78072,7 +77227,7 @@
             </note>
           </etym>
         </entry>
-        <entry xml:id="e3013" status="incomplete" type="normal"><form type="lemma" xml:lang="uk"><orth>відшкодування</orth></form><gramGrp><pos>Substantiv</pos><gen>neuter</gen></gramGrp><sense><def xml:lang="uk">Те, що повертається комусь за заподіяну шкоду або витрати</def><ref type="source" target="https://sum20ua.com/?wordid=14359&amp;page=463&amp;searchWord=відшкодування#lid_14359" accessDate="02.09.2026">СУМ-20</ref></sense><cit type="translation" xml:lang="pl"><quote>odszkodowanie</quote><gramGrp><pos>Substantiv</pos></gramGrp></cit><cit type="translation" xml:lang="sl"><quote>odškodnina</quote><gramGrp><pos>Substantiv</pos></gramGrp></cit><cit type="translation" xml:lang="hu"><quote>kártérítés</quote><gramGrp><pos>Substantiv</pos></gramGrp></cit><etym type="german"><form><orth>Entschädigung</orth><stress>Entschä́digung</stress><usg type="hist">нвн.</usg></form><gramGrp><pos>Substantiv</pos><gen>feminine</gen></gramGrp><list type="ordered"><item><def xml:lang="de">Ausgleich für einen Schaden</def><ref type="source" target="https://www.dwds.de/wb/Entschädigung" accessDate="02.09.2026">DWDS</ref><cit type="translation" xml:lang="uk"><quote>Відшкодування збитків.</quote></cit></item></list><note type="source_type">native</note><note type="borrowing"><trait type="type">calque</trait></note></etym><ref type="bibliography" target="#bibl_sum20"/><ref type="bibliography" target="#bibl_dwds"/></entry><entry xml:id="e3014" status="complete" type="normal">
+        <entry xml:id="e3013" status="complete" type="normal"><form type="lemma" xml:lang="uk"><orth>відшкодування</orth></form><gramGrp><pos>Substantiv</pos><gen>neuter</gen></gramGrp><sense><def xml:lang="uk">Те, що повертається комусь за заподіяну шкоду або витрати</def><ref type="source" target="https://sum20ua.com/?wordid=14359&amp;page=463&amp;searchWord=відшкодування#lid_14359" accessDate="02.09.2026">СУМ-20</ref></sense><cit type="translation" xml:lang="be"><quote>адшкадава́нне</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>компенсація<ref type="source" target="#bibl_verbum">Verbum</ref></def></cit><cit type="translation" xml:lang="bg"><quote>обезщете́ние</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>грошова сума, яка виплачується потерпілій особі як компенсація за заподіяну шкоду, збиток, нещасний випадок тощо.<ref type="source" target="#bibl_rbe">РБЕ</ref></def></cit><cit type="translation" xml:lang="pl"><quote>odszkodowanie</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>гроші, що виплачуються комусь як компенсація за понесені ним збитки та шкоду<ref type="source" target="#bibl_wsjp">WSJP</ref></def></cit><cit type="translation" xml:lang="sr"><quote>одштета</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>відшкодування заподіяної шкоди.<ref type="source" target="#bibl_rms">РМС</ref></def></cit><cit type="translation" xml:lang="sl"><quote>odškodnina</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>відшкодування збитків у натуральній формі або грошовою сумою, яке заподіювач збитків зобов’язаний надати потерпілому<ref type="source" target="#bibl_fran">Fran</ref></def><def>відшкодування збитків, яке зобов’язується здійснити третя особа, наприклад, страхова компанія<ref type="source" target="#bibl_fran">Fran</ref></def><def>Entschädigungsbetrag «компенсація за нанесену шкоду»<ref type="source" target="#bibl_fran">Fran</ref></def></cit><cit type="translation" xml:lang="hu"><quote>kártérítés</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>відшкодування збитків, компенсація.<ref type="source" target="#bibl_eksz">EKSZ</ref></def><def>cума, сплачена таким чином<ref type="source" target="#bibl_eksz">EKSZ</ref></def></cit><cit type="translation" xml:lang="hr"><quote>ȍdšteta</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>відшкодування за заподіяну шкоду<ref type="source" target="#bibl_hjp">HJP</ref></def></cit><note type="entry"><p>Слово становить, скоріше за все, кальку з нім. Entschä́digung (преф. ent- «від», імен. Schade, суф. -ung) «заподіяна шкода, збитки»kár. За цією моделлю побудовані як укр. <hi rend="italic">відшкодування</hi>, так і наведені іншомовні паралелі (пор. серб. <hi rend="italic">ште̏та</hi>, хорв. štȅta, болг. <hi rend="italic">щетà</hi> «шкода, збиток». У тому числі сюди відносимо також угор. kártérítés (імен. kár «збиток, «шкода» та імен. térítés «відшкодування, повернення» (пор. дієсл térít «повертати, відшкодовувати»). Слід ще взяти до уваги нім. Entschädigungsbetrag «компенсація», яким у словенсько-німецькому словнику Макса Плетершніка (1894-1895) перекладено слвн. odškodnina, див. на [<ref target="#bibl">Fran</ref>].</p></note><etym type="german"><form><orth>Entschädigung</orth><stress>Entschä́digung</stress><usg type="hist">нвн.</usg></form><gramGrp><pos>Substantiv</pos><gen>feminine</gen></gramGrp><list type="ordered"><item><def xml:lang="de">Ausgleich für einen Schaden</def><ref type="source" target="https://www.dwds.de/wb/Entschädigung" accessDate="02.09.2026">DWDS</ref><cit type="translation" xml:lang="uk"><quote>Відшкодування збитків.</quote></cit></item></list><note type="source_type">native</note><note type="borrowing"><trait type="type">calque</trait></note></etym><ref type="bibliography" target="#bibl_rbe"/><ref type="bibliography" target="#bibl_rms"/><ref type="bibliography" target="#bibl_sum20"/><ref type="bibliography" target="#bibl_dwds"/><ref type="bibliography" target="#bibl_eksz"/><ref type="bibliography" target="#bibl_fran"/><ref type="bibliography" target="#bibl_hjp"/><ref type="bibliography" target="#bibl_verbum"/><ref type="bibliography" target="#bibl_wsjp"/></entry><entry xml:id="e3014" status="complete" type="normal">
           <form type="lemma" xml:lang="uk">
             <orth>буцматий</orth>
           </form>
@@ -78352,103 +77507,7 @@
         <ref type="bibliography" target="#bibl_fr-ents"/>
         <ref type="bibliography" target="#bibl_dwds"/>
       </entry>
-      <entry xml:id="e3021" status="complete" type="normal">
-        <form type="lemma" xml:lang="uk">
-          <orth>вінкель</orth>
-          <stress>ві́нкель</stress>
-          <usg type="geo">галицьке</usg>
-          <usg type="style">рег.</usg>
-        </form>
-        <gramGrp>
-          <pos>Substantiv</pos>
-          <gen>masculine</gen>
-        </gramGrp>
-        <sense>
-          <usg type="region">регіональне</usg>
-          <usg type="geo">галицьке</usg>
-          <usg type="style">професійне</usg>
-          <def xml:lang="uk">Угольник, кутник</def>
-          <ref type="source" target="#bibl_frtv">ФрТв</ref>
-          <cit type="example">
-            <quote>Робітник між тим узяв свій "вінкель", кельню та міру і, попрощавшися з
-              товаришами, спокійною ходою пішов ід ринкові.</quote>
-            <ref>
-              <abbr>ФрТв</abbr>
-            </ref>
-          </cit>
-        </sense>
-        <sense>
-          <usg type="region">регіональне</usg>
-          <usg type="geo">батярське</usg>
-          <usg type="style">жаргон, сленг</usg>
-          <def xml:lang="uk">Ріг вулиці</def>
-          <ref type="source" target="#bibl_stefko" accessDate="29.01.2026">stefko</ref>
-          <cit type="example">
-            <quote>Ми здибались на вінклю коло кнайпи.</quote>
-            <ref>
-              <abbr>stefko</abbr>
-            </ref>
-          </cit>
-        </sense>
-        <etym type="german">
-          <form>
-            <orth>Winkel</orth>
-            <stress>Wínkel</stress>
-            <usg type="hist">нвн.</usg>
-          </form>
-          <gramGrp>
-            <pos>Substantiv</pos>
-            <gen>masculine</gen>
-          </gramGrp>
-          <list type="ordered">
-            <item>
-              <def xml:lang="de">Winkel, Tischlerwerkzeug, soviel wie Anschlagwinkel</def>
-              <ref type="source" target="https://www.woerterbuchnetz.de/Meyers?lemid=W03494" accessDate="29.01.2026">MGKL</ref>
-              <cit type="translation" xml:lang="uk">
-                <quote>Кутник, столярний інструмент, те саме, що кутомір.</quote>
-              </cit>
-            </item>
-            <item>
-              <def xml:lang="de">Im Niederdeutschen gleichfalls Winkel, wo es aber auch die
-                Werkstätte einiger Handwerker bedeutet</def>
-              <ref type="source" target="https://www.woerterbuchnetz.de/Adelung?lemid=W02381" accessDate="29.01.2026">Adelung</ref>
-              <cit type="translation" xml:lang="uk">
-                <quote>У нижньонімецькій мові також означає кут, але також майстерню деяких&#13;
-                  ремісників.</quote>
-              </cit>
-            </item>
-            <item>
-              <def xml:lang="de">Der Ort, wo zwey sich gegen einander neigende Linien oder Flächen
-                zusammen stoßen; da denn Winkel eigentlich den innern, Ecke aber den äußern Raum
-                bezeichnet, ob man gleich in der Mathematik Winkel, im gemeinen Leben aber oft Ecke,
-                für beydes gebraucht</def>
-              <ref type="source" target="https://www.woerterbuchnetz.de/Adelung?lemid=W02381" accessDate="29.01.2026">Adelung</ref>
-              <cit type="translation" xml:lang="uk">
-                <quote>Місце, де дві лінії або площини, що сходяться одна до одної, стикаються;&#13;
-                  Winkel позначає власне внутрішній кут, а Ecke — кут зовнішній, хоча в&#13;
-                  математиці&#13;
-                  Winkel; але в повсякденному житті часто Ecke використовується для обох випадків.</quote>
-              </cit>
-            </item>
-          </list>
-          <note type="source_type">native</note>
-          <note type="borrowing">
-            <trait type="type">lexical</trait>
-            <trait type="path">direct</trait>
-          </note>
-        </etym>
-        <ref type="bibliography" target="#bibl_frtv">
-          <volume>т. 10</volume>
-          <page>с. 22</page>
-        </ref>
-        <ref type="bibliography" target="#bibl_adelung"/>
-        <ref type="bibliography" target="#bibl_mgkl">
-          <volume>Bd. 20</volume>
-          <page>Sp. 672, Z. 9</page>
-        </ref>
-        <ref type="bibliography" target="#bibl_stefko"/>
-      </entry>
-      <entry xml:id="e3022" status="complete" type="normal">
+      <entry xml:id="e3021" status="complete" type="normal"><form type="lemma" xml:lang="uk"><orth>вінкель</orth><stress>ві́нкель</stress><usg type="geo">галицьке</usg><usg type="style">рег.</usg></form><gramGrp><pos>Substantiv</pos><gen>masculine</gen></gramGrp><sense><usg type="region">регіональне</usg><usg type="geo">галицьке</usg><usg type="style">професійне</usg><def xml:lang="uk">Угольник, кутник</def><ref type="source" target="#bibl_frtv">ФрТв</ref><cit type="example"><quote>Робітник між тим узяв свій "вінкель", кельню та міру і, попрощавшися з товаришами, спокійною ходою пішов ід ринкові.</quote><ref><abbr>ФрТв</abbr></ref></cit></sense><sense><usg type="region">регіональне</usg><usg type="geo">батярське</usg><usg type="style">жаргон, сленг</usg><def xml:lang="uk">Ріг вулиці</def><ref type="source" target="https://pisnya.com/3454-stefko-panienka-yde-na-guli.html" accessDate="03.09.2026">stefko</ref><cit type="example"><quote>Ми здибались на вінклю коло кнайпи</quote><ref><abbr>stefko</abbr></ref></cit></sense><cit type="translation" xml:lang="pl"><quote>winkiel</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>косинець, кутник (столярний), екерка<ref type="source" target="#bibl_dorosz">Dorosz.</ref></def><def>трикутник як знак на одязі в'язня гітлерівських концентраційних таборів<ref type="source" target="#bibl_dorosz">Dorosz.</ref></def><def>кут, наріжник, прямий кут (проф., будівн.)<ref type="source" target="#bibl_dorosz">Dorosz.</ref></def></cit><etym type="german"><form><orth>Winkel</orth><stress>Wínkel</stress><usg type="hist">нвн.</usg></form><gramGrp><pos>Substantiv</pos><gen>masculine</gen></gramGrp><list type="ordered"><item><def xml:lang="de">Winkel, Tischlerwerkzeug, soviel wie Anschlagwinkel</def><ref type="source" target="https://www.woerterbuchnetz.de/Meyers?lemid=W03494" accessDate="29.01.2026">MGKL</ref><cit type="translation" xml:lang="uk"><quote>Кутник, столярний інструмент, те саме, що кутомір.</quote></cit></item><item><def xml:lang="de">Im Niederdeutschen gleichfalls Winkel, wo es aber auch die Werkstätte einiger Handwerker bedeutet</def><ref type="source" target="https://www.woerterbuchnetz.de/Adelung?lemid=W02381" accessDate="29.01.2026">Adelung</ref><cit type="translation" xml:lang="uk"><quote>У нижньонімецькій мові також означає кут, але також майстерню деяких ремісників.</quote></cit></item><item><def xml:lang="de">Der Ort, wo zwey sich gegen einander neigende Linien oder Flächen zusammen stoßen; da denn Winkel eigentlich den innern, Ecke aber den äußern Raum bezeichnet, ob man gleich in der Mathematik Winkel, im gemeinen Leben aber oft Ecke, für beydes gebraucht</def><ref type="source" target="https://www.woerterbuchnetz.de/Adelung?lemid=W02381" accessDate="29.01.2026">Adelung</ref><cit type="translation" xml:lang="uk"><quote>Місце, де дві лінії або площини, що сходяться одна до одної, стикаються; Winkel позначає власне внутрішній кут, а Ecke — кут зовнішній, хоча в математиці Winkel; але в повсякденному житті часто Ecke використовується для обох випадків.</quote></cit></item></list><note type="source_type">native</note><note type="borrowing"><trait type="type">lexical</trait><trait type="path">direct_or_mediated</trait><trait type="mediator">польська</trait></note></etym><ref type="bibliography" target="#bibl_frtv"><volume>т. 10</volume><page>с. 22</page></ref><ref type="bibliography" target="#bibl_adelung"/><ref type="bibliography" target="#bibl_dorosz"/><ref type="bibliography" target="#bibl_mgkl"><volume>Bd. 20</volume><page>Sp. 672, Z. 9</page></ref><ref type="bibliography" target="#bibl_stefko"/></entry><entry xml:id="e3022" status="complete" type="normal">
         <form type="lemma" xml:lang="uk">
           <orth>кнайпа</orth>
           <stress>кна́йпа</stress>
@@ -79837,17 +78896,7 @@
           </form>
         </etym>
       </entry>
-      <entry xml:id="e3052" status="complete" type="redirect">
-        <form type="lemma" xml:lang="uk">
-          <orth>валок</orth>
-        </form>
-        <xr>
-          <lbl>див.</lbl>
-          <ref target="#e282">вал</ref>
-          <ref target="#e288">Walze</ref>
-        </xr>
-      </entry>
-      <entry xml:id="e3053" status="complete" type="redirect">
+      <entry xml:id="e3052" status="complete" type="redirect"><form type="lemma" xml:lang="uk"><orth>валок</orth></form><xr><lbl>див.</lbl><ref target="#e282">вал</ref><ref target="#e288">Walze</ref></xr></entry><entry xml:id="e3053" status="complete" type="redirect">
         <form type="lemma" xml:lang="uk">
           <orth>відбиток</orth>
         </form>
@@ -79871,7 +78920,7 @@
           </note>
         </etym>
       </entry>
-    <entry xml:id="e3055" status="complete" type="normal"><form type="lemma" xml:lang="uk"><orth>вимова</orth><stress>вимо́ва</stress></form><gramGrp><pos>Substantiv</pos><gen>feminine</gen></gramGrp><sense><def xml:lang="uk">Спосіб вимовляння слів, окремих звуків</def><ref type="source" target="https://sum20ua.com/?wordid=9657&amp;page=334&amp;searchWord=вимова#lid_9657" accessDate="31.08.2026">СУМ-20</ref></sense><sense><usg type="region">діалектне</usg><usg type="geo">закарпатське</usg><def xml:lang="uk">Домовленість, умова</def><ref type="source" target="https://sum20ua.com/?wordid=9657&amp;page=334&amp;searchWord=вимова#lid_9657" accessDate="31.08.2026">СУМ-20</ref></sense><cit type="translation" xml:lang="pl"><quote>wymowa</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>спосіб вимови звуків мови або слів<ref type="source" target="#bibl_wsjp">WSJP</ref></def><def>вміння виступати<ref type="source" target="#bibl_wsjp">WSJP</ref></def><def>те, що ми виводимо з певного висловлювання, твору мистецтва чи події як їхнє головне послання<ref type="source" target="#bibl_wsjp">WSJP</ref></def></cit><cit type="translation" xml:lang="sr"><quote>ѝзгово̄р</quote><def>спосіб вимови звуків чи слів у певній мові<ref type="source" target="#bibl_rms">РМС</ref></def><def>вимовляння, промовляння; висловлювання<ref type="source" target="#bibl_rms">РМС</ref></def><def>те, що хтось наводить як обґрунтування, пояснення своїх дій<ref type="source" target="#bibl_rms">РМС</ref></def></cit><cit type="translation" xml:lang="sl"><quote>izgovorjáva</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>вимова<ref type="source" target="#bibl_fran">Fran</ref></def></cit><cit type="translation" xml:lang="sk"><quote>výslovnosť</quote><gramGrp><pos>Substantiv</pos></gramGrp></cit><cit type="translation" xml:lang="hr"><quote>ȉzgovōr</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>спосіб вимови звуків і слів (чітка вимова; правильна вимова)<ref type="source" target="#bibl_hjp">HJP</ref></def></cit><cit type="translation" xml:lang="cs"><quote>výslovnost</quote><gramGrp><pos>Substantiv</pos></gramGrp></cit><etym type="german"><form><orth>Aussprache</orth><usg type="hist">нвн.</usg></form><gramGrp><pos>Substantiv</pos><gen>feminine</gen></gramGrp><list type="ordered"><item><def xml:lang="de">Art, wie etwas ausgesprochen werden soll</def><ref type="source" target="https://www.dwds.de/wb/Aussprache" accessDate="31.08.2026">DWDS</ref><cit type="translation" xml:lang="uk"><quote>Спосіб, у який щось слід вимовляти.</quote></cit></item><item><def xml:lang="de">Art, wie jmd. etwas ausspricht</def><ref type="source" target="https://www.dwds.de/wb/Aussprache" accessDate="31.08.2026">DWDS</ref><cit type="translation" xml:lang="uk"><quote>Спосіб, у який хтось щось вимовляє.</quote></cit></item><item><def xml:lang="de">Meinungsaustausch, Unterredung zur Klärung bestimmter Fragen</def><ref type="source" target="https://www.dwds.de/wb/Aussprache" accessDate="31.08.2026">DWDS</ref><cit type="translation" xml:lang="uk"><quote>Обмін думками, бесіда з метою з’ясування певних питань.</quote></cit></item></list><note type="source_type">native</note><note type="borrowing"><trait type="type">calque</trait></note></etym><ref type="bibliography" target="#bibl_rms"/><ref type="bibliography" target="#bibl_sum20"/><ref type="bibliography" target="#bibl_dwds"/><ref type="bibliography" target="#bibl_fran"/><ref type="bibliography" target="#bibl_hjp"/><ref type="bibliography" target="#bibl_wsjp"/></entry><entry xml:id="e3056" status="complete" type="normal"><form type="lemma" xml:lang="uk"><orth>абдрук</orth><stress>абдру́к</stress></form><sense><usg type="style">друкарське</usg><def xml:lang="uk">Друкований відбиток, елемент прикраси друкованої книги: заставка, віньєтка</def><ref type="source" target="https://www.jnsm.com.ua/cgi-bin/u/book/sis.pl?Article=48&amp;action=show" accessDate="01.09.2026">ПонСІС</ref></sense><note type="entry"><p>Пор. <ref target="#e366">відтиск</ref>.</p></note><etym type="german"><form><orth>Abdruck</orth><stress>Ábdruck</stress><usg type="hist">нвн.</usg></form><gramGrp><pos>Substantiv</pos><gen>masculine</gen></gramGrp><list type="ordered"><item><def xml:lang="de">das Abdrucken, der Druck</def><ref type="source" target="https://www.dwds.de/wb/Abdruck" accessDate="01.09.2026">DWDS</ref><cit type="translation" xml:lang="uk"><quote>Відбиток, друк.</quote></cit></item></list><note type="source_type">native</note><note type="borrowing"><trait type="type">lexical</trait></note></etym><ref type="bibliography" target="#bibl_ponsis"/><ref type="bibliography" target="#bibl_dwds"/></entry></body>
+      <entry xml:id="e3055" status="complete" type="normal"><form type="lemma" xml:lang="uk"><orth>вимова</orth><stress>вимо́ва</stress></form><gramGrp><pos>Substantiv</pos><gen>feminine</gen></gramGrp><sense><def xml:lang="uk">Спосіб вимовляння слів, окремих звуків</def><ref type="source" target="https://sum20ua.com/?wordid=9657&amp;page=334&amp;searchWord=вимова#lid_9657" accessDate="31.08.2026">СУМ-20</ref></sense><sense><usg type="region">діалектне</usg><usg type="geo">закарпатське</usg><def xml:lang="uk">Домовленість, умова</def><ref type="source" target="https://sum20ua.com/?wordid=9657&amp;page=334&amp;searchWord=вимова#lid_9657" accessDate="31.08.2026">СУМ-20</ref></sense><cit type="translation" xml:lang="pl"><quote>wymowa</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>спосіб вимови звуків мови або слів<ref type="source" target="#bibl_wsjp">WSJP</ref></def><def>вміння виступати<ref type="source" target="#bibl_wsjp">WSJP</ref></def><def>те, що ми виводимо з певного висловлювання, твору мистецтва чи події як їхнє головне            послання<ref type="source" target="#bibl_wsjp">WSJP</ref></def></cit><cit type="translation" xml:lang="sr"><quote>ѝзгово̄р</quote><def>спосіб вимови звуків чи слів у певній мові<ref type="source" target="#bibl_rms">РМС</ref></def><def>вимовляння, промовляння; висловлювання<ref type="source" target="#bibl_rms">РМС</ref></def><def>те, що хтось наводить як обґрунтування, пояснення своїх дій<ref type="source" target="#bibl_rms">РМС</ref></def></cit><cit type="translation" xml:lang="sl"><quote>izgovorjáva</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>вимова<ref type="source" target="#bibl_fran">Fran</ref></def></cit><cit type="translation" xml:lang="sk"><quote>výslovnosť</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>спосіб вимови звуків, слів тощо, артикуляція<ref type="source" target="#bibl_júľš-sav">JÚĽŠ SAV</ref></def></cit><cit type="translation" xml:lang="hr"><quote>ȉzgovōr</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>спосіб вимови звуків і слів (чітка вимова; правильна вимова)<ref type="source" target="#bibl_hjp">HJP</ref></def></cit><cit type="translation" xml:lang="cs"><quote>výslovnost</quote><gramGrp><pos>Substantiv</pos></gramGrp></cit><etym type="german"><form><orth>Aussprache</orth><usg type="hist">нвн.</usg></form><gramGrp><pos>Substantiv</pos><gen>feminine</gen></gramGrp><list type="ordered"><item><def xml:lang="de">Art, wie etwas ausgesprochen werden soll</def><cit type="translation" xml:lang="uk"><quote>Спосіб, у який щось слід вимовляти.</quote></cit></item><item><def xml:lang="de">Art, wie jmd. etwas ausspricht</def><cit type="translation" xml:lang="uk"><quote>Спосіб, у який хтось щось вимовляє.</quote></cit></item><item><def xml:lang="de">Meinungsaustausch, Unterredung zur Klärung bestimmter Fragen</def><cit type="translation" xml:lang="uk"><quote>Обмін думками, бесіда з метою з’ясування певних питань.</quote></cit></item></list><note type="source_type">native</note><note type="borrowing"><trait type="type">calque</trait></note></etym><ref type="bibliography" target="#bibl_rms"/><ref type="bibliography" target="#bibl_sum20"/><ref type="bibliography" target="#bibl_dwds"/><ref type="bibliography" target="#bibl_fran"/><ref type="bibliography" target="#bibl_hjp"/><ref type="bibliography" target="#bibl_júľš-sav"/><ref type="bibliography" target="#bibl_wsjp"/></entry><entry xml:id="e3056" status="complete" type="normal"><form type="lemma" xml:lang="uk"><orth>абдрук</orth><stress>абдру́к</stress></form><sense><usg type="style">друкарське</usg><def xml:lang="uk">Друкований відбиток, елемент прикраси друкованої книги: заставка, віньєтка</def><ref type="source" target="https://www.jnsm.com.ua/cgi-bin/u/book/sis.pl?Article=48&amp;action=show" accessDate="01.09.2026">ПонСІС</ref></sense><note type="entry"><p>Пор. <ref target="#e366">відтиск</ref>.</p></note><etym type="german"><form><orth>Abdruck</orth><stress>Ábdruck</stress><usg type="hist">нвн.</usg></form><gramGrp><pos>Substantiv</pos><gen>masculine</gen></gramGrp><list type="ordered"><item><def xml:lang="de">das Abdrucken, der Druck</def><cit type="translation" xml:lang="uk"><quote>Відбиток, друк.</quote></cit></item></list><note type="source_type">native</note><note type="borrowing"><trait type="type">lexical</trait></note></etym><ref type="bibliography" target="#bibl_ponsis"/><ref type="bibliography" target="#bibl_dwds"/><ref type="bibliography" target="#bibl_eksz"/></entry><entry xml:id="e3057" status="complete" type="redirect"><form type="lemma" xml:lang="uk"><orth>одтиск</orth></form><xr><lbl>див.</lbl><ref target="#e366">відтиск</ref><ref target="#e3056">Abdruck</ref></xr></entry><entry xml:id="e3058" status="incomplete" type="normal"><form type="lemma" xml:lang="uk"><orth>відвага</orth><stress>відва́га</stress></form><form type="variant"><orth>відва́жний</orth><gramGrp><pos>Adjektiv</pos></gramGrp><sense><def>сміливий, хоробрий, безстрашний</def><ref type="source" target="#bibl_sum20">СУМ-20</ref></sense></form><gramGrp><pos>Substantiv</pos><gen>feminine</gen></gramGrp><sense><def xml:lang="uk">Сміливість, хоробрість, відсутність страху перед небезпекою</def><ref type="source" target="https://sum20ua.com/?wordid=12074&amp;page=401&amp;searchWord=відвага#lid_12074" accessDate="05.09.2026">СУМ-20</ref></sense><cit type="translation" xml:lang="be"><quote>адва́га</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>мужність, хоробрість<ref type="source" target="#bibl_verbum">Verbum</ref></def></cit><cit type="translation" xml:lang="bg"><quote>отва́га (заст., книжн.)</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>хоробрість, сміливість, безстрашність<ref type="source" target="#bibl_rbe">РБЕ</ref></def></cit><cit type="translation" xml:lang="pl"><quote>odwaga</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>риса людини, яку не лякають і не знеохочують до дій труднощі та небезпеки<ref type="source" target="#bibl_wsjp">WSJP</ref></def></cit><cit type="translation" xml:lang="ru"><quote>отва́га</quote><gramGrp><pos>Substantiv</pos></gramGrp></cit><cit type="translation" xml:lang="sr"><quote>о̏два̄жан</quote><gramGrp><pos>Adjektiv</pos></gramGrp><def>хоробрий, сміливий перед обличчям небезпеки; що відображає таку рису<ref type="source" target="#bibl_rms">РМС</ref></def></cit><cit type="translation" xml:lang="sr"><quote>о̏два̄жно</quote><gramGrp><pos>Adverb</pos></gramGrp><def>рішуче, сміливо, відважно<ref type="source" target="#bibl_rms">РМС</ref></def></cit><cit type="translation" xml:lang="sk"><quote>odvaha</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>здатність когось або чогось діяти, незважаючи на небезпеку<ref type="source" target="#bibl_júľš-sav">JÚĽŠ SAV</ref></def></cit><cit type="translation" xml:lang="hr"><quote>ȍdvāžnōst</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>якість, що полягає у сміливості; сміливість, відвага.<ref type="source" target="#bibl_hjp">HJP</ref></def></cit><cit type="translation" xml:lang="cs"><quote>odvaha</quote><gramGrp><pos>Substantiv</pos></gramGrp><def>сміливість, відвага, хоробрість, мужність, безстрашність, небоязність, непохитність<ref type="source" target="#bibl_ijp">IJP</ref></def></cit><note type="entry"><p>Через проміжну ланку хоробрості, рішучості розвинулось у дієсл. формі <hi rend="italic">вагатися</hi>, діал. <hi rend="italic">важитися</hi> «перебувати в нерішучості» повʼязане з <hi rend="italic">вага</hi>; значення &#13;<lb/><hi rend="italic">відважитися</hi> (пор. аналогічний розвиток значень у формах &#13;<lb/><hi rend="italic">зважитися</hi>, діал. <hi rend="italic">звага</hi>, <hi rend="italic">наважитися</hi>); на такому розвитку значень міг відбитися вплив пол. і нім. мов (пор. нвн. wagen «наважуватися», wägen «важити») [<ref target="#bibl">ЕСУМ</ref>]. Укр. <hi rend="italic">відвага</hi>, рос. <hi rend="italic">отвага</hi>, пол. <hi rend="italic">odwaga</hi>, чеськ. <hi rend="italic">odvah</hi>, слвн. tvegati належать до лексичної групи, що за походженням пов’язана з нім. wagen «наважуватися» [<ref target="https://verbum.by/esbm/advaha">Verbum</ref>].</p></note><etym type="german"><form><orth>wagen</orth><stress>wagen</stress><usg type="hist">нвн.</usg></form><gramGrp><pos>Verb</pos></gramGrp><list type="ordered"><item><def xml:lang="de">etw. mutig, die Gefahr nicht scheuend, tun, etw. riskieren</def><ref type="source" target="https://www.dwds.de/wb/wagen" accessDate="05.09.2026">DWDS</ref><cit type="translation" xml:lang="uk"><quote>Робити щось сміливо, не боячись небезпеки, ризикувати чимось.</quote></cit></item></list><note type="source_type">native</note><note type="borrowing"><trait type="type">calque</trait><trait type="path">direct_or_mediated</trait><trait type="certainty">possible</trait><trait type="mediator">польська</trait></note></etym><ref type="bibliography" target="#bibl_rbe"/><ref type="bibliography" target="#bibl_rms"/><ref type="bibliography" target="#bibl_sum20"/><ref type="bibliography" target="#bibl_dwds"/><ref type="bibliography" target="#bibl_hjp"/><ref type="bibliography" target="#bibl_verbum"/><ref type="bibliography" target="#bibl_wsjp"/><ref type="bibliography" target="#bibl_ijp"/><ref type="bibliography" target="#bibl_júľš-sav"/></entry></body>
     <back>
       <div type="abbreviations">
         <head>Список скорочень</head>
@@ -79894,6 +78943,9 @@
           <list type="borrowing_path">
             <item xml:id="BORR-PATH-DIR" value="direct">
               <term>прямий</term>
+            </item>
+            <item xml:id="BORR-PATH-DIR_MED" value="direct_or_mediated">
+              <term>прямий або опосередкований</term>
             </item>
             <item xml:id="BORR-PATH-MED" value="mediated">
               <term>опосередкований</term>
@@ -80179,6 +79231,7 @@
               <item xml:id="SUB-GRAM-ADV" value="Adverb" abbr="присл.">прислівник</item>
               <item xml:id="SUB-GRAM-PREP" value="Präposition" abbr="прийм.">прийменник</item>
               <item xml:id="SUB-GRAM-INTJ" value="Interjektion" abbr="виг.">вигук</item>
+              <item xml:id="SUB-GRAM-PHRASE" value="Phrase" abbr="ст. вир.">сталий вираз</item>
             </list>
           </item>
           <item xml:id="DOM-GRAM-WORDFORM">
@@ -80492,6 +79545,7 @@
               <item xml:id="SUB-STYLE-THEAT" abbr="теат.">театральне</item>
               <item xml:id="SUB-STYLE-FYS" abbr="фіз.">фізичне</item>
               <item xml:id="SUB-STYLE-FIN" abbr="фін.">фінансове</item>
+              <item xml:id="SUB-STYLE-CHEM" abbr="хім.">хімічне</item>
               <item xml:id="SUB-STYLE-FREQ" abbr="част.">частотне</item>
               <item xml:id="SUB-STYLE-LEGAL" abbr="юр.">юридичне</item>
             </list>
@@ -81065,7 +80119,29 @@
             <title>Цивільний кодекс України</title>
             <ref target="https://zakon.rada.gov.ua/laws/term/"/>
           </bibl>
-        <bibl xml:id="bibl_ponsis"><abbr>ПонСІС</abbr><title>Словник іншомовних слів [Електронний ресурс] / уклад. О. Пономарів. – Київ : JNSM, 2001–2026</title><ref target="https://www.jnsm.com.ua/sis/"/></bibl></listBibl>
+          <bibl xml:id="bibl_ponsis">
+            <abbr>ПонСІС</abbr>
+            <title>Словник іншомовних слів [Електронний ресурс] / уклад. О. Пономарів. – Київ :
+              JNSM, 2001–2026</title>
+            <ref target="https://www.jnsm.com.ua/sis/"/>
+          </bibl>
+          <bibl xml:id="bibl_eksz">
+            <abbr>EKSZ</abbr>
+            <title>Magyar értelmező kéziszótár</title>
+            <ref target="https://www.google.com/url?sa=i&amp;source=web&amp;rct=j&amp;url=https://eksz.nytud.hu/&amp;ved=2ahUKEwiglPvRldCWAxUqPxAIHaAzEUMQy_kOegoIAggACAAICBAB&amp;opi=89978449&amp;cd&amp;psig=AOvVaw24g5Y6wnzlxUjpaCvIhGGd&amp;ust=1788447871609000"/>
+          </bibl>
+          <bibl xml:id="bibl_rbe">
+            <abbr>РБЕ</abbr>
+            <title>Речник на българския език (онлайн)</title>
+            <ref target="https://ibl.bas.bg/rbe/"/>
+          </bibl>
+          <bibl xml:id="bibl_júľš-sav">
+            <abbr>JÚĽŠ SAV</abbr>
+            <title>Slovníkový portál Jazykovedného ústavu Ľudovíta Štúra SAV. Bratislava:
+              Jazykovedný ústav Ľ. Štúra SAV [онлайн]</title>
+            <ref target="https://slovniky.juls.savba.sk/"/>
+          </bibl>
+          <bibl xml:id="bibl_ijp"><abbr>IJP</abbr><title>nternetová jazyková příručka [online] (2008–2026). Praha: Ústav pro jazyk český AV ČR</title><ref target="https://www.google.com/url?sa=i&amp;source=web&amp;rct=j&amp;url=https://prirucka.ujc.cas.cz/&amp;ved=2ahUKEwic49mQndCWAxWuR1UIHfdOPcsQy_kOegYIAAgNEAM&amp;opi=89978449&amp;cd&amp;psig=AOvVaw3_h569XwuIUozWsQMB33cV&amp;ust=1788449882323000"/></bibl><bibl xml:id="bibl_verbum"><abbr>Verbum</abbr><title>Verbum : беларусскія слоўнікі і энцыклапедыі : [онлайн-платформа]. — Нацыянальная акадэмія навук Беларусі, Інстытут мовазнаўства імя Якуба Коласа</title><ref target="https://verbum.by"/></bibl><bibl xml:id="bibl_ksjs"><abbr>KSJS</abbr><title>Krátky slovník slovenského jazyka</title><ref target="https://slovnik.aktuality.sk"/></bibl><bibl xml:id="bibl_dorosz"><abbr>Dorosz.</abbr><title>Słownik języka polskiego pod redakcją Witolda Doroszewskiego : wersja internetowa / PWN </title><ref target="https://doroszewski.pwn.pl/"/></bibl></listBibl>
       </div>
     </back>
   </text>
