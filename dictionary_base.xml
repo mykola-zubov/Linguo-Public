@@ -71569,16 +71569,6 @@
             </form>
           </etym>
         </entry>
-        <entry xml:id="e2638">
-          <form type="lemma" xml:lang="uk">
-            <orth>честь!</orth>
-          </form>
-          <etym type="german">
-            <form type="source" xml:lang="de">
-              <orth>Achtung: alle ~!</orth>
-            </form>
-          </etym>
-        </entry>
         <entry xml:id="e2639">
           <form type="lemma" xml:lang="uk">
             <orth>четвертак</orth>
