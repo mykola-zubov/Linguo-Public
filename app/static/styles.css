@@ -599,3 +599,267 @@ input[type="text"], select {
         padding-bottom: 15px;
     }
 }
+/* === Two-Tier Academic Header Layout === */
+:root {
+    --primary-color: #007bff;
+    --primary-hover: #0056b3;
+    --light-gray: #f8f9fa;
+    --medium-gray: #dee2e6;
+    --border-color: #ced4da;
+    --text-color: #212529;
+    --muted-text: #6c757d;
+    --white: #ffffff;
+    --sidebar-width: 240px;
+    --header-height: 82px; /* Висота двоповерхової шапки */
+}
+
+.sticky-header {
+    flex: 0 0 auto;
+    background-color: #ffffff;
+    border-bottom: 1px solid #dee2e6;
+    padding: 6px 16px 6px 16px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    box-sizing: border-box;
+}
+
+/* Рядок 1: Бренд + Навігація */
+.header-top-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.header-brand-block {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-logo {
+    height: 32px;
+    width: auto;
+}
+
+.header-title-wrapper {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+}
+
+.header-main-title {
+    font-size: 1.05rem;
+    font-weight: 800;
+    margin: 0;
+    color: #0f172a;
+    letter-spacing: -0.2px;
+}
+
+.header-sub-meta {
+    font-size: 0.76rem;
+    color: #64748b;
+    margin-top: 1px;
+}
+
+/* Кнопки меню */
+.nav-links-menu {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.nav-badge-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 8px;
+    background-color: #f1f5f9;
+    color: #334155;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-radius: 5px;
+    text-decoration: none;
+    border: 1px solid #e2e8f0;
+    transition: all 0.15s ease;
+}
+
+.nav-badge-btn:hover {
+    background-color: #e2e8f0;
+    color: #0f172a;
+    text-decoration: none;
+}
+
+/* Рядок 2: Фільтри та дії */
+.header-bottom-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 4px;
+}
+
+.header-filters-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.header-actions-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Селектори фільтрів */
+.header-select {
+    padding: 2px 6px;
+    height: 26px;
+    font-size: 0.78rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #334155;
+    max-width: 110px;
+    cursor: pointer;
+}
+
+.header-select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+.header-select.active-filter {
+    background-color: #e0f2fe;
+    border-color: #0284c7;
+    font-weight: bold;
+    color: #0369a1;
+}
+
+.header-actions-bar .button {
+    height: 26px;
+    padding: 2px 8px;
+    font-size: 0.8rem;
+}
+
+.header-actions-bar .filter-group {
+    height: 26px;
+    padding: 2px 6px;
+    font-size: 0.78rem;
+}
+
+.header-actions-bar .language-selector {
+    height: 26px;
+}
+
+.header-actions-bar .language-selector a {
+    padding: 2px 6px;
+    font-size: 11px;
+    line-height: 20px;
+}
+
+/* === Modal Window for Docs and Feedback === */
+.custom-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(15, 23, 42, 0.65); /* Затемнення фону */
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999 !important; /* Поверх усіх елементів і шапки */
+}
+
+.modal-content {
+    background: #ffffff;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 720px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    animation: modalPopIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalPopIn {
+    from { opacity: 0; transform: scale(0.96) translateY(-10px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.modal-header {
+    padding: 14px 20px;
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 1.15rem;
+    color: #0f172a;
+    font-weight: 700;
+}
+
+.close-modal-btn {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #94a3b8;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0 4px;
+    transition: color 0.15s;
+}
+.close-modal-btn:hover {
+    color: #ef4444;
+}
+
+.modal-body {
+    padding: 24px;
+    overflow-y: auto;
+    line-height: 1.65;
+    font-size: 0.95rem;
+    color: #334155;
+}
+
+/* Стилі для тексту Markdown всередині модального вікна */
+.modal-body h1, .modal-body h2, .modal-body h3 {
+    color: #0f172a;
+    margin-top: 1.2em;
+    margin-bottom: 0.5em;
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 4px;
+}
+.modal-body h1 { font-size: 1.4rem; }
+.modal-body h2 { font-size: 1.2rem; }
+.modal-body h3 { font-size: 1.05rem; }
+
+.modal-body ul, .modal-body ol {
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+.modal-body li {
+    margin-bottom: 4px;
+}
+
+.modal-body p {
+    margin-bottom: 12px;
+}
+
+.modal-footer {
+    padding: 12px 20px;
+    background: #f8fafc;
+    border-top: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: flex-end;
+}

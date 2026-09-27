@@ -51,6 +51,12 @@ def create_app():
             # Повертаємо пустий словник, щоб сайт не впав
             return dict(back_data={})
 
+    @app.context_processor
+    def inject_global_flags():
+        return dict(
+            read_only=app.config.get('READ_ONLY', False)
+        )
+
     # 6. Реєстрація маршрутів
     # Імпорт робимо тут, щоб уникнути кільцевої залежності!
     from app.routes import main_bp

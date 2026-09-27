@@ -1,15 +1,19 @@
-from flask import Blueprint, render_template, request, redirect, url_for, flash
+import os
+import json
+from datetime import datetime
+import re
+import locale
+import markdown
+from flask import Blueprint, render_template, request, redirect, url_for, flash, jsonify, current_app, abort
 from app.services.xml_db import db
 from app.services.entries import parse_entry_data, update_entry_from_form, parse_entry_header
 from app.services.metadata import meta_service
 from lxml import etree as ET
 from app.config import NS
-import locale
-import re
-from flask import jsonify
 from app.services.dwds_service import fetch_dwds_entry
 
 main_bp = Blueprint('main', __name__)
+
 
 # --- ДОПОМІЖНА ФУНКЦІЯ ДЛЯ АЛФАВІТНОЇ НАВІГАЦІЇ ---
 def get_sorted_neighbors(root, current_id):
@@ -323,6 +327,10 @@ def view_entry(entry_id):
 
 @main_bp.route("/add", methods=["GET", "POST"])
 def add_entry():
+    # Якщо публічний режим — забороняємо доступ
+    if current_app.config.get('READ_ONLY'):
+        return "Редагування заборонено в публічній версії.", 403
+    # ... далі ваш існуючий код ...
     tree, root = db.load_xml()
     back_data = meta_service.parse_back_matter(root)
     
@@ -355,6 +363,8 @@ def add_entry():
 
 @main_bp.route("/edit/<entry_id>", methods=["GET", "POST"])
 def edit_entry(entry_id):
+    if current_app.config.get('READ_ONLY'):
+        return "Редагування заборонено в публічній версії.", 403
     tree, root = db.load_xml()
     entry_el = root.find(f".//tei:entry[@xml:id='{entry_id}']", NS)
     
@@ -382,6 +392,8 @@ def edit_entry(entry_id):
 
 @main_bp.route("/delete/<entry_id>")
 def delete_entry(entry_id):
+    if current_app.config.get('READ_ONLY'):
+        return "Видалення заборонено в публічній версії.", 403
     tree, root = db.load_xml()
     entry_el = root.find(f".//tei:entry[@xml:id='{entry_id}']", NS)
     
@@ -410,4 +422,59 @@ def api_dwds_fetch():
     
     result = fetch_dwds_entry(lemma)
     return jsonify(result)
+# ============================================================
+# API ДЛЯ ЗЧИТУВАННЯ ДОКУМЕНТАЦІЇ ТА ДОВІДКИ (MARKDOWN)
+# ============================================================
+DOCS_DIR = os.path.join(os.path.abspath(os.path.dirname(os.path.dirname(__file__))), 'docs')
 
+@main_bp.route('/api/doc/<doc_name>')
+def get_doc_content(doc_name):
+    """Зчитує .md файл із папки docs і повертає готовий HTML"""
+    safe_name = os.path.basename(doc_name)
+    file_path = os.path.join(DOCS_DIR, f"{safe_name}.md")
+    
+    if not os.path.exists(file_path):
+        return jsonify({"status": "error", "message": f"Файл {safe_name}.md не знайдено в папці docs"}), 404
+        
+    try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            text = f.read()
+        html_content = markdown.markdown(text, extensions=['extra', 'nl2br', 'smarty'])
+        return jsonify({"status": "success", "html": html_content})
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
+
+    # ============================================================
+# API ДЛЯ ЗБЕРЕЖЕННЯ ЗВОРОТНОГО ЗВ'ЯЗКУ
+# ============================================================
+SUGGESTIONS_FILE = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data', 'suggestions.json')
+
+@main_bp.route('/api/submit_feedback', methods=['POST'])
+def submit_feedback():
+    try:
+        data = request.get_json() or request.form
+        entry = {
+            "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "name": data.get("name", "").strip(),
+            "email": data.get("email", "").strip(),
+            "target_word": data.get("target_word", "").strip() or "Загальне",
+            "comment": data.get("comment", "").strip()
+        }
+        
+        suggestions = []
+        if os.path.exists(SUGGESTIONS_FILE):
+            try:
+                with open(SUGGESTIONS_FILE, 'r', encoding='utf-8') as f:
+                    suggestions = json.load(f)
+            except Exception:
+                suggestions = []
+                
+        suggestions.insert(0, entry)
+        
+        os.makedirs(os.path.dirname(SUGGESTIONS_FILE), exist_ok=True)
+        with open(SUGGESTIONS_FILE, 'w', encoding='utf-8') as f:
+            json.dump(suggestions, f, ensure_ascii=False, indent=2)
+
+        return jsonify({"status": "success"}), 200
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500

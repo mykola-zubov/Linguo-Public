@@ -1246,9 +1246,21 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    [filterDomain, filterStyle, filterBibl, filterType].forEach(sel => {
-        if (sel) sel.addEventListener('change', updateWordList);
-    });
+// 1. Для доменів виводимо повідомлення про розробку
+  if (filterDomain) {
+      filterDomain.addEventListener('change', function() {
+          if (this.value !== '') {
+              alert('ℹ️ Ідеографічна рубрикація (домени) наразі перебуває на стадії розробки та верифікації.');
+              this.value = '';
+              this.classList.remove('active-filter');
+          }
+      });
+  }
+
+  // 2. Інші фільтри працюють у штатному режимі (без filterDomain)
+  [filterStyle, filterBibl, filterType].forEach(sel => {
+      if (sel) sel.addEventListener('change', updateWordList);
+  });
 
     if (resetFiltersBtn) {
         resetFiltersBtn.addEventListener('click', function () {

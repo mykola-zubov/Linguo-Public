@@ -2,84 +2,100 @@
 
 {# --- HELPER MACRO FOR TOOLTIPS --- #}
 {% macro tooltip(text, title) %}
-    {% if title and title != text %}
-        <span class="has-tooltip abbr-tag" title="{{ title }}">{{ text }}</span>
-    {% else %}
-        <span class="tag">{{ text }}</span>
-    {% endif %}
+{% if title and title != text %}
+<span class="has-tooltip abbr-tag" title="{{ title }}">{{ text }}</span>
+{% else %}
+<span class="tag">{{ text }}</span>
+{% endif %}
 {% endmacro %}
 
 {# ============================================================ #}
-{# 1. ВІДСИЛАННЯ (REDIRECT)                                     #}
+{# 1. ВІДСИЛАННЯ (REDIRECT) #}
 {# ============================================================ #}
 {% if entry.is_redirect %}
-<div class="entry-header" style="border-bottom: 2px solid var(--primary-color); padding-bottom: 5px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: baseline;">
+<div class="entry-header"
+    style="border-bottom: 2px solid var(--primary-color); padding-bottom: 5px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: baseline;">
     <div>
         <span class="headword">{{ entry.orth }}</span>
         <span style="font-size: 1.1rem; color: #555; margin-left: 15px;">
-            → <i>{{ entry.redirect_label or 'див.' }}</i> 
+            → <i>{{ entry.redirect_label or 'див.' }}</i>
             {% for target in entry.redirect_targets %}
-                <a href="#" class="entry-link" data-entry-id="{{ target.id }}" style="font-weight: bold; color: var(--primary-color); text-decoration: underline; margin-left: 5px;">
-                    {{ target.text or target.id }}
-                </a>{% if not loop.last %}, {% endif %}
+            <a href="#" class="entry-link" data-entry-id="{{ target.id }}"
+                style="font-weight: bold; color: var(--primary-color); text-decoration: underline; margin-left: 5px;">
+                {{ target.text or target.id }}
+            </a>{% if not loop.last %}, {% endif %}
             {% endfor %}
         </span>
     </div>
     <div class="entry-actions" style="display: flex; gap: 5px; align-items: center;">
-        <a href="{{ url_for('main.edit_entry', entry_id=entry.id) }}" class="button small button-warning" title="{{ _('Редагувати') }}">✎</a>
-        <a href="{{ url_for('main.delete_entry', entry_id=entry.id) }}" class="button small" style="color: #dc3545;" onclick="return confirm('Видалити відсилання?');">🗑</a>
+        {% if not read_only %}
+        <a href="{{ url_for('main.edit_entry', entry_id=entry.id) }}" class="button small button-warning"
+            title="{{ _('Редагувати') }}">✎</a>
+        <a href="{{ url_for('main.delete_entry', entry_id=entry.id) }}" class="button small" style="color: #dc3545;"
+            onclick="return confirm('Видалити відсилання?');">🗑</a>
+        {% endif %}
     </div>
 </div>
 
 {% if entry.entry_note_html %}
 <div style="margin-top: 15px; background: #fff; border: 1px solid #eee; padding: 10px; font-size: 0.9em;">
-  {{ entry.entry_note_html|safe }}
+    {{ entry.entry_note_html|safe }}
 </div>
 {% endif %}
 
 {# ============================================================ #}
-{# 2. СТАТТЯ: ДВОКОЛОНКОВИЙ ПАРАЛЕЛЬНИЙ ДИЗАЙН                  #}
+{# 2. СТАТТЯ: ДВОКОЛОНКОВИЙ ПАРАЛЕЛЬНИЙ ДИЗАЙН #}
 {# ============================================================ #}
 {% else %}
 
 {# === ШАПКА СТАТТІ === #}
-<div class="entry-header" style="display: flex; justify-content: space-between; align-items: baseline; border-bottom: 2px solid var(--primary-color); padding-bottom: 5px; margin-bottom: 15px;">
-  <div style="flex-grow: 1;">
-    <span class="headword">
-        {{ entry.orth }}
-        {% if entry.homonym %}<sup>{{ entry.homonym }}</sup>{% endif %}
-    </span>
+<div class="entry-header"
+    style="display: flex; justify-content: space-between; align-items: baseline; border-bottom: 2px solid var(--primary-color); padding-bottom: 5px; margin-bottom: 15px;">
+    <div style="flex-grow: 1;">
+        <span class="headword">
+            {{ entry.orth }}
+            {% if entry.homonym %}<sup>{{ entry.homonym }}</sup>{% endif %}
+        </span>
 
-    {% if entry.german_orth %}
+        {% if entry.german_orth %}
         <span style="font-size: 1.15rem; color: #444; margin-left: 12px; font-weight: normal;">
             <span style="color:#888;">⇐</span>
             {% if entry.german_form_usg_hist %}
-                <i style="font-size: 0.85em; color: #666; margin-right: 3px;">{{ entry.german_form_usg_hist }}.</i>
+            <i style="font-size: 0.85em; color: #666; margin-right: 3px;">{{ entry.german_form_usg_hist }}</i>
             {% endif %}
             <b>{{ entry.german_orth }}</b>
             {% if entry.german_etym_info %}
-                <span style="font-size: 0.85em; color: #666; margin-left: 5px;">
-                    (← 
-                    <span class="has-tooltip" title="{{ entry.german_etym_info.lang_full }}" style="border-bottom: 1px dotted #999;">
-                        {{ entry.german_etym_info.lang_abbr }}
-                    </span>
-                    <i>{{ entry.german_etym_info.text | safe }}</i>)
+            <span style="font-size: 0.85em; color: #666; margin-left: 5px;">
+                (←
+                <span class="has-tooltip" title="{{ entry.german_etym_info.lang_full }}"
+                    style="border-bottom: 1px dotted #999;">
+                    {{ entry.german_etym_info.lang_abbr }}
                 </span>
+                <i>{{ entry.german_etym_info.text | safe }}</i>)
+            </span>
             {% endif %}
         </span>
-    {% endif %}
-  </div>
+        {% endif %}
+    </div>
 
-  <div class="entry-actions" style="display: flex; gap: 5px; align-items: center; margin-left: 15px;">
-      {% if prev_entry_id %}
-      <a href="#" class="button small entry-link" data-entry-id="{{ prev_entry_id }}" title="{{ _('Попереднє слово') }}">←</a>
-      {% endif %}
-      {% if next_entry_id %}
-      <a href="#" class="button small entry-link" data-entry-id="{{ next_entry_id }}" title="{{ _('Наступне слово') }}">→</a>
-      {% endif %}
-      <a href="{{ url_for('main.edit_entry', entry_id=entry.id) }}" class="button small button-warning" title="{{ _('Редагувати') }}">✎</a>
-      <a href="{{ url_for('main.delete_entry', entry_id=entry.id) }}" class="button small" style="color: #dc3545;" onclick="return confirm('Видалити статтю?');">🗑</a>
-  </div>
+    <div class="entry-actions" style="display: flex; gap: 5px; align-items: center; margin-left: 15px;">
+        {% if prev_entry_id %}
+        <a href="#" class="button small entry-link" data-entry-id="{{ prev_entry_id }}"
+            title="{{ _('Попереднє слово') }}">←</a>
+        {% endif %}
+        {% if next_entry_id %}
+        <a href="#" class="button small entry-link" data-entry-id="{{ next_entry_id }}"
+            title="{{ _('Наступне слово') }}">→</a>
+        {% endif %}
+
+        {# КНОПКИ РЕДАГУВАННЯ ВИДИМІ ЛИШЕ ЯКЩО НЕ READ_ONLY #}
+        {% if not read_only %}
+        <a href="{{ url_for('main.edit_entry', entry_id=entry.id) }}" class="button small button-warning"
+            title="{{ _('Редагувати') }}">✎</a>
+        <a href="{{ url_for('main.delete_entry', entry_id=entry.id) }}" class="button small" style="color: #dc3545;"
+            onclick="return confirm('Видалити статтю?');">🗑</a>
+        {% endif %}
+    </div>
 </div>
 
 {# === ХАРАКТЕРИСТИКА ЗАПОЗИЧЕННЯ === #}
@@ -90,28 +106,32 @@
 {% endif %}
 
 {# ============================================================ #}
-{# ЯРУС 1: УКРАЇНСЬКЕ СЛОВО (ЗЛІВА) | НІМЕЦЬКИЙ ЕТИМОН (СПРАВА) #}
+{# ЯРУС 1: СИМЕТРИЧНЕ ЗІСТАВЛЕННЯ (УКРАЇНСЬКЕ | НІМЕЦЬКЕ) #}
 {# ============================================================ #}
 <div class="entry-grid-row">
-    
+
     <!-- ЛІВА КОЛОНКА: УКРАЇНСЬКА ЧАСТИНА -->
     <div class="entry-col-left">
-        <div class="gram-line" style="margin-bottom: 10px;">
+        <div class="gram-line" style="margin-bottom: 10px; line-height: 1.5;">
             <strong style="font-family: 'Times New Roman', serif; font-size: 1.15em; margin-right: 8px;">
                 {{ entry.stress or entry.orth }}
             </strong>
             {% if entry.pos %}
-                {{ tooltip(entry.grammar_abbr_map.get(entry.pos, entry.pos), entry.grammar_map.get(entry.pos, entry.pos)) }}
+            {{ tooltip(entry.grammar_abbr_map.get(entry.pos, entry.pos), entry.grammar_map.get(entry.pos, entry.pos)) }}
             {% endif %}
             {% if entry.gram_gen %}
-                , {{ tooltip(entry.grammar_abbr_map.get(entry.gram_gen, entry.gram_gen), entry.grammar_map.get(entry.gram_gen, entry.gram_gen)) }}
+            , {{ tooltip(entry.grammar_abbr_map.get(entry.gram_gen, entry.gram_gen),
+            entry.grammar_map.get(entry.gram_gen, entry.gram_gen)) }}
             {% endif %}
-            {% if entry.casus_gen %} (-{{ entry.casus_gen }}) {% endif %}
-            {% if entry.transitivity %}
-                , {{ tooltip(entry.grammar_abbr_map.get(entry.transitivity, entry.transitivity), entry.grammar_map.get(entry.transitivity, entry.transitivity)) }}
+            {% if entry.casus_gen %}
+            ({{ entry.casus_gen if entry.casus_gen.startswith('-') else '-' ~ entry.casus_gen }})
+            {% endif %} {% if entry.transitivity %}
+            , {{ tooltip(entry.grammar_abbr_map.get(entry.transitivity, entry.transitivity),
+            entry.grammar_map.get(entry.transitivity, entry.transitivity)) }}
             {% endif %}
             {% if entry.aspect %}
-                , {{ tooltip(entry.grammar_abbr_map.get(entry.aspect, entry.aspect), entry.grammar_map.get(entry.aspect, entry.aspect)) }}
+            , {{ tooltip(entry.grammar_abbr_map.get(entry.aspect, entry.aspect), entry.grammar_map.get(entry.aspect,
+            entry.aspect)) }}
             {% endif %}
 
             {% set lemma_tags = [] %}
@@ -120,267 +140,275 @@
             {% for rs in entry.lemma_region_style %} {% set dummy = lemma_tags.append(rs) %} {% endfor %}
             {% for st in entry.lemma_style %} {% set dummy = lemma_tags.append(st) %} {% endfor %}
             {% if lemma_tags %}
-                <span style="margin-left: 6px; color: #666;">[<i>{{ lemma_tags|join(', ') }}</i>]</span>
+            <span style="margin-left: 6px; color: #666;">[<i>{{ lemma_tags|join(', ') }}</i>]</span>
             {% endif %}
         </div>
 
         {# Значення українського слова #}
         {% if entry.senses %}
-            {% set multiple_senses = entry.senses|length > 1 %}
-            {% set list_tag = 'ol' if multiple_senses else 'ul' %}
-            {% set list_class = 'senses-list' if multiple_senses else 'single-sense-list' %}
-            {% set list_style = '' if multiple_senses else 'list-style: none; padding-left: 0; margin: 0;' %}
+        {% set multiple_senses = entry.senses|length > 1 %}
+        {% set list_tag = 'ol' if multiple_senses else 'ul' %}
+        {% set list_class = 'senses-list' if multiple_senses else 'single-sense-list' %}
+        {% set list_style = '' if multiple_senses else 'list-style: none; padding-left: 0; margin: 0;' %}
 
-            <{{ list_tag }} class="{{ list_class }}" style="{{ list_style }}">
-                {% for sense in entry.senses %}
-                <li style="margin-bottom: 10px; line-height: 1.45;">
-                    {% if sense.usg_display_parts or sense.geo_display %}
-                      <span class="tag">
-                        {%- for part in sense.usg_display_parts -%}
-                          <i {% if part.type == 'abbr' %}class="has-tooltip" title="{{ part.title }}"{% endif %}>{{ part.value }}</i>{%- if not loop.last or sense.geo_display %}, {% endif -%}
-                        {%- endfor -%}
-                        {% if sense.geo_display %}
-                            {% for part in sense.geo_display %}
-                              <i class="has-tooltip" title="{{ part.full }}">{{ part.abbr }}</i>{% if not loop.last %}, {% endif %}
-                            {% endfor %}
+        <{{ list_tag }} class="{{ list_class }}" style="{{ list_style }}">
+            {% for sense in entry.senses %}
+            <li style="margin-bottom: 10px; line-height: 1.45;">
+                {% if sense.usg_display_parts or sense.geo_display %}
+                <span class="tag">
+                    {%- for part in sense.usg_display_parts -%}
+                    <i {% if part.type=='abbr' %}class="has-tooltip" title="{{ part.title }}" {% endif %}>{{ part.value
+                        }}</i>{%- if not loop.last or sense.geo_display %}, {% endif -%}
+                    {%- endfor -%}
+                    {% if sense.geo_display %}
+                    {% for part in sense.geo_display %}
+                    <i class="has-tooltip" title="{{ part.full }}">{{ part.abbr }}</i>{% if not loop.last %}, {% endif
+                    %}
+                    {% endfor %}
+                    {% endif %}
+                </span>
+                {% endif %}
+
+                <div class="definition">{{ sense.definition_html|safe }}</div>
+
+                {% if sense.def_source_abbr %}
+                <span style="font-size: 0.82em; color: #888; white-space: nowrap; margin-left: 4px;">
+                    [{%- if sense.def_source_url -%}
+                    <a href="{{ sense.def_source_url }}" target="_blank"
+                        style="color: inherit; text-decoration: underline;">{{ sense.def_source_abbr }}</a>
+                    {%- else -%}
+                    {{ sense.def_source_abbr }}
+                    {%- endif -%}]
+                </span>
+                {% endif %}
+
+                {% if sense.examples %}
+                <div class="examples" style="margin-top: 4px;">
+                    {% for example in sense.examples %}
+                    <span class="example-item" style="font-size: 0.9em;">
+                        “{{ example.quote_html|safe }}”
+                        {% if example.source_abbr %}
+                        <span class="example-source">({{ example.source_abbr }})</span>
                         {% endif %}
-                      </span>
-                    {% endif %}
-
-                    <div class="definition">{{ sense.definition_html|safe }}</div>
-
-                    {% if sense.def_source_abbr %}
-                        <span style="font-size: 0.82em; color: #888; white-space: nowrap; margin-left: 4px;">
-                            [{%- if sense.def_source_url -%}
-                                <a href="{{ sense.def_source_url }}" target="_blank" style="color: inherit; text-decoration: underline;">{{ sense.def_source_abbr }}</a>
-                            {%- else -%}
-                                {{ sense.def_source_abbr }}
-                            {%- endif -%}]
-                        </span>
-                    {% endif %}
-
-                    {% if sense.examples %}
-                    <div class="examples" style="margin-top: 4px;">
-                        {% for example in sense.examples %}
-                        <span class="example-item" style="font-size: 0.9em;">
-                            “{{ example.quote_html|safe }}” 
-                            {% if example.source_abbr %}
-                                <span class="example-source">({{ example.source_abbr }})</span>
-                            {% endif %}
-                        </span>
-                        {% endfor %}
-                    </div>
-                    {% endif %}
-                </li>
-                {% endfor %}
-            </{{ list_tag }}>
+                    </span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </{{ list_tag }}>
         {% endif %}
     </div>
 
-    <!-- ПРАВА КОЛОНКА: НІМЕЦЬКИЙ ЕТИМОН ТА ЗНАЧЕННЯ -->
+    <!-- ПРАВА КОЛОНКА: НІМЕЦЬКИЙ ЕТИМОН -->
     <div class="entry-col-right">
         {% if entry.german_orth or entry.german_senses %}
-            
-            {% if entry.german_orth %}
-            <div style="margin-bottom: 8px; font-size: 0.98rem; line-height: 1.5;">
-                <span style="color:#004085; font-weight: bold;">{{ entry.german_orth }}</span>
-                {% if entry.german_stress %}<i style="margin-left: 4px;">{{ entry.german_stress }}</i>{% endif %}
-                {% if entry.german_pos or entry.german_gen %}
-                    <span style="color: #555; margin-left: 4px;">
-                        {% if entry.german_pos %}{{ tooltip(entry.grammar_abbr_map.get(entry.german_pos, entry.german_pos), entry.grammar_map.get(entry.german_pos, entry.german_pos)) }}{% endif %}
-                        {% if entry.german_gen %}, {{ tooltip(entry.grammar_abbr_map.get(entry.german_gen, entry.german_gen), entry.grammar_map.get(entry.german_gen, entry.german_gen)) }}{% endif %}
-                    </span>
-                {% endif %}
-
-                {% if entry.lang_sourse %}
-                    <span style="color: #666; font-size: 0.85em; margin-left: 6px;">
-                        ({{ _('питоме') if entry.lang_sourse == 'native' else _('запозичення') }})
-                    </span>
-                {% endif %}
-            </div>
+        <div class="gram-line" style="margin-bottom: 10px; line-height: 1.5;">
+            <span style="color:#004085; font-weight: bold; font-size: 1.15em;">{{ entry.german_orth }}</span>
+            {% if entry.german_stress %}<i style="margin-left: 4px;">{{ entry.german_stress }}</i>{% endif %}
+            {% if entry.german_pos or entry.german_gen %}
+            <span style="color: #555; margin-left: 4px;">
+                {% if entry.german_pos %}{{ tooltip(entry.grammar_abbr_map.get(entry.german_pos, entry.german_pos),
+                entry.grammar_map.get(entry.german_pos, entry.german_pos)) }}{% endif %}
+                {% if entry.german_gen %}, {{ tooltip(entry.grammar_abbr_map.get(entry.german_gen, entry.german_gen),
+                entry.grammar_map.get(entry.german_gen, entry.german_gen)) }}{% endif %}
+            </span>
             {% endif %}
 
-            {% if entry.german_senses %}
-                {% set list_tag = 'ol' if entry.german_senses|length > 1 else 'ul' %}
-                {% set list_class = 'senses-list' if entry.german_senses|length > 1 else 'single-sense-list' %}
+            {% if entry.lang_sourse %}
+            <span style="color: #666; font-size: 0.85em; margin-left: 6px;">
+                ({{ _('питоме') if entry.lang_sourse == 'native' else _('запозичення') }})
+            </span>
+            {% endif %}
+        </div>
 
-                <{{ list_tag }} class="{{ list_class }}" style="font-size: 0.93em; line-height: 1.45;">
-                    {% for sense in entry.german_senses %}
-                    <li style="margin-bottom: 10px;">
-                        {% if sense.style or sense.time or sense.region or sense.geo_display %}
-                            <span style="color: #666; margin-right: 4px;">
-                                {% for st in sense.style %}{{ tooltip(st.abbr, st.full) }}&nbsp;{% endfor %}
-                                {% if sense.time %}<i>{{ sense.time }}</i>{% endif %}
-                                {% for geo in sense.geo_display %}<i class="has-tooltip" title="{{ geo.full }}">{{ geo.abbr }}</i>{% endfor %}
-                            </span>
-                        {% endif %}
-                        
-                        {# Текст німецького тлумачення #}
-                        <div class="definition">{{ sense.definition_html|safe }}</div>
-                        
-                        {# Джерело та посилання #}
-                        {% if sense.def_source_abbr %}
-                            <span style="font-size: 0.82em; color: #888; margin-left: 4px;">
-                                [{%- if sense.def_source_url -%}<a href="{{ sense.def_source_url }}" target="_blank" style="color: inherit;">{{ sense.def_source_abbr }}</a>{%- else -%}{{ sense.def_source_abbr }}{%- endif -%}]
-                            </span>
-                        {% endif %}
+        {% if entry.german_senses %}
+        {% set list_tag = 'ol' if entry.german_senses|length > 1 else 'ul' %}
+        {% set list_class = 'senses-list' if entry.german_senses|length > 1 else 'single-sense-list' %}
 
-                        {# УКРАЇНСЬКИЙ ПЕРЕКЛАД НІМЕЦЬКОЇ ДЕФІНІЦІЇ #}
-                        {% if sense.translations %}
-                            <div style="margin-top: 4px; padding-left: 10px; border-left: 2px solid #b8daff; color: #495057; font-size: 0.92em;">
-                                {% for trans in sense.translations %}
-                                    <div>
-                                        ↳ {{ trans.quote_html|safe }}
-                                    </div>
-                                {% endfor %}
-                            </div>
-                        {% endif %}
-                    </li>
+        <{{ list_tag }} class="{{ list_class }}" style="font-size: 0.93em; line-height: 1.45;">
+            {% for sense in entry.german_senses %}
+            <li style="margin-bottom: 10px;">
+                {% if sense.style or sense.time or sense.region or sense.geo_display %}
+                <span style="color: #666; margin-right: 4px;">
+                    {% for st in sense.style %}{{ tooltip(st.abbr, st.full) }}&nbsp;{% endfor %}
+                    {% if sense.time %}<i>{{ sense.time }}</i>{% endif %}
+                    {% for geo in sense.geo_display %}<i class="has-tooltip" title="{{ geo.full }}">{{ geo.abbr }}</i>{%
+                    endfor %}
+                </span>
+                {% endif %}
+
+                {# Текст німецького тлумачення #}
+                <div class="definition">{{ sense.definition_html|safe }}</div>
+
+                {# Джерело та посилання #}
+                {% if sense.def_source_abbr %}
+                <span style="font-size: 0.82em; color: #888; margin-left: 4px;">
+                    [{%- if sense.def_source_url -%}<a href="{{ sense.def_source_url }}" target="_blank"
+                        style="color: inherit;">{{ sense.def_source_abbr }}</a>{%- else -%}{{ sense.def_source_abbr
+                    }}{%- endif -%}]
+                </span>
+                {% endif %}
+
+                {# УКРАЇНСЬКИЙ ПЕРЕКЛАД НІМЕЦЬКОЇ ДЕФІНІЦІЇ #}
+                {% if sense.translations %}
+                <div
+                    style="margin-top: 4px; padding-left: 10px; border-left: 2px solid #b8daff; color: #495057; font-size: 0.92em;">
+                    {% for trans in sense.translations %}
+                    <div>
+                        ↳ {{ trans.quote_html|safe }}
+                    </div>
                     {% endfor %}
-                </{{ list_tag }}>
-            {% endif %}
+                </div>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </{{ list_tag }}>
+        {% endif %}
         {% endif %}
     </div>
 </div>
 
 {# ============================================================ #}
-{# ЯРУС 2: ВАРІАНТИ (ЗЛІВА) | ВІДПОВІДНИКИ (СПРАВА)             #}
+{# ЯРУС 2: ВАРІАНТИ (ЗЛІВА) | ВІДПОВІДНИКИ (СПРАВА) #}
 {# ============================================================ #}
 {% if entry.variants or entry.equivalents %}
 <div class="entry-grid-row" style="margin-top: 15px; border-top: 1px solid #f1f3f5; padding-top: 15px;">
-    
+
     <!-- ЛІВА КОЛОНКА: ВАРІАНТИ -->
     <div class="entry-col-left">
-{% if entry.variants %}
-            <div class="entry-subheading">{{ _('Варіанти та деривати') }}</div>
-            <ul class="variants-list" style="list-style: none; padding-left: 0; margin-top: 5px; margin-bottom: 0;">
-                {% set ns_var = namespace(prev_source=None) %}
+        {% if entry.variants %}
+        <div class="entry-subheading">{{ _('Варіанти та деривати') }}</div>
+        <ul class="variants-list" style="list-style: none; padding-left: 0; margin-top: 5px; margin-bottom: 0;">
+            {% set ns_var = namespace(prev_source=None) %}
 
-                {% for var in entry.variants %}
-                    <li style="margin-bottom: 6px; color: #444; font-size: 0.92rem; line-height: 1.45;">
-                        
-                        {# 1. Слово-гасло варіанта + Граматика + Словотвір #}
-                        <strong style="color: #000;">{{ var.orth }}</strong>
-                        
-                        {% if var.pos %}
-                            <span style="font-size: 0.88em; margin-left: 2px;">
-                                {{ tooltip(entry.grammar_abbr_map.get(var.pos, var.pos), entry.grammar_map.get(var.pos, var.pos)) }}
-                            </span>
+            {% for var in entry.variants %}
+            <li style="margin-bottom: 6px; color: #444; font-size: 0.92rem; line-height: 1.45;">
+                <strong style="color: #000;">{{ var.orth }}</strong>
+
+                {% if var.pos %}
+                <span style="font-size: 0.88em; margin-left: 2px;">
+                    {{ tooltip(entry.grammar_abbr_map.get(var.pos, var.pos), entry.grammar_map.get(var.pos, var.pos)) }}
+                </span>
+                {% endif %}
+
+                {% if var.word_formation %}
+                <span style="font-size: 0.88em; margin-left: 2px;">
+                    {{ tooltip(entry.grammar_abbr_map.get(var.word_formation, var.word_formation),
+                    entry.grammar_map.get(var.word_formation, var.word_formation)) }}
+                </span>
+                {% endif %}
+
+                {% if var.senses %}
+                {% if var.senses|length > 1 %}
+                <ol style="margin: 3px 0 0 0; padding-left: 22px; color: #495057;">
+                    {% for sense in var.senses %}
+                    <li style="margin-bottom: 2px;">
+                        {% if sense.time %}<i>{{ sense.time }}</i>&nbsp;{% endif %}
+                        {% if sense.def_html %}«{{ sense.def_html|safe }}»{% elif sense.def %}«{{ sense.def }}»{% endif
+                        %}
+
+                        {% if sense.source and sense.source.abbr %}
+                        {% set current_src = sense.source.abbr %}
+                        {% if current_src == ns_var.prev_source %}
+                        <span style="color: #aaa; font-size: 0.85em; margin-left: 3px;"
+                            title="Джерело: {{ current_src }}">[{{ current_src }}]</span>
+                        {% else %}
+                        <span
+                            style="color: var(--primary-color); font-size: 0.88em; font-weight: 500; margin-left: 3px;">[{{
+                            current_src }}]</span>
+                        {% set ns_var.prev_source = current_src %}
                         {% endif %}
-
-                        {% if var.word_formation %}
-                            <span style="font-size: 0.88em; margin-left: 2px;">
-                                {{ tooltip(entry.grammar_abbr_map.get(var.word_formation, var.word_formation), entry.grammar_map.get(var.word_formation, var.word_formation)) }}
-                            </span>
-                        {% endif %}
-
-                        {# 2. ЗНАЧЕННЯ ВАРІАНТА #}
-                        {% if var.senses %}
-                            
-                            {# А) Якщо значень ДВА АБО БІЛЬШЕ -> робимо нумерований список під словом #}
-                            {% if var.senses|length > 1 %}
-                                <ol style="margin: 3px 0 0 0; padding-left: 22px; color: #495057;">
-                                    {% for sense in var.senses %}
-                                        <li style="margin-bottom: 2px;">
-                                            {% if sense.time %}<i>{{ sense.time }}</i>&nbsp;{% endif %}
-                                            {% if sense.def_html %}«{{ sense.def_html|safe }}»{% elif sense.def %}«{{ sense.def }}»{% endif %}
-                                            
-                                            {% if sense.source and sense.source.abbr %}
-                                                {% set current_src = sense.source.abbr %}
-                                                {% if current_src == ns_var.prev_source %}
-                                                    <span style="color: #aaa; font-size: 0.85em; margin-left: 3px;" title="Джерело: {{ current_src }}">[{{ current_src }}]</span>
-                                                {% else %}
-                                                    <span style="color: var(--primary-color); font-size: 0.88em; font-weight: 500; margin-left: 3px;">[{{ current_src }}]</span>
-                                                    {% set ns_var.prev_source = current_src %}
-                                                {% endif %}
-                                            {% endif %}
-                                        </li>
-                                    {% endfor %}
-                                </ol>
-
-                            {# Б) Якщо значення ОДНЕ -> виводимо в той самий рядок #}
-                            {% else %}
-                                {% set single_sense = var.senses[0] %}
-                                {% if single_sense.time %}&nbsp;<i>{{ single_sense.time }}</i>{% endif %}
-                                {% if single_sense.def_html %}&nbsp;«{{ single_sense.def_html|safe }}»{% elif single_sense.def %}&nbsp;«{{ single_sense.def }}»{% endif %}
-                                
-                                {% if single_sense.source and single_sense.source.abbr %}
-                                    {% set current_src = single_sense.source.abbr %}
-                                    {% if current_src == ns_var.prev_source %}
-                                        &nbsp;<span style="color: #aaa; font-size: 0.85em;" title="Джерело: {{ current_src }}">[{{ current_src }}]</span>
-                                    {% else %}
-                                        &nbsp;<span style="color: var(--primary-color); font-size: 0.88em; font-weight: 500;">[{{ current_src }}]</span>
-                                        {% set ns_var.prev_source = current_src %}
-                                    {% endif %}
-                                {% endif %}
-                            {% endif %}
-
                         {% endif %}
                     </li>
-                {% endfor %}
-            </ul>
+                    {% endfor %}
+                </ol>
+                {% else %}
+                {% set single_sense = var.senses[0] %}
+                {% if single_sense.time %}&nbsp;<i>{{ single_sense.time }}</i>{% endif %}
+                {% if single_sense.def_html %}&nbsp;«{{ single_sense.def_html|safe }}»{% elif single_sense.def
+                %}&nbsp;«{{ single_sense.def }}»{% endif %}
+
+                {% if single_sense.source and single_sense.source.abbr %}
+                {% set current_src = single_sense.source.abbr %}
+                {% if current_src == ns_var.prev_source %}
+                &nbsp;<span style="color: #aaa; font-size: 0.85em;" title="Джерело: {{ current_src }}">[{{ current_src
+                    }}]</span>
+                {% else %}
+                &nbsp;<span style="color: var(--primary-color); font-size: 0.88em; font-weight: 500;">[{{ current_src
+                    }}]</span>
+                {% set ns_var.prev_source = current_src %}
+                {% endif %}
+                {% endif %}
+                {% endif %}
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
         {% endif %}
     </div>
 
     <!-- ПРАВА КОЛОНКА: ІНШОМОВНІ ВІДПОВІДНИКИ -->
     <div class="entry-col-right">
         {% if entry.equivalents %}
-            <div class="entry-subheading">{{ _('Іншомовні відповідники') }}</div>
-            <ul class="equivalents-list" style="list-style: none; padding-left: 0; margin-top: 5px; margin-bottom: 0;">
-                {% set ns_eq = namespace(prev_source=None) %}
-                
-                {% for equiv in entry.equivalents %}
-                    <li style="margin-bottom: 8px; font-size: 0.92rem; line-height: 1.45;">
-                        {# Мова, Регіон, Слово, Частина мови #}
-                        <span class="has-tooltip" title="{{ equiv.lang_full }}">{{ equiv.lang_display }}</span>
-                        {% if equiv.region %}<i style="color: #666; font-size: 0.88em; margin-left: 2px;">{{ equiv.region }}</i>{% endif %}
-                        <strong style="color: #222; margin-left: 2px;">{{ equiv.word }}</strong>
-                        {% if equiv.pos %}
-                            <span style="margin-left: 2px; font-size: 0.88em;">
-                               {{ tooltip(entry.grammar_abbr_map.get(equiv.pos, equiv.pos), entry.grammar_map.get(equiv.pos, equiv.pos)) }}
-                            </span>
+        <div class="entry-subheading">{{ _('Іншомовні відповідники') }}</div>
+        <ul class="equivalents-list" style="list-style: none; padding-left: 0; margin-top: 5px; margin-bottom: 0;">
+            {% set ns_eq = namespace(prev_source=None) %}
+
+            {% for equiv in entry.equivalents %}
+            <li style="margin-bottom: 8px; font-size: 0.92rem; line-height: 1.45;">
+                <span class="has-tooltip" title="{{ equiv.lang_full }}">{{ equiv.lang_display }}</span>
+                {% if equiv.region %}<i style="color: #666; font-size: 0.88em; margin-left: 2px;">{{ equiv.region
+                    }}</i>{% endif %}
+                <strong style="color: #222; margin-left: 2px;">{{ equiv.word }}</strong>
+                {% if equiv.pos %}
+                <span style="margin-left: 2px; font-size: 0.88em;">
+                    {{ tooltip(entry.grammar_abbr_map.get(equiv.pos, equiv.pos), entry.grammar_map.get(equiv.pos,
+                    equiv.pos)) }}
+                </span>
+                {% endif %}
+
+                {% if equiv.defs %}
+                {% if equiv.defs|length > 1 %}
+                <ol style="margin: 3px 0 0 0; padding-left: 22px; color: #495057;">
+                    {% for d in equiv.defs %}
+                    <li style="margin-bottom: 2px;">
+                        {% if d.text %}{{ d.text }}{% endif %}
+                        {% if d.source_abbr %}
+                        {% if d.source_abbr == ns_eq.prev_source %}
+                        <span style="color: #aaa; font-size: 0.85em; margin-left: 3px;"
+                            title="Джерело: {{ d.source_abbr }}">[{{ d.source_abbr }}]</span>
+                        {% else %}
+                        <span
+                            style="color: var(--primary-color); font-size: 0.88em; margin-left: 3px; font-weight: 500;">[{{
+                            d.source_abbr }}]</span>
+                        {% set ns_eq.prev_source = d.source_abbr %}
                         {% endif %}
-
-                        {# ВИВЕДЕННЯ ЗНАЧЕНЬ ВІДПОВІДНИКА #}
-                        {% if equiv.defs %}
-                            {# А) Якщо значень ДВА АБО БІЛЬШЕ -> виводимо охайний список #}
-                            {% if equiv.defs|length > 1 %}
-                                <ol style="margin: 3px 0 0 0; padding-left: 22px; color: #495057;">
-                                    {% for d in equiv.defs %}
-                                        <li style="margin-bottom: 2px;">
-                                            {% if d.text %}{{ d.text }}{% endif %}
-                                            {% if d.source_abbr %}
-                                                {% if d.source_abbr == ns_eq.prev_source %}
-                                                    <span style="color: #aaa; font-size: 0.85em; margin-left: 3px;" title="Джерело: {{ d.source_abbr }}">[{{ d.source_abbr }}]</span>
-                                                {% else %}
-                                                    <span style="color: var(--primary-color); font-size: 0.88em; margin-left: 3px; font-weight: 500;">[{{ d.source_abbr }}]</span>
-                                                    {% set ns_eq.prev_source = d.source_abbr %}
-                                                {% endif %}
-                                            {% endif %}
-                                        </li>
-                                    {% endfor %}
-                                </ol>
-
-                            {# Б) Якщо значення ОДНЕ -> виводимо в один рядок #}
-                            {% else %}
-                                {% set single_def = equiv.defs[0] %}
-                                {% if single_def.source_abbr %}
-                                    {% if single_def.source_abbr == ns_eq.prev_source %}
-                                        <span style="color: #aaa; font-size: 0.85em; margin-left: 4px;" title="Джерело: {{ single_def.source_abbr }}">[{{ single_def.source_abbr }}]</span>
-                                    {% else %}
-                                        <span style="color: var(--primary-color); font-size: 0.88em; margin-left: 4px; font-weight: 500;">[{{ single_def.source_abbr }}]</span>
-                                        {% set ns_eq.prev_source = single_def.source_abbr %}
-                                    {% endif %}
-                                {% endif %}
-
-                                {% if single_def.text %}
-                                    <span style="color: #555; margin-left: 4px;">— {{ single_def.text }}</span>
-                                {% endif %}
-                            {% endif %}
                         {% endif %}
                     </li>
-                {% endfor %}
-            </ul>
+                    {% endfor %}
+                </ol>
+                {% else %}
+                {% set single_def = equiv.defs[0] %}
+                {% if single_def.source_abbr %}
+                {% if single_def.source_abbr == ns_eq.prev_source %}
+                <span style="color: #aaa; font-size: 0.85em; margin-left: 4px;"
+                    title="Джерело: {{ single_def.source_abbr }}">[{{ single_def.source_abbr }}]</span>
+                {% else %}
+                <span style="color: var(--primary-color); font-size: 0.88em; margin-left: 4px; font-weight: 500;">[{{
+                    single_def.source_abbr }}]</span>
+                {% set ns_eq.prev_source = single_def.source_abbr %}
+                {% endif %}
+                {% endif %}
+
+                {% if single_def.text %}
+                <span style="color: #555; margin-left: 4px;">— {{ single_def.text }}</span>
+                {% endif %}
+                {% endif %}
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
         {% endif %}
     </div>
 </div>
@@ -388,34 +416,37 @@
 
 {# === НОТАТКА ТА ДЖЕРЕЛА === #}
 {% if entry.entry_note_html %}
-<div style="margin-top: 20px; background: #fafafa; border: 1px solid #eee; padding: 10px 15px; font-size: 0.9em; border-radius: 4px;">
-  {{ entry.entry_note_html|safe }}
+<div
+    style="margin-top: 20px; background: #fafafa; border: 1px solid #eee; padding: 10px 15px; font-size: 0.9em; border-radius: 4px;">
+    {{ entry.entry_note_html|safe }}
 </div>
 {% endif %}
 
 {% if entry.bibliography %}
 <div class="bibliography-section" style="margin-top: 25px;">
-  <strong style="display:block; margin-bottom: 5px;">{{ _('Джерела:') }}</strong>
-  <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 12px;">
-    {% for bibl in entry.bibliography %}
-    <li style="font-size: 0.88rem;">
-      {% if bibl.url %}
-          <a href="{{ bibl.url }}" target="_blank" title="{{ bibl.title }}" class="has-tooltip" style="text-decoration:none; color: #007bff; border-bottom: 1px dotted #007bff;">
-              {{ bibl.abbr }}
-          </a>
-      {% else %}
-          <span title="{{ bibl.title }}" class="has-tooltip" style="color: #007bff; cursor: help; border-bottom: 1px dotted #007bff;">
-              {{ bibl.abbr }}
-          </span>
-      {% endif %}
-      {% if bibl.volume %} {{ bibl.volume }}{% endif %}
-      {% if bibl.page %}, {{ bibl.page }}{% endif %}
-    </li>
-    {% endfor %}
-  </ul>
+    <strong style="display:block; margin-bottom: 5px;">{{ _('Джерела:') }}</strong>
+    <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 12px;">
+        {% for bibl in entry.bibliography %}
+        <li style="font-size: 0.88rem;">
+            {% if bibl.url %}
+            <a href="{{ bibl.url }}" target="_blank" title="{{ bibl.title }}" class="has-tooltip"
+                style="text-decoration:none; color: #007bff; border-bottom: 1px dotted #007bff;">
+                {{ bibl.abbr }}
+            </a>
+            {% else %}
+            <span title="{{ bibl.title }}" class="has-tooltip"
+                style="color: #007bff; cursor: help; border-bottom: 1px dotted #007bff;">
+                {{ bibl.abbr }}
+            </span>
+            {% endif %}
+            {% if bibl.volume %} {{ bibl.volume }}{% endif %}
+            {% if bibl.page %}, {{ bibl.page }}{% endif %}
+        </li>
+        {% endfor %}
+    </ul>
 </div>
 {% endif %}
 
-{% endif %} {# закриває: if entry.is_redirect ... else #}
+{% endif %} {# кінець блоку else #}
 
-{% endif %} {# закриває: if entry #}
+{% endif %} {# кінець блоку if entry #}

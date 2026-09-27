@@ -1,128 +1,156 @@
 <!DOCTYPE html>
 <html lang="uk">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ _('Словник німецьких запозичень') }}</title>
+    <title>{{ _('Матеріали до словника німецьких запозичень в українській мові') }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='logo.svg') }}">
 </head>
+
 <body class="layout-fixed">
     <div class="container">
-        
-<!-- Верхня шапка з фільтрами -->
+
+        <!-- ДВОРІВНЕВА АКАДЕМІЧНА ШАПКА -->
         <header class="sticky-header">
-            <div class="header-title-area">
-                <img src="{{ url_for('static', filename='logo.svg') }}" alt="Logo" style="height: 32px; width: auto; opacity: 0.8;">
-                <h1>{{ _('Словник німецьких запозичень') }}</h1>
-                
-                <span class="stats-info">
-                    {{ _('Слів:') }} <strong>{{ stats.total }}</strong> 
-                    ({{ _('Готово:') }} {{ stats.complete }})
-                </span>
-            </div>
 
-            <!-- ПАНЕЛЬ РОЗШИРЕНИХ ФІЛЬТРІВ -->
-            <div class="top-controls">
-                
-                <!-- 1. Фільтр: Домени -->
-                <select id="filter-domain" class="header-select" title="Ідеографічні сфери">
-                    <option value="">🏷 Домени</option>
-                    {% for d in back_data.domains %}
-                        <optgroup label="{{ d.term }}">
-                            {% for sub in d.children %}
-                                <option value="dom:{{ sub.term }}" {% if 'dom:' ~ sub.term in query %}selected{% endif %}>{{ sub.term }}</option>
-                            {% endfor %}
-                        </optgroup>
-                    {% endfor %}
-                </select>
-
-                <!-- 2. Фільтр: Ремарки/Стилі -->
-                <select id="filter-style" class="header-select" title="Ремарки та стилі">
-                    <option value="">🖋 Ремарки</option>
-                    {% for st in back_data.styles %}
-                        <optgroup label="{{ st.term }}">
-                            {% for sub in st.children %}
-                                <option value="style:{{ sub.abbr or sub.term }}" {% if ('style:' ~ (sub.abbr or sub.term)) in query %}selected{% endif %}>{{ sub.abbr }} ({{ sub.term }})</option>
-                            {% endfor %}
-                        </optgroup>
-                    {% endfor %}
-                </select>
-
-                <!-- 3. Фільтр: Джерела -->
-                <select id="filter-bibl" class="header-select" title="Джерела та бібліографія">
-                    <option value="">📚 Джерела</option>
-                    {% for b in back_data.bibliography %}
-                        <option value="bibl:{{ b.abbr }}" {% if 'bibl:' ~ b.abbr in query %}selected{% endif %}>{{ b.abbr }}</option>
-                    {% endfor %}
-                </select>
-
-                <!-- 4. Фільтр: Тип запозичення -->
-                <select id="filter-type" class="header-select" title="Тип запозичення">
-                    <option value="">🧬 Типи</option>
-                    {% set b_types = (back_data.borrowing_characteristics | selectattr('id', 'equalto', 'borrowing_type') | first) %}
-                    {% if b_types %}
-                        {% for t in b_types.children %}
-                            <option value="type:{{ t.value }}" {% if 'type:' ~ t.value in query %}selected{% endif %}>{{ t.term }}</option>
-                        {% endfor %}
-                    {% endif %}
-                </select>
-
-                <!-- Кнопка скидання фільтрів -->
-                <button type="button" id="reset-filters-btn" class="button small" title="Скинути всі фільтри" style="display: none; color: #dc3545;">
-                    ↺
-                </button>
-
-                <div style="height: 24px; width: 1px; background: #dee2e6; margin: 0 5px;"></div>
-
-                <!-- Фільтр статусу -->
-                <div class="filter-group" id="filter-group">
-                    <label>
-                        <input type="radio" name="show" value="all" {% if request.args.get('show') != 'complete' and request.args.get('show') != 'incomplete' %}checked{% endif %}> 
-                        {{ _('Всі') }}
-                    </label>
-                    <label>
-                        <input type="radio" name="show" value="complete" {% if request.args.get('show') == 'complete' %}checked{% endif %}> 
-                        <span style="color: green;">✔</span>
-                    </label>
-                    <label>
-                        <input type="radio" name="show" value="incomplete" {% if request.args.get('show') == 'incomplete' %}checked{% endif %}> 
-                        <span style="color: gray;">✎</span>
-                    </label>
+            <!-- РЯДОК 1: БРЕНД ТА АКАДЕМІЧНЕ МЕНЮ -->
+            <div class="header-top-row">
+                <div class="header-brand-block">
+                    <img src="{{ url_for('static', filename='logo.svg') }}" alt="Logo" class="header-logo">
+                    <div class="header-title-wrapper">
+                        <h1 class="header-main-title">{{ _('Матеріали до словника німецьких запозичень в українській мові') }}</h1>
+                        <div class="header-sub-meta">
+                            <span>TEI P5 XML</span> •
+                            <span>{{ _('Слів:') }} <strong>{{ stats.total }}</strong></span>
+                            <span>({{ _('опрацьовано:') }} <strong style="color: #28a745;">{{ stats.complete
+                                    }}</strong>)</span>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Кнопка додавання -->
-                <a href="{{ url_for('main.add_entry') }}" class="button button-primary" title="{{ _('Додати нову статтю') }}">+</a>
+                <nav class="nav-links-menu">
+                    <!-- 1. Про словник (файл docs/about_dictionary.md) -->
+                    <a href="#" class="nav-badge-btn doc-modal-btn" data-doc="about_dictionary"
+                        data-title="📖 Про словник">
+                        📖 {{ _('Про словник') }}
+                    </a>
 
-                <!-- Кнопка XML -->
-                <a href="{{ url_for('main.download_xml') }}" class="button" title="{{ _('Завантажити XML') }}">XML</a>
+                    <!-- 2. Засади укладання (файл docs/editorial_principles.md) -->
+                    <a href="#" class="nav-badge-btn doc-modal-btn" data-doc="editorial_principles"
+                        data-title="📜 Засади укладання">
+                        📜 {{ _('Засади') }}
+                    </a>
 
-                <!-- Перемикач мови реєстру -->
-                <div class="language-selector">
-                    <a href="{{ url_for('main.index', lang='uk', q=request.args.get('q', ''), show=request.args.get('show', 'all')) }}" 
-                       class="{% if current_lang == 'uk' %}active{% endif %}">UA</a>
-                    <a href="{{ url_for('main.index', lang='de', q=request.args.get('q', ''), show=request.args.get('show', 'all')) }}" 
-                       class="{% if current_lang == 'de' %}active{% endif %}">DE</a>
+                    <!-- 3. Інструкція користувача (файл docs/user_guide.md) -->
+                    <a href="#" class="nav-badge-btn doc-modal-btn" data-doc="user_guide"
+                        data-title="ℹ️ Інструкція користувача">
+                        ℹ️ {{ _('Інструкція') }}
+                    </a>
+
+                    <!-- 4. Про автора (файл docs/about_author.md) -->
+                    <a href="#" class="nav-badge-btn doc-modal-btn" data-doc="about_author" data-title="👤 Про автора">
+                        👤 {{ _('Про автора') }}
+                    </a>
+
+                    <!-- 5. Зв'язок (Модальне вікно відправки листа) -->
+                    <a href="#" class="nav-badge-btn" id="open-feedback-btn">
+                        ✉️ {{ _("Зв'язок") }}
+                    </a>
+                </nav>
+            </div>
+
+            <!-- РЯДОК 2: РОБОЧІ ФІЛЬТРИ ТА ІНСТРУМЕНТИ -->
+            <div class="header-bottom-row">
+
+                <!-- Ліва група: Селектори фільтрів -->
+                <div class="header-filters-bar">
+                    <select id="filter-domain" class="header-select" title="Ідеографічні домени"
+                        data-in-development="true">
+                        <option value="">🏷 Домени (у розробці)</option>
+                        {% for d in back_data.domains %}
+                        <optgroup label="{{ d.term }}">
+                            {% for sub in d.children %}<option value="dom:{{ sub.term }}">{{ sub.term }}</option>{%
+                            endfor %}
+                        </optgroup>
+                        {% endfor %}
+                    </select>
+
+                    <select id="filter-style" class="header-select" title="Ремарки">
+                        <option value="">🖋 Ремарки</option>
+                        {% for st in back_data.styles %}
+                        <optgroup label="{{ st.term }}">
+                            {% for sub in st.children %}<option value="style:{{ sub.abbr or sub.term }}">{{ sub.abbr }}
+                            </option>{% endfor %}
+                        </optgroup>
+                        {% endfor %}
+                    </select>
+
+                    <select id="filter-bibl" class="header-select" title="Джерела">
+                        <option value="">📚 Джерела</option>
+                        {% for b in back_data.bibliography %}
+                        <option value="bibl:{{ b.abbr }}">{{ b.abbr }}</option>
+                        {% endfor %}
+                    </select>
+
+                    <select id="filter-type" class="header-select" title="Тип">
+                        <option value="">🧬 Типи</option>
+                        {% set b_types = (back_data.borrowing_characteristics | selectattr('id', 'equalto',
+                        'borrowing_type') | first) %}
+                        {% if b_types %}
+                        {% for t in b_types.children %}<option value="type:{{ t.value }}">{{ t.term }}</option>{% endfor
+                        %}
+                        {% endif %}
+                    </select>
+
+                    <button type="button" id="reset-filters-btn" class="button small" title="Скинути"
+                        style="display: none; color: #dc3545; padding: 2px 6px;">↺</button>
+                </div>
+
+                <!-- Права група: Кнопки дій та мови -->
+                <div class="header-actions-bar">
+                    <div class="filter-group" id="filter-group">
+                        <label><input type="radio" name="show" value="all" checked> {{ _('Всі') }}</label>
+                        <label><input type="radio" name="show" value="complete"> <span
+                                style="color: green;">✔</span></label>
+                        <label><input type="radio" name="show" value="incomplete"> <span
+                                style="color: gray;">✎</span></label>
+                    </div>
+
+                    {% if not read_only %}
+                    <a href="{{ url_for('main.add_entry') }}" class="button button-primary"
+                        title="{{ _('Додати статтю') }}" style="font-weight: bold;">+</a>
+                    {% endif %}
+                    <a href="{{ url_for('main.download_xml') }}" class="button"
+                        title="{{ _('Завантажити XML') }}">XML</a>
+
+                    <div class="language-selector">
+                        <a href="{{ url_for('main.index', lang='uk') }}"
+                            class="{% if current_lang == 'uk' %}active{% endif %}">UA</a>
+                        <a href="{{ url_for('main.index', lang='de') }}"
+                            class="{% if current_lang == 'de' %}active{% endif %}">DE</a>
+                    </div>
                 </div>
             </div>
         </header>
 
         <!-- Основна робоча область -->
         <div class="main-layout">
-            
+
             <!-- Ліва панель: Алфавіт + Пошук + Список -->
             <div class="word-list-panel" id="word-list-panel">
-                
+
                 <!-- 1. Алфавітна навігація -->
                 <nav class="alphabet-nav">
-                    <a href="{{ url_for('main.index', letter='all', lang=current_lang) }}" 
-                       class="{% if not current_letter or current_letter == 'all' %}active{% endif %}">
-                       {{ _('Всі') }}
+                    <a href="{{ url_for('main.index', letter='all', lang=current_lang) }}"
+                        class="{% if not current_letter or current_letter == 'all' %}active{% endif %}">
+                        {{ _('Всі') }}
                     </a>
                     {% for l in alphabet %}
-                    <a href="{{ url_for('main.index', letter=l, lang=current_lang) }}" 
-                       class="{% if current_letter == l %}active{% endif %}">
-                       {{ l }}
+                    <a href="{{ url_for('main.index', letter=l, lang=current_lang) }}"
+                        class="{% if current_letter == l %}active{% endif %}">
+                        {{ l }}
                     </a>
                     {% endfor %}
                 </nav>
@@ -130,10 +158,9 @@
                 <!-- 2. Пошук (Переміщено сюди) -->
                 <div class="sidebar-search-container">
                     <form class="search-form sidebar-form" id="search-form">
-                        <input type="text" name="q" class="search-input full-width" id="search-input" 
-                               placeholder="{{ _('Пошук...') }}" 
-                               value="{{ request.args.get('q', '') }}" 
-                               autocomplete="off">
+                        <input type="text" name="q" class="search-input full-width" id="search-input"
+                            placeholder="{{ _('Пошук...') }}" value="{{ request.args.get('q', '') }}"
+                            autocomplete="off">
                         <input type="hidden" name="lang" value="{{ current_lang }}">
                         <button type="submit" class="search-btn">🔍</button>
                     </form>
@@ -148,17 +175,178 @@
             <!-- Права панель: Перегляд статті -->
             <div class="entry-view-panel">
                 {% if entry %}
-                    {% include 'entry_partial.html' %}
+                {% include 'entry_partial.html' %}
                 {% else %}
-                    <div style="text-align: center; color: #888; margin-top: 50px;">
-                        <h3>{{ _('Словник німецьких запозичень') }}</h3>
-                        <p>{{ _('Оберіть слово зі списку ліворуч або скористайтеся пошуком.') }}</p>
-                    </div>
+                <div style="text-align: center; color: #888; margin-top: 50px;">
+                    <h3>{{ _('Словник німецьких запозичень') }}</h3>
+                    <p>{{ _('Оберіть слово зі списку ліворуч або скористайтеся пошуком.') }}</p>
+                </div>
                 {% endif %}
             </div>
         </div>
     </div>
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+    <!-- МОДАЛЬНЕ ВІКНО ДОВІДКИ (MARKDOWN) -->
+    <div id="docModal" class="custom-modal" style="display: none;">
+        <div class="modal-content" style="max-width: 750px; max-height: 85vh; display: flex; flex-direction: column;">
+            <div class="modal-header">
+                <h3 id="docModalTitle" style="margin: 0; color: #0f172a; font-size: 1.15rem;">Довідка</h3>
+                <span class="close-modal-btn" onclick="closeDocModal()">&times;</span>
+            </div>
+            <div id="docModalBody" class="modal-body"
+                style="overflow-y: auto; line-height: 1.6; font-size: 0.95rem; color: #334155; padding: 20px;">
+                Завантаження...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="button button-primary" onclick="closeDocModal()">Закрити</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- МОДАЛЬНЕ ВІКНО ЗВОРОТНОГО ЗВ'ЯЗКУ -->
+    <div id="feedbackModal" class="custom-modal" style="display: none;">
+        <div class="modal-content" style="max-width: 500px;">
+            <div class="modal-header">
+                <h3 style="margin: 0; color: #1e293b; font-size: 1.15rem;">✉️ {{ _("Зворотний зв'язок") }}</h3>
+                <span class="close-modal-btn" onclick="closeFeedbackModal()">&times;</span>
+            </div>
+            <form id="feedbackForm" onsubmit="handleFeedbackSubmit(event)">
+                <div class="modal-body" style="padding: 15px 20px;">
+                    <div class="modal-form-group">
+                        <label>Ваше ім'я / Фах:</label>
+                        <input type="text" id="fb_name" required placeholder="Олександр Іваненко, філолог">
+                    </div>
+                    <div class="modal-form-group">
+                        <label>Ваш Email (для відповіді):</label>
+                        <input type="email" id="fb_email" required placeholder="alex@univ.edu.ua">
+                    </div>
+                    <div class="modal-form-group">
+                        <label>Слово / Стаття, якої стосується зауваження:</label>
+                        <input type="text" id="fb_target" placeholder="напр. верстат">
+                    </div>
+                    <div class="modal-form-group">
+                        <label>Текст зауваження або пропозиції:</label>
+                        <textarea id="fb_comment" rows="4" required
+                            placeholder="Опишіть ваше зауваження чи запропонуйте нове джерело..."></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="button" onclick="closeFeedbackModal()">Скасувати</button>
+                    <button type="submit" id="fb_submit_btn" class="button button-primary"
+                        style="padding: 6px 18px;">Надіслати</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // 1. Відкриття та закриття вікон Markdown-довідки
+        function openDocModal(docName, title) {
+            const modal = document.getElementById('docModal');
+            const modalTitle = document.getElementById('docModalTitle');
+            const modalBody = document.getElementById('docModalBody');
+
+            modalTitle.innerText = title;
+            modalBody.innerHTML = '<p style="text-align:center; color:#666;">⏳ Завантаження документа...</p>';
+            modal.style.display = 'flex';
+
+            fetch(`/api/doc/${docName}`)
+                .then(res => res.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        modalBody.innerHTML = data.html;
+                    } else {
+                        modalBody.innerHTML = `<p style="color:red;">Помилка: ${data.message}</p>`;
+                    }
+                })
+                .catch(() => {
+                    modalBody.innerHTML = '<p style="color:red;">Не вдалося завантажити документ.</p>';
+                });
+        }
+
+        function closeDocModal() {
+            const modal = document.getElementById('docModal');
+            if (modal) modal.style.display = 'none';
+        }
+
+        document.querySelectorAll('.doc-modal-btn').forEach(btn => {
+            btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                openDocModal(this.dataset.doc, this.dataset.title || 'Довідка');
+            });
+        });
+
+        // 2. Відкриття та закриття вікна Зворотного зв'язку
+        function openFeedbackModal() {
+            const modal = document.getElementById('feedbackModal');
+            const targetInput = document.getElementById('fb_target');
+            const currentHeadword = document.querySelector('.headword');
+            if (currentHeadword && targetInput) {
+                targetInput.value = currentHeadword.innerText.trim();
+            }
+            if (modal) modal.style.display = 'flex';
+        }
+
+        function closeFeedbackModal() {
+            const modal = document.getElementById('feedbackModal');
+            if (modal) modal.style.display = 'none';
+        }
+
+        document.getElementById('open-feedback-btn')?.addEventListener('click', function (e) {
+            e.preventDefault();
+            openFeedbackModal();
+        });
+
+        async function handleFeedbackSubmit(event) {
+            event.preventDefault();
+            const btn = document.getElementById('fb_submit_btn');
+            btn.disabled = true;
+            btn.textContent = "Надсилання...";
+
+            const name = document.getElementById('fb_name').value;
+            const email = document.getElementById('fb_email').value;
+            const targetWord = document.getElementById('fb_target').value || "Загальне";
+            const comment = document.getElementById('fb_comment').value;
+
+            const payload = { "name": name, "email": email, "target_word": targetWord, "comment": comment };
+
+            try {
+                fetch("/api/submit_feedback", {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                }).catch(e => console.log("Резервне збереження offline"));
+
+                const mailResponse = await fetch("https://formsubmit.co/ajax/nikolaji.zubov@gmail.com", {
+                    method: "POST",
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify({
+                        "_subject": `🔔 Пропозиція до Словника запозичень: ${targetWord}`,
+                        "_replyto": email,
+                        "Ім'я автора": name,
+                        "Email для відповіді": email,
+                        "Слово / Стаття": targetWord,
+                        "Текст зауваження": comment
+                    })
+                });
+
+                if (mailResponse.ok) {
+                    alert("✅ Дякуємо! Ваша пропозиція успішно надіслана укладачу словника.");
+                    document.getElementById('feedbackForm').reset();
+                    closeFeedbackModal();
+                } else {
+                    alert("❌ Помилка відправки.");
+                }
+            } catch (err) {
+                alert("❌ Помилка з'єднання з поштовим сервісом.");
+            } finally {
+                btn.disabled = false;
+                btn.textContent = "Надіслати";
+            }
+        }
+    </script>
 </body>
+
 </html>

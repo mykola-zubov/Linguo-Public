@@ -11,6 +11,11 @@ class Config:
     BABEL_DEFAULT_LOCALE = 'uk'
     BABEL_TRANSLATION_DIRECTORIES = os.path.join(BASE_DIR, 'translations')
 
+    # 🔒 РЕЖИМ ПУБЛІЧНОГО ДОСТУПУ:
+    # False = Локальний редактор (дозволено редагувати)
+    # True = Публічний сайт (тільки читання)
+    READ_ONLY = os.environ.get('READ_ONLY', 'False').lower() in ('true', '1', 't')
+
 # Namespaces для XML
 NS = {
     'tei': 'http://www.tei-c.org/ns/1.0',
