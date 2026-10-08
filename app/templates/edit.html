@@ -272,17 +272,23 @@
                                         value="{{ entry.german_stress or '' }}" /></div>
                             </div>
                             <div class="grid-row-3">
-                                <div class="form-group"><label for="german_form_usg_hist">Період</label><input
-                                        id="german_form_usg_hist" type="text" name="german_form_usg_hist"
-                                        placeholder="nhd" value="{{ entry.german_form_usg_hist or '' }}" /></div>
-                                <div class="form-group"><label>{{ _('Час фіксації') }}</label><input type="text"
-                                        name="german_head_time" value="{{ entry.german_head_time or '' }}" /></div>
-                                <div class="form-group"><label>{{ _('Тер. вживання') }}</label><select
-                                        id="german_head_region_style" name="german_head_region_style" multiple>{% if
-                                        terr_style %}{% for item in terr_style.children %}<option
-                                            value="{{ item.abbr }}" {% if item.abbr in (entry.german_head_region_style
-                                            or []) %}selected{% endif %}>{{ item.term }}</option>{% endfor %}{% endif
-                                        %}</select></div>
+                                <div class="form-group">
+                                    <label for="german_form_usg_hist">{{ _('Період') }}</label>
+                                    <select id="german_form_usg_hist" name="german_form_usg_hist" style="height: 36px;">
+                                        <option value="">(не вказано)</option>
+                                        {% for lang in back_data.languages %}
+                                        {# Фільтруємо німецькі періоди та діалекти за кодом мови (починається з de) або
+                                        за абревіатурою #}
+                                        {% if (lang.code and lang.code.startswith('de')) or (lang.abbr in ['нвн.',
+                                        'свн.', 'двн.', 'ранньонвн.', 'снжн.', 'нім.']) %}
+                                        <option value="{{ lang.abbr }}" {% if entry.german_form_usg_hist==lang.abbr
+                                            %}selected{% endif %}>
+                                            {{ lang.abbr }} ({{ lang.term }})
+                                        </option>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </select>
+                                </div>
                             </div>
                             <div class="grid-row-2">
                                 <div class="form-group"><label>{{ _('Регіон/Діалект') }}</label><select
@@ -540,34 +546,68 @@
 
     <template id="variant-sense-template">
         <div class="dynamic-list-item sub-item-block"
-            style="background: #fff; border: 1px solid #ddd; padding: 8px; margin-bottom: 8px; position: relative;">
+            style="background: #fff; border: 1px solid #ddd; padding: 10px; margin-bottom: 8px; position: relative;">
             <button type="button" class="delete-item-btn" title="Видалити значення"
-                style="top:2px; right:2px; font-size: 1.2em;">×</button>
-            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 10px; margin-bottom: 5px;">
-                <div class="form-group"><textarea id="variants___VAR_IDX___senses___SENSE_IDX___def"
-                        class="markdown-editor" name="variants___VAR_IDX___senses___SENSE_IDX___def"
-                        placeholder="{{ _('Тлумачення (напр. «вид печива»)') }}"></textarea></div>
-                <div class="form-group"><input type="text" name="variants___VAR_IDX___senses___SENSE_IDX___time"
-                        placeholder="Час (XVIII ст.)" /></div>
+                style="top: 4px; right: 4px; font-size: 1.2em;">×</button>
+
+            <!-- Рядок 1: Тлумачення, Німецький відповідник, Час -->
+            <div
+                style="display: grid; grid-template-columns: 2fr 2fr 1fr; gap: 10px; margin-bottom: 8px; padding-right: 25px;">
+                <div class="form-group">
+                    <textarea id="variants___VAR_IDX___senses___SENSE_IDX___def" class="markdown-editor"
+                        name="variants___VAR_IDX___senses___SENSE_IDX___def"
+                        placeholder="{{ _('Тлумачення (напр. «звільнений від служби»)') }}"></textarea>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="variants___VAR_IDX___senses___SENSE_IDX___german_equiv"
+                        placeholder="Нім. відповідник (напр. verabschiedet)" style="font-style: italic;" />
+                </div>
+                <div class="form-group">
+                    <input type="text" name="variants___VAR_IDX___senses___SENSE_IDX___time"
+                        placeholder="Час (1886 р.)" />
+                </div>
             </div>
-            <div class="form-group" style="margin-bottom: 5px;"><select
-                    name="variants___VAR_IDX___senses___SENSE_IDX___source" style="width: 100%; font-size: 0.9em;">
-                    <option value="">(Джерело не вказано)</option>{% for bibl in back_data.bibliography %}<option
-                        value="{{ bibl.id }}" title="{{ bibl.title }}">{{ bibl.abbr }}</option>{% endfor %}
-                </select><input type="hidden" name="variants___VAR_IDX___senses___SENSE_IDX___source_abbr"></div>
+
+            <!-- Рядок 2: ДЖЕРЕЛО (ПОВЕРНУТО НА МІСЦЕ) -->
+            <div class="form-group" style="margin-bottom: 8px;">
+                <select name="variants___VAR_IDX___senses___SENSE_IDX___source" style="width: 100%; font-size: 0.9em;">
+                    <option value="">(Джерело не вказано)</option>
+                    {% for bibl in back_data.bibliography %}
+                    <option value="{{ bibl.id }}" title="{{ bibl.title }}">{{ bibl.abbr }}</option>
+                    {% endfor %}
+                </select>
+                <input type="hidden" name="variants___VAR_IDX___senses___SENSE_IDX___source_abbr">
+            </div>
+
+            <!-- Рядок 3: Регіони та Стилі -->
             <div class="grid-row-3" style="gap: 5px; margin-bottom: 0;">
-                <div class="form-group"><select name="variants___VAR_IDX___senses___SENSE_IDX___region_style" multiple
-                        placeholder="Тер. вжив.">{% if terr_style %}{% for item in terr_style.children %}<option
-                            value="{{ item.abbr }}">{{ item.abbr }}</option>{% endfor %}{% endif %}</select></div>
-                <div class="form-group"><select name="variants___VAR_IDX___senses___SENSE_IDX___geo" multiple
-                        placeholder="Регіон">{% for reg in back_data.get('regions', []) %}<option
-                            value="{{ reg.term }}">{{ reg.term }}</option>{% endfor %}</select></div>
-                <div class="form-group"><select name="variants___VAR_IDX___senses___SENSE_IDX___style"
-                        placeholder="Істор. стиль">
-                        <option value="">(Істор. стиль - не вказано)</option>{% if retro_style %}{% for item in
-                        retro_style.children %}<option value="{{ item.abbr }}">{{ item.abbr }} - {{ item.term }}
-                        </option>{% endfor %}{% endif %}
-                    </select></div>
+                <div class="form-group">
+                    <select name="variants___VAR_IDX___senses___SENSE_IDX___region_style" multiple
+                        placeholder="Тер. вжив.">
+                        {% if terr_style %}
+                        {% for item in terr_style.children %}
+                        <option value="{{ item.abbr }}">{{ item.abbr }}</option>
+                        {% endfor %}
+                        {% endif %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select name="variants___VAR_IDX___senses___SENSE_IDX___geo" multiple placeholder="Регіон">
+                        {% for reg in back_data.get('regions', []) %}
+                        <option value="{{ reg.term }}">{{ reg.term }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select name="variants___VAR_IDX___senses___SENSE_IDX___style" placeholder="Істор. стиль">
+                        <option value="">(Істор. стиль - не вказано)</option>
+                        {% if retro_style %}
+                        {% for item in retro_style.children %}
+                        <option value="{{ item.abbr }}">{{ item.abbr }} - {{ item.term }}</option>
+                        {% endfor %}
+                        {% endif %}
+                    </select>
+                </div>
             </div>
         </div>
     </template>

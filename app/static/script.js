@@ -723,6 +723,9 @@ document.addEventListener('DOMContentLoaded', function () {
             const defInput = newItem.querySelector(`textarea[name*="def"]`);
             if (defInput) defInput.value = item.def || '';
 
+            const gEquivInput = newItem.querySelector(`input[name*="german_equiv"]`);
+            if (gEquivInput) gEquivInput.value = item.german_equiv || '';
+
             const timeInput = newItem.querySelector(`input[name*="time"]`);
             if (timeInput) timeInput.value = item.time || '';
 

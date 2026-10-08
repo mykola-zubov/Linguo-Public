@@ -284,10 +284,15 @@ def parse_entry_data(entry_element, root):
         
         for var_sense in form_var.findall("tei:sense", NS):
             def_node = var_sense.find("tei:def", NS)
+
+            # Зчитуємо німецький відповідник варіанта
+            de_trans_node = var_sense.find("tei:cit[@type='translation'][@xml:lang='de']/tei:quote", NS)
+            g_equiv_val = de_trans_node.text.strip() if de_trans_node is not None and de_trans_node.text else ""
             
             sense_item = {
                 'def': tei_to_markdown(def_node),
                 'def_html': tei_to_html(def_node, back_data),
+                'german_equiv': g_equiv_val,
                 'time': get_text(var_sense, "tei:usg[@type='time']"),
                 'geo': [],          
                 'geo_display': [],  
@@ -904,10 +909,14 @@ def update_entry_from_form(entry_element, root, form_data):
             senses_dict = v_data.get('senses', {})
             for j in sorted(senses_dict.keys()):
                 s_data = senses_dict[j]
-                if s_data.get('def') or s_data.get('time') or s_data.get('geo') or s_data.get('source'):
+                if s_data.get('def') or s_data.get('german_equiv') or s_data.get('time') or s_data.get('geo') or s_data.get('source'):
                     sense_el = ET.SubElement(form_var, f"{{{NS['tei']}}}sense")
                     if def_text := s_data.get('def'):
                         markdown_to_tei(def_text, ET.SubElement(sense_el, f"{{{NS['tei']}}}def"))
+                        # ЗБЕРІГАЄМО НІМЕЦЬКИЙ ВІДПОВІДНИК У <cit type="translation" xml:lang="de">
+                    if g_equiv := s_data.get('german_equiv'):
+                        cit_el = ET.SubElement(sense_el, f"{{{NS['tei']}}}cit", {'type': 'translation', xml_lang_attr: 'de'})
+                        ET.SubElement(cit_el, f"{{{NS['tei']}}}quote").text = g_equiv
                     if time_val := s_data.get('time'):
                         ET.SubElement(sense_el, f"{{{NS['tei']}}}usg", {'type': 'time'}).text = time_val
                     for geo in s_data.get('geo', []):
