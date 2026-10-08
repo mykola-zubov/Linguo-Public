@@ -1,4 +1,5 @@
 import os
+import socket
 
 # Ми знаходимось у app/config.py, тому піднімаємось на два рівні вгору до projekt_root
 BASE_DIR = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
@@ -14,7 +15,7 @@ class Config:
     # 🔒 РЕЖИМ ПУБЛІЧНОГО ДОСТУПУ:
     # False = Локальний редактор (дозволено редагувати)
     # True = Публічний сайт (тільки читання)
-    READ_ONLY = os.environ.get('READ_ONLY', 'False').lower() in ('true', '1', 't')
+    READ_ONLY = os.environ.get('READ_ONLY', 'pythonanywhere' in socket.gethostname()).lower() in ('true', '1', 't')
 
 # Namespaces для XML
 NS = {
