@@ -15,7 +15,7 @@ class Config:
     # 🔒 РЕЖИМ ПУБЛІЧНОГО ДОСТУПУ:
     # False = Локальний редактор (дозволено редагувати)
     # True = Публічний сайт (тільки читання)
-    READ_ONLY = os.environ.get('READ_ONLY', 'pythonanywhere' in socket.gethostname()).lower() in ('true', '1', 't')
+    READ_ONLY = str(os.environ.get('READ_ONLY', 'pythonanywhere' in socket.gethostname())).lower() in ('true', '1', 't')
 
 # Namespaces для XML
 NS = {
