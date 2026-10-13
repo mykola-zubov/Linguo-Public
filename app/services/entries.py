@@ -67,44 +67,58 @@ def format_translation_text(text, back_data):
 def parse_entry_header(entry_element, target_lang='uk'):
     """
     Легковаговий парсер для списків та пошуку.
-    target_lang: 'uk' або 'de'.
+    Якщо в німецькому етимоні кілька слів через кому, повертає записи для кожного з них.
     """
     if entry_element is None:
-        return None
+        return []
 
     xml_id_key = f"{{{NS['xml']}}}id"
-    
-    data = {
-        'id': entry_element.get(xml_id_key),
-        'status': entry_element.get('status'),
-        'orth': '',
-        'uk_orth': '',       # Українська головна лема
-        'variants': []
-    }
+    e_id = entry_element.get(xml_id_key)
+    status = entry_element.get('status')
 
-    # Зчитуємо українське слово
+    # Українське слово
     uk_node = entry_element.find("tei:form[@type='lemma']/tei:orth", NS)
-    if uk_node is not None and uk_node.text:
-        data['uk_orth'] = uk_node.text.strip()
+    uk_orth = uk_node.text.strip() if uk_node is not None and uk_node.text else ""
 
-    # Зчитуємо німецьке слово
-    de_node = entry_element.find(".//tei:etym[@type='german']/tei:form/tei:orth", NS)
-    de_orth = de_node.text.strip() if de_node is not None and de_node.text else ""
-
-    # Визначаємо головне слово списку залежно від мови
-    if target_lang == 'de':
-        if not de_orth:
-            return None  # Пропускаємо, якщо немає німецького етимона
-        data['orth'] = de_orth
-    else:
-        data['orth'] = data['uk_orth']
-
-    # Зчитуємо варіанти
+    # Варіанти
+    variants = []
     for form_var in entry_element.findall("tei:form[@type='variant']/tei:orth", NS):
         if form_var.text:
-            data['variants'].append({'orth': form_var.text.strip()})
+            variants.append({'orth': form_var.text.strip()})
 
-    return data
+    # 1. РЕЖИМ УКРАЇНСЬКОЇ МОВИ (UK) - строго один запис
+    if target_lang != 'de':
+        if not uk_orth:
+            return []
+        return [{
+            'id': e_id,
+            'status': status,
+            'orth': uk_orth,
+            'uk_orth': uk_orth,
+            'variants': variants
+        }]
+
+    # 2. РЕЖИМ НІМЕЦЬКОЇ МОВИ (DE)
+    de_node = entry_element.find(".//tei:etym[@type='german']/tei:form/tei:orth", NS)
+    de_orth_raw = de_node.text.strip() if de_node is not None and de_node.text else ""
+
+    if not de_orth_raw:
+        return []
+
+    # Розбиваємо за комою, якщо вказано кілька слів (напр. "Rindsauge, Ochsenauge")
+    de_words = [w.strip() for w in de_orth_raw.split(',') if w.strip()]
+    results = []
+
+    for word in de_words:
+        results.append({
+            'id': e_id,
+            'status': status,
+            'orth': word,          # Конкретне німецьке слово для сортування (напр. Ochsenauge)
+            'uk_orth': uk_orth,
+            'variants': variants
+        })
+
+    return results
 
 # --- ПОВНА ФУНКЦІЯ (для перегляду/редагування) ---
 def parse_entry_data(entry_element, root):

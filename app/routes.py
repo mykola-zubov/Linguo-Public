@@ -184,34 +184,32 @@ def index():
 
     entries_to_process = []
     
-    # 3. ФІЛЬТРАЦІЯ
+# 3. ФІЛЬТРАЦІЯ
     for entry in all_entries:
-        # --- ЗМІНА: Передаємо lang у парсер ---
-        data = parse_entry_header(entry, target_lang=lang)
-        
-        # Якщо в цій мові слова немає (наприклад, немає нім. відповідника), пропускаємо
-        if not data or not data.get('orth'): 
+        # Отримуємо записи (для DE їх може бути кілька, якщо слова через кому)
+        header_items = parse_entry_header(entry, target_lang=lang)
+        if not header_items:
             continue
 
         # Фільтр по статусу
-        if show_status == 'complete' and data.get('status') != 'complete':
+        if show_status == 'complete' and entry.get('status') != 'complete':
             continue
-        if show_status == 'incomplete' and data.get('status') == 'complete':
+        if show_status == 'incomplete' and entry.get('status') == 'complete':
             continue
 
-# Універсальний пошук (з підтримкою dom:, style:, bibl:, geo: тощо)
+        # Пошук
         if query:
             if not entry_matches_query(entry, query, root):
                 continue
 
-        # Фільтр по літері
-        if not query and letter_filter != 'all':
-            first_char = (data.get('orth') or '').strip()
-            # Перевірка першої літери (враховуємо регістр)
-            if not first_char or first_char[0].upper() != letter_filter.upper():
-                continue
+        for data in header_items:
+            # Фільтр по літері
+            if not query and letter_filter != 'all':
+                first_char = (data.get('orth') or '').strip()
+                if not first_char or first_char[0].upper() != letter_filter.upper():
+                    continue
 
-        entries_to_process.append(data)
+            entries_to_process.append(data)
 
     # 4. СОРТУВАННЯ СПИСКУ
     entries_to_process.sort(key=lambda x: locale.strxfrm(x.get('orth', '').lower()))
@@ -240,26 +238,14 @@ def index():
         
         entries_to_process = grouped_entries
 
-    # 5. ГЕНЕРАЦІЯ АЛФАВІТУ (Адаптовано під мову)
-    # Ми не можемо просто брати українські леми, треба брати ті слова, які ми витягли
-    # Найефективніше - пройтися по вже сформованому (але ще не відфільтрованому по літері) списку
-    # Але оскільки ми фільтруємо в циклі, зробимо окремий прохід або використаємо XML xpath залежно від мови.
-    
+# 5. ГЕНЕРАЦІЯ АЛФАВІТУ
     letters_set = set()
-    
-    # Щоб алфавіт був повним (з усіх слів бази, а не тільки відфільтрованих), 
-    # нам треба знати перші літери всіх слів обраної мови.
-    if lang == 'de':
-        xpath_query = ".//tei:etym[@type='german']/tei:form/tei:orth"
-    else:
-        xpath_query = "tei:form[@type='lemma']/tei:orth"
-
     for e in all_entries:
-        node = e.find(xpath_query, NS)
-        if node is not None and node.text:
-            first_char = node.text.strip()[0].upper()
-            if first_char.isalpha(): # Беремо тільки літери
-                letters_set.add(first_char)
+        for item in parse_entry_header(e, target_lang=lang):
+            if item.get('orth'):
+                first_char = item['orth'][0].upper()
+                if first_char.isalpha():
+                    letters_set.add(first_char)
 
     alphabet = sorted(list(letters_set), key=locale.strxfrm)
 
