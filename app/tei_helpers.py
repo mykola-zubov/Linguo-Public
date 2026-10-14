@@ -75,8 +75,20 @@ def tei_to_html(element, back_data=None):
         tag_name = child.tag.split('}')[-1]
         
         if tag_name == 'hi':
-            marker_tag = 'strong' if child.get('rend') == 'bold' else 'em'
-            content_parts.append(f"<{marker_tag}>{process_text(child.text)}</{marker_tag}>")
+            rend = child.get('rend', '')
+            txt = process_text(child.text)
+            
+            # 1. Жирний + курсив одночасно (***)
+            if 'bold' in rend and 'italic' in rend:
+                content_parts.append(f"<strong><em>{txt}</em></strong>")
+            # 2. Тільки жирний (**)
+            elif 'bold' in rend:
+                content_parts.append(f"<strong>{txt}</strong>")
+            # 3. Тільки курсив (*)
+            elif 'italic' in rend:
+                content_parts.append(f"<em>{txt}</em>")
+            else:
+                content_parts.append(txt)
             
         elif tag_name == 'ref' and 'target' in child.attrib:
             raw_url = child.get('target', '').strip()
@@ -115,10 +127,12 @@ def tei_to_html(element, back_data=None):
     return re.sub(r'\s+', ' ', "".join(content_parts)).strip()
 
 def escape_markdown_chars(text):
-    if not text: return ""
-    return text.replace('*', r'\*')
+    """Не екрануємо зірочки, щоб не ламати форматування Markdown"""
+    if not text: 
+        return ""
+    return text
 
-# --- НОВА ФУНКЦІЯ ДЛЯ ОЧИЩЕННЯ ПРОБІЛІВ ---
+# --- ФУНКЦІЯ ДЛЯ ОЧИЩЕННЯ ПРОБІЛІВ ---
 def clean_xml_text(text):
     """Замінює всі переноси рядків і табуляції на один пробіл."""
     if not text: return ""
@@ -127,7 +141,6 @@ def clean_xml_text(text):
 def tei_to_markdown(element):
     if element is None: return ""
     
-    # 1. Чистимо текст самого елемента від зайвих відступів XML
     text_content = clean_xml_text(element.text)
     content_parts = [escape_markdown_chars(text_content)]
     
@@ -136,10 +149,19 @@ def tei_to_markdown(element):
         
         if tag_name == 'hi':
             inner_text = child.text or ""
-            # Тут теж чистимо, хоча всередині тегів зазвичай менше сміття
-            escaped_inner = escape_markdown_chars(clean_xml_text(inner_text))
-            if child.get('rend') == 'bold': content_parts.append(f"**{escaped_inner}**")
-            else: content_parts.append(f"*{escaped_inner}*")
+            rend = child.get('rend', '')
+            
+            # 1. Жирний + курсив одночасно
+            if 'bold' in rend and 'italic' in rend:
+                content_parts.append(f"***{inner_text}***")
+            # 2. Тільки жирний
+            elif rend == 'bold':
+                content_parts.append(f"**{inner_text}**")
+            # 3. Тільки курсив
+            elif rend == 'italic':
+                content_parts.append(f"*{inner_text}*")
+            else:
+                content_parts.append(inner_text)
             
         elif tag_name == 'ref' and 'target' in child.attrib:
             link_text = escape_markdown_chars(clean_xml_text(child.text))
@@ -151,12 +173,10 @@ def tei_to_markdown(element):
         elif tag_name == 'lb': 
             content_parts.append('\n')
             
-        # 2. Чистимо "хвіст" (текст після закриваючого тегу дочірнього елемента)
         if child.tail: 
             tail_content = clean_xml_text(child.tail)
             content_parts.append(escape_markdown_chars(tail_content))
             
-    # Зшиваємо і прибираємо пробіли по краях параграфа
     return "".join(content_parts).strip()
 
 def markdown_to_tei(text, parent_element):
@@ -164,7 +184,8 @@ def markdown_to_tei(text, parent_element):
     for child in list(parent_element): parent_element.remove(child)
     if not text: return
     
-    pattern = r'(\\.)|(\[([^\[\]]*?)\]\(([^)]*?)\))|(\*\*([^*]+?)\*\*)|(\*([^*]+?)\*)|(_([^_]+?)_)|(\n)'
+# Оновлений шаблон (додано пошук трьох зірочок *** на початку)
+    pattern = r'(\\.)|(\[([^\[\]]*?)\]\(([^)]*?)\))|(\*\*\*([^*]+?)\*\*\*)|(\*\*([^*]+?)\*\*)|(\*([^*]+?)\*)|(_([^_]+?)_)|(\n)'
     
     last_end = 0
     
@@ -184,13 +205,20 @@ def markdown_to_tei(text, parent_element):
             text_link = match.group(3)
             ET.SubElement(parent_element, f"{{{NS['tei']}}}ref", {'target': target}).text = text_link
         elif match.group(5): 
-            ET.SubElement(parent_element, f"{{{NS['tei']}}}hi", {'rend': 'bold'}).text = match.group(6)
+            # 1. ТРИ ЗІРОЧКИ: ЖИРНИЙ + КУРСИВ (bold italic)
+            ET.SubElement(parent_element, f"{{{NS['tei']}}}hi", {'rend': 'bold italic'}).text = match.group(6)
         elif match.group(7): 
-            content = match.group(8).replace(r'\*', '*')
-            ET.SubElement(parent_element, f"{{{NS['tei']}}}hi", {'rend': 'italic'}).text = content
+            # 2. ДВІ ЗІРОЧКИ: ЖИРНИЙ (bold)
+            ET.SubElement(parent_element, f"{{{NS['tei']}}}hi", {'rend': 'bold'}).text = match.group(8)
         elif match.group(9): 
-            ET.SubElement(parent_element, f"{{{NS['tei']}}}hi", {'rend': 'italic'}).text = match.group(10)
+            # 3. ОДНА ЗІРОЧКА: КУРСИВ (italic)
+            content = match.group(10)
+            ET.SubElement(parent_element, f"{{{NS['tei']}}}hi", {'rend': 'italic'}).text = content
         elif match.group(11): 
+            # 4. НИЖНЄ ПІДКРЕСЛЕННЯ: КУРСИВ (italic)
+            ET.SubElement(parent_element, f"{{{NS['tei']}}}hi", {'rend': 'italic'}).text = match.group(12)
+        elif match.group(13): 
+            # 5. ПЕРЕНЕСЕННЯ РЯДКА (lb)
             ET.SubElement(parent_element, f"{{{NS['tei']}}}lb")
             
         last_end = end
