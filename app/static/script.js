@@ -1249,21 +1249,21 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-// 1. Для доменів виводимо повідомлення про розробку
-  if (filterDomain) {
-      filterDomain.addEventListener('change', function() {
-          if (this.value !== '') {
-              alert('ℹ️ Ідеографічна рубрикація (домени) наразі перебуває на стадії розробки та верифікації.');
-              this.value = '';
-              this.classList.remove('active-filter');
-          }
-      });
-  }
+    // 1. Для доменів виводимо повідомлення про розробку
+    if (filterDomain) {
+        filterDomain.addEventListener('change', function () {
+            if (this.value !== '') {
+                alert('ℹ️ Ідеографічна рубрикація (домени) наразі перебуває на стадії розробки та верифікації.');
+                this.value = '';
+                this.classList.remove('active-filter');
+            }
+        });
+    }
 
-  // 2. Інші фільтри працюють у штатному режимі (без filterDomain)
-  [filterStyle, filterBibl, filterType].forEach(sel => {
-      if (sel) sel.addEventListener('change', updateWordList);
-  });
+    // 2. Інші фільтри працюють у штатному режимі (без filterDomain)
+    [filterStyle, filterBibl, filterType].forEach(sel => {
+        if (sel) sel.addEventListener('change', updateWordList);
+    });
 
     if (resetFiltersBtn) {
         resetFiltersBtn.addEventListener('click', function () {
@@ -1427,6 +1427,56 @@ document.addEventListener('DOMContentLoaded', function () {
             });
 
             openPopup(`https://sum20ua.com/`);
+        });
+    }
+
+    // ============================================================
+    // ПОРТАЛ «ГОРОХ» (ТЛУМАЧЕННЯ ВСІХ СЛОВНИКІВ)
+    // ============================================================
+    const openGorohExplBtn = document.getElementById('open-goroh-expl-btn');
+
+    if (openGorohExplBtn && ukrOrthInput) {
+        openGorohExplBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            const lemma = ukrOrthInput.value.trim().replace('\u0301', '');
+            if (!lemma) {
+                alert('Введіть українське слово.');
+                ukrOrthInput.focus();
+                return;
+            }
+
+            navigator.clipboard.writeText(lemma).then(() => {
+                const origText = openGorohExplBtn.innerHTML;
+                openGorohExplBtn.innerHTML = '✓';
+                setTimeout(() => { openGorohExplBtn.innerHTML = origText; }, 2000);
+            });
+
+            openPopup(`https://goroh.pp.ua/Тлумачення/${encodeURIComponent(lemma)}`);
+        });
+    }
+
+    // ============================================================
+    // ПОРТАЛ «R2U» (АКАДЕМІЧНІ СЛОВНИКИ 1920-30-Х РР., КРИМСЬКИЙ)
+    // ============================================================
+    const openR2uBtn = document.getElementById('open-r2u-btn');
+
+    if (openR2uBtn && ukrOrthInput) {
+        openR2uBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            const lemma = ukrOrthInput.value.trim().replace('\u0301', '');
+            if (!lemma) {
+                alert('Введіть українське слово.');
+                ukrOrthInput.focus();
+                return;
+            }
+
+            navigator.clipboard.writeText(lemma).then(() => {
+                const origText = openR2uBtn.innerHTML;
+                openR2uBtn.innerHTML = '✓';
+                setTimeout(() => { openR2uBtn.innerHTML = origText; }, 2000);
+            });
+
+            openPopup(`https://r2u.org.ua/s?w=${encodeURIComponent(lemma)}`);
         });
     }
 

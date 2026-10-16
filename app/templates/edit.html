@@ -78,23 +78,43 @@
             <!-- 1. СЛОВО (Лема) -->
             <fieldset class="form-section" style="margin-bottom: 15px;">
                 <legend>{{ _('Слово (реєстрове гасло)') }}</legend>
-                <div class="grid-row-3">
-                    <div class="form-group" style="grid-column: span 2;">
+                <div class="grid-row-3" style="grid-template-columns: 2fr 1fr;">
+
+                    <!-- Ліва частина: Лема + Дві кнопки джерел СУМ -->
+                    <div class="form-group">
                         <label for="orth">{{ _('Слово (лема)') }}</label>
-                        <div style="display: flex; gap: 5px;">
+                        <div style="display: flex; gap: 5px; align-items: center;">
                             <input id="orth" type="text" name="orth" value="{{ entry.orth or '' }}" required
-                                style="font-weight: bold; font-size: 1.15em; flex-grow: 1;" placeholder="напр. абрис" />
+                                style="font-weight: bold; font-size: 1.15em; flex-grow: 1;" placeholder="напр. гадра" />
+
+                            <!-- 1. Академічний СУМ-20 -->
                             <button type="button" id="open-sum-popup-btn" class="button small"
-                                title="Відкрити СУМ-20 у вікні поруч"
-                                style="border: 1px solid #007bff; color: #007bff;">
+                                title="Офіційний СУМ-20 (sum20ua.com)"
+                                style="border: 1px solid #007bff; color: #007bff; white-space: nowrap;">
                                 ↗ СУМ-20
+                            </button>
+
+                            <!-- 2. Український мультисловник Горох -->
+                            <button type="button" id="open-goroh-expl-btn" class="button small"
+                                title="Тлумачення на порталі Горох (СУМ-20, СУМ-11, Грінченко)"
+                                style="border: 1px solid #28a745; color: #28a745; white-space: nowrap;">
+                                ↗ Горох
+                            </button>
+
+                            <!-- 3. Історико-діалектні словники r2u -->
+                            <button type="button" id="open-r2u-btn" class="button small"
+                                title="Корпус словників r2u.org.ua (1920-30-ті рр., Кримський)"
+                                style="border: 1px solid #6c757d; color: #495057; white-space: nowrap;">
+                                ↗ r2u
                             </button>
                         </div>
                     </div>
-                    <div class="form-group">
+
+                    <!-- Права частина: Наголос (звужений) -->
+                    <div class="form-group" style="max-width: 250px;">
                         <label for="stress">{{ _('Наголос') }}</label>
                         <input id="stress" type="text" name="stress" value="{{ entry.stress or '' }}"
-                            placeholder="áбрис" />
+                            placeholder="вундеркі́нд" />
                     </div>
                 </div>
             </fieldset>
